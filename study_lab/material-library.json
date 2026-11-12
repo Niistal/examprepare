@@ -78,13 +78,13 @@
       "filename": "06-ariketa-mariadb-mongodb.zip",
       "extension": ".zip",
       "mime": "application/zip",
-      "available": true,
-      "sha256": "659865c31c091be9c3977b85204ff1a113a52f8d08c7edba4d0153feebd0c154",
-      "size": 4169372,
+      "available": false,
+      "sha256": null,
+      "size": 0,
       "original_sha256": "659865c31c091be9c3977b85204ff1a113a52f8d08c7edba4d0153feebd0c154",
       "git_blob": "b74dc2ad76b365792c5f5efe7c17ae4ce54b00c1",
-      "redactions": 0,
-      "readable": false
+      "redactions": 3,
+      "readable": true
     },
     "res-038757a7fa6fc4ad43e1": {
       "file": "res-038757a7fa6fc4ad43e1.md",

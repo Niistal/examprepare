@@ -5,10 +5,10 @@ El propietario pidió integrar el contenido del temario de Niistal/Big_Data visu
 ## Implementado
 
 - Lector modal dentro de la app existente: Markdown, tablas, código, fórmulas MathML, índice, anterior/siguiente, guardar lectura y navegación entre documentos. Los enlaces a materiales del GitHub privado se interceptan y abren la copia local del temario.
-- Snapshot del repositorio académico `db1561d8b01e8f2f1ff7f085d1264e67c5a732bd`: **657 recursos**, **218 documentos de lectura completos** (127 Markdown más PDF/cuadernos/documentos/presentación/textos), 606 recursos con texto legible. No hubo errores de extracción. Los datasets/configuraciones muy voluminosos llevan una vista previa explícita y descarga completa desde la app.
+- Snapshot del repositorio académico `db1561d8b01e8f2f1ff7f085d1264e67c5a732bd`: **657 recursos**, **218 documentos de lectura completos** (127 Markdown más PDF/cuadernos/documentos/presentación/textos), 607 recursos con texto legible. No hubo errores de extracción. Los datasets/configuraciones muy voluminosos llevan una vista previa explícita y descarga completa desde la app.
 - Contenido de lectura embebido en `material-reader-data.js`, comprimido; index.html generado mide unos 5 MB y no necesita GitHub para leer. No se ejecuta código de los cuadernos ni HTML activo del repositorio.
 - Originales servidos por allowlist con autenticación de la aplicación, streaming, Range/HEAD, hashes y bloqueo de traversal/symlinks. PDF, imágenes, audio/vídeo y descargas no requieren autenticación de GitHub. El acceso de cuentas existente se conserva.
-- Se filtran patrones de credenciales en 37 recursos. Los binarios con coincidencias en su texto extraído no se copian literalmente; la vista de lectura sí se conserva filtrada. Revisar estos casos antes de liberar: puede haber ejemplos docentes. No desactivar la protección ni publicar valores reales por rutina.
+- Se filtran patrones de credenciales en 38 recursos. Los binarios con coincidencias en su texto extraído no se copian literalmente; la vista de lectura sí se conserva filtrada. Revisar estos casos antes de liberar: puede haber ejemplos docentes. No desactivar la protección ni publicar valores reales por rutina.
 - Empaquetado incluye el módulo de entrega, manifiesto y originales cuando están instalados. `--require-materials` exige la biblioteca completa. Un entorno CI sin originales genera explícitamente `materials_status=reading_only`, no una supuesta entrega completa.
 
 ## Dónde está cada cosa
@@ -75,4 +75,4 @@ Se coordinó el worktree con el hilo de revisión/publicación: terminó y dejó
 
 ## Evidencia de reanudación
 
-PASS: suite completa con 42 soluciones y frameworks; 8 tests del lector/entrega; 22 pruebas combinadas de cuentas, publicación, entrega autenticada e instalación; Chromium del lector (cinco asignaturas, tablas/fórmulas, PDF y responsive), recuperación de cuentas y Playwright del runner (archivos/gráficos, CSP y móvil); Gunicorn con dos workers. El fallo de CI original era un selector genérico de dialog y se corrigió con un ID específico para recuperación de cuenta. El contenido/servidor no se ha publicado aún.
+PASS: suite completa con 42 soluciones y frameworks; 9 tests del lector/entrega; 22 pruebas combinadas de cuentas, publicación, entrega autenticada e instalación; Chromium del lector (cinco asignaturas, tablas/fórmulas, PDF y responsive), recuperación de cuentas y Playwright del runner (archivos/gráficos, CSP y móvil); Gunicorn con dos workers. El fallo de CI original era un selector genérico de dialog y se corrigió con un ID específico para recuperación de cuenta. El contenido/servidor no se ha publicado aún.

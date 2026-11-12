@@ -48,6 +48,16 @@ def office_text(data,ext):
 
 def extract(data,ext):
     if ext in TEXT:return data.decode('utf-8-sig',errors='replace'),[]
+    if ext=='.zip':
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            infos=archive.infolist()
+            if sum(i.file_size for i in infos)>64_000_000 or any(i.file_size>20_000_000 for i in infos):raise ValueError('Archive exceeds inspection bounds')
+            parts=[]
+            for item in infos:
+                suffix=Path(item.filename).suffix.lower()
+                if suffix in TEXT:
+                    parts.append('## '+item.filename+'\n\n```text\n'+archive.read(item).decode('utf-8',errors='replace')+'\n```')
+            return '\n\n'.join(parts),['Contenido de texto del archivo comprimido. Los ejecutables y librerías no se ejecutan.']
     if ext=='.ipynb':
         notebook=json.loads(data);parts=[]
         for cell in notebook.get('cells',[]):

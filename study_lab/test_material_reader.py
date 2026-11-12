@@ -27,6 +27,13 @@ class ReaderTests(unittest.TestCase):
         for doc in data['documents'].values():Audit().feed(doc['html'])
         self.assertTrue(any('<math ' in d['html'] for d in data['documents'].values()))
         self.assertTrue(any('<table>' in d['html'] for d in data['documents'].values()))
+    def test_filtered_binary_originals_are_not_deliverable(self):
+        manifest=json.loads((ROOT/'material-library.json').read_text());docs=bundle()['documents'];store=MaterialAssets(ROOT)
+        for ident,item in manifest['resources'].items():
+            if not item['available']:
+                self.assertFalse(docs[ident]['originalAvailable']);self.assertEqual(store.response(ident)[0],404)
+        archives=[ident for ident,item in manifest['resources'].items() if item['extension']=='.zip' and item['redactions']]
+        self.assertTrue(archives,'El ZIP con configuración sensible debe detectarse')
     def test_assets_match_manifest_when_installed(self):
         if not (ROOT/'material-assets').is_dir():self.skipTest('Binary asset package not installed; inline reading is still checked')
         manifest=json.loads((ROOT/'material-library.json').read_text());self.assertEqual(manifest['extractionErrors'],[])
