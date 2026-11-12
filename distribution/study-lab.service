@@ -1,0 +1,27 @@
+[Unit]
+Description=NIIS Study Lab account distribution
+After=network.target
+
+[Service]
+Type=simple
+User=study-lab
+Group=study-lab
+WorkingDirectory=/opt/niis-study-lab
+EnvironmentFile=/etc/niis-study-lab.env
+Environment=STUDY_DB=/var/lib/study-lab/study.sqlite3
+ExecStart=/opt/niis-study-lab/.venv/bin/gunicorn --config distribution/gunicorn.conf.py distribution.server:create_app()
+Restart=on-failure
+RestartSec=5
+StateDirectory=study-lab
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/study-lab
+MemoryMax=512M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target
