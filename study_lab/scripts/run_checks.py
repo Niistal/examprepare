@@ -12,6 +12,6 @@ for cmd in commands:
     report.append(('PASS' if result.returncode==0 else 'FAIL')+' '+label+'\n'+result.stdout+result.stderr)
     print(report[-1],flush=True)
     if result.returncode:
-        (root/'qa-artifacts').mkdir(exist_ok=True);(root/'qa-artifacts/last-checks.txt').write_text('\n'.join(report));sys.exit(result.returncode)
-(root/'qa-artifacts').mkdir(exist_ok=True);(root/'qa-artifacts/last-checks.txt').write_text('\n'.join(report))
+        (root/'qa-artifacts').mkdir(exist_ok=True);(root/'qa-artifacts/last-checks.txt').write_text('\n'.join(report), encoding='utf-8');sys.exit(result.returncode)
+(root/'qa-artifacts').mkdir(exist_ok=True);(root/'qa-artifacts/last-checks.txt').write_text('\n'.join(report), encoding='utf-8')
 print('PASS suite completa solicitada')

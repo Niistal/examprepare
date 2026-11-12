@@ -31,6 +31,6 @@ try:
         if elapsed>=args.seconds:break
         time.sleep(min(55,args.seconds-elapsed))
     errors=[x for x in request('POST',base+'/log',{'type':'browser'}) if x.get('level')=='SEVERE']
-    assert not errors,'Errores JS en sesión prolongada'
+    assert not errors,[(x.get('source'),x.get('message','')[:400]) for x in errors]
     print('PASS sesión prolongada: deadline real, recarga y borrador íntegros',flush=True)
 finally:request('DELETE',base)

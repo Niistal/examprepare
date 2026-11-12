@@ -19,4 +19,14 @@ class PublicationTest(unittest.TestCase):
         with self.assertRaises(ValueError):module.compare_document(self.expected[:-1],self.expected)
     def test_size_limit(self):
         with self.assertRaises(ValueError):module.compare_document(self.expected.replace(b'</body>',self.extra.replace(b'{}',b'{' + b'x'*20000+b'}')+b'</body>'),self.expected)
+class HeaderTest(unittest.TestCase):
+    expected={'content-security-policy':"default-src 'none'; script-src 'sha256-fixture'; connect-src 'none'",'cache-control':'private, no-store','referrer-policy':'no-referrer','permissions-policy':'camera=()','x-content-type-options':'nosniff'}
+    def test_exact_headers(self):module.verify_headers(self.expected,self.expected)
+    def test_relaxed_csp_rejected(self):
+        observed={**self.expected,'content-security-policy':self.expected['content-security-policy']+" 'unsafe-inline'"}
+        with self.assertRaises(ValueError):module.verify_headers(observed,self.expected)
+    def test_missing_header_rejected(self):
+        observed={**self.expected};del observed['permissions-policy']
+        with self.assertRaises(ValueError):module.verify_headers(observed,self.expected)
+    def test_cache_order_does_not_change_policy(self):module.verify_headers({**self.expected,'cache-control':'no-store, private'},self.expected)
 if __name__=='__main__':unittest.main()

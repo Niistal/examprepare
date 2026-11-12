@@ -24,9 +24,9 @@ Los 73 casos forman parte del paquete privado. No se han copiado los apuntes com
 - `hosted_study_lab/` es un checkout separado del repositorio de publicación Sites y está ignorado en el repositorio principal. Sus credenciales temporales se entregan al helper por stdin, nunca se guardan en archivos ni Git.
 - El paquete publicado contiene `.openai/hosting.json` y un Worker que responde con el HTML generado. Solo acepta GET/HEAD de `/` y `/index.html`; no sirve el árbol del repositorio ni ejecuta código del estudiante.
 - El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` evita llamadas de red desde la app; abrir una fuente de GitHub mediante un enlace sigue siendo posible.
-- Commit de publicación Sites: `d74a7be113d9d80f6234ad05c34571616a88c388`.
-- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_a9f7ce228d008191b0e6e3d1a9ff8d48`.
-- Despliegue: `appgdep_6af52a8525c08191b83577f42ea47cef`, estado `succeeded`.
+- Commit de publicación Sites: `39a6234d64a477ca49086b90d6ef9f695be20ca1`.
+- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_b49e2add50b88191bfb9439e4d3a3d53`.
+- Despliegue: `appgdep_6af52cdc8d64819193d784a4e3dd8512`, estado `succeeded`.
 
 ## Pruebas de esta actualización
 
@@ -46,7 +46,7 @@ Para futuras publicaciones, usar la identidad existente y el workflow de Sites; 
 
 Se conserva la política privada de un usuario y cero grupos. No se han generado ni guardado credenciales en Proton Pass. La primera respuesta de acceso anónimo observada fue 403; no se afirma haber probado un login del propietario ni su configuración MFA.
 
-## Temario conectado y cabeceras HTTP — 12/11, 03:55 Madrid
+## Temario conectado y cabeceras HTTP — 12/11, 04:05 Madrid
 
 La publicación indicada incorpora 657 recursos clasificados por carpeta, referencias de fórmulas dadas y avisos si cambia la fuente contrastada de un caso. No copia los cuerpos del repositorio. La automatización de actualización está especificada en [AUTOMATION.md](AUTOMATION.md).
 

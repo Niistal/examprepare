@@ -1,13 +1,13 @@
 {
   "schema": 1,
-  "policy_version": 4,
+  "policy_version": 5,
   "source": {
     "repo": "Niistal/Big_Data",
     "branch": "main",
     "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
     "committed_at": "2026-11-11T08:14:13+01:00"
   },
-  "fingerprint": "8c90521d048d07f156170025416e59ac238d9e8a1c02d8c65970b500d9423364",
+  "fingerprint": "865f61b3503cedf9f30b949f27607ffa633c5c971598efc50be7fb0206567bdd",
   "root_modules": [
     "01_Orokorra",
     "02_Erronka_1_CNC_Guard",
@@ -178,10 +178,10 @@
         "1. Azpiegitura (Docker Compose)",
         "Kredentzialak:",
         "2. Abiaraztea eta Gelditzea",
-        "Ingurunea abiarazi atzeko planoan",
-        "Egoera egiaztatu",
-        "Gelditu",
-        "3. Fluxuaren Arkitektura eta Bi Aldaerak"
+        "3. Fluxuaren Arkitektura eta Bi Aldaerak",
+        "Erabilitako SQL Kontsulta:",
+        "1. ALDAERA: Klasikoa (SplitText + PutMongo)",
+        "2. ALDAERA: Record API Modernoa (PutMongoRecord)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -306,11 +306,9 @@
         "7. Ariketa (DF2.3): AEMET Datu-lakua Medallion Arkitekturan (Docker Compose)",
         "1. Azpiegitura (Docker Compose)",
         "2. Abiaraztea eta Gelditzea",
-        "Ingurune osoa abiarazi atzeko planoan",
-        "Zerbitzuen egoera ikusi",
-        "Gelditu",
         "3. Medallion Arkitektura (Bronze -> Silver -> Gold)",
-        "4. Egiaztapen Automatikoa"
+        "4. Egiaztapen Automatikoa",
+        "5. NiFi Fluxu-Definizioa (JSON)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -765,12 +763,12 @@
       "sections": [
         "1. Kasua: Kafka eta Python Integrazioa",
         "1. Liburutegiak (Dagoeneko instalatuta /home/admin/BigData/.venv)",
-        "Ingurune birtuala aktibatu:",
-        "Beharrezko liburutegiak:",
         "2. Exekuzioa",
         "Kafka-Python adibidea:",
         "Confluent-Kafka (Produkzioko gomendioa):",
-        "3. Kasu Praktikoa 1: Pertsonen Datu - Pipelinea (Kafka + Python + MongoDB)"
+        "3. Kasu Praktikoa 1: Pertsonen Datu - Pipelinea (Kafka + Python + MongoDB)",
+        "Fitxategiak:",
+        "Exekuzioa:"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -909,12 +907,12 @@
       "sections": [
         "2. Kasua: 3 Brokerreko Kafka Klusterra + Python + NiFi",
         "1. Klusterra abiarazi",
-        "1. Broker bakarra gelditu (erroko compose)",
-        "2. Klusterra abiarazi",
         "2. Topic-a (4 partizio + RF=2)",
         "3. Python Producer (Faker, 10 pertsona)",
         "4. Python Consumer",
-        "group pertsonalizatua:"
+        "5. NiFi Consumer (ConsumeKafka)",
+        "6. Egiaztatu: mezu berdinak?",
+        "Proba automatikoa (1–4 eginkizunak)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -1497,9 +1495,9 @@
         "1. ARIKETA: Topic berriak sortu eta kudeatu",
         "Helburua:",
         "Komandoak:",
-        "1. sentsoreak sortu (2 partizio)",
-        "2. erosketak sortu (4 partizio)",
-        "3. Zerrendatu topic guztiak"
+        "Egiaztapena:",
+        "2. ARIKETA: Producer eta Consumer berriak",
+        "Urratsak eta Komandoak:"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -1634,7 +1632,6 @@
         "📂 Karpeten Egitura Orokorra",
         "📊 Ariketak eta Gaitasunak",
         "🚀 Proba Automatikoak Exekutatzeko",
-        "Moduluko test guztiak exekutatzeko:",
         "Indice automatico de 07BDAplikatua"
       ],
       "type": "Apunte",
@@ -4092,8 +4089,7 @@
         "🔬 2. Kernel-Trikuia (The Kernel Trick)",
         "📈 3. SVR: Support Vector Regression",
         "💻 4. Python Inplementazioa (Scikit-Learn)",
-        "1. Sailkapena (SVC) — PDF Orr. 8",
-        "2. Erregresioa (SVR) — PDF Orr. 8"
+        "📊 5. Emaitza Esperimentalak eta Egiaztapena"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -4908,8 +4904,8 @@
         "2. Datu-ihesa (Data Leakage): Arriskuak eta Prebentzioa",
         "Ihes-mota nagusiak:",
         "Konponbide estandarra: Scikit-Learn Pipeline",
-        "Pipeline-ak bermatzen du scaler-ak soilik train zatian egiten duela fit()",
-        "3. Balidazio Gurutzatua (Cross-Validation) eta Aldaerak"
+        "3. Balidazio Gurutzatua (Cross-Validation) eta Aldaerak",
+        "4. Nahaste-Matrizea (Confusion Matrix)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -6285,11 +6281,11 @@
         "1. Gaia · Lengoaiak eta Ingeniaritza — Python adibideak",
         "1. Programa informatiko baten egitura eta AArako lengoaiak",
         "1.1 Programa baten anatomia",
-        "Programa baten egiturazko adibidea (Python)",
-        "1. Inportazioak — kanpoko paketeen kargaketa",
-        "2. Konstanteak eta konfigurazioa",
-        "3. Funtzioak — logika berreraikigarria",
-        "4. Programa nagusia"
+        "2. Ingurune Profesionala",
+        "2.1 Antigravity (eta VS Code-ren oinordetza)",
+        "2.2 Ingurune Birtualak (venv eta conda)",
+        "2.3 pip eta Pakete Kudeaketa",
+        "2.4 requirements.txt"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -6354,11 +6350,11 @@
         "1. Gaia · Lengoaiak eta Ingeniaritza — Python adibideak",
         "1. Programa informatiko baten egitura eta AArako lengoaiak",
         "1.1 Programa baten anatomia",
-        "fitxategia: adibidea.py",
         "2. Ingurune Profesionala",
         "2.1 Antigravity (eta VS Code-ren oinordetza)",
         "2.2 Ingurune Birtualak (venv eta conda)",
-        "1. Karpetan ingurune birtuala sortu"
+        "2.3 pip eta Pakete Kudeaketa",
+        "2.4 requirements.txt"
       ],
       "type": "Cuaderno",
       "extension": ".ipynb",
@@ -6416,12 +6412,12 @@
       "sections": [
         "01 Lengoaiak Ariketak",
         "Setup (Datuen sorkuntza)",
-        "@title",
         "1. Atala: JSON",
         "Ariketa 1.1",
-        "Zure kodea hemen:",
-        "Egiaztapena",
-        "Ariketa 1.2"
+        "Ariketa 1.2",
+        "Ariketa 1.3",
+        "Ariketa 1.4",
+        "Ariketa 1.5"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -6842,12 +6838,12 @@
       "sections": [
         "2. Gaia · Datu Zientziaren Stack-a — Python adibideak",
         "Setup",
-        "@title",
-        "Liburutegi nagusien inportazioak",
-        "Matplotlib-en grafikoak notebook-ean inline erakusteko",
-        "Seaborn-en gai estetiko atsegina",
-        "Erreproduzigarritasunerako ausazko hazia",
-        "1. NumPy: Array-ak eta Eragiketa Bektorialak"
+        "1. NumPy: Array-ak eta Eragiketa Bektorialak",
+        "1.1 NumPy zer da eta zergatik erabili",
+        "1.2 Array-ak sortu eta manipulatu",
+        "1.3 Eragiketa bektorialak eta broadcasting",
+        "1.4 Indexazioa eta zatiketa",
+        "1.5 Estatistika eta algebra linealaren oinarriak"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -7018,12 +7014,11 @@
       "sections": [
         "02 Datu Zientzia Ariketak",
         "Setup (Datuen sorkuntza)",
-        "@title",
-        "Sortu data karpeta",
-        "Sortu datu faltsuak (mock data)",
-        "Sartu anomaliak eta NaNak",
         "1. NumPy",
-        "Zure kodea hemen:"
+        "2. Boolean Indexazioa",
+        "3. Pandas Karga",
+        "4. Pandas Garbiketa",
+        "5. Seaborn"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -7103,8 +7098,8 @@
         "2. Fitxategien Kokapena eta Egitura",
         "3. Ebazpena Pausoz Pauso",
         "1. Urratsa: Fitxategi bakoitza kargatu readcsv-rekin",
-        "Bereizlea ';' da eta kodeketa 'utf-8'. 'data' zutabea data gisa interpretatzen dugu:",
-        "2. Urratsa: Gehitu iturria zutabea bakoitzari"
+        "2. Urratsa: Gehitu iturria zutabea bakoitzari",
+        "3. Urratsa: Batu hirurak concat-ekin DataFrame bakar batean"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -7391,11 +7386,10 @@
         "Kapitulua 4 eta 5: Bertsio-kontrola (DVC) eta Plataforma Komertzialak",
         "1. Ariketa 4.1: Git eta DVC (Datuen Bertsio-kontrola)",
         "1.1. Urrats Praktikoak (Bash komandoak)",
-        "1. Hasieratu Git eta DVC",
-        "2. Sortu datuak eta jarri DVC kontrolpean",
-        "3. DVC fitxategia eta .gitignore Git bidez gorde",
-        "4. Urruneko biltegi lokala konfiguratu eta datuak igo",
-        "1.2. Galderen Erantzun Teknikoak"
+        "1.2. Galderen Erantzun Teknikoak",
+        "2. Ariketa 5.1: Plataforma Komertzialen Hautaketa Azterketa",
+        "2.1. Gomendioen Taula Konparatiboa",
+        "2.2. Eztabaida: Zenbat enpresak hautatu dute \"Python soilik\"? Zenbatek \"biak\"? Zergatik?"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -8047,12 +8041,12 @@
       "sections": [
         "3. Gaia · AA Frameworka — Python adibideak",
         "Setup (inportazio globalak eta paketeen instalazioa)",
-        "Instalazio paketeak (deskomentatu behar bada)",
-        "Inportazio globalak — atal bakoitzak bere espezifikoak ere baditu",
-        "sklearn oinarrizkoa",
-        "Ausazkotasuna kontrolatu",
         "1. Scikit-Learn: Ikasketa automatikoaren programazioa",
-        "1.1 Lan-fluxu klasikoa (5 urratsak)"
+        "1.1 Lan-fluxu klasikoa (5 urratsak)",
+        "1.2 Aurreprozesatzea eta transformatzaileak",
+        "Zenbakizko aldagaien eskala-aldaketa",
+        "Kategoria-aldagaiak kodetu",
+        "Balio faltadunak bete (imputation)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -8147,11 +8141,11 @@
         "50733 Programazioa PDF — Ariketen Ebazpen Osoa (Frameworkak)",
         "1. Atala: Scikit-Learn",
         "🔁 Ariketa 1.1 · 15 min · banaka (5. orr.)",
-        "1. Datuak kargatu",
-        "2. Banatu (train %70 / test %30)",
-        "3. Eskalatu (Data Leakage saihesteko fit train-ean soilik)",
-        "4. Entrenatu",
-        "5. Ebaluatu"
+        "🔁 Ariketa 1.2 · 20 min · taldeka (8. orr.)",
+        "🔁 Ariketa 1.3 · 20 min · taldeka (9-11. orr.)",
+        "🔁 Ariketa 1.4 · 15 min · banaka (13. orr.)",
+        "🔁 Ariketa 1.5 · 25 min · taldeka (15. orr.)",
+        "🔁 Ariketa 1.6 · 25 min · taldeka (18. orr.)"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -8233,12 +8227,12 @@
       "sections": [
         "03 Programazioa - Ariketak",
         "Setup (Datuen sorkuntza)",
-        "@title",
         "1. Atala: Scikit-Learn Split eta Leakage",
         "1.1 Ariketa: Datuak Kargatu",
-        "Zure kodea hemen:",
-        "CSV fitxategia irakurri eta df DataFrame-an gorde",
-        "Balioztatzea (EZ UKITU)"
+        "1.2 Ariketa: X eta y banatu",
+        "1.3 Ariketa: Train/Test banaketa",
+        "1.4 Ariketa: Data Leakage saihestea (StandardScaler)",
+        "1.5 Ariketa: Egiaztapena"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -9238,10 +9232,7 @@
         "📂 Karpeten Egitura Orokorra",
         "📊 Ariketak eta Gaitasunak Gaien Arabera",
         "🚀 Proba Automatikoak Exekutatzeko Aginduak",
-        "1. Python Lengoaiak probatu:",
-        "2. Datu Zientzia probatu (NumPy, Pandas, Bistaratzea, DVC):",
-        "3. AA Frameworkak probatu (Scikit-Learn, FastAPI, Streamlit, RAG):",
-        "4. Git eta Lan Fluxuak probatu:"
+        "Indice automatico de 05AAProgramazioa"
       ],
       "type": "Apunte",
       "extension": ".md",
@@ -9547,10 +9538,6 @@
       "sections": [
         "Datuen Ingeniaritza - Faker eta Ariketa Guztien Python Kodeak",
         "⚡ Exekuzio Azkarra: Menua",
-        "Ingurune birtuala aktibatu",
-        "Menu interaktiboa abiarazi",
-        "Edo ariketa guztiak jarraian exekutatu",
-        "Edo ariketa jakin bat exekutatu (adib. 09 ariketa)",
         "📚 Ariketen Fitxategi Guztiak (.py)",
         "🔍 Aurkezpeneko Oinarrizko Script-ak (Slides)"
       ],

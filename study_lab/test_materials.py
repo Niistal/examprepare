@@ -1,5 +1,5 @@
 """Git fixtures: nuevas notas, asignación exacta y contenido hostil. Sin red ni apuntes reales."""
-import importlib.util,json,pathlib,subprocess,tempfile,unittest
+import importlib.util,json,pathlib,subprocess,sys,tempfile,unittest
 from unittest.mock import patch
 from types import SimpleNamespace
 spec=importlib.util.spec_from_file_location('sync_materials',pathlib.Path(__file__).parent/'scripts/sync_materials.py')
@@ -12,7 +12,7 @@ class CatalogTests(unittest.TestCase):
         self.git('init','-b','main');self.git('config','user.name','Fixture QA');self.git('config','user.email','qa@example.invalid');self.git('remote','add','origin',sync.ORIGIN)
     def git(self,*args):return subprocess.check_output(['git','-C',str(self.repo),*args],stderr=subprocess.DEVNULL)
     def write(self,path,text):
-        f=self.repo/path;f.parent.mkdir(parents=True,exist_ok=True);f.write_text(text)
+        f=self.repo/path;f.parent.mkdir(parents=True,exist_ok=True);f.write_text(text, encoding='utf-8')
     def commit(self):self.git('add','.');self.git('commit','-m','fixture')
     def test_exact_assignment_and_derivatives(self):
         for folder,(cid,_) in sync.REGISTRY.items():self.write(folder+'/README.md','# '+folder+'\n## Tema\n')
@@ -45,9 +45,28 @@ class CatalogTests(unittest.TestCase):
         self.write('05_AA_Programazioa/a.ipynb',json.dumps(notebook));self.write('05_AA_Programazioa/credentials.json','{}');self.commit()
         catalog=sync.make_catalog(self.repo,'main');serialized=json.dumps(catalog)
         self.assertNotIn('DATO PRIVADO',serialized);self.assertNotIn('valor-ficticio',serialized);self.assertEqual(len(catalog['resources']),1)
+    def test_markdown_code_fences_are_not_sections(self):
+        self.write('05_AA_Programazioa/a.md','# Real\n```python\n# No es apartado\n```\n~~~text\n## Tampoco\n~~~\n## Segundo\n');self.commit()
+        resource=sync.make_catalog(self.repo,'main')['resources'][0]
+        self.assertEqual(resource['sections'],['Real','Segundo'])
+    def test_malformed_notebook_has_no_extracted_sections(self):
+        self.write('05_AA_Programazioa/a.ipynb','[]');self.commit()
+        resource=sync.make_catalog(self.repo,'main')['resources'][0]
+        self.assertEqual(resource['sections'],[]);self.assertEqual(resource['title'],'a')
     def test_wrong_remote_or_branch_fails_closed(self):
         self.write('05_AA_Programazioa/a.md','# A\n');self.commit();self.git('remote','set-url','origin','https://github.com/Niistal/T2-erronka1.git')
         with self.assertRaises(ValueError):sync.make_catalog(self.repo,'main')
+    def test_source_audit_rejects_lookalike_remote_before_writing(self):
+        self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
+        app=pathlib.Path(__file__).parent;before={name:(app/name).read_bytes() for name in ['sources.json','sources.js']}
+        self.git('remote','set-url','origin','https://not-github.com/Niistal/Big_Data.git')
+        result=subprocess.run([sys.executable,str(app/'scripts/verify_sources.py'),str(self.repo)],capture_output=True,text=True)
+        self.assertNotEqual(result.returncode,0);self.assertIn('Niistal/Big_Data en main',result.stderr)
+        self.assertTrue(all((app/name).read_bytes()==raw for name,raw in before.items()))
+    def test_non_main_branch_rejected_without_checkout(self):
+        self.write('05_AA_Programazioa/a.md','# A\n');self.commit();self.git('branch','-m','other')
+        with self.assertRaises(ValueError):sync.make_catalog(self.repo,'main')
+        self.assertEqual(self.git('branch','--show-current').decode().strip(),'other')
     def test_duplicate_new_module_codes_are_not_guessed(self):
         self.write('09_Asignatura_A/a.md','# A\n');self.write('09_Asignatura_B/b.md','# B\n');self.commit()
         resources=sync.make_catalog(self.repo,'main')['resources'];self.assertEqual(len(resources),2);self.assertTrue(all(r['assignment']=='unassigned' and r['course'].startswith('unassigned-') for r in resources))
@@ -56,15 +75,35 @@ class CatalogTests(unittest.TestCase):
         output=pathlib.Path(self.temp.name)/'output/materials.json'
         args=SimpleNamespace(repo=self.repo,refresh=False,check=False,state_dir=pathlib.Path(self.temp.name)/'state',output=output)
         self.assertEqual(sync.run(args)['status'],'changed')
-        js=output.with_suffix('.js').read_text();self.assertNotIn('</script>',js);self.assertIn('\\u003c',js)
+        js=output.with_suffix('.js').read_text(encoding='utf-8');self.assertNotIn('</script>',js);self.assertIn('\\u003c',js)
     def test_failed_generation_preserves_previous_files(self):
         self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
-        output=pathlib.Path(self.temp.name)/'output/materials.json';output.parent.mkdir();output.write_text('{"schema":1,"resources":[]}')
+        output=pathlib.Path(self.temp.name)/'output/materials.json';output.parent.mkdir();output.write_text('{"schema":1,"resources":[]}', encoding='utf-8')
         args=SimpleNamespace(repo=self.repo,refresh=False,check=False,state_dir=pathlib.Path(self.temp.name)/'state',output=output)
         before=output.read_bytes()
         with patch.object(sync,'make_catalog',side_effect=ValueError('invalid')):
             with self.assertRaises(ValueError):sync.run(args)
         self.assertEqual(output.read_bytes(),before)
+    def test_partial_pair_write_repairs_on_retry(self):
+        self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
+        output=pathlib.Path(self.temp.name)/'output/materials.json'
+        args=SimpleNamespace(repo=self.repo,refresh=False,check=False,state_dir=pathlib.Path(self.temp.name)/'state',output=output)
+        original=sync.atomic_write
+        def fail_js(path,text):
+            if path.suffix=='.js':raise OSError('fixture write failure')
+            original(path,text)
+        with patch.object(sync,'atomic_write',side_effect=fail_js):
+            with self.assertRaises(OSError):sync.run(args)
+        self.assertTrue(output.exists());self.assertFalse(output.with_suffix('.js').exists())
+        result=sync.run(args);self.assertEqual(result['status'],'changed');self.assertTrue(result['artifact_repaired'])
+        self.assertEqual(output.with_suffix('.js').read_text(encoding='utf-8'),sync.script_data(json.loads(output.read_text(encoding='utf-8'))))
+        self.assertEqual(sync.run(args)['status'],'unchanged')
+    def test_replace_failure_removes_only_owned_temporary_file(self):
+        output=pathlib.Path(self.temp.name)/'output.json';output.write_text('previous', encoding='utf-8')
+        before=set(output.parent.iterdir())
+        with patch.object(sync.os,'replace',side_effect=OSError('fixture disk failure')):
+            with self.assertRaises(OSError):sync.atomic_write(output,'new')
+        self.assertEqual(output.read_text(encoding='utf-8'),'previous');self.assertEqual(set(output.parent.iterdir()),before)
     def test_oversized_catalog_is_rejected(self):
         self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
         entries=[{'path':f'05_AA_Programazioa/datos/{i}.csv','blob':f'{i:040x}','size':10} for i in range(5001)]

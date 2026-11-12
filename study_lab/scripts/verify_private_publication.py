@@ -42,9 +42,16 @@ def compare_document(body:bytes,expected:bytes)->dict:
         raise ValueError('Transformación de plataforma desconocida')
     return {'app_document_matches':True,'edge_injection_detected':True,'edge_injection':'Cloudflare JavaScript detection; no se valida su código ni se amplía CSP'}
 
+def verify_headers(observed,expected:dict)->None:
+    for name,value in expected.items():
+        actual=observed.get(name,'')
+        if name=='cache-control':
+            if {v.strip().lower() for v in actual.split(',')}!={v.strip().lower() for v in value.split(',')}:raise ValueError('Política de caché distinta')
+        elif ' '.join(actual.split())!=' '.join(value.split()):raise ValueError('Cabecera de seguridad diferente: '+name)
+
 def main():
     global STAGE
-    policy=json.loads((ROOT/'deployment/sync-policy.json').read_text());origin=policy['site_origin'];parsed=urllib.parse.urlsplit(origin)
+    policy=json.loads((ROOT/'deployment/sync-policy.json').read_text(encoding='utf-8'));origin=policy['site_origin'];parsed=urllib.parse.urlsplit(origin)
     if parsed.scheme!='https' or not parsed.hostname or not parsed.hostname.endswith('.chatgpt.site') or parsed.username or parsed.password or parsed.query or parsed.fragment or parsed.path not in {'','/'}:raise ValueError('Origen del Site no admitido')
     STAGE='receive';token=receive();expected=(ROOT/'hosted_study_lab/qa/document.html').read_bytes()
     STAGE='anonymous_access';anon=request(origin+'/');status=anon.code;anon.close()
@@ -54,12 +61,7 @@ def main():
         if response.code!=200:raise ValueError('Acceso de servicio no aceptado')
         STAGE='document_bytes';body=response.read(len(expected)+100_001)
         comparison=compare_document(body,expected)
-        STAGE='csp_header';csp=response.headers.get('Content-Security-Policy','')
-        if "script-src 'sha256-" not in csp or 'frame-ancestors' not in csp:raise ValueError('CSP HTTP no observada como se esperaba')
-        STAGE='cache_header';cache=response.headers.get('Cache-Control','').lower()
-        if 'private' not in cache or 'no-store' not in cache:raise ValueError('Cache-Control privado no observado')
-        STAGE='nosniff_header'
-        if response.headers.get('X-Content-Type-Options','')!='nosniff':raise ValueError('Cabecera nosniff ausente')
+        STAGE='security_headers';verify_headers(response.headers,json.loads((ROOT/'hosted_study_lab/qa/headers.json').read_text(encoding='utf-8')))
         print(json.dumps({'status':'verified','anonymous_status':status,'app_body_sha256':hashlib.sha256(expected).hexdigest(),**comparison,'http_security_headers':True,'scope':'Acceso de servicio; no prueba MFA, Proton ni login interactivo del propietario'}),flush=True)
     return 0
 if __name__=='__main__':

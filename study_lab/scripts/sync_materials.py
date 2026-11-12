@@ -9,6 +9,7 @@ from collections import Counter
 
 APP=pathlib.Path(__file__).resolve().parents[1]
 EXPECTED='Niistal/Big_Data'
+CATALOG_POLICY=5
 ORIGIN='https://github.com/Niistal/Big_Data.git'
 REGISTRY={
  '05_AA_Programazioa':('program','AA Programazioa'),
@@ -110,10 +111,18 @@ def headings(repo:pathlib.Path,item:dict)->list[str]:
     if suffix=='.ipynb':
         try:
             notebook=json.loads(text)
+            if not isinstance(notebook,dict) or not isinstance(notebook.get('cells'),list):return []
             text='\n'.join(''.join(c.get('source',[])) for c in notebook.get('cells',[]) if isinstance(c,dict) and c.get('cell_type')=='markdown')
         except (ValueError,TypeError,RecursionError):return []
-    result=[]
+    result=[];fence=None
     for line in text.splitlines():
+        marker=re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$',line)
+        if marker:
+            chars,trailing=marker.groups()
+            if fence is None:fence=(chars[0],len(chars))
+            elif chars[0]==fence[0] and len(chars)>=fence[1] and not trailing.strip():fence=None
+            continue
+        if fence is not None:continue
         if not re.match(r'^#{1,4}\s+\S',line):continue
         title=safe_text(line)
         if not title or re.match(r'(autor|egilea|profesor|alumno|email|usuario)\b',title,re.I):continue
@@ -141,7 +150,7 @@ def make_catalog(repo:pathlib.Path,ref:str,previous:dict|None=None,remote_sizes:
         cid,label,folder=module
         stem=safe_text(pathlib.PurePosixPath(path).stem.replace('_',' '))
         if not stem:continue
-        cached=old_paths.get(path);sections=[safe_text(h) for h in cached['sections']] if cached and cached['git_blob']==item['blob'] else headings(repo,item);title=sections[0] if sections else stem
+        cached=old_paths.get(path) if (previous or {}).get('policy_version')==CATALOG_POLICY else None;sections=[safe_text(h) for h in cached['sections']] if cached and cached['git_blob']==item['blob'] else headings(repo,item);title=sections[0] if sections else stem
         kind,provenance=kind_for(path,ext)
         resources.append({'id':'res-'+hashlib.sha256((EXPECTED+':'+path).encode()).hexdigest()[:20], 'course':cid,'module':folder,'path':path,'title':title,'sections':sections,'type':EXTENSIONS[ext],'extension':ext,'kind':kind,'assignment':'unassigned' if cid.startswith('unassigned-') else 'general' if cid=='general' else 'exact' if cid in {v[0] for v in REGISTRY.values()} else 'module','provenance':provenance,'git_blob':item['blob'],'size':item['size']})
         courses[cid]={'id':cid,'label':label,'folder':folder,'exam_course':cid in {v[0] for k,v in REGISTRY.items() if k!='01_Orokorra'}}
@@ -152,13 +161,17 @@ def make_catalog(repo:pathlib.Path,ref:str,previous:dict|None=None,remote_sizes:
     fingerprint=hashlib.sha256(json.dumps(resources,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
     old={r['id']:r for r in (previous or {}).get('resources',[])}
     changes={'initial':not bool(previous),'added':[r['id'] for r in resources if r['id'] not in old] if previous else [],'changed':[r['id'] for r in resources if r['id'] in old and r['git_blob']!=old[r['id']]['git_blob']],'removed':[k for k in old if k not in set(ids)]}
-    return {'schema':1,'policy_version':4,'source':{'repo':EXPECTED,'branch':'main','commit':commit,'committed_at':git(repo,'show','-s','--format=%cI',commit).decode().strip()},'fingerprint':fingerprint,'root_modules':sorted(r for r in roots if re.fullmatch(r'\d{2}_[\w-]+',r)),'courses':sorted(courses.values(),key=lambda x:x['folder']),'resources':resources,'changes':changes,'exclusions':{'secondary_projects':sorted(SECONDARY),'omitted_count':sum(omitted.values()),'policy':'Sin cuerpos ni outputs de los archivos; rutas y encabezados con filtrado de identificadores sensibles detectables. Fuentes por ruta, no por parecido de título.'}}
+    return {'schema':1,'policy_version':CATALOG_POLICY,'source':{'repo':EXPECTED,'branch':'main','commit':commit,'committed_at':git(repo,'show','-s','--format=%cI',commit).decode().strip()},'fingerprint':fingerprint,'root_modules':sorted(r for r in roots if re.fullmatch(r'\d{2}_[\w-]+',r)),'courses':sorted(courses.values(),key=lambda x:x['folder']),'resources':resources,'changes':changes,'exclusions':{'secondary_projects':sorted(SECONDARY),'omitted_count':sum(omitted.values()),'policy':'Sin cuerpos ni outputs de los archivos; rutas y encabezados con filtrado de identificadores sensibles detectables. Fuentes por ruta, no por parecido de título.'}}
 
 def atomic_write(path:pathlib.Path,text:str)->None:
     path.parent.mkdir(parents=True,exist_ok=True)
-    with tempfile.NamedTemporaryFile('w',encoding='utf-8',dir=path.parent,delete=False) as file:
-        tmp=pathlib.Path(file.name);file.write(text)
-    os.replace(tmp,path)
+    tmp=None
+    try:
+        with tempfile.NamedTemporaryFile('w',encoding='utf-8',dir=path.parent,delete=False) as file:
+            tmp=pathlib.Path(file.name);file.write(text);file.flush();os.fsync(file.fileno())
+        os.replace(tmp,path)
+    finally:
+        if tmp is not None:tmp.unlink(missing_ok=True)
 
 @contextlib.contextmanager
 def lock(path:pathlib.Path):
@@ -190,19 +203,26 @@ def refresh_mirror(local:pathlib.Path,state:pathlib.Path)->pathlib.Path:
     git(mirror,'fetch','--no-tags','origin','+refs/heads/main:refs/heads/main',timeout=180)
     return mirror
 
+def script_data(catalog:dict)->str:
+    return 'const MATERIAL_CATALOG='+json.dumps(catalog,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n'
+
 def run(args)->dict:
     state=args.state_dir.resolve();state.mkdir(parents=True,exist_ok=True)
     if os.name!='nt':state.chmod(0o700)
     with lock(state/'catalog.lock'):
         repo=refresh_mirror(args.repo.resolve(),state) if args.refresh else args.repo.resolve()
-        previous=json.loads(args.output.read_text()) if args.output.exists() else None
+        previous=json.loads(args.output.read_text(encoding='utf-8')) if args.output.exists() else None
         catalog=make_catalog(repo,'main',previous,github_sizes(repo,'main') if args.refresh else None)
-        changed=not previous or previous.get('fingerprint')!=catalog['fingerprint'] or previous.get('policy_version')!=catalog['policy_version']
-        report={'status':'changed' if changed else 'unchanged','head':catalog['source']['commit'],'resource_count':len(catalog['resources']),'course_counts':dict(Counter(r['course'] for r in catalog['resources'])),'added':len(catalog['changes']['added']),'changed':len(catalog['changes']['changed']),'removed':len(catalog['changes']['removed']),'unassigned_count':sum(r['assignment']=='unassigned' for r in catalog['resources'])}
+        source_changed=not previous or previous.get('fingerprint')!=catalog['fingerprint'] or previous.get('policy_version')!=catalog['policy_version']
+        js_path=args.output.with_suffix('.js')
+        needs_repair=bool(previous) and (not js_path.exists() or js_path.read_text(encoding='utf-8')!=script_data(previous))
+        changed=source_changed or needs_repair
+        if not source_changed and previous:catalog=previous
+        report={'status':'changed' if changed else 'unchanged','head':catalog['source']['commit'],'resource_count':len(catalog['resources']),'course_counts':dict(Counter(r['course'] for r in catalog['resources'])),'added':len(catalog['changes']['added']),'changed':len(catalog['changes']['changed']),'removed':len(catalog['changes']['removed']),'unassigned_count':sum(r['assignment']=='unassigned' for r in catalog['resources']),'artifact_repaired':needs_repair}
         if changed and not args.check:
             text=json.dumps(catalog,ensure_ascii=False,indent=2)+'\n'
             # Untrusted source headings must never terminate the standalone script element.
-            js='const MATERIAL_CATALOG='+json.dumps(catalog,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n'
+            js=script_data(catalog)
             atomic_write(args.output,text);atomic_write(args.output.with_suffix('.js'),js)
         atomic_write(state/'last-catalog-check.json',json.dumps(report,indent=2)+'\n')
         return report

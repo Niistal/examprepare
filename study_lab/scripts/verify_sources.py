@@ -7,14 +7,19 @@ args = parser.parse_args()
 repo = args.repo.resolve()
 remote=subprocess.check_output(['git','-C',str(repo),'remote','get-url','origin'],text=True).strip()
 branch=subprocess.check_output(['git','-C',str(repo),'branch','--show-current'],text=True).strip()
-if not re.search(r'github\.com[:/]Niistal/Big_Data(?:\.git)?/?$',remote,re.I) or branch!='main':
+if remote not in {'https://github.com/Niistal/Big_Data.git','https://github.com/Niistal/Big_Data','git@github.com:Niistal/Big_Data.git','ssh://git@github.com/Niistal/Big_Data.git'} or branch!='main':
     raise SystemExit('La fuente debe ser Niistal/Big_Data en main; no se han cambiado metadatos.')
 bank = json.loads(subprocess.check_output(['node', str(root/'scripts/export_bank.cjs')]))
 # Carpetas que solo contienen PDF: guía derivada como apoyo, no verificación de PDF.
 fallback = {'E06': ('03_AA_Ereduak','4. Fuzzy Logic'), 'A01': ('07_BD_Aplikatua','GetFile'), 'A03': ('07_BD_Aplikatua','UpdateAttribute')}
+def require_inside(path):
+    if not path.resolve().is_relative_to(repo) or any(part.is_symlink() for part in [path,*path.parents] if part!=repo and repo in part.parents):
+        raise SystemExit('No se siguen enlaces fuera de las fuentes versionadas')
+
 metadata = {}
 for q in bank:
     p = repo / q['source']
+    require_inside(p)
     if q['id'] in fallback:
         folder, term = fallback[q['id']]
         p = repo/f'NotebookLM_Material_Estudio/{folder}/Guias_de_Estudio/Guia_Estudio_{folder}.md'
@@ -28,6 +33,7 @@ for q in bank:
         p=repo/'04_Ikaskuntza_Automatikorako_Sistemak/README.md'
     if q['id']=='E08':
         p=repo/'03_AA_Ereduak/3_Etika_eta_Legea/1.1_prompt_injection_diseinua_soluzioa.ipynb'
+    require_inside(p)
     raw=p.read_bytes() if p.is_file() else b''
     text=raw.decode('utf-8',errors='replace')
     if p.suffix=='.ipynb':
@@ -49,6 +55,6 @@ for q in bank:
     metadata[q['id']]={'source_path':str(p.relative_to(repo)), 'source_section':section[:200], 'verified':bool(raw), 'verification_scope':'Ruta y tema contrastados; microcaso propio, no enunciado del profesor', 'source_sha256':hashlib.sha256(raw).hexdigest(), 'source_git_blob':subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD:'+str(p.relative_to(repo))],text=True).strip()}
 sha=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip()
 output={'repo':'Niistal/Big_Data','branch':'main','commit':sha,'questions':metadata}
-(root/'sources.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
-(root/'sources.js').write_text('const SOURCE_AUDIT='+json.dumps(output,ensure_ascii=False,indent=2).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n')
+(root/'sources.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n', encoding='utf-8')
+(root/'sources.js').write_text('const SOURCE_AUDIT='+json.dumps(output,ensure_ascii=False,indent=2).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n', encoding='utf-8')
 print(f'{len(metadata)} fuentes auditadas; commit {sha}; sin modificar el repositorio académico')

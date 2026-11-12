@@ -17,7 +17,7 @@ class SyncGuardTests(unittest.TestCase):
         patches=[patch.object(sync,'ROOT',self.root),patch.object(sync,'POLICY',self.root/'deployment/sync-policy.json'),patch.object(sync,'STATE',self.state)]
         for p in patches:p.start();self.addCleanup(p.stop)
     def git(self,*args):return subprocess.check_output(['git','-C',str(self.root),*args],stderr=subprocess.DEVNULL,text=True)
-    def write(self,name,text):p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
+    def write(self,name,text):p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text, encoding='utf-8')
     def commit(self):self.git('add','.');self.git('commit','-m','fixture')
     def record(self):
         for f in self.p['generated_paths']:self.write(f,'candidate '+f)
@@ -26,7 +26,7 @@ class SyncGuardTests(unittest.TestCase):
     def test_worktree_is_not_cleaned_or_overwritten(self):
         self.write('mi_trabajo.md','no borrar')
         self.assertEqual(sync.execute(self.args())['status'],'blocked_worktree')
-        self.assertEqual((self.root/'mi_trabajo.md').read_text(),'no borrar')
+        self.assertEqual((self.root/'mi_trabajo.md').read_text(encoding='utf-8'),'no borrar')
     def test_prepared_commit_and_publish_resume(self):
         record=self.record();self.assertEqual(sync.resume(record,self.p)['status'],'ready_for_commit')
         self.commit();updated=sync.mark_committed(record,self.p)
@@ -48,7 +48,7 @@ class SyncGuardTests(unittest.TestCase):
         with self.assertRaises(sync.GuardError):sync.policy()
         self.assertEqual(self.git('branch','--show-current').strip(),'otra')
     def test_foreground_deadline_guard(self):
-        self.write('placeholder','x');(self.state/'overnight.json').write_text(json.dumps({'deadline_utc':'2999-01-01T00:00:00Z'}))
+        self.write('placeholder','x');(self.state/'overnight.json').write_text(json.dumps({'deadline_utc':'2999-01-01T00:00:00Z'}), encoding='utf-8')
         self.assertEqual(sync.execute(self.args(automation=True))['status'],'foreground_work')
     def test_staging_is_not_reused(self):
         record=self.record();self.git('add','study_lab/materials.json')

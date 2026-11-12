@@ -2,13 +2,13 @@
 from pathlib import Path
 import hashlib,json,subprocess,sys
 root=Path(__file__).resolve().parent
-shell=(root/'shell.html').read_text()
-expected=shell.replace('/*__CSS__*/',(root/'style.css').read_text()).replace('/*__JS__*/','\n'.join((root/name).read_text() for name in ('sources.js','materials.js','app.js')))
-assert (root/'index.html').read_text()==expected,'Ejecuta python build.py'
+shell=(root/'shell.html').read_text(encoding='utf-8')
+expected=shell.replace('/*__CSS__*/',(root/'style.css').read_text(encoding='utf-8')).replace('/*__JS__*/','\n'.join((root/name).read_text(encoding='utf-8') for name in ('sources.js','materials.js','app.js')))
+assert (root/'index.html').read_text(encoding='utf-8')==expected,'Ejecuta python build.py'
 bank=json.loads(subprocess.check_output(['node',str(root/'scripts/export_bank.cjs')]))
-audit=json.loads((root/'sources.json').read_text())
+audit=json.loads((root/'sources.json').read_text(encoding='utf-8'))
 encoded_audit='const SOURCE_AUDIT='+json.dumps(audit,ensure_ascii=False,indent=2).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n'
-assert (root/'sources.js').read_text()==encoded_audit,'Metadatos de contraste JS/JSON desincronizados o sin escape seguro'
+assert (root/'sources.js').read_text(encoding='utf-8')==encoded_audit,'Metadatos de contraste JS/JSON desincronizados o sin escape seguro'
 assert len({q['id'] for q in bank})==len(bank)
 for q in bank:
     x=audit['questions'][q['id']]
@@ -21,9 +21,9 @@ for q in bank:
         assert hashlib.sha256(p.read_bytes()).hexdigest()==x['source_sha256'],p
 print('PASS HTML autónomo sincronizado y',len(bank),'fuentes con metadatos'+(' y hashes contrastados' if len(sys.argv)>1 else ''))
 
-materials=json.loads((root/'materials.json').read_text())
+materials=json.loads((root/'materials.json').read_text(encoding='utf-8'))
 encoded='const MATERIAL_CATALOG='+json.dumps(materials,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n'
-assert (root/'materials.js').read_text()==encoded,'Catálogo JS/JSON desincronizado'
+assert (root/'materials.js').read_text(encoding='utf-8')==encoded,'Catálogo JS/JSON desincronizado'
 assert len({r['id'] for r in materials['resources']})==len(materials['resources'])
 for r in materials['resources']:
     assert r['module'] not in {'02_Erronka_1_CNC_Guard','08_Erronka_2_RetailEUS'}

@@ -18,6 +18,7 @@ try:
     js("localStorage.clear();location.reload()")
     js("selectCourse('program')")
     check("document.querySelectorAll('.route-step[data-route]').length===27",'recorrido finito de Programazioa')
+    check("document.activeElement.id==='practiceTitle'",'cambio de página lleva foco al título')
     js("document.getElementById('searchInput').value='NumPy';renderPractice()")
     check("document.querySelectorAll('#exerciseList article').length>0 && [...document.querySelectorAll('#exerciseList article')].every(x=>x.textContent.toLowerCase().includes('numpy'))",'búsqueda')
     js("document.getElementById('searchInput').value='';document.getElementById('levelFilter').value='1';renderPractice()")
@@ -30,6 +31,7 @@ try:
     check("document.getElementById('solutionToggle').disabled && document.getElementById('hintToggle').disabled",'examen bloquea ayudas')
     js("document.getElementById('answerEditor').value='respuesta examen';persistDraft();switchQuestion(1);switchQuestion(0)")
     check("document.getElementById('answerEditor').value==='respuesta examen'",'navegación conserva respuestas')
+    check("document.activeElement.id==='exerciseTitle'",'cambio de pregunta anuncia el nuevo ejercicio por foco')
     js("startTimer();location.reload()")
     check("session.mode==='exam' && timeInterval!==null && document.getElementById('solutionBlock').classList.contains('hidden')",'reloj y bloqueo tras recarga')
     js("window.confirm=()=>true;finishExam()")
@@ -122,7 +124,7 @@ try:
     check("[...document.querySelectorAll('.material-item a')].every(a=>new URL(a.href).origin==='https://github.com' && !a.hasAttribute('onclick'))",'enlaces de temario permanecen en el origen permitido')
     check("[...document.querySelectorAll('.material-item')].every(e=>!e.hasAttribute('onmouseover'))",'IDs de recursos no pueden insertar atributos de evento')
     logs=cmd('POST','/log',{'type':'browser'})
-    assert not [x for x in logs if x['level']=='SEVERE' and 'favicon' not in x['message']],logs
+    assert not [x for x in logs if x['level']=='SEVERE'],logs
     print('PASS sin errores JS de navegador')
 finally:
     cmd('DELETE','')

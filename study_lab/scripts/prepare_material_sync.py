@@ -26,14 +26,14 @@ def digest(path:str)->str:return hashlib.sha256((ROOT/path).read_bytes()).hexdig
 def save_record(record:dict)->None:atomic_write(STATE/'prepared-sync.json',json.dumps(record,ensure_ascii=False,indent=2)+'\n')
 
 def policy()->dict:
-    p=json.loads(POLICY.read_text())
+    p=json.loads(POLICY.read_text(encoding='utf-8'))
     if p['source_repository']!='Niistal/Big_Data' or p['source_branch']!='main' or p['access']!='owner_private':raise GuardError('Política de fuente/acceso no admitida')
     remote=command('git','remote','get-url','origin')
     if remote not in {'https://github.com/Niistal/examprepare','https://github.com/Niistal/examprepare.git','git@github.com:Niistal/examprepare.git'}:raise GuardError('Repositorio de aplicación inesperado')
     if command('git','branch','--show-current')!=p['app_branch']:raise GuardError('Rama de trabajo distinta: no se cambia automáticamente')
     expected={'study_lab/materials.json','study_lab/materials.js','study_lab/index.html'}
     if set(p['generated_paths'])!=expected:raise GuardError('La lista de archivos generados no está permitida')
-    hosting=json.loads((ROOT/'deployment/hosting.json').read_text())
+    hosting=json.loads((ROOT/'deployment/hosting.json').read_text(encoding='utf-8'))
     if hosting['project_id']!=p['site_project_id']:raise GuardError('Identidad de alojamiento inconsistente')
     return p
 
@@ -71,13 +71,13 @@ def execute(args)->dict:
         if args.automation:
             overnight=STATE/'overnight.json'
             if overnight.exists():
-                raw_deadline=json.loads(overnight.read_text()).get('deadline_utc')
+                raw_deadline=json.loads(overnight.read_text(encoding='utf-8')).get('deadline_utc')
                 if not isinstance(raw_deadline,str):raise GuardError('Plazo de trabajo inválido')
                 deadline=datetime.fromisoformat(raw_deadline.replace('Z','+00:00'))
                 if deadline.tzinfo is None:raise GuardError('El plazo debe tener zona horaria')
                 if datetime.now(timezone.utc)<deadline:return {'status':'foreground_work','until':deadline.isoformat()}
         p=policy();record_path=STATE/'prepared-sync.json'
-        record=json.loads(record_path.read_text()) if record_path.exists() else None
+        record=json.loads(record_path.read_text(encoding='utf-8')) if record_path.exists() else None
         if args.mark_committed:
             if not record or record.get('phase')!='prepared':raise GuardError('No hay candidato preparado para registrar')
             return {'status':'ready_for_publish',**mark_committed(record,p)}

@@ -34,3 +34,9 @@
 - Corrección posterior: importar con cuota llena muestra fallo persistente y conserva el progreso original; recuperar el guardado retira el aviso. Simulacros con secuencia antigua no se reanudan contra un banco cambiado; sus borradores se conservan.
 - Selector individual para futuros módulos fuera del calendario, sin mezclar nuevas asignaturas con las cinco pruebas.
 - Comprobación HTTPS real de aplicación/cabeceras, con informe separado de la detección inyectada por Cloudflare. Siete pruebas impiden aceptar cambios del HTML como si fueran transformaciones conocidas.
+
+- Recuperación de escritura parcial del catálogo JSON/JS en el siguiente intento; temporales propios se limpian al fallar sin alterar el original. Origen Git de contraste limitado al repositorio exacto, con rechazo de symlinks externos.
+- Lectura/escritura UTF-8 explícita en los scripts y QA para evitar depender de la codificación del sistema; Windows real sigue pendiente.
+- Extracción de apartados ignora bloques de código Markdown; un notebook con estructura inválida conserva solo su referencia de archivo. Política de catálogo v5 reconstruida y probada, sin mezcla de materias.
+- Verificación de publicación compara CSP completa, permisos, referrer, nosniff y caché; rechaza políticas relajadas o cabeceras ausentes.
+- Favicon SVG integrado sin petición externa/404; los tests ya no excluyen ese recurso al comprobar errores de consola. Foco accesible al título de página y de pregunta, con regresiones de navegador.

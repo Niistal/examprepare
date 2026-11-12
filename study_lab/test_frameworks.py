@@ -15,7 +15,7 @@ with TestClient(namespace['app']) as client:
     assert client.get('/openapi.json').status_code==200
 # Verificar además el comando real de arranque en loopback y un puerto efímero.
 with tempfile.TemporaryDirectory(prefix='niis-api-') as folder:
-    path=pathlib.Path(folder)/'app.py';path.write_text(bank['P13']['solution'])
+    path=pathlib.Path(folder)/'app.py';path.write_text(bank['P13']['solution'], encoding='utf-8')
     with socket.socket() as sock:
         sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
     process=subprocess.Popen([sys.executable,'-m','uvicorn','app:app','--host','127.0.0.1','--port',str(port)],cwd=folder,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)

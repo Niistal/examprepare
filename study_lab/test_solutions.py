@@ -45,9 +45,9 @@ for q in bank:
         tmp=pathlib.Path(folder)
         if q['id']=='P17':
             (tmp/'datos').mkdir()
-            for n in [1,2,3]:(tmp/f'datos/Q{n}.csv').write_text('producto,importe\nA,10\nB,20\n')
+            for n in [1,2,3]:(tmp/f'datos/Q{n}.csv').write_text('producto,importe\nA,10\nB,20\n', encoding='utf-8')
         code='from pathlib import Path\n'+q['solution']+'\n'+checks[q['id']]+'\n'
-        (tmp/'exercise.py').write_text(code)
+        (tmp/'exercise.py').write_text(code, encoding='utf-8')
         result=subprocess.run([args.python,str(tmp/'exercise.py')],cwd=tmp,env={**os.environ,'MPLBACKEND':'Agg'},capture_output=True,text=True,timeout=40)
         if result.returncode:raise AssertionError(q['id']+'\n'+result.stderr)
         print('PASS',q['id'])
