@@ -20,7 +20,7 @@ def main():
         sessions=[]
         def request(method,path,body=None):
             r=urllib.request.Request(f'http://127.0.0.1:{driver_port}'+path,data=json.dumps(body).encode() if body is not None else None,method=method,headers={'Content-Type':'application/json'})
-            value=json.load(urllib.request.urlopen(r,timeout=20))['value']
+            value=json.load(urllib.request.urlopen(r,timeout=180))['value']
             if isinstance(value,dict) and value.get('error'):raise AssertionError(value)
             return value
         def create():
@@ -43,6 +43,18 @@ def main():
                 try:request('GET','/status');break
                 except OSError:time.sleep(.1)
             a=create();enter(a,'student1','register')
+            if os.environ.get('NIIS_TEST_RUNNER'):
+                request('POST',f'/session/{a}/timeouts',{'script':180000})
+                def run_code(code):
+                    js(a,"startSingle('P35');document.getElementById('answerEditor').value="+json.dumps(code)+";runPython()")
+                    return request('POST',f'/session/{a}/execute/async',{'script':"const done=arguments[arguments.length-1];let n=0;const timer=setInterval(()=>{if(!pythonWorker||++n>650){clearInterval(timer);done({status:document.getElementById('runStatus').textContent,output:document.getElementById('runOutput').textContent})}},200)",'args':[]})
+                result=run_code("print('runner OCI',2+3)")
+                assert 'runner OCI 5' in result['output'] and 'terminada' in result['status'],result
+                print('PASS Python real con cabeceras y autenticación OCI')
+                result=run_code("import pandas as pd\ndf=pd.DataFrame({'g':['A','A','B'],'x':[2,3,7]},index=[10,20,30])\nr=df.groupby('g').agg(total=('x','sum'))\nassert r.loc['A','total']==5\nassert df.iloc[1,1]==3\nprint('Pandas OK')")
+                assert 'Pandas OK' in result['output'] and 'terminada' in result['status'],result
+                print('PASS Pandas real: groupby.agg, loc e iloc en Worker OCI')
+
             js(a,"startSingle('P35');document.getElementById('answerEditor').value='respuesta privada de A';document.getElementById('answerEditor').dispatchEvent(new Event('input',{bubbles:true}))")
             wait(a,"document.getElementById('cloudStatus').textContent==='Progreso guardado en tu cuenta'",'respuesta sincronizada')
             b=create();enter(b,'student1','login')

@@ -130,6 +130,10 @@ class Handler:
             html=(ROOT/'study_lab/index.html').read_text()
             if "const STATE_KEY='niis-study-lab-v1';" not in html:return self.reply(503,{'error':'Paquete no compatible'})
             # Memory adapter: never reads or overwrites the owner's browser-local progress.
+            # runPython detects hosted execution through a CSP meta tag. OCI also
+            # enforces CSP in HTTP headers; repeat only the existing worker rule
+            # here so it selects the authenticated same-origin static Worker.
+            html=html.replace('<head>', '<head>\n<meta http-equiv="Content-Security-Policy" content="worker-src \'self\'">',1)
             html=html.replace('localStorage','cloudStorage')
             client=(ROOT/'distribution/sync.js').read_text()
             html=html.replace('<script>', '<script>const CLOUD_BOOTSTRAP='+safe_json(bootstrap)+';\n'+client+'\n</script><script>',1)

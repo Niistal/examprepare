@@ -58,6 +58,8 @@ class DistributionTests(unittest.TestCase):
         self.assertIn("'sha256-",page['headers']['Content-Security-Policy'])
         self.assertNotIn("script-src 'unsafe-inline'",page['headers']['Content-Security-Policy'])
         self.assertNotIn('localStorage',page['body'])
+        self.assertIn('http-equiv="Content-Security-Policy" content="worker-src \'self\'"',page['body'])
+        self.assertNotIn('blob:',page['headers']['Content-Security-Policy'])
     def test_passwords_sessions_and_expiry(self):
         a,_=self.register();self.register('student2')
         with self.app.db() as db:
