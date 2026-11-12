@@ -40,3 +40,4 @@
 - Extracción de apartados ignora bloques de código Markdown; un notebook con estructura inválida conserva solo su referencia de archivo. Política de catálogo v5 reconstruida y probada, sin mezcla de materias.
 - Verificación de publicación compara CSP completa, permisos, referrer, nosniff y caché; rechaza políticas relajadas o cabeceras ausentes.
 - Favicon SVG integrado sin petición externa/404; los tests ya no excluyen ese recurso al comprobar errores de consola. Foco accesible al título de página y de pregunta, con regresiones de navegador.
+- Prueba prolongada repetida tras corregir el favicon: 905 segundos reales, recarga, deadline y borrador íntegros, sin errores de consola.

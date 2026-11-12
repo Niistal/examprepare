@@ -41,6 +41,7 @@ Resultados de esta revisión:
 - Comprobador de publicación: PASS, once pruebas de documento/cabeceras exacto, modificación, truncación y transformaciones desconocidas.
 - Cuota llena al importar: PASS, conserva original, evita mensaje de éxito falso y deja aviso persistente. Reanudación con banco cambiado: PASS, no reutiliza una secuencia antigua ni borra borradores.
 - Nuevos módulos: PASS, filtro individual fuera del calendario y regreso a la materia original sin mezcla.
+- Sesión real de 905 segundos: PASS, reloj 900→0, borrador persistido y recarga a mitad sin deriva ni errores de consola. La primera ejecución detectó un favicon 404; se corrigió y la repetición completa pasó. Script opcional: `python scripts/soak_browser.py --seconds 905`.
 - Foco por teclado al cambiar de página/pregunta y favicon integrado: PASS, sin exclusiones de errores de consola.
 - Chromium: además, referencias visibles en examen, temario por materia, paginación, vacíos recuperables y protección ante títulos/IDs hostiles, a cuatro tamaños.
 - Python: PASS, **31 soluciones** con comprobaciones de resultado en directorios temporales. Incluye JSON, NumPy, Pandas, gráficos, clasificación, regresión, CV, Faker y ventanas temporales.
