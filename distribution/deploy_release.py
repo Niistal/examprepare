@@ -99,8 +99,10 @@ def install(archive, digest, commit):
                 return {'status': 'unchanged', 'commit': commit}
         backup = STATE/(time.strftime('%Y%m%dT%H%M%S') + '-' + commit[:12])
         backup.mkdir(mode=0o700)
-        previous = {name: (APP/name).read_bytes() for name in FILES}
+        previous = {name: (APP/name).read_bytes() if (APP/name).exists() else None for name in FILES}
         for name, value in previous.items():
+            if value is None:
+                continue
             target = backup/name
             target.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
             target.write_bytes(value)
@@ -141,7 +143,10 @@ def install(archive, digest, commit):
             if stopped:
                 subprocess.run(['systemctl', 'stop', 'study-lab'], check=False)
                 for name, value in previous.items():
-                    atomic(APP/name, value)
+                    if value is None:
+                        (APP/name).unlink(missing_ok=True)
+                    else:
+                        atomic(APP/name, value)
                 for path in (APP/'distribution/__pycache__').glob('*.pyc'):
                     path.unlink()
                 subprocess.run(['systemctl', 'start', 'study-lab'], check=True)

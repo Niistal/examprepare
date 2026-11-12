@@ -59,8 +59,8 @@ class InstallTests(unittest.TestCase):
     def test_failed_start_restores_code_and_proxy_without_restoring_database(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); app = root/'app'; state = root/'state'; db = root/'accounts.sqlite3'; proxy = root/'Caddyfile'
-            old = {name: b'previous' for name in FILES}
-            new = {**old, 'study_lab/index.html': b'new verified HTML', 'distribution/server.py': b'new server'}
+            old = {name: b'previous' for name in FILES if name != 'distribution/catalog_receiver.py'}
+            new = {**old, 'distribution/catalog_receiver.py': b'new optional file', 'study_lab/index.html': b'new verified HTML', 'distribution/server.py': b'new server'}
             for name, data in old.items():
                 path = app/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(data)
             original_proxy = '# BEGIN NIIS STUDY LAB\nmax_size 2MB\nrequest_buffers 2MB\n# END NIIS STUDY LAB\n'
@@ -85,7 +85,8 @@ class InstallTests(unittest.TestCase):
                  patch.object(deploy_release, 'healthy'):
                 with self.assertRaises(subprocess.CalledProcessError):
                     deploy_release.install(package, hashlib.sha256(package.read_bytes()).hexdigest(), 'a'*40)
-            self.assertEqual({n: (app/n).read_bytes() for n in FILES}, old)
+            self.assertEqual({n: (app/n).read_bytes() for n in old}, old)
+            self.assertFalse((app/'distribution/catalog_receiver.py').exists())
             self.assertEqual(proxy.read_text(), original_proxy)
             self.assertFalse((state/'current.json').exists())
             with sqlite3.connect(db) as conn:
