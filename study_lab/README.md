@@ -1,10 +1,22 @@
 # NIIS STUDY LAB — Big Data Intensivo · Guía de uso
 
-**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con ejercicios de **desarrollo real** en lugar de tests memorísticos. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con modalidades adaptadas: teoría y tests para conceptos, Orange y laboratorios para herramientas, y desarrollo real para Programazioa. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+
+## Modalidades y puente local · 12/11/2026
+
+Consulta [la entrega de modalidades](IMPLEMENTACION_MODALIDADES.md) para cambios, fuentes, resultados y límites de verificación. Las fuentes nuevas son `learning-content.json`, `learning-engine.js` y `learning-ui.js`; build.py genera sus recursos y el HTML standalone.
+
+```bash
+python3 study_lab/build.py
+python3 study_lab/local_server.py --port 8080
+# http://127.0.0.1:8080
+```
+
+En Windows sustituye `python3` por `py`. El puente es voluntario, no instala herramientas y solo abre workflows Orange permitidos. La edición alojada permite descargar los recursos y no puede abrir aplicaciones del equipo. Los lanzadores estáticos existentes siguen disponibles, pero no habilitan el puente.
 
 ## 1. Qué contiene la aplicación
 
-- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **84 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
+- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco histórico de **84 casos**, más **106 preguntas autocorregibles o con rúbrica en 20 temas**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
 - `app.js`, `style.css`, `shell.html`: fuentes editables para que T3 Code continúe sin tener que modificar 100 KB de HTML en cada iteración.
 - `requirements-study.txt`: dependencias Python comunes para los ejercicios de datos.
 - `requirements-study-extra.txt`: dependencias adicionales opcionales (API, Streamlit, Kafka y Faker). Se instalan solo si se van a practicar esas materias.

@@ -76,9 +76,10 @@ with servers() as (local,hosted), sync_playwright() as pw:
         assert response.status==200,response.text()
         page.goto(hosted)
         page.evaluate("window.confirm=()=>true")
-        page.evaluate("importState(new File([JSON.stringify({schema:1,data:{ratings:{},answers:{large:'x'.repeat(2100000)},history:[]}})],'large.json'))")
+        page.evaluate("importState(new File([JSON.stringify({schema:1,data:{ratings:{},answers:{large:'x'.repeat(2100000)},history:[],learning:{version:1,attempts:[],cards:{qa:{rating:2,due:2000000000000,streak:3}}}}})],'large.json'))")
         assert page.evaluate('cloudStorage.flush()')
         page.reload();assert page.evaluate('data.answers.large.length')==2100000
+        assert page.evaluate('data.learning.cards.qa.streak')==3
         print('PASS 2.1 MB import, account save and reload; oversized import preserves answers',flush=True)
         page.evaluate("startSingle('P10')")
         run_code(page,page.evaluate("BANK.find(q=>q.id==='P10').solution"));check_files(page,['ventas.png'])

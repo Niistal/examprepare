@@ -1,5 +1,15 @@
 # Cobertura de estudio — Big_Data/main
 
+## Ampliación de modalidades · 12/11/2026
+
+Se conservan **84 casos históricos** y se añaden **20 temas / 106 preguntas propias**: 49 Xabat, 20 ML, 21 BD Sistemak y 16 BD Aplikatua. La cobertura actual, trazabilidad, ocho workflows y límites de verificación se describen en [IMPLEMENTACION_MODALIDADES.md](IMPLEMENTACION_MODALIDADES.md). Cada pregunta nueva registra ID Q-* independiente, modalidad QUIZ, tema, dificultad inferida, tipo, respuesta, explicación, ruta, commit, SHA256 y versión. No son preguntas oficiales. Las fuentes derivadas de NotebookLM están identificadas.
+
+El banco incluye paradigmas y capacidades, fuzzy, sesgos, fairness, FPR/FNR, ética/auditoría, privacidad/RGPD y riesgos; objetivos/modelos/validación/métricas de ML; V/arquitectura, ETL, almacenamiento/formatos y Elastic; NiFi, Kafka y Connect/Medallion. La asignación de modalidades a casos está en learning-engine.js.
+
+## Registro de cobertura anterior
+
+Los recuentos de la tabla histórica siguiente corresponden a la edición anterior; no representan el tamaño del banco actual.
+
 Fuente local contrastada con el remoto: `Niistal/Big_Data`, `main`, commit `5e716edf42e0d1097b5ad2fb911755d97ba3865d`.
 
 Los 80 microcasos y 16 lecciones cubren las áreas enumeradas abajo. La cobertura es por conceptos y ejemplos representativos: no equivale a resolver cada ejercicio o detalle de todos los PDF. No se usa una Erronka como referencia principal.
