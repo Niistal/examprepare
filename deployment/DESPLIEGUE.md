@@ -53,3 +53,11 @@ La publicación indicada incorpora 657 recursos clasificados por carpeta, refere
 La comprobación HTTPS con acceso de servicio existente devolvió 200 y confirmó todos los bytes de la aplicación y las cabeceras HTTP CSP/frame-ancestors, private/no-store y nosniff. La petición anónima devolvió 403. Cloudflare añade al cierre un script de detección: se detecta y registra separado, sin relajar la CSP ni certificar ese código. Los bytes de la aplicación antes/después de esa inserción coinciden con el artefacto probado. No equivale a probar el login, MFA ni Proton Pass del propietario.
 
 El acceso de servicio se entregó únicamente por stdin oculto al comprobador y al origen exacto del Site, sin seguir redirects. No se generó un token nuevo ni se guardó en archivos/Git.
+
+## Comprobación directa en producción — 12/11, 06:59 Madrid
+
+Navegador temporal contra la URL privada: 11 comprobaciones PASS de banco y temario, referencias, borrador tras recarga, bloqueo/entrega de examen, navegación y asignación de las cinco materias. Cero excepciones de aplicación. Se observaron cuatro avisos de seguridad de la detección de Cloudflare; no se amplió CSP. La cuenta/progreso del propietario no se utilizaron.
+
+El operador entregó el acceso de servicio existente por stdin oculto. La interceptación CDP estuvo limitada al origen exacto del Site y se comprobó en el protocolo local que el override de cabeceras no se propaga a redirects. No se utilizó una cabecera global para todos los dominios ni se registró la credencial. No equivale a verificar el login, MFA ni Proton Pass.
+
+Los identificadores de publicación de este documento corresponden a la revisión manual indicada. Las sincronizaciones posteriores conservan evidencia en el registro privado `prepared-sync.json` y en su resumen T3; no amplían el conjunto de archivos autorizados para tocar documentación en cada actualización.

@@ -41,3 +41,4 @@
 - Verificación de publicación compara CSP completa, permisos, referrer, nosniff y caché; rechaza políticas relajadas o cabeceras ausentes.
 - Favicon SVG integrado sin petición externa/404; los tests ya no excluyen ese recurso al comprobar errores de consola. Foco accesible al título de página y de pregunta, con regresiones de navegador.
 - Prueba prolongada repetida tras corregir el favicon: 905 segundos reales, recarga, deadline y borrador íntegros, sin errores de consola.
+- Navegador temporal sobre la web privada real: 11 comprobaciones funcionales PASS, sin excepciones de aplicación; avisos de Cloudflare separados. Credencial de servicio limitada al origen y sin propagarse por redirects.
