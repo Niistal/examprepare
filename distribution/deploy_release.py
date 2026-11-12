@@ -6,7 +6,8 @@ from pathlib import Path
 from urllib.request import urlopen
 
 FILES = frozenset([
-    'study_lab/index.html', 'study_lab/python-worker.mjs', 'distribution/server.py',
+    'study_lab/index.html', 'study_lab/python-worker.mjs', 'study_lab/material_assets.py',
+    'study_lab/material-library.json', 'distribution/install_materials.py', 'distribution/server.py',
     'distribution/login.html', 'distribution/sync.js', 'distribution/requirements.txt',
     'distribution/gunicorn.conf.py', 'distribution/study-lab.service',
     'distribution/nginx.conf.template', 'distribution/Caddyfile.template',
@@ -126,7 +127,7 @@ def install(archive, digest, commit):
             for name, value in files.items():
                 atomic(APP/name, value)
             # Avoid stale bytecode when files have the same size and timestamp granularity.
-            for path in (APP/'distribution/__pycache__').glob('*.pyc'):
+            for path in [* (APP/'distribution/__pycache__').glob('*.pyc'),* (APP/'study_lab/__pycache__').glob('*.pyc')]:
                 path.unlink()
             subprocess.run(['systemctl', 'start', 'study-lab'], check=True)
             healthy()
@@ -147,7 +148,7 @@ def install(archive, digest, commit):
                         (APP/name).unlink(missing_ok=True)
                     else:
                         atomic(APP/name, value)
-                for path in (APP/'distribution/__pycache__').glob('*.pyc'):
+                for path in [* (APP/'distribution/__pycache__').glob('*.pyc'),* (APP/'study_lab/__pycache__').glob('*.pyc')]:
                     path.unlink()
                 subprocess.run(['systemctl', 'start', 'study-lab'], check=True)
                 healthy()

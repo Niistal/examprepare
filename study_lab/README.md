@@ -1,6 +1,6 @@
 # NIIS STUDY LAB — Big Data Intensivo · Guía de uso
 
-**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con modalidades adaptadas: teoría y tests para conceptos, Orange y laboratorios para herramientas, y desarrollo real para Programazioa. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con modalidades adaptadas: teoría y tests para conceptos, Orange y laboratorios para herramientas, y desarrollo real para Programazioa. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El temario se lee dentro de la web, sin cuenta de GitHub: 218 documentos completos, incluidos 127 Markdown. La copia de originales se instala en el servidor por separado del runtime; véase [la entrega de biblioteca](../deployment/RELEASE.md#biblioteca-de-estudio-y-archivos-originales).
 
 ## Modalidades y puente local · 12/11/2026
 

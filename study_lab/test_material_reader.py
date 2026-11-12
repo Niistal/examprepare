@@ -52,6 +52,10 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(self.store.response('../server.py')[0],404)
         self.file.write_bytes(b'tampered');self.assertEqual(self.store.response(self.id)[0],503)
         self.file.unlink();self.file.symlink_to(self.root/'material-library.json');self.assertEqual(self.store.response(self.id)[0],404)
+    def test_manifest_update_invalidates_cached_verification(self):
+        self.assertEqual(self.store.response(self.id)[0],200)
+        self.item['sha256']='0'*64;self.save()
+        self.assertEqual(self.store.response(self.id)[0],503)
     def test_html_is_attachment(self):
         self.item.update(extension='.html',file=self.id+'.html',mime='text/html');self.file.rename(self.root/'material-assets'/self.item['file']);self.save()
         _,headers,*_=self.store.response(self.id);self.assertEqual(headers['Content-Type'],'application/octet-stream');self.assertTrue(headers['Content-Disposition'].startswith('attachment'))

@@ -2,9 +2,9 @@
 import argparse,pathlib,subprocess,sys
 root=pathlib.Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--repo',type=pathlib.Path);p.add_argument('--browser',action='store_true');p.add_argument('--frameworks',action='store_true');p.add_argument('--external-docker',action='store_true');p.add_argument('--orange-python',type=pathlib.Path);args=p.parse_args()
-commands=[['node','--check','app.js'],[sys.executable,'build.py'],['node','test_generador.cjs'],['node','test_learning.cjs'],['node','test_modalities.cjs'],[sys.executable,'test_local_tools.py'],[sys.executable,'test_materials.py'],[sys.executable,'test_sync_guards.py'],[sys.executable,'test_publication.py'],[sys.executable,'test_artifacts.py']+([str(args.repo.resolve())] if args.repo else []),[sys.executable,'test_solutions.py','--python',sys.executable]]
+commands=[['node','--check','app.js'],[sys.executable,'build.py'],['node','test_generador.cjs'],['node','test_learning.cjs'],['node','test_modalities.cjs'],[sys.executable,'test_local_tools.py'],[sys.executable,'test_materials.py'],[sys.executable,'test_material_reader.py'],[sys.executable,'test_sync_guards.py'],[sys.executable,'test_publication.py'],[sys.executable,'test_artifacts.py']+([str(args.repo.resolve())] if args.repo else []),[sys.executable,'test_solutions.py','--python',sys.executable]]
 if args.frameworks:commands.append([sys.executable,'test_frameworks.py'])
-if args.browser:commands.extend([[sys.executable,'test_browser.py'],[sys.executable,'test_learning_browser.py']])
+if args.browser:commands.extend([[sys.executable,'test_browser.py'],[sys.executable,'test_learning_browser.py'],[sys.executable,'test_material_reader_browser.py']])
 if args.orange_python:commands.extend([[str(args.orange_python.resolve()),'test_orange.py'],[sys.executable,'test_orange_bridge.py']])
 if args.external_docker:commands.append([sys.executable,'test_external_docker.py'])
 report=[]

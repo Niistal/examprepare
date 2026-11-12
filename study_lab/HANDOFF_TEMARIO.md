@@ -33,7 +33,23 @@ El propietario pidió integrar el contenido del temario de Niistal/Big_Data visu
 - No se ha ejecutado aún toda la matriz final de CI, ni creado/probado el archivo de despliegue completo de esta nueva biblioteca. No se ha desplegado.
 - Logs locales: `/tmp/niis-material-reader-browser.log`, `/tmp/niis-reader-server-regression.log`, `/tmp/niis-reader-local-regression.log`, `/tmp/niis-reader-old-browser.log`, `/tmp/niis-reader-build-final.log`. Captura: `study_lab/qa-artifacts/material-reader.png`.
 
-## Para retomar
+## Reanudación y cierre de validación
+
+El propietario pidió continuar. Se corrigió la prueba de cuentas para distinguir el diálogo de recuperación del lector; se incorporaron los tests del lector a CI y se actualizó la rama con master. Los originales se empaquetan ahora por separado del runtime, preservando los límites del publicador automático. `install_materials.py` los instala por streaming contra el manifiesto ya instalado, con staging, verificación de hashes y conservación de la versión previa. No toca cuentas ni reinicia servicios. El cache de archivos se invalida también cuando cambia el hash esperado del manifiesto.
+
+Comando de release completo actualizado:
+
+```bash
+python distribution/package.py --require-materials \
+  --output /tmp/study-runtime.tar.gz \
+  --materials-output /tmp/study-materials.tar.gz
+# Instalar primero el runtime con el publicador revisado; después:
+python distribution/install_materials.py /tmp/study-materials.tar.gz SHA256_DEL_ARCHIVO --root /opt/niis-study-lab
+```
+
+La fusión y publicación de esta nueva versión siguen pendientes de autorización explícita del propietario.
+
+## Registro del traspaso anterior · Para retomar
 
 1. Leer estado Git y esta PR. No hacer stash/reset/checkout ni pisar trabajo ajeno.
 2. La base es el commit `b41d8a4` de PR #7; consultar su `headRefName` actual, sin asumir el nombre del checkout compartido. Este trabajo se publica en `feat/material-reader`, sin modificar la rama remota de #7. Coordinar la integración de ambas PRs, sin duplicar los cambios de CI del otro hilo.
@@ -56,3 +72,7 @@ NIIS_TEST_URL=http://127.0.0.1:8097 python study_lab/test_material_reader_browse
 ```
 
 Se coordinó el worktree con el hilo de revisión/publicación: terminó y dejó sus cambios en PR #7. El lock exclusivo de este trabajo se libera al terminar esta entrega; no quedan agentes hijos ni procesos de QA de este trabajo intencionadamente activos.
+
+## Evidencia de reanudación
+
+PASS: suite completa con 42 soluciones y frameworks; 8 tests del lector/entrega; 22 pruebas combinadas de cuentas, publicación, entrega autenticada e instalación; Chromium del lector (cinco asignaturas, tablas/fórmulas, PDF y responsive), recuperación de cuentas y Playwright del runner (archivos/gráficos, CSP y móvil); Gunicorn con dos workers. El fallo de CI original era un selector genérico de dialog y se corrigió con un ID específico para recuperación de cuenta. El contenido/servidor no se ha publicado aún.

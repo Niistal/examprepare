@@ -16,7 +16,7 @@ class MaterialAssets:
             if item['extension']!=Path(filename).suffix or any(c in item['mime'] for c in '\r\n'):return 503,{},None,0,0
             directory=self.root/'material-assets';path=directory/filename
             if directory.is_symlink() or path.is_symlink() or not path.is_file():return 404,{},None,0,0
-            stat=path.stat();signature=(stat.st_ino,stat.st_mtime_ns,stat.st_size)
+            stat=path.stat();signature=(stat.st_ino,stat.st_mtime_ns,stat.st_size,item['sha256'])
             if stat.st_size!=item['size']:return 503,{},None,0,0
             if self.verified.get(resource_id)!=signature:
                 digest=hashlib.sha256()
@@ -57,5 +57,5 @@ class MaterialAssets:
             start_response('405 Method Not Allowed',[('Content-Length','0')]);return []
         ident=environ['PATH_INFO'].removeprefix('/api/materials/')
         status,headers,path,start,length=self.response(ident,environ.get('HTTP_RANGE'),'download=1' in environ.get('QUERY_STRING',''))
-        headers.setdefault('Content-Length','0');start_response(str(status)+' '+HTTPStatus(status).phrase,list(headers.items()))
+        headers.setdefault('Content-Length','0');headers.setdefault('Cache-Control','private, no-store');start_response(str(status)+' '+HTTPStatus(status).phrase,list(headers.items()))
         return self.chunks(path,start,length) if path and environ['REQUEST_METHOD']!='HEAD' else []
