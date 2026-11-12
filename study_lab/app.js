@@ -1192,13 +1192,14 @@ function nextStudyId(id){
 }
 function renderStudyRoute(){
  const blocks=STUDY_ROUTES[courseId],st=statsFor(courseId);
- $('studyRoute').innerHTML=`<div class="route-intro"><div class="route-heading"><div><h2>${esc(course(courseId).name)}</h2><p>${st.master} de ${st.total} casos dominados · ${blocks.length} bloques de estudio</p></div><button class="btn btn-primary" data-route="${nextStudyId(courseId)}">Continuar por el siguiente caso</button></div><p class="study-method">${esc(STUDY_METHODS[courseId])}</p><details class="session-plan"><summary>Cómo organizar una sesión de 2 horas</summary><p>10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para completar el recorrido.</p></details></div>`+
+ let html=`<div class="route-intro"><div class="route-heading"><div><h2>${esc(course(courseId).name)}</h2><p>${st.master} de ${st.total} casos dominados · ${blocks.length} bloques de estudio</p></div><button class="btn btn-primary" data-route="${nextStudyId(courseId)}">Continuar por el siguiente caso</button></div><p class="study-method">${esc(STUDY_METHODS[courseId])}</p><details class="session-plan"><summary>Cómo organizar una sesión de 2 horas</summary><p>10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para completar el recorrido.</p></details></div>`+
  (courseId==='program'?guideHTML():'')+blocks.map(([title,ids],i)=>{
   const lesson=DIFFICULTY_LESSONS[Math.max(0,BANK.find(q=>q.id===ids[0]).level-1)],mastered=ids.filter(id=>data.ratings[id]===2).length;
   const active=ids.includes(nextStudyId(courseId));
   return `<details class="route-block surface" ${active?'open':''}><summary><span><span class="block-number">${String(i+1).padStart(2,'0')}</span><strong>${esc(title)}</strong></span><span class="block-count">${mastered}/${ids.length} dominados</span></summary><div class="block-body"><div class="lesson-grid"><div><h3>${esc(lesson.title)}</h3><p>${esc(lesson.concept)}</p><p class="recall-prompt"><b>Sin mirar:</b> ${esc(lesson.recall)}</p></div><details class="mini-example"><summary>Ver un ejemplo básico</summary><pre>${esc(lesson.example)}</pre><p><b>Error habitual:</b> ${esc(lesson.trap)}</p></details></div><section class="block-reading"><h3>Lectura del bloque · teoría y práctica</h3><p>Lee, predice la salida y repite sin mirar. Memoriza el patrón básico y explica cuándo aplicarlo.</p>${ids.map(id=>caseReadingHTML(BANK.find(q=>q.id===id))).join('')}</section><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span class="case-id">${id}</span><span><b>${esc(q.title)}</b><small>${esc(q.kind)} · ≈ ${q.minutes} min · ${data.ratings[id]===2?'Dominado':data.ratings[id]===1?'Repetir con menos ayuda':data.ratings[id]===0?'Reforzar':'Sin intentar'}</small></span></button>`}).join('')}</div></div></details>`;
  }).join('');
- $('studyRoute').innerHTML+=`<details class="surface theory-library"><summary>Lectura y ejemplos · lo básico para recordar</summary>${STUDY_LESSONS[courseId].map(l=>`<section><h3>${esc(l.title)}</h3><p>${esc(l.concept)}</p><pre>${esc(l.example)}</pre><p>${esc(l.recall)}</p><p>Error habitual: ${esc(l.trap)}</p></section>`).join('')}</details>`;
+ html+=`<details class="surface theory-library"><summary>Lectura y ejemplos · lo básico para recordar</summary>${STUDY_LESSONS[courseId].map(l=>`<section><h3>${esc(l.title)}</h3><p>${esc(l.concept)}</p><pre>${esc(l.example)}</pre><p>${esc(l.recall)}</p><p>Error habitual: ${esc(l.trap)}</p></section>`).join('')}</details>`;
+ $('studyRoute').innerHTML=html;
  $('studyRoute').querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>startSingle(b.dataset.route)));
 }
 const $=id=>document.getElementById(id);
@@ -1252,7 +1253,7 @@ let toastTimeout=null;
 function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),2600);}
 function navigate(page){if(!['dashboard','practice','exam','progress','setup'].includes(page))return;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===`${page}Page`));document.querySelectorAll('.main-nav button').forEach(x=>x.classList.toggle('selected',x.dataset.page===(page==='exam'?'practice':page)));$('breadcrumb').textContent={dashboard:'Panel principal',practice:'Estudiar por asignatura',exam:session?.ids.length===1?'Ejercicio':'Simulacro',progress:'Mi progreso',setup:'Entorno local'}[page]||page;if(page==='practice')renderPractice();if(page==='progress')renderProgress();if(page==='dashboard')renderDashboard();document.querySelectorAll('.main-nav button').forEach(b=>{if(b.dataset.page===(page==='exam'?'practice':page))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});window.scrollTo({top:0,behavior:'instant'});const heading=$(`${page}Page`).querySelector('h1');if(page!=='exam'&&heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}
 function renderNav(){const el=$('subjectNav');el.innerHTML=COURSES.map(c=>`<button type="button" aria-label="Estudiar ${esc(c.name)}" title="${esc(c.name)}" data-subject="${c.id}" class="${courseId===c.id?'selected':''}"><span class="course-day">${c.n}</span><span><span class="course-side-name">${esc(c.short)}</span><span class="course-side-time">${esc(c.teacher)} · NOV 2026</span></span></button>`).join('');el.querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));$('subjectFilter').innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');$('subjectFilter').value=courseId;}
-function selectCourse(id){const nextView=studyView==='materials'?'materials':'route';courseId=id;topic='all';studyView=nextView;materialPage=1;$('materialScope').value='current';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';$('subjectFilter').value=id;renderNav();navigate('practice');}
+function selectCourse(id){const nextView=studyView==='materials'?'materials':'route';courseId=id;topic='all';studyView=nextView;materialPage=1;$('materialScope').value='current';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';$('subjectFilter').value=id;navigate('practice');}
 function statsFor(id){const bank=byCourse(id),ratings=bank.map(x=>data.ratings[x.id]).filter(x=>Number.isInteger(x));return {total:bank.length,seen:ratings.length,master:ratings.filter(x=>x===2).length};}
 function priority(){const day=new Date().getDate(),month=new Date().getMonth(),year=new Date().getFullYear();if(year===2026&&month===10){return COURSES.find(c=>c.n>=day)||COURSES[4];}return COURSES[0];}
 function renderDashboard(){const pri=priority();$('totalBank').textContent=BANK.length;const mastered=BANK.filter(x=>data.ratings[x.id]===2).length;$('masteryCount').textContent=Math.round(mastered/BANK.length*100)+'%';$('focusTitle').textContent=pri.name;const examDays=Math.round((new Date(2026,10,pri.n)-new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()))/864e5);$('focusCountdown').classList.toggle('hidden',examDays<0);$('focusCountdown').innerHTML=examDays<0?'':examDays===0?'<strong>Hoy</strong><span>es el examen</span>':`<strong>${examDays}</strong><span>${examDays===1?'día':'días'} para el examen</span>`;$('focusDescription').textContent=`${pri.day} de noviembre · ${pri.teacher}. Retoma tu recorrido y prepara los conceptos y casos pendientes.`;if($('quizBankCount'))$('quizBankCount').textContent=typeof LEARNING_CONTENT!=='undefined'?LEARNING_CONTENT.questions.length:106;$('subjectCards').innerHTML=COURSES.map(c=>{const st=statsFor(c.id);return `<article class="subject-card"><div class="sub-date"><b>${c.day} NOV</b><span>${st.master}/${st.total} dominados</span></div><div class="bar" style="background:${c.color}"></div><h3 title="${esc(c.name)}">${esc(c.short)}</h3><div class="teacher">${esc(c.teacher)} · ${st.total} ejercicios base</div><div class="modality-label">${typeof modeLabel==='function'?esc(modeLabel(c.id)||''):''}</div><div class="track" role="presentation"><div style="width:${Math.round(st.master/st.total*100)}%"></div></div><div class="sub-card-bottom"><span>${Math.round(st.master/st.total*100)}% dominado</span><button aria-label="Practicar ${esc(c.name)}" data-subject="${c.id}">${icon('arrowRight')}</button></div></article>`}).join('');$('subjectCards').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));}
@@ -1263,11 +1264,19 @@ function setStudyView(view){
  if(view==='materials')materialPage=1;
  renderPractice();
 }
+const KNOWN_COURSES=new Set(COURSES.map(c=>c.id));let materialTextCache=new Map(),materialTextSource=null;
+function materialHaystack(r){
+ const source=typeof materialReaderData!=='undefined'?materialReaderData:null;
+ if(source!==materialTextSource){materialTextSource=source;materialTextCache=new Map();}
+ let text=materialTextCache.get(r.id);
+ if(text===undefined){text=[r.title,r.path,...r.sections,typeof materialBodyText==='function'?materialBodyText(r.id):''].join(' ').toLowerCase();materialTextCache.set(r.id,text);}
+ return text;
+}
 function materialMatches(r,scope,type,query){
- const known=new Set(COURSES.map(c=>c.id));
+ const known=KNOWN_COURSES;
  const inScope=scope==='general'?r.course==='general':scope==='other'?!known.has(r.course)&&r.course!=='general':r.course===courseId;
  const inType=type==='all'||type==='reading'&&['.md','.pdf','.ipynb','.txt','.docx','.odt','.pptx','.odp'].includes(r.extension)||type==='coding'&&['.py','.sql','.conf','.yaml','.yml','.ows','.sh','.properties','.toml','.html','.xml','.avsc'].includes(r.extension)||type==='data'&&['.csv','.tab','.json','.parquet','.xlsx','.avro','.log'].includes(r.extension)||type==='media'&&['.png','.svg','.m4a','.mp4'].includes(r.extension)||type==='derived'&&r.kind==='derived';
- return inScope&&inType&&(!query||[r.title,r.path,...r.sections,typeof materialBodyText==='function'?materialBodyText(r.id):''].join(' ').toLowerCase().includes(query));
+ return inScope&&inType&&(!query||materialHaystack(r).includes(query));
 }
 function materialSourceState(q){
  if(!MATERIALS.source||!q.source_git_blob)return 'unknown';
@@ -1297,7 +1306,7 @@ function renderMaterials(){
  $('resetMaterialFilters')?.addEventListener('click',()=>{$('materialScope').value='current';$('materialType').value='reading';$('materialSearch').value='';materialPage=1;renderMaterials();});
 }
 function renderPractice(){
- renderNav();renderStudyRoute();
+ renderNav();if(studyView==='route')renderStudyRoute();
  const materials=studyView==='materials';
  $('materialPanel').classList.toggle('hidden',!materials);
  document.querySelectorAll('.case-only').forEach(el=>el.classList.toggle('hidden',materials));
@@ -1490,7 +1499,7 @@ function init(){
   $('catalogView').addEventListener('click',()=>setStudyView('catalog'));
   $('materialView').addEventListener('click',()=>setStudyView('materials'));
   for(const id of ['materialScope','materialType','materialModule'])$(id).addEventListener('change',()=>{materialPage=1;renderMaterials();});
-  $('materialSearch').addEventListener('input',()=>{materialPage=1;renderMaterials();});
+  let materialSearchTimer=null;$('materialSearch').addEventListener('input',()=>{clearTimeout(materialSearchTimer);materialSearchTimer=setTimeout(()=>{materialPage=1;renderMaterials();},120);});
   $('materialPrev').addEventListener('click',()=>{materialPage--;renderMaterials();$('materialHeading').focus({preventScroll:true});});
   $('materialNext').addEventListener('click',()=>{materialPage++;renderMaterials();$('materialHeading').focus({preventScroll:true});});
   $('searchInput').addEventListener('input',renderPractice);
