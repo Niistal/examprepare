@@ -1,6 +1,6 @@
 """QA real con Chromium/ChromeDriver; solo biblioteca estándar. Servidor en :8080, driver :9515."""
 import json, os, urllib.request
-BASE='http://127.0.0.1:9515'
+BASE=os.environ.get('NIIS_DRIVER_URL','http://127.0.0.1:9515')
 def request(method,path,data=None):
     req=urllib.request.Request(BASE+path,data=json.dumps(data).encode() if data is not None else None,method=method,headers={'Content-Type':'application/json'})
     result=json.load(urllib.request.urlopen(req,timeout=30))['value']
@@ -86,6 +86,29 @@ try:
     js("window.confirm=()=>true")
     cmd('POST','/execute/async',{'script':"const done=arguments[arguments.length-1];importState(new File([sessionStorage.getItem('qa-backup')],'respaldo.json')).then(()=>done(true));",'args':[]})
     check("invalidStored===null && storageOkay && !storageConflict",'respaldo válido recupera el guardado')
+    js("startSingle('P20')")
+    check("!document.getElementById('givenReference').classList.contains('hidden') && document.getElementById('givenReferenceList').textContent.includes('np.linalg.inv')",'NumPy se aplica con referencia dada')
+    js("document.getElementById('examMode').value='exam';document.getElementById('examNumber').value='1';startExam();session.ids=['P20'];questionIndex=0;renderQuestion()")
+    check("document.getElementById('solutionToggle').disabled && !document.getElementById('givenReference').classList.contains('hidden')",'referencias del enunciado visibles también en examen')
+    js("selectCourse('program');document.getElementById('materialView').click()")
+    check("!document.getElementById('materialPanel').classList.contains('hidden') && document.querySelectorAll('.material-item').length<=18",'temario paginado del repositorio')
+    check("[...document.querySelectorAll('.material-item')].every(e=>e.dataset.course==='program')",'recursos de Programazioa sin mezclas')
+    js("document.getElementById('materialType').value='all';renderMaterials();document.getElementById('materialNext').click()")
+    check("materialPage===2 && document.querySelectorAll('.material-item').length<=18",'paginación de recursos')
+    js("selectCourse('ml')")
+    check("studyView==='materials' && [...document.querySelectorAll('.material-item')].every(e=>e.dataset.course==='ml')",'cambiar materia mantiene la asignación exacta')
+    js("document.getElementById('materialScope').value='general';materialPage=1;renderMaterials()")
+    check("[...document.querySelectorAll('.material-item')].every(e=>e.dataset.course==='general')",'material general separado de asignaturas')
+    js("document.getElementById('materialSearch').value='no-existe-qa';renderMaterials()")
+    check("document.getElementById('resetMaterialFilters')",'catálogo con vacío recuperable')
+    js("document.getElementById('resetMaterialFilters').click()")
+    for width in [320,390,768,1440]:
+        cmd('POST','/window/rect',{'width':width,'height':900})
+        check("document.documentElement.scrollWidth<=window.innerWidth+1",f'temario sin desbordamiento a {width}px')
+    js("selectCourse('program');setStudyView('materials');MATERIALS.resources.push({id:'qa-evil\" onmouseover=\"alert(1)',course:'program',module:'05_AA_Programazioa',path:'05_AA_Programazioa/qa-evil\" onclick=alert(1).md',title:'<img src=x onerror=window.__catalogXss=1>',sections:['A','</summary><script>window.__catalogXss=1</script>'],type:'Apunte',extension:'.md',kind:'original',provenance:'QA'});document.getElementById('materialSearch').value='qa-evil';renderMaterials()")
+    check("document.querySelectorAll('.material-item img,.material-item script').length===0 && !window.__catalogXss",'contenido hostil se muestra como texto, no HTML ejecutable')
+    check("[...document.querySelectorAll('.material-item a')].every(a=>new URL(a.href).origin==='https://github.com' && !a.hasAttribute('onclick'))",'enlaces de temario permanecen en el origen permitido')
+    check("[...document.querySelectorAll('.material-item')].every(e=>!e.hasAttribute('onmouseover'))",'IDs de recursos no pueden insertar atributos de evento')
     logs=cmd('POST','/log',{'type':'browser'})
     assert not [x for x in logs if x['level']=='SEVERE' and 'favicon' not in x['message']],logs
     print('PASS sin errores JS de navegador')

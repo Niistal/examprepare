@@ -22,3 +22,11 @@
 - Corregidos texto de plantilla visible, desbordamiento a 320 px, marca del logotipo, regreso a asignatura incorrecta y final de recorrido. Clase positiva explícita en el ejemplo de cáncer y mutate en Logstash.
 - Guardado robusto ante pestañas concurrentes, cuota llena y registro dañado. Accesibilidad de teclado, estados, contraste y motion.
 - 30 scripts y 2 soluciones de frameworks comprobados; suite reproducible ampliada. Fuente Git main y secciones versionadas verificadas. Documentación de cobertura y diseño.
+
+## Turno de trabajo hasta las 08:10 — en curso
+
+- Fórmulas y llamadas facilitadas en el enunciado; aplicación práctica de NumPy/métricas/fuzzy sin demostraciones de álgebra universitaria.
+- Catálogo versionado de Big_Data, separado por rutas de asignatura, material general y otros módulos; paginación, filtros y procedencia.
+- Mirror privado de lectura sin modificar la copia de apuntes; caché y metadatos para evitar descargar datos/binaries al indexar.
+- Guardas de sincronización, retomado de publicación y pruebas con repositorios Git temporales, rutas hostiles y commits ajenos.
+- Worker mínimo para servir el mismo documento con cabeceras HTTP, manteniendo la autenticación privada de Sites.

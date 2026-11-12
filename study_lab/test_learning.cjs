@@ -15,6 +15,8 @@ for(const c of COURSES){
  assert(html.includes(STUDY_METHODS[c.id]),'Método real de la materia: '+c.id);
  assert(STUDY_LESSONS[c.id].every(x=>x.concept&&x.example&&x.recall&&x.trap),'Lecciones completas: '+c.id);
 }
+for(const id of ['P06','P12','P20','M08','E02','E03','E06','A11'])assert(BANK.find(q=>q.id===id).references.length>0,'Referencia facilitada: '+id);
+assert(!BANK.find(q=>q.id==='M08').prompt.includes('a mano o'),'Métricas sin fórmula memorizada');
 data=emptyState();data.ratings={P01:0,P02:1,P03:2};data.history=[{id:'P03',rating:2,date:'2026-11-01T00:00:00Z'}];
 assert(reviewCandidates(Date.parse('2026-11-12T00:00:00Z')).slice(0,3).map(q=>q.id).join(',')==='P01,P02,P03','Repaso ordenado y recuperación espaciada');
 assert(nextStudyId('program')==='P04','Siguiente caso del recorrido, sin nivel artificial');

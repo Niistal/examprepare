@@ -2,7 +2,7 @@
 import argparse,pathlib,subprocess,sys
 root=pathlib.Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--repo',type=pathlib.Path);p.add_argument('--browser',action='store_true');p.add_argument('--frameworks',action='store_true');args=p.parse_args()
-commands=[['node','--check','app.js'],[sys.executable,'build.py'],['node','test_generador.cjs'],['node','test_learning.cjs'],[sys.executable,'test_artifacts.py']+([str(args.repo.resolve())] if args.repo else []),[sys.executable,'test_solutions.py','--python',sys.executable]]
+commands=[['node','--check','app.js'],[sys.executable,'build.py'],['node','test_generador.cjs'],['node','test_learning.cjs'],[sys.executable,'test_materials.py'],[sys.executable,'test_sync_guards.py'],[sys.executable,'test_artifacts.py']+([str(args.repo.resolve())] if args.repo else []),[sys.executable,'test_solutions.py','--python',sys.executable]]
 if args.frameworks:commands.append([sys.executable,'test_frameworks.py'])
 if args.browser:commands.append([sys.executable,'test_browser.py'])
 report=[]

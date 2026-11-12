@@ -36,7 +36,8 @@ assert len(pipe.predict(pd.DataFrame({"edad":[None],"sueldo":[22],"ciudad":["Nue
 'M05':'assert accuracy_score(yte,mod.predict(Xte))>.8',
 'M06':'assert cross_val_score(model,X,y,cv=5).mean()>.8',
 'M08':'assert abs(accuracy-2/3)<1e-9 and abs(recall-2/3)<1e-9',
-'S08':'assert len(pd.read_csv("usuarios_fake.csv"))==10'
+'S08':'assert len(pd.read_csv("usuarios_fake.csv"))==10',
+'E06':'assert abs(velocidad-74)<1e-9'
 }
 for q in bank:
     if q['id'] not in checks:continue

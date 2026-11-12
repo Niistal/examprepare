@@ -2,6 +2,12 @@
 
 ## HECHAS
 
+- Enfoque práctico: referencias de fórmula/API dadas en ocho casos, visibles incluso en examen. NumPy y métricas se resuelven con llamadas e interpretación; fuzzy Sugeno tiene datos y fórmula facilitados.
+- Catálogo conectado de **657 recursos**: 187 Programazioa, 117 Sistemas ML, 48 Modelos, 95 BD Sistemak, 196 BD Aplikatua y 14 generales. Asignación estricta por carpetas; nuevos módulos y ambigüedades separados. Erronkas excluidas. Metadatos y encabezados únicamente.
+- Sincronización desde un mirror privado independiente. Fuente nueva o modificada se señala; las soluciones existentes no se revalidan por implicación. Preparación reanudable con hashes y tres archivos permitidos, sin stash/reset ni alteración de trabajo ajeno.
+- Paquete alojado como Worker sin dependencias, con CSP HTTP por hash, frame-ancestors limitado, no-store, nosniff, no-referrer y permisos deshabilitados. Solo GET/HEAD del documento; sin APIs de ejecución.
+
+
 - Una aplicación de estudio con las cinco asignaturas, fechas y profesores solicitados. Recorridos finitos: Programazioa 27 casos, Sistemas ML 11, AA Ereduak 11, BD Sistemak 12 y BD Aplikatua 12. Total: **73 microcasos y 16 lecciones breves**. Las combinaciones numeradas son repaso opcional, no mil niveles.
 - Teoría por bloque con ejemplo desplegable, pregunta de recuerdo y error habitual. Ayudas en dos pasos con APIs/imports; casos de desarrollo, análisis, configuraciones y flujos. No se sustituyen por tests tipo quiz.
 - Ruta principal y catálogo separados, búsqueda por ID/tema/texto, filtros de dificultad y estado, vacíos recuperables y avance real al siguiente caso. Los botones principales abren el siguiente caso pendiente, no un simulacro arbitrario.
@@ -28,7 +34,11 @@ Resultados de esta revisión:
 - Generador: PASS, 1.000 secuencias ordenadas únicas/reproducibles por materia, cinco casos distintos por prueba y cobertura completa de las rutas.
 - Aprendizaje/persistencia: PASS. Teoría y métodos reales en todos los bloques, sin `${…}` visible; orden de repaso; compatibilidad de JSON; conflictos, cuota llena y datos dañados sin sobrescritura.
 - Fuentes: PASS, 73 rutas/secciones/hashes del repositorio conectado.
-- Python: PASS, **30 soluciones** con comprobaciones de resultado en directorios temporales. Incluye JSON, NumPy, Pandas, gráficos, clasificación, regresión, CV, Faker y ventanas temporales.
+- Catálogo: PASS, 13 pruebas de Git con asignación exacta, códigos ambiguos, derivados huérfanos, nuevas materias, fuentes hostiles, symlinks y fallos atómicos. 657 registros con huella y JSON/JS coherentes.
+- Guardas de automatización: PASS, 9 pruebas con repositorios temporales; trabajo/staging ajeno conservado, reanudación de commit/publicación y rechazo de cambios posteriores.
+- Worker: PASS, bytes exactos, cabeceras HTTP, HEAD sin cuerpo, rutas ocultas 404 y métodos de escritura 405.
+- Chromium: además, referencias visibles en examen, temario por materia, paginación, vacíos recuperables y protección ante títulos/IDs hostiles, a cuatro tamaños.
+- Python: PASS, **31 soluciones** con comprobaciones de resultado en directorios temporales. Incluye JSON, NumPy, Pandas, gráficos, clasificación, regresión, CV, Faker y ventanas temporales.
 - FastAPI P13: PASS, salud, producto 201, validación 422, OpenAPI y arranque HTTP real de `python -m uvicorn` en loopback/puerto efímero.
 - Streamlit P14: PASS, CSV de fixture, métrica y filtro de categoría mediante AppTest. Se sustituye únicamente el control de carga por un archivo de prueba; la lógica del caso es la publicada.
 - Chromium headless: PASS. Flujos, ayudas, borradores, recarga, reloj, examen/entrega/reinicio, filtros, repaso, teclado e importación/exportación. **Los 73 casos con ayudas y solución abiertas** no desbordan a 320, 390, 768 y 1440 px.

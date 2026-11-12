@@ -46,7 +46,7 @@ for q in bank:
     if q['id'] in fallback:
         term=fallback[q['id']][1]
         section=next((x.lstrip('# ').strip() for x in text.splitlines() if term.lower() in x.lower()),section)
-    metadata[q['id']]={'source_path':str(p.relative_to(repo)), 'source_section':section[:200], 'verified':bool(raw), 'verification_scope':'Ruta y tema contrastados; microcaso propio, no enunciado del profesor', 'source_sha256':hashlib.sha256(raw).hexdigest()}
+    metadata[q['id']]={'source_path':str(p.relative_to(repo)), 'source_section':section[:200], 'verified':bool(raw), 'verification_scope':'Ruta y tema contrastados; microcaso propio, no enunciado del profesor', 'source_sha256':hashlib.sha256(raw).hexdigest(), 'source_git_blob':subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD:'+str(p.relative_to(repo))],text=True).strip()}
 sha=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip()
 output={'repo':'Niistal/Big_Data','branch':'main','commit':sha,'questions':metadata}
 (root/'sources.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')

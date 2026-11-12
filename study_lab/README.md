@@ -2,7 +2,7 @@
 
 **Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con ejercicios de **desarrollo real** en lugar de tests memorísticos. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
 
-## 1. Qué contiene esta primera versión
+## 1. Qué contiene la aplicación
 
 - `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **73 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
 - `app.js`, `style.css`, `shell.html`: fuentes editables para que T3 Code continúe sin tener que modificar 100 KB de HTML en cada iteración.
@@ -141,7 +141,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 - **Listo**: interfaz autónoma, calendario, 73 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
 - **No realizado**: ejecución real y tests automáticos de Python desde la web, importación masiva de notebooks/PDF, integración directa con NotebookLM y extracción/validación completa de cada ejercicio del repositorio. El estado actualizado y sus limitaciones están en `ESTADO_T3_CODE.md`.
-- **No toca** GitHub, archivos de notas, materiales de compañeros, ni archivos de los proyectos Erronka. No se han enviado cambios a `main`.
+- Los cambios de la aplicación se versionan en su repositorio privado. Los apuntes y los proyectos Erronka no se modifican; no se envían cambios a `main`.
 
 © Uso personal, local y académico.
 
@@ -149,7 +149,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 Recorrido finito por competencias y ayudas en dos pasos: orientación, luego ejemplo/API e imports. Sigue la ruta de cada materia y repite lo que no puedas explicar sin mirar; no hay que completar mil niveles. Programazioa contiene 27 casos, Sistemas ML 11, AA Ereduak 11, BD Sistemak 12 y BD Aplikatua 12.
 
-Consulta [ENTORNO_LOCAL.md](ENTORNO_LOCAL.md) para comandos exactos y [ESTADO_T3_CODE.md](ESTADO_T3_CODE.md) para pruebas y pendientes. El build integra `sources.js`, `app.js` y `style.css` en el standalone: `python build.py`. `sources.json` conserva ruta, sección, hash y commit de contraste. `verified` confirma ruta y tema, no certifica una respuesta como obra del profesor ni como solución exhaustiva.
+Consulta [ENTORNO_LOCAL.md](ENTORNO_LOCAL.md) para comandos exactos y [ESTADO_T3_CODE.md](ESTADO_T3_CODE.md) para pruebas y pendientes. El build integra `sources.js`, `materials.js`, `app.js` y `style.css` en el standalone: `python build.py`. `sources.json` conserva ruta, sección, hash y commit de contraste. `verified` confirma ruta y tema, no certifica una respuesta como obra del profesor ni como solución exhaustiva.
 
 La clave de progreso de V1 se conserva. Al ampliar el banco cambia la composición de los simulacros numerados de Programazioa; las respuestas anteriores siguen guardadas por ejercicio. Un simulacro antiguo cuya secuencia ya no coincide no se reanuda automáticamente. Exporta tu progreso antes de futuras actualizaciones.
 
@@ -158,3 +158,20 @@ La clave de progreso de V1 se conserva. Al ampliar el banco cambia la composici�
 Cada bloque tiene teoría breve, un ejemplo, una pregunta para explicar sin mirar y casos de desarrollo. Puedes alternar Recorrido y teoría / Buscar ejercicios y filtrar por estado. Mi progreso ofrece un repaso de errores y casos dominados hace dos días. La autoevaluación es tuya, no una nota calculada por la web.
 
 Consulta `COBERTURA.md` para el mapa completo, `DESIGN.md` para el sistema de interfaz y `ESTADO_T3_CODE.md` para el resultado de las pruebas. Ante un conflicto entre pestañas o un almacenamiento lleno, exporta las respuestas antes de recargar. Si un registro está dañado, la copia original se conserva y se ofrece descarga de recuperación.
+
+## Temario conectado a Big_Data
+
+**Temario de Big_Data** permite consultar 657 recursos versionados y sus encabezados, paginados y filtrados por materia/tipo. Cada enlace abre la revisión concreta de la fuente privada. General y otros módulos tienen espacios separados. Los ejemplos resueltos y NotebookLM se identifican como apoyo, sin atribuir autoría humana. No se copian cuerpos de apuntes, outputs ni datos al catálogo.
+
+La asignación depende de las carpetas exactas, nunca de palabras parecidas. Una materia nueva con raíz única aparece como otro módulo; un código duplicado, una carpeta renombrada de forma ambigua o un derivado sin raíz queda **sin asignar** para revisión. No se inventan fechas ni profesores. Los casos cuyo archivo fuente cambie muestran un aviso: sincronizar un índice no revalida una solución.
+
+Para actualizar manualmente desde la raíz del proyecto:
+
+```sh
+python study_lab/scripts/sync_materials.py --repo /home/admin/Big_Data --refresh
+python study_lab/build.py
+```
+
+El refresco utiliza un mirror privado independiente y la conexión GitHub existente. No ejecuta código de los apuntes ni hace pull sobre tu carpeta. La automatización de publicación está descrita en [AUTOMATION.md](../deployment/AUTOMATION.md); depende de que T3 y sus conexiones estén disponibles.
+
+En Programazioa, métricas, fuzzy y fairness, las fórmulas necesarias se facilitan en el enunciado. Se evalúa aplicar e interpretar las herramientas, sin derivaciones universitarias ni memorizar álgebra.

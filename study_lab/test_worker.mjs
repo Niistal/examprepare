@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);
+const source=await readFile(new URL('hosted_study_lab/dist/server/index.js',root),'utf8');
+const expected=await readFile(new URL('hosted_study_lab/qa/document.html',root),'utf8');
+const {default:worker}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+const request=(path='/',method='GET')=>new Request('https://study.invalid'+path,{method});
+const response=await worker.fetch(request());
+assert.equal(response.status,200);assert.equal(await response.text(),expected);
+assert.match(response.headers.get('cache-control'),/private.*no-store/);
+assert.equal(response.headers.get('x-content-type-options'),'nosniff');
+const csp=response.headers.get('content-security-policy');
+assert.match(csp,/script-src 'sha256-/);assert.match(csp,/frame-ancestors 'self' https:\/\/chatgpt.com/);assert(!csp.includes('unsafe-eval'));
+assert.equal((await worker.fetch(request('/app.js'))).status,404);
+assert.equal((await worker.fetch(request('/materials.json'))).status,404);
+assert.equal((await worker.fetch(request('/','POST'))).status,405);
+assert.equal(await (await worker.fetch(request('/','HEAD'))).text(),'');
+console.log('PASS Worker: documento exacto, CSP HTTP, framing limitado, no-store y rutas/métodos cerrados');
