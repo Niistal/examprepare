@@ -2,7 +2,7 @@
 
 Fuente local contrastada con el remoto: `Niistal/Big_Data`, `main`, commit `5e716edf42e0d1097b5ad2fb911755d97ba3865d`.
 
-Los 73 microcasos y 16 lecciones cubren las áreas enumeradas abajo. La cobertura es por conceptos y ejemplos representativos: no equivale a resolver cada ejercicio o detalle de todos los PDF. No se usa una Erronka como referencia principal.
+Los 80 microcasos y 16 lecciones cubren las áreas enumeradas abajo. La cobertura es por conceptos y ejemplos representativos: no equivale a resolver cada ejercicio o detalle de todos los PDF. No se usa una Erronka como referencia principal.
 
 | Materia | Casos | Temas de los casos |
 |---|---:|---|
@@ -91,3 +91,7 @@ Cada caso registra la ruta y sección de contraste. `verified` cubre ruta/tema, 
 | A10 | Reiniciar un consumidor sin duplicar el efecto | `07_BD_Aplikatua/ariketak/3_Kafka_Streaming/README.md` |
 | A11 | Evitar que un destino lento bloquee sin control | `07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md` |
 | A12 | Ordenar antes de calcular una media móvil | `07_BD_Aplikatua/ariketak/4_Denbora_Serieak/Ariketa_4_1_Denbora_Serieak.py` |
+
+## Ruta principal ampliada según guía aportada
+
+P28: CSV entero y comprensión de columnas. P29: limpieza Pandas. P30: groupby y distribución de clases. P31: cinco pasos y Pipeline sin fuga. P32: balanced, report y matriz. P33: BaseModel y field_validator. P34: integración con datos diferentes. Todos incluyen dataset completo, imports, criterios, ayuda, solución contrastada y descarga de notebook de inicio. Fuente académica: apuntes de Programazioa y ejercicio de clases desbalanceadas, main verificado. La estructura 3+7 procede del texto aportado por el propietario.

@@ -15,7 +15,7 @@ async function http(method,path,value){
  const r=await fetch(driver+path,{method,headers:{'Content-Type':'application/json'},body:value===undefined?undefined:JSON.stringify(value),signal:AbortSignal.timeout(30000)});
  const result=(await r.json()).value;if(result?.error)throw Error('Browser operation failed');return result;
 }
-function rpc(method,params={}){return new Promise((resolve,reject)=>{const id=++rpcId;const timer=setTimeout(()=>{rpcPending.delete(id);reject(Error('CDP timeout'));},15000);rpcPending.set(id,{resolve,reject,timer});ws.send(JSON.stringify({id,method,params}));});}
+function rpc(method,params={}){return new Promise((resolve,reject)=>{const id=++rpcId;const timer=setTimeout(()=>{rpcPending.delete(id);reject(Error('CDP timeout'));},method==='Runtime.evaluate'?180000:15000);rpcPending.set(id,{resolve,reject,timer});ws.send(JSON.stringify({id,method,params}));});}
 async function js(expression){const r=await rpc('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error('Application evaluation failed');return r.result?.value;}
 async function check(expression,label){if(!await js('Boolean('+expression+')'))throw Error('Smoke assertion failed');console.log('PASS '+label);}
 async function ready(){for(let i=0;i<200;i++){if(await js(`document.readyState==='complete' && typeof BANK!=='undefined' && BANK.length===${expectedBank}`))return;await new Promise(r=>setTimeout(r,100));}throw Error('Application load timeout');}
@@ -66,6 +66,11 @@ try{
  for(const id of ['program','ml','models','systems','applied']){
   await js(`selectCourse('${id}');setStudyView('materials');document.getElementById('materialType').value='all';renderMaterials()`);
   await check(`[...document.querySelectorAll('.material-item')].every(e=>e.dataset.course==='${id}')`,'asignación publicada '+id);
+ }
+ if(process.argv.includes('--runner')){
+  stage='python_runner';await js("startSingle('P01');document.getElementById('answerEditor').value=\"print('run privado', 2+3)\";runPython()");
+  const result=await js("new Promise(resolve=>{let n=0;const timer=setInterval(()=>{if(!pythonWorker||++n>650){clearInterval(timer);resolve({text:document.getElementById('runOutput').textContent,status:document.getElementById('runStatus').textContent})}},200)})");
+  if(!result.text.includes('run privado 5'))throw Error('Published Python run failed');console.log('PASS Python real en Site privado');
  }
  if(interceptErrors||exceptions)throw Error('Runtime/interception error');
  console.log(JSON.stringify({status:'verified',scope:'Sesión de servicio temporal, no login/MFA del propietario',credential_scope:'Solo origen del Site; overrides sin propagación en redirects',app_runtime_exceptions:exceptions,security_console_entries:securityEntries,edge_note:'La detección de Cloudflare permanece sujeta a CSP; no se relaja para la prueba'}));

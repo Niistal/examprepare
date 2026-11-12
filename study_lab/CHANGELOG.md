@@ -46,3 +46,4 @@
 
 - P04: instalación y activación facilitadas como comentarios Windows/PowerShell y Linux/Bash, visibles sin abrir ayudas y también en examen. Se evalúa comprobar/entender el entorno, no memorizar comandos. Borradores existentes conservados.
 - Autoguardado visible, Repetir ejercicio y ejecución Python en Worker Pyodide aislado: salida/errores, cancelación, timeout 10 s y salida limitada. Print, NumPy/Pandas, error y bucle infinito probados en navegador real. Sin endpoint de ejecución en servidor.
+- Guía 3+7 incorporada a Programazioa. Siete nuevas prácticas con DataFrames/CSV completos, notebook descargable y simulacro de transferencia con otros valores. Cinco dificultades ordenadas en las cinco materias; ejercicios y borradores previos conservados. 38 soluciones Python verificadas y sklearn/Pydantic probados también en navegador.

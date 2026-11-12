@@ -8,7 +8,7 @@ let source=fs.readFileSync(path.join(__dirname,'app.js'),'utf8').replace(/\ninit
 source+=`
 for(const c of COURSES){
  courseId=c.id;
- assert(STUDY_LESSONS[c.id].length===STUDY_ROUTES[c.id].length,'Teoría para cada bloque: '+c.id);
+ assert(STUDY_ROUTES[c.id].length===5&&STUDY_LESSONS[c.id].length>0,'Cinco dificultades y teoría conservada: '+c.id); const ids=STUDY_ROUTES[c.id].flatMap(b=>b[1]);assert(ids.every((id,i)=>!i||BANK.find(q=>q.id===ids[i-1]).level<=BANK.find(q=>q.id===id).level),'Orden fácil a muy difícil: '+c.id);
  renderStudyRoute();
  const html=$('studyRoute').innerHTML;
  assert(!html.includes('$'+'{'),'Sin código de plantilla visible: '+c.id);
@@ -19,7 +19,7 @@ for(const id of ['P06','P12','P20','M08','E02','E03','E06','A11'])assert(BANK.fi
 assert(!BANK.find(q=>q.id==='M08').prompt.includes('a mano o'),'Métricas sin fórmula memorizada');
 data=emptyState();data.ratings={P01:0,P02:1,P03:2};data.history=[{id:'P03',rating:2,date:'2026-11-01T00:00:00Z'}];
 assert(reviewCandidates(Date.parse('2026-11-12T00:00:00Z')).slice(0,3).map(q=>q.id).join(',')==='P01,P02,P03','Repaso ordenado y recuperación espaciada');
-assert(nextStudyId('program')==='P04','Siguiente caso del recorrido, sin nivel artificial');
+assert(nextStudyId('program')==='P28','Siguiente caso del recorrido, sin nivel artificial');
 assert(validState(data),'Compatibilidad con respaldo V1');
 assert(!validState({ratings:{P01:3},answers:{},history:[]})&&!validState({ratings:{},answers:{P01:null},history:[]}), 'Rechazo de datos inválidos');
 data=emptyState();assert(save(),'Primer guardado');

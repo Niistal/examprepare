@@ -37,7 +37,14 @@ assert len(pipe.predict(pd.DataFrame({"edad":[None],"sueldo":[22],"ciudad":["Nue
 'M06':'assert cross_val_score(model,X,y,cv=5).mean()>.8',
 'M08':'assert abs(accuracy-2/3)<1e-9 and abs(recall-2/3)<1e-9',
 'S08':'assert len(pd.read_csv("usuarios_fake.csv"))==10',
-'E06':'assert abs(velocidad-74)<1e-9'
+'E06':'assert abs(velocidad-74)<1e-9',
+'P28':"assert df.shape==(41,5) and 'temperatura_c' in df.columns",
+'P29':"assert len(df)==36 and df.id.is_unique and not df.isna().any().any()",
+'P30':"assert conteos.sum()==36 and conteos.loc[1]==8",
+'P31':"assert set(X_train.index).isdisjoint(X_test.index) and X_train.shape[1]==3\nimport numpy as np\nassert np.allclose(pipe.named_steps['escala'].mean_, X_train.mean())",
+'P32':"assert modelo.named_steps['modelo'].class_weight=='balanced' and len(pred)==len(y_test)",
+'P33':"assert len(validos)==38 and errores==[8,13,19]",
+'P34':"assert len(df)==36 and len(pred)==len(y_test) and pipe.named_steps['modelo'].class_weight=='balanced'"
 }
 for q in bank:
     if q['id'] not in checks:continue

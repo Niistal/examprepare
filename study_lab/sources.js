@@ -586,6 +586,62 @@ const SOURCE_AUDIT={
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "7584c3ae8f64fb553385f646aecf1e11d44eceb7e170830cb3ef92002ae7ca34",
       "source_git_blob": "002bda4b2e531943abb8d6add35e92f346ec53e1"
+    },
+    "P28": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Comprehensions",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P29": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Limpieza (60–80 % del tiempo",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P30": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Agregación",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P31": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Flujo clásico de 5 pasos",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P32": {
+      "source_path": "05_AA_Programazioa/3_AA_Frameworka/5073_3_Programazioa_Ariketak_Ebazpena.md",
+      "source_section": "class_weight='balanced'",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "8e9d6b343cfbc2db0f57ebbc1bc1b0998c067bd6bc5a8dbf05a1f09fabd83725",
+      "source_git_blob": "612e5e0f6e215c0e1f662d68f1620b71255b2071"
+    },
+    "P33": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Pydantic",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P34": {
+      "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
+      "source_section": "Flujo clásico de 5 pasos",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
+      "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
     }
   }
 };
