@@ -37,7 +37,7 @@ const cloudStorage=(()=>{
   const summary=document.createElement('summary');summary.setAttribute('aria-label','Cuenta de '+CLOUD_BOOTSTRAP.username);
   const avatar=document.createElement('span');avatar.className='account-avatar';avatar.textContent=CLOUD_BOOTSTRAP.username.slice(0,2).toUpperCase();avatar.setAttribute('aria-hidden','true');
   const name=document.createElement('span');name.className='account-name';name.textContent=CLOUD_BOOTSTRAP.username;
-  const chevron=document.createElement('span');chevron.className='account-chevron';chevron.textContent='⌄';chevron.setAttribute('aria-hidden','true');summary.append(avatar,name,chevron);
+  const chevron=document.createElement('span');chevron.className='account-chevron';chevron.setAttribute('aria-hidden','true');summary.append(avatar,name,chevron);
   const panel=document.createElement('div');panel.className='account-menu-panel';
   const heading=document.createElement('strong');heading.textContent=CLOUD_BOOTSTRAP.username;
   const description=document.createElement('p');description.textContent='Cuenta privada · progreso sincronizado';panel.append(heading,description);
