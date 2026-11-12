@@ -264,35 +264,35 @@ const SOURCE_AUDIT={
     },
     "S03": {
       "source_path": "06_BD_Sistemak/3_Elastic_Stack/compose.yaml",
-      "source_section": "Configuración / datos del archivo",
+      "source_section": "Archivo completo: configuración / datos",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "0119944c89ba058f0f9114e31450b8dfaf1444b7ae59ca63acbfc3b480d6c3fe"
     },
     "S04": {
       "source_path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_3_Query_DSL.py",
-      "source_section": "!/usr/bin/env python3",
+      "source_section": "Ariketa 5.3 — Query DSL: Lehen Bilaketak (4. PRAKTIKA + GEHIGARRIAK).",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "1c41b9f0d4e272985715272c451004a06a05e865d81d662f3815a0e7a7a97f36"
     },
     "S05": {
       "source_path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_4_Agregazioak.py",
-      "source_section": "!/usr/bin/env python3",
+      "source_section": "Ariketa 5.4 — Agregazioak: Datuak Laburbildu eta Analizatu.",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "1c852d05de84f16834bb6b0213a1a6897e8759416b29e575f0149b601663907a"
     },
     "S06": {
       "source_path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_5_Discover_KQL.py",
-      "source_section": "!/usr/bin/env python3",
+      "source_section": "Ariketa 5.5 — Discover eta KQL: Datuak Esploratzen (5. PRAKTIKA).",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "d2ac14613e16612cb3a5936b3b296b18219637fd719a7a78bad4b89e4cb6a091"
     },
     "S07": {
       "source_path": "06_BD_Sistemak/3_Elastic_Stack/grok-date.conf",
-      "source_section": "==============================================================================",
+      "source_section": "Elastic Stack — Grok + Date Pipeline-a (16. PRAKTIKA)",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "729f0905447a3e9393ceb5a4ed8fb70abe17b6d6e4c5d662b1baea059f44eda5"
@@ -376,7 +376,7 @@ const SOURCE_AUDIT={
     },
     "P19": {
       "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
-      "source_section": "1.1 Anatomía de un programa / 1.3 Serialización",
+      "source_section": "Apuntes de estudio — 05 AA Programazioa",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf"
@@ -411,7 +411,7 @@ const SOURCE_AUDIT={
     },
     "P24": {
       "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
-      "source_section": "3.1 Validación y ajuste de hiperparámetros",
+      "source_section": "Apuntes de estudio — 05 AA Programazioa",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf"
@@ -432,10 +432,87 @@ const SOURCE_AUDIT={
     },
     "P27": {
       "source_path": "05_AA_Programazioa/Apuntes_Estudio_Programazioa.md",
-      "source_section": "1.4 Git / 4.3 Convergencia",
+      "source_section": "Apuntes de estudio — 05 AA Programazioa",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf"
+    },
+    "M10": {
+      "source_path": "04_Ikaskuntza_Automatikorako_Sistemak/ariketak/1_Datuak_eta_Aurreprozesamendua/README.md",
+      "source_section": "1. Atala: Datuak eta Aurreprozesamendua (CR7 Dataset & Orange)",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5b53dd8ab72a9f04b6a2b985ca917cd7882032a1a06950c39f4ad22918b6ca83"
+    },
+    "M11": {
+      "source_path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+      "source_section": "3. Modulua: Balidazio Metodologia",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+    },
+    "E09": {
+      "source_path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+      "source_section": "2. Paradigms of Artificial Intelligence",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+    },
+    "E10": {
+      "source_path": "03_AA_Ereduak/3_Etika_eta_Legea/3.1_privacy_by_design_auditoria_soluzioa.ipynb",
+      "source_section": "# Ariketa 3.1 — Privacy by Design auditoria — SOLUZIOA",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "696b51c084dc442272330756f888e1366fbd58ce3554be86e24b62210e28cb0c"
+    },
+    "E11": {
+      "source_path": "03_AA_Ereduak/3_Etika_eta_Legea/1.2_kide_inferentzia_soluzioa.ipynb",
+      "source_section": "# Ariketa 1.2 — Kide-inferentzia (membership inference) — SOLUZIOA",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "6590c418109c0d6b5cffabb3b12fcce53a976ad9523017cb0a2050562efefd27"
+    },
+    "S10": {
+      "source_path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_2_Cluster_Mapping.py",
+      "source_section": "Ariketa 5.2 — Cluster Health eta Mapping-a Aztertu (3. PRAKTIKA).",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "730a4cddfc82838954c6286b08b631f341a4a081b26a02321805ec17337ceea9"
+    },
+    "S11": {
+      "source_path": "06_BD_Sistemak/ariketak/2_Bizi_Zikloa_eta_Arkitektura/README.md",
+      "source_section": "2. Atala: Datuen Bizi-Zikloa eta Arkitektura Fisikoa",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "6888c12d6222fab766d81787e2a4f5bb9a19f75d1963a1c6370f573cc6be0113"
+    },
+    "S12": {
+      "source_path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+      "source_section": "3. Atala: ETL Prozesuak eta Datu Formatuak",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+    },
+    "A10": {
+      "source_path": "07_BD_Aplikatua/ariketak/3_Kafka_Streaming/README.md",
+      "source_section": "3. Atala: Apache Kafka Streaming",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "ca2efa9041b267585329b32676c5364f5bf40f368328a3ac2c5acc8d28dd2a35"
+    },
+    "A11": {
+      "source_path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+      "source_section": "1. Atala: Apache NiFi Oinarrizkoa (Kasu Praktikoak 1 - 4)",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+    },
+    "A12": {
+      "source_path": "07_BD_Aplikatua/ariketak/4_Denbora_Serieak/Ariketa_4_1_Denbora_Serieak.py",
+      "source_section": "Ariketa 4.1 — Denbora-Serieak: erregulartasuna, sampling-a, kalitatea, patroiak.",
+      "verified": true,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "7584c3ae8f64fb553385f646aecf1e11d44eceb7e170830cb3ef92002ae7ca34"
     }
   }
 };

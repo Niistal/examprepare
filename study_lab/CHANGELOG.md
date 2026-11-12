@@ -14,3 +14,11 @@
 - Publicación privada Sites con autenticación gestionada de ChatGPT, sin contraseñas dentro de la app.
 - Botón para continuar el recorrido, aviso de progreso por dispositivo, cierre de sesión y CSP del paquete alojado.
 - Rama subida a GitHub e issues #1–#3 para pendientes. Documentación de despliegue y límites de Proton Pass.
+
+## 12/11/2026 — revisión de cierre de estudio y usabilidad
+
+- 73 casos y 16 lecciones; ampliación de preprocesamiento/validación, fundamentos/privacidad, mapping/ciclo/formatos y offsets/colas/series temporales.
+- Recorrido y catálogo separados, teoría por bloque, filtro de estado, repaso y avance entre casos. Ayudas más específicas para llamadas de Python/ML.
+- Corregidos texto de plantilla visible, desbordamiento a 320 px, marca del logotipo, regreso a asignatura incorrecta y final de recorrido. Clase positiva explícita en el ejemplo de cáncer y mutate en Logstash.
+- Guardado robusto ante pestañas concurrentes, cuota llena y registro dañado. Accesibilidad de teclado, estados, contraste y motion.
+- 30 scripts y 2 soluciones de frameworks comprobados; suite reproducible ampliada. Fuente Git main y secciones versionadas verificadas. Documentación de cobertura y diseño.

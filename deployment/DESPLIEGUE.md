@@ -14,7 +14,7 @@ Proton Pass: no hay integración de bóveda disponible en esta sesión. No se ha
 
 ## Datos
 
-Los 62 casos forman parte del paquete privado. No se han copiado los apuntes completos, los proyectos Erronka, `.venv`, credenciales ni archivos de progreso al alojamiento. Las respuestas y valoraciones permanecen en localStorage del navegador y origen. El progreso de localhost no aparece automáticamente en la web: exporta el JSON local e impórtalo en Mi progreso. La sincronización entre dispositivos no está implementada: https://github.com/Niistal/examprepare/issues/1
+Los 73 casos forman parte del paquete privado. No se han copiado los apuntes completos, los proyectos Erronka, `.venv`, credenciales ni archivos de progreso al alojamiento. Las respuestas y valoraciones permanecen en localStorage del navegador y origen. El progreso de localhost no aparece automáticamente en la web: exporta el JSON local e impórtalo en Mi progreso. La sincronización entre dispositivos no está implementada: https://github.com/Niistal/examprepare/issues/1
 
 ## Fuente y publicación
 
@@ -24,9 +24,9 @@ Los 62 casos forman parte del paquete privado. No se han copiado los apuntes com
 - `hosted_study_lab/` es un checkout separado del repositorio de publicación Sites y está ignorado en el repositorio principal. Sus credenciales temporales se entregan al helper por stdin, nunca se guardan en archivos ni Git.
 - El paquete publicado contiene únicamente `.openai/hosting.json` y el HTML estático generado en `dist/`. No sirve el árbol del repositorio.
 - El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` evita llamadas de red desde la app; abrir una fuente de GitHub mediante un enlace sigue siendo posible.
-- Commit de publicación Sites: `a6031d155e008a7d33f36dda34f1e2507967154e`.
-- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_c0cfcdbfdf6881918a2930655b6d9411`.
-- Despliegue: `appgdep_6af50ee26f8081919e74c96e504c7c61`, estado `succeeded`.
+- Commit de publicación Sites: `07d84130575998f8b372b66e7deebedd4406086c`.
+- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_83f2dea3b2308191956cca41eaf68f04`.
+- Despliegue: `appgdep_6af5162c00c88191b2a4d1b60486f338`, estado `succeeded`.
 
 ## Pruebas de esta actualización
 
@@ -39,3 +39,9 @@ Los 62 casos forman parte del paquete privado. No se han copiado los apuntes com
 - QA externa pendiente: https://github.com/Niistal/examprepare/issues/2
 
 Para futuras publicaciones, usar la identidad existente y el workflow de Sites; no crear otro Site ni hacerlo público para resolver errores de autenticación.
+
+## Revisión de cierre publicada
+
+73 casos y 16 lecciones por bloques, catálogo separado, filtro de estado, repaso, avance de recorrido, ayudas de funciones e interfaz pulida. Verificación actual: 30 scripts Python, FastAPI con Uvicorn real, Streamlit con fixture y los 73 casos en Chromium a 320/390/768/1440 px. También conflictos de pestaña, cuota llena y recuperación de progreso dañado. El paquete publicado se comparó byte por byte con el probado.
+
+Se conserva la política privada de un usuario y cero grupos. No se han generado ni guardado credenciales en Proton Pass. La primera respuesta de acceso anónimo observada fue 403; no se afirma haber probado un login del propietario ni su configuración MFA.

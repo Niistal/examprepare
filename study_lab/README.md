@@ -1,10 +1,10 @@
-# NIIS STUDY LAB — Big Data Intensivo · Versión 1
+# NIIS STUDY LAB — Big Data Intensivo · Guía de uso
 
-**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con ejercicios de **desarrollo real** en lugar de tests memorísticos. La herramienta es local, gratuita y no tiene servicios externos ni llamadas a IA. Solo el enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con ejercicios de **desarrollo real** en lugar de tests memorísticos. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
 
 ## 1. Qué contiene esta primera versión
 
-- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **62 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
+- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **73 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
 - `app.js`, `style.css`, `shell.html`: fuentes editables para que T3 Code continúe sin tener que modificar 100 KB de HTML en cada iteración.
 - `requirements-study.txt`: dependencias Python comunes para los ejercicios de datos.
 - `requirements-study-extra.txt`: dependencias adicionales opcionales (API, Streamlit, Kafka y Faker). Se instalan solo si se van a practicar esas materias.
@@ -15,7 +15,7 @@
 
 ### Exámenes numerados
 
-Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 27 casos de Programazioa y 8–9 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
+Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 27 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
 
 Modo **Guiado**: pistas y corrección por ejercicio. Modo **Sin ayudas**: enunciados, editor y reloj; se desbloquean las soluciones al finalizar el examen. No hay evaluación automática de la exactitud del código todavía: se utiliza rúbrica y autoevaluación. El HTML no ejecuta Python ni DSL; el desarrollo se prueba en terminal/VS Code/Orange/Elastic/Kafka según corresponda.
 
@@ -139,7 +139,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 ## 6. Estado de entrega y límites
 
-- **Listo**: interfaz autónoma, calendario, 62 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
+- **Listo**: interfaz autónoma, calendario, 73 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
 - **No realizado**: ejecución real y tests automáticos de Python desde la web, importación masiva de notebooks/PDF, integración directa con NotebookLM y extracción/validación completa de cada ejercicio del repositorio. El estado actualizado y sus limitaciones están en `ESTADO_T3_CODE.md`.
 - **No toca** GitHub, archivos de notas, materiales de compañeros, ni archivos de los proyectos Erronka. No se han enviado cambios a `main`.
 
@@ -147,8 +147,14 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 ## Entrega T3 actualizada
 
-Recorrido finito por competencias y ayudas en dos pasos: orientación, luego ejemplo/API e imports. Sigue la ruta de cada materia y repite lo que no puedas explicar sin mirar; no hay que completar mil niveles. Programazioa contiene 27 casos, Sistemas ML 9, AA Ereduak 8, BD Sistemak 9 y BD Aplikatua 9.
+Recorrido finito por competencias y ayudas en dos pasos: orientación, luego ejemplo/API e imports. Sigue la ruta de cada materia y repite lo que no puedas explicar sin mirar; no hay que completar mil niveles. Programazioa contiene 27 casos, Sistemas ML 11, AA Ereduak 11, BD Sistemak 12 y BD Aplikatua 12.
 
 Consulta [ENTORNO_LOCAL.md](ENTORNO_LOCAL.md) para comandos exactos y [ESTADO_T3_CODE.md](ESTADO_T3_CODE.md) para pruebas y pendientes. El build integra `sources.js`, `app.js` y `style.css` en el standalone: `python build.py`. `sources.json` conserva ruta, sección, hash y commit de contraste. `verified` confirma ruta y tema, no certifica una respuesta como obra del profesor ni como solución exhaustiva.
 
 La clave de progreso de V1 se conserva. Al ampliar el banco cambia la composición de los simulacros numerados de Programazioa; las respuestas anteriores siguen guardadas por ejercicio. Un simulacro antiguo cuya secuencia ya no coincide no se reanuda automáticamente. Exporta tu progreso antes de futuras actualizaciones.
+
+## Recorrido de estudio consolidado
+
+Cada bloque tiene teoría breve, un ejemplo, una pregunta para explicar sin mirar y casos de desarrollo. Puedes alternar Recorrido y teoría / Buscar ejercicios y filtrar por estado. Mi progreso ofrece un repaso de errores y casos dominados hace dos días. La autoevaluación es tuya, no una nota calculada por la web.
+
+Consulta `COBERTURA.md` para el mapa completo, `DESIGN.md` para el sistema de interfaz y `ESTADO_T3_CODE.md` para el resultado de las pruebas. Ante un conflicto entre pestañas o un almacenamiento lleno, exporta las respuestas antes de recargar. Si un registro está dañado, la copia original se conserva y se ofrece descarga de recuperación.

@@ -106,3 +106,16 @@ Ejecuta primero el consumidor (Puntos A07, terminal 1) y después el productor (
 NiFi: referencia `07_BD_Aplikatua/2_Apache_NiFi_Aurreratua/06_ariketa_mariadb_mongodb/README.md`. Revisa el compose en la copia, ejecuta `docker compose config`, `docker compose up -d` y `docker compose ps`. La guía usa HTTPS 8443. Configura los Controller Services, JDBC driver y relaciones descritos allí; no copies credenciales al código del laboratorio. En QueryRecord del caso A02, `salmentak.csv` usa `;` y la columna numérica `Revenue`, no `importe`. En Docker, Input Directory y PutFile usan rutas del contenedor con volúmenes montados.
 
 No se han arrancado Docker, Elastic, Orange, Kafka, NiFi, conectores ni servicios externos durante esta entrega. Sus comandos se contrastaron con las referencias locales; la ejecución de extremo a extremo queda pendiente. Windows se documentó, pero no se ejecutó desde este entorno Linux.
+
+## QA reproducible de la entrega
+
+Para ejecutar también las pruebas de FastAPI y Streamlit, instala solo en tu venv:
+
+```sh
+python -m pip install -r requirements-study-qa.txt
+.venv/bin/python scripts/run_checks.py --repo /home/admin/Big_Data --browser --frameworks
+```
+
+En Windows sustituye `.venv/bin/python` por `.venv\Scripts\python.exe` y omite `--browser`: el script de Chromium actual usa rutas de Linux. Las pruebas Python crean y eliminan carpetas temporales fuera de los apuntes. La prueba API abre únicamente un puerto efímero en 127.0.0.1 y lo cierra al terminar. AppTest usa un CSV ficticio para probar Streamlit sin publicar una app.
+
+El navegador de QA requiere servidor local 8080 y ChromeDriver 9515. Para el paquete alojado usa `NIIS_TEST_URL=http://127.0.0.1:18080 NIIS_TEST_HOSTED=1 python test_browser.py` después de servir `hosted_study_lab/dist/`. No ejecutes los tests sobre un perfil con tu progreso: el driver crea un perfil temporal propio.

@@ -27,7 +27,16 @@ assert len(pipe.predict(pd.DataFrame({"edad":[None],"sueldo":[22],"ciudad":["Nue
 'P23':'assert len(pred)==len(yte)',
 'P24':'assert len(grid.cv_results_["params"])==2\nassert grid.score(Xte,yte)>.8',
 'P25':'assert decidir({"label":"POSITIVE","score":.8})=="POSITIVE"',
-'P27':'assert abs(con_iva(100)-121)<1e-9'
+'P27':'assert abs(con_iva(100)-121)<1e-9',
+'M10':'assert X.edad.isna().sum()==2\nassert len(X)==4 and len(y)==4',
+'A12':'assert pd.isna(df.media2.iloc[0])\nassert df.media2.iloc[-1]==25',
+'M02':'assert len(pred)==len(yte) and mean_absolute_error(yte,pred)>0',
+'M03':'assert len(mod.predict(Xte))==len(yte)\nassert recall_score(yte,mod.predict(Xte))>.8',
+'M04':'assert len(cross_val_score(model,X,y,cv=cv))==5',
+'M05':'assert accuracy_score(yte,mod.predict(Xte))>.8',
+'M06':'assert cross_val_score(model,X,y,cv=5).mean()>.8',
+'M08':'assert abs(accuracy-2/3)<1e-9 and abs(recall-2/3)<1e-9',
+'S08':'assert len(pd.read_csv("usuarios_fake.csv"))==10'
 }
 for q in bank:
     if q['id'] not in checks:continue

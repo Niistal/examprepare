@@ -32,8 +32,8 @@ E('program','P17','Pandas · archivos','Concatenar CSV trimestrales',2,'PYTHON',
 E('program','P18','Scikit-Learn','Preprocesar columnas heterogéneas',3,'PYTHON','Con columnas edad, sueldo y ciudad, construye ColumnTransformer: imputa numerales con mediana, escala con StandardScaler; imputa ciudad por moda y aplica OneHotEncoder(handle_unknown="ignore"). Inserta en Pipeline.','from sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline',['Rama numérica y categórica','Tratamiento de nulos en ambas','OneHot ignora categorías desconocidas'],'El preprocesador tiene dos pipelines, uno para cada subconjunto de columnas.','from sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.preprocessing import StandardScaler,OneHotEncoder\nfrom sklearn.linear_model import LogisticRegression\npre=ColumnTransformer([\n ("num",Pipeline([("imp",SimpleImputer(strategy="median")),("sc",StandardScaler())]),["edad","sueldo"]),\n ("cat",Pipeline([("imp",SimpleImputer(strategy="most_frequent")),("oh",OneHotEncoder(handle_unknown="ignore"))]),["ciudad"]),\n])\npipe=Pipeline([("pre",pre),("modelo",LogisticRegression(max_iter=1000))])','El pipeline completo evita diferencias entre entrenamiento e inferencia.',p+'3_AA_Frameworka/ariketak/1_Scikit_Learn/'),
 // SISTEMAS ML
 E('ml','M01','Orange · EDA','Análisis inicial de goles en Orange',1,'FLUJO + INFORME','Tienes un CSV de goles con fecha, equipo, minutos y competición. Especifica qué widgets de Orange conectarías para cargar, inspeccionar nulos, visualizar distribuciones y explicar 2 hallazgos. Incluye qué comprobarías antes de entrenar.','File → ... → ...\nHallazgo 1:\nHallazgo 2:',['Explica un flujo concreto de widgets','Menciona valores nulos y variables','Separa análisis de predicción'],'Una secuencia posible es File → Data Table → Feature Statistics / Distributions; Select Columns antes de modelar.','File → Data Table\n         ├→ Feature Statistics\n         ├→ Distributions\n         └→ Select Columns → Box Plot\n\nComprobar: tipos, nulos, duplicados, rango temporal y distribución de categorías.\nHallazgos: escribe dos observaciones reales tras ver tus datos (no inventes cifras).','Orange permite prototipar sin código, pero requiere interpretar los datos.',m+'1_Datuak_eta_Aurreprozesamendua/Ariketa_Datuak_interpretatzea.md'),
-E('ml','M02','Regresión lineal','Predecir precio de una vivienda',2,'PYTHON','Con load_diabetes, separa train/test, entrena LinearRegression, calcula MAE y R², y explica qué significa un R² negativo.','from sklearn.datasets import load_diabetes\nfrom sklearn.linear_model import LinearRegression',['Divide antes de entrenar','Usa MAE y r2_score','Interpreta R², no solo lo calcules'],'MAE mide error absoluto; R²=0 es equivalente a una predicción constante de la media en ese conjunto.','from sklearn.datasets import load_diabetes\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_absolute_error,r2_score\nX,y=load_diabetes(return_X_y=True)\nXtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2,random_state=42)\nmodelo=LinearRegression().fit(Xtr,ytr)\npred=modelo.predict(Xte)\nprint("MAE",mean_absolute_error(yte,pred))\nprint("R²",r2_score(yte,pred))\n# R² negativo: peor que predecir la media de y_test.','El ejemplo usa un dataset incluido en scikit-learn; no depende de la API de vivienda Boston retirada.',m+'2_Ikasketa_Gainbegiratua/Ariketa_Erregresio_Lineala.md'),
-E('ml','M03','Clasificación','Logística frente a regresión',1,'PYTHON','Entrena LogisticRegression con load_breast_cancer. Muestra matriz de confusión, recall y ROC-AUC. Explica por qué este problema no se resuelve con regresión lineal ordinaria.','from sklearn.datasets import load_breast_cancer',['Usa clasificación y stratify','Calcula recall y ROC-AUC con probabilidades','Interpreta falsos negativos'],'ROC-AUC necesita scores continuos (predict_proba), no necesariamente etiquetas binarias.','from sklearn.datasets import load_breast_cancer\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix,recall_score,roc_auc_score\nX,y=load_breast_cancer(return_X_y=True)\nXtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2,stratify=y,random_state=42)\nmod=make_pipeline(StandardScaler(),LogisticRegression(max_iter=2000))\nmod.fit(Xtr,ytr)\nprint(confusion_matrix(yte,mod.predict(Xte)))\nprint(recall_score(yte,mod.predict(Xte)))\nprint(roc_auc_score(yte,mod.predict_proba(Xte)[:,1]))','La clase positiva del dataset es la codificada como 1; cuidado al interpretar qué resultado clínico representa.',m+'2_Ikasketa_Gainbegiratua/Ariketa_Erregresio_Logistikoa.md'),
+E('ml','M02','Regresión lineal','Regresión con datos incorporados',2,'PYTHON','Con load_diabetes, separa train/test, entrena LinearRegression, calcula MAE y R², y explica qué significa un R² negativo.','from sklearn.datasets import load_diabetes\nfrom sklearn.linear_model import LinearRegression',['Divide antes de entrenar','Usa MAE y r2_score','Interpreta R², no solo lo calcules'],'MAE mide error absoluto; R²=0 es equivalente a una predicción constante de la media en ese conjunto.','from sklearn.datasets import load_diabetes\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_absolute_error,r2_score\nX,y=load_diabetes(return_X_y=True)\nXtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2,random_state=42)\nmodelo=LinearRegression().fit(Xtr,ytr)\npred=modelo.predict(Xte)\nprint("MAE",mean_absolute_error(yte,pred))\nprint("R²",r2_score(yte,pred))\n# R² negativo: peor que predecir la media de y_test.','El ejemplo usa un dataset incluido en scikit-learn; no depende de la API de vivienda Boston retirada.',m+'2_Ikasketa_Gainbegiratua/Ariketa_Erregresio_Lineala.md'),
+E('ml','M03','Clasificación','Logística frente a regresión',1,'PYTHON','Entrena LogisticRegression con load_breast_cancer. Recodifica y para que 1 signifique maligno (el dataset original usa 0 para maligno y 1 para benigno). Muestra matriz de confusión, recall y ROC-AUC. Explica por qué este problema no se resuelve con regresión lineal ordinaria.','from sklearn.datasets import load_breast_cancer',['Usa clasificación y stratify','Calcula recall y ROC-AUC con probabilidades','Interpreta falsos negativos'],'ROC-AUC necesita scores continuos (predict_proba), no necesariamente etiquetas binarias.','from sklearn.datasets import load_breast_cancer\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix,recall_score,roc_auc_score\nX,y=load_breast_cancer(return_X_y=True)\ny=1-y  # 1=maligno; dataset original: 0=maligno, 1=benigno\nXtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2,stratify=y,random_state=42)\nmod=make_pipeline(StandardScaler(),LogisticRegression(max_iter=2000))\nmod.fit(Xtr,ytr)\nprint(confusion_matrix(yte,mod.predict(Xte)))\nprint(recall_score(yte,mod.predict(Xte)))\nprint(roc_auc_score(yte,mod.predict_proba(Xte)[:,1]))','La solución convierte 1 en maligno antes de entrenar. Recall mide así detección de malignos; siempre indica qué clase es positiva.',m+'2_Ikasketa_Gainbegiratua/Ariketa_Erregresio_Logistikoa.md'),
 E('ml','M04','KNN','Comparar k=1, 3, 5 en Wine',2,'PYTHON','Con load_wine, crea Pipeline StandardScaler→KNeighborsClassifier y compara k=1,3,5 usando CV estratificada. Da media de accuracy y explica el posible sobreajuste con k pequeño.','from sklearn.datasets import load_wine\nfrom sklearn.neighbors import KNeighborsClassifier',['Escala antes de KNN dentro del pipeline','Usa StratifiedKFold y cross_val_score','Compara métricas de los 3 k'],'KNN mide distancias: sin escalado, una variable con magnitud grande domina.','from sklearn.datasets import load_wine\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.model_selection import StratifiedKFold,cross_val_score\nX,y=load_wine(return_X_y=True)\ncv=StratifiedKFold(5,shuffle=True,random_state=42)\nfor k in (1,3,5):\n    model=make_pipeline(StandardScaler(),KNeighborsClassifier(n_neighbors=k))\n    print(k,cross_val_score(model,X,y,cv=cv).mean())','El escalado se aprende dentro de cada fold, así se evita leakage.',m+'2_Ikasketa_Gainbegiratua/Ariketa_KNN.md'),
 E('ml','M05','Árboles y bosques','Árbol vs Random Forest',2,'PYTHON','Entrena DecisionTreeClassifier y RandomForestClassifier sobre Iris; compara accuracy con estratificación y explica bagging, bootstrap y sobreajuste.','from sklearn.datasets import load_iris',['Misma partición para ambos','RandomForest con random_state','Explicación de bootstrap/bagging'],'Un árbol único tiene alta varianza; el bosque agrega varios árboles construidos con muestras.','from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\nX,y=load_iris(return_X_y=True)\nXtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2,stratify=y,random_state=42)\nfor mod in (DecisionTreeClassifier(random_state=42),RandomForestClassifier(n_estimators=100,random_state=42)):\n    mod.fit(Xtr,ytr)\n    print(type(mod).__name__,accuracy_score(yte,mod.predict(Xte)))\n# RF: bagging de árboles sobre muestras bootstrap y subconjuntos de features.','No afirmes que el bosque siempre ganará: depende de los datos y del ajuste.',m+'2_Ikasketa_Gainbegiratua/Ariketa_Decision_Tree_eta_Random_Forest_Ebazpena.md'),
 E('ml','M06','SVM','SVM lineal vs RBF',3,'PYTHON','Crea dos Pipelines para SVC(kernel="linear") y SVC(kernel="rbf") en Iris, con StandardScaler. Compara accuracy con validación cruzada y explica el kernel trick.','from sklearn.svm import SVC',['Escala y valida dentro del pipeline','Compara lineal/RBF','Explica margen y kernel'],'El kernel RBF facilita fronteras no lineales sin construir explícitamente todas las nuevas dimensiones.','from sklearn.datasets import load_iris\nfrom sklearn.svm import SVC\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.model_selection import cross_val_score\nX,y=load_iris(return_X_y=True)\nfor kernel in ("linear","rbf"):\n    model=make_pipeline(StandardScaler(),SVC(kernel=kernel))\n    print(kernel,cross_val_score(model,X,y,cv=5).mean())','SVM busca un hiperplano con margen amplio; el kernel cambia el espacio de similitud.',m+'2_Ikasketa_Gainbegiratua/Ariketa_SVM_Ebazpena.md'),
@@ -56,8 +56,8 @@ E('systems','S03','Elasticsearch · Docker','Arrancar Elastic Stack local',1,'TE
 E('systems','S04','Elasticsearch · Query DSL','Buscar productos caros en un índice',2,'JSON DSL','En Elasticsearch, escribe una consulta GET productos/_search que filtre precio >= 30, estado="activo", ordene por precio descendente y devuelva nombre y precio. Escribe el cuerpo JSON.','GET productos/_search\n{\n  "query": {}\n}',['bool.filter con term y range','sort descendente','_source con dos campos'],'Los filtros no necesitan calcular relevancia: usa bool.filter.','GET productos/_search\n{\n  "_source": ["nombre", "precio"],\n  "query": {"bool": {"filter": [\n    {"range": {"precio": {"gte": 30}}},\n    {"term": {"estado.keyword": "activo"}}\n  ]}},\n  "sort": [{"precio": {"order": "desc"}}]\n}','Usa estado.keyword si el mapping contiene ese campo keyword; en campo keyword directo usar estado.',s+'ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_3_Query_DSL.py'),
 E('systems','S05','Elasticsearch · agregación','Ventas por categoría',2,'JSON DSL','Escribe un aggregation de Elasticsearch para sumar importe por categoria.keyword y devolver los 5 grupos con más importe total. No necesitas hits individuales.','GET ventas/_search\n{\n  "size": 0,\n  "aggs": {}\n}',['terms por keyword','sum de importe','Orden descendente por subagregación'],'Primero terms; anida sum; en order utiliza el nombre de la métrica.','GET ventas/_search\n{\n  "size": 0,\n  "aggs": {"categorias": {\n    "terms": {"field": "categoria.keyword", "size": 5, "order": {"importe_total": "desc"}},\n    "aggs": {"importe_total": {"sum": {"field": "importe"}}}\n  }}\n}','terms agrupa valores; sum suma una métrica dentro de cada grupo.',s+'ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_4_Agregazioak.py'),
 E('systems','S06','Kibana · KQL','Filtrar logs en Discover',1,'KQL','En Kibana Discover, filtra eventos con status_code >= 500 y service.name="api". Explica diferencia entre KQL en Discover y Query DSL JSON en Dev Tools.','status_code >= 500 and ...',['Sintaxis KQL válida','Coincide servicio y estado','Diferencia KQL y JSON DSL'],'KQL es un lenguaje de consulta de filtros, no el JSON DSL de la API.','status_code >= 500 and service.name: "api"\n\nKQL: filtro textual en Kibana Discover.\nQuery DSL: cuerpo JSON enviado a Elasticsearch (_search), con query, aggs y sort.','Verifica que tus campos existen en el data view seleccionado.',s+'ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_5_Discover_KQL.py'),
-E('systems','S07','Logstash','Pipeline grok, date y mutate',3,'CONF','Recibes línea de log "2026-11-10 09:14:00 INFO pago_ok". Escribe un pipeline Logstash input stdin, filter grok para timestamp, level y msg, date para @timestamp y output stdout rubydebug.','input { stdin {} }\nfilter {\n}\noutput { stdout { codec => rubydebug } }',['Grok extrae campos','date actualiza @timestamp','Config sintácticamente razonable'],'En grok puedes usar TIMESTAMP_ISO8601 y LOGLEVEL con patrón separado por espacios.','input { stdin {} }\nfilter {\n  grok { match => { "message" => "%{TIMESTAMP_ISO8601:fecha} %{LOGLEVEL:nivel} %{GREEDYDATA:mensaje}" } }\n  date { match => ["fecha", "yyyy-MM-dd HH:mm:ss"] timezone => "Europe/Madrid" }\n}\noutput { stdout { codec => rubydebug } }','Grok parsea; date convierte fecha; mutate transforma campos y tipos cuando se necesita.',s+'3_Elastic_Stack/grok-date.conf'),
-E('systems','S08','Faker · datos','Generar registros sintéticos',1,'PYTHON','Genera 10 usuarios ficticios con Faker en locale es_ES, guárdalos en CSV (id,nombre,ciudad) y explica por qué nunca usarías datos reales de clientes para practicar.','from faker import Faker\nimport pandas as pd',['Faker locale es_ES','Lista de diccionarios','Exporta CSV sin índice'],'Faker produce ejemplos, no datos personales reales.','from faker import Faker\nimport pandas as pd\nfake=Faker("es_ES")\nregistros=[{"id":i,"nombre":fake.name(),"ciudad":fake.city()} for i in range(1,11)]\npd.DataFrame(registros).to_csv("usuarios_fake.csv",index=False,encoding="utf-8")','Los datos sintéticos son útiles para practicar pipelines sin exponer PII.',s+'ariketak/4_Faker_Datu_Sintetikoak/'),
+E('systems','S07','Logstash','Pipeline grok, date y mutate',3,'CONF','Recibes línea de log "2026-11-10 09:14:00 INFO pago_ok". Escribe un pipeline Logstash input stdin, filter grok para timestamp, level y msg, date para @timestamp, mutate para añadir origen="practica" y output stdout rubydebug.','input { stdin {} }\nfilter {\n}\noutput { stdout { codec => rubydebug } }',['Grok extrae campos','date actualiza @timestamp','Config sintácticamente razonable'],'En grok puedes usar TIMESTAMP_ISO8601 y LOGLEVEL con patrón separado por espacios.','input { stdin {} }\nfilter {\n  grok { match => { "message" => "%{TIMESTAMP_ISO8601:fecha} %{LOGLEVEL:nivel} %{GREEDYDATA:mensaje}" } }\n  date { match => ["fecha", "yyyy-MM-dd HH:mm:ss"] timezone => "Europe/Madrid" }\n  mutate { add_field => { "origen" => "practica" } }\n}\noutput { stdout { codec => rubydebug } }','Grok parsea; date convierte fecha; mutate transforma campos y tipos cuando se necesita.',s+'3_Elastic_Stack/grok-date.conf'),
+E('systems','S08','Faker · datos','Generar registros sintéticos',1,'PYTHON','Genera 10 usuarios ficticios con Faker en locale es_ES, guárdalos en CSV (id,nombre,ciudad) y explica por qué nunca usarías datos reales de clientes para practicar.','from faker import Faker\nimport pandas as pd',['Faker locale es_ES','Lista de diccionarios','Exporta CSV sin índice'],'Faker produce ejemplos, no datos personales reales.','from faker import Faker\nimport pandas as pd\nFaker.seed(42)\nfake=Faker("es_ES")\nregistros=[{"id":i,"nombre":fake.name(),"ciudad":fake.city()} for i in range(1,11)]\npd.DataFrame(registros).to_csv("usuarios_fake.csv",index=False,encoding="utf-8")','Los datos sintéticos son útiles para practicar pipelines sin exponer PII.',s+'ariketak/4_Faker_Datu_Sintetikoak/'),
 E('systems','S09','Data Lake','Warehouse, Lake y Lakehouse',2,'DISEÑO','Tienes JSON de eventos, CSV transaccionales e imágenes. Elige entre Data Warehouse, Lake y Lakehouse para conservar raw y consultar datos analíticos. Diseña zonas raw/clean/curated y explica un riesgo de gobernanza.','raw / bronze:\nclean / silver:\ncurated / gold:',['Distingue datos raw y transformados','Justifica tecnología/concepto','Menciona catálogo y calidad'],'Un lakehouse combina almacenamiento flexible y capas de gestión transaccional; no borra la necesidad de gobierno.','Bronze/raw: guardar JSON, CSV e imágenes originales con fecha y origen.\nSilver/clean: esquemas, deduplicados, validación y formatos consultables.\nGold/curated: métricas agregadas para BI.\nLake/Lakehouse: adecuados para raw heterogéneo; un warehouse es útil para datos analíticos estructurados.\nGobierno: catálogo, lineage, permisos, retención y calidad.','Sin catálogo ni validación, un data lake puede degradarse en un data swamp.',s+'2_Datuen_Ingeniaritza/'),
 // BIG DATA APLICADA
 E('applied','A01','NiFi · básico','Pipeline CSV: GetFile a PutFile',1,'FLUJO','Debes recoger CSV de una carpeta entrada y copiarlos a salida en Apache NiFi. Dibuja GetFile → UpdateAttribute → PutFile, especifica propiedades clave y relación de éxito/error.','GetFile → ... → PutFile\nPropiedades:\nErrores:',['Procesadores correctos','Directorios de entrada/salida','Describe FlowFile y relaciones'],'GetFile crea FlowFiles desde ficheros; PutFile los escribe en el destino.','GetFile (Input Directory=entrada)\n  success → UpdateAttribute (origen=practica)\n  success → PutFile (Directory=salida, Conflict Resolution Strategy según requisito)\n\nConectar failure/retry cuando proceda, usar backpressure, ejecutar y verificar provenance.','El FlowFile mantiene contenido + atributos, no es solo un archivo físico.',a+'1_Apache_NiFi_Oinarrizkoa/'),
@@ -254,6 +254,228 @@ BANK.push(...[
     "source_section": "1.4 Git / 4.3 Convergencia"
   }
 ]);
+BANK.push(...[
+  {
+    "c": "ml",
+    "id": "M10",
+    "topic": "Preprocesamiento · tipos",
+    "title": "Auditar datos antes de entrenar",
+    "level": 2,
+    "kind": "PYTHON",
+    "prompt": "Con edad=[20,None,40,200], ciudad=[\"Bilbo\",\"Bilbo\",None,\"Gasteiz\"] y clase=[0,1,0,1], identifica tipos, nulos y valor imposible. Propón limpieza que no aprenda del test y distingue una ausencia aleatoria de una relacionada con el objetivo.",
+    "starter": "import pandas as pd\ndf=pd.DataFrame({\"edad\":[20,None,40,200],\"ciudad\":[\"Bilbo\",\"Bilbo\",None,\"Gasteiz\"],\"clase\":[0,1,0,1]})",
+    "checks": [
+      "Nulos por columna y regla edad 0–120",
+      "Separa objetivo y atributos",
+      "Imputación ajustada en train, no antes del split"
+    ],
+    "hint": "No elimines un dato solo porque es extremo: valida dominio y origen. Un valor imposible debe quedar identificado.",
+    "solution": "import pandas as pd\ndf=pd.DataFrame({\"edad\":[20,None,40,200],\"ciudad\":[\"Bilbo\",\"Bilbo\",None,\"Gasteiz\"],\"clase\":[0,1,0,1]})\nprint(df.isna().sum())\ninvalidas=df.edad.notna() & ~df.edad.between(0,120)\ndf.loc[invalidas,\"edad\"]=float(\"nan\")\nX=df.drop(columns=\"clase\")\ny=df[\"clase\"]\nassert X.edad.isna().sum()==2\n# Tras dividir train/test, SimpleImputer.fit solo sobre train.",
+    "why": "MCAR: ausencia independiente de variables observadas/no observadas; MAR depende de observadas; MNAR depende de lo no observado. No se puede deducir el mecanismo con cuatro filas.",
+    "source": "04_Ikaskuntza_Automatikorako_Sistemak/ariketak/1_Datuak_eta_Aurreprozesamendua/README.md",
+    "source_section": "Auditar datos antes de entrenar"
+  },
+  {
+    "c": "ml",
+    "id": "M11",
+    "topic": "Validación · K-Fold",
+    "title": "Elegir particiones y detectar sobreajuste",
+    "level": 2,
+    "kind": "ANÁLISIS",
+    "prompt": "Tienes 150 flores Iris independientes y 180 días de ventas ordenados. Elige validación para cada caso. Un árbol da train=.99 y validación=.63; otro train=.82 y validación=.80. Decide qué investigar y cómo usar un test reservado.",
+    "starter": "Caso Iris:\nCaso ventas:\nDiagnóstico:\nPlan de evaluación:",
+    "checks": [
+      "StratifiedKFold para Iris",
+      "Partición temporal sin usar futuro para ventas",
+      "Distingue sobreajuste y test final"
+    ],
+    "hint": "No mezcles futuro con pasado para predecir el futuro. Una puntuación de train alta no basta.",
+    "solution": "Iris: reservar test estratificado y usar StratifiedKFold en train.\nVentas: mantener orden y usar ventanas temporales; no shuffle aleatorio.\nÁrbol .99/.63: brecha compatible con sobreajuste; revisar profundidad, tamaño y fuga.\nModelo .82/.80: mejor generalización aparente, no prueba definitiva.\nElegir hiperparámetros en validación/CV; consultar el test final una vez.",
+    "why": "No comparar modelos usando splits distintos ni ajustar reiteradamente al test. Las métricas requieren tamaño de muestra y contexto.",
+    "source": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+    "source_section": "Elegir particiones y detectar sobreajuste"
+  },
+  {
+    "c": "models",
+    "id": "E09",
+    "topic": "Fundamentos · paradigmas",
+    "title": "Elegir reglas, aprendizaje o generación",
+    "level": 2,
+    "kind": "ANÁLISIS",
+    "prompt": "Para un termostato con reglas conocidas, un detector de spam con ejemplos y un resumidor de texto, elige paradigma simbólico, conexionista o generativo. Explica qué se aprende y un límite de cada enfoque.",
+    "starter": "Sistema | Paradigma | Entrada | Salida | Límite",
+    "checks": [
+      "Tres decisiones justificadas",
+      "Distingue reglas explícitas y aprendizaje",
+      "No equipara buen rendimiento con inteligencia general"
+    ],
+    "hint": "Clasifica por funcionamiento, no por la apariencia de la interfaz.",
+    "solution": "Termostato de reglas: simbólico; umbrales explícitos, fácil inspección pero cobertura limitada.\nSpam entrenado con una red: conexionista; aprende parámetros de ejemplos, puede heredar sesgos.\nResumidor con LLM: generativo; produce texto condicionado, puede inventar hechos.\nLos ejemplos son IA específica; no demuestran AGI.",
+    "why": "Un detector de spam también puede usar reglas o modelos clásicos: la elección depende de la implementación concreta. Los paradigmas pueden combinarse.",
+    "source": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+    "source_section": "2. Paradigms of Artificial Intelligence"
+  },
+  {
+    "c": "models",
+    "id": "E10",
+    "topic": "Privacidad · auditoría",
+    "title": "Minimizar datos de una app educativa",
+    "level": 2,
+    "kind": "ANÁLISIS",
+    "prompt": "Una app propone guardar notas, cada tecla pulsada, webcam continua y tiempo agregado por ejercicio. El objetivo es ayudar al alumno a repasar. Elige qué recoger, qué descartar, quién accede y cómo eliminar los datos.",
+    "starter": "Dato | Necesidad | Alternativa | Acceso | Retención",
+    "checks": [
+      "Relaciona cada dato con finalidad",
+      "Descarta webcam y captura de teclas no necesarias",
+      "Propone exportación y borrado comprobables"
+    ],
+    "hint": "Empieza por la finalidad; recoger más datos no equivale a enseñar mejor.",
+    "solution": "Notas y autoevaluación: guardar solo si son necesarias para el repaso.\nTeclas individuales y webcam: descartar; no justificadas para este objetivo.\nTiempo: total agregado opcional, sin vigilancia continua.\nAcceso: solo alumno autenticado; controles en servidor si hay sincronización.\nRetención: regla explícita, exportación y borrado verificable; explicar límites de copias de respaldo.",
+    "why": "Seguridad protege datos; privacidad también exige decidir qué datos no recoger. Pseudonimizar no convierte automáticamente los datos en anónimos.",
+    "source": "03_AA_Ereduak/3_Etika_eta_Legea/3.1_privacy_by_design_auditoria_soluzioa.ipynb",
+    "source_section": "Minimizar datos de una app educativa"
+  },
+  {
+    "c": "models",
+    "id": "E11",
+    "topic": "Privacidad · membership inference",
+    "title": "Interpretar confianza sin confundirla con prueba",
+    "level": 2,
+    "kind": "ANÁLISIS",
+    "prompt": "Un modelo da confianza media .98 en train y .68 en test. Alguien quiere concluir que una persona concreta estuvo en train porque obtuvo .96. Explica el riesgo, por qué no es una prueba y dos mitigaciones.",
+    "starter": "Señal observada:\nHipótesis:\nLo que NO demuestra:\nMitigaciones:",
+    "checks": [
+      "Distingue inferencia de pertenencia y extracción",
+      "No infiere pertenencia con certeza por un score",
+      "Regularización y limitar exposición de confianza"
+    ],
+    "hint": "Una diferencia entre distribuciones puede revelar sobreajuste, pero las distribuciones se solapan.",
+    "solution": "Riesgo: membership inference intenta averiguar si un registro estuvo en entrenamiento.\nLa brecha de confianza puede dar una señal, no certeza individual ni recuperación completa del registro.\nEvaluar falsos positivos/negativos sobre datos con pertenencia conocida.\nMitigar sobreajuste (regularización/validación), limitar scores detallados y consultas; estudiar privacidad diferencial cuando corresponda.",
+    "why": "No confundir membership inference con model inversion. Limitar scores reduce una vía de ataque; no garantiza resolver todas.",
+    "source": "03_AA_Ereduak/3_Etika_eta_Legea/1.2_kide_inferentzia_soluzioa.ipynb",
+    "source_section": "Interpretar confianza sin confundirla con prueba"
+  },
+  {
+    "c": "systems",
+    "id": "S10",
+    "topic": "Elasticsearch · mapping",
+    "title": "Definir tipos antes de buscar",
+    "level": 2,
+    "kind": "JSON DSL",
+    "prompt": "Define un índice productos_lab con nombre text y subcampo keyword, categoria keyword y precio double. Escribe un documento de ejemplo, consulta precio>=10 y explica por qué term sobre text puede sorprender.",
+    "starter": "PUT productos_lab\n{ \"mappings\": { \"properties\": {} } }",
+    "checks": [
+      "Mapping completo y JSON válido",
+      "Documento con precio numérico",
+      "Filtro range y diferencia text/keyword"
+    ],
+    "hint": "text se analiza; keyword conserva el valor exacto. Usa nombres coherentes entre mapping y consulta.",
+    "solution": "PUT productos_lab\n{\"mappings\":{\"properties\":{\"nombre\":{\"type\":\"text\",\"fields\":{\"keyword\":{\"type\":\"keyword\"}}},\"categoria\":{\"type\":\"keyword\"},\"precio\":{\"type\":\"double\"}}}}\n\nPUT productos_lab/_doc/1\n{\"nombre\":\"Cuaderno azul\",\"categoria\":\"papeleria\",\"precio\":12.5}\n\nGET productos_lab/_search\n{\"query\":{\"range\":{\"precio\":{\"gte\":10}}}}\n\nGET productos_lab/_search\n{\"query\":{\"term\":{\"categoria\":\"papeleria\"}}}",
+    "why": "term no analiza el texto de búsqueda. Para lenguaje natural usa match; para exactitud usa el campo keyword. El subcampo nombre.keyword solo existe porque lo declaramos.",
+    "source": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/Ariketa_5_2_Cluster_Mapping.py",
+    "source_section": "Definir tipos antes de buscar"
+  },
+  {
+    "c": "systems",
+    "id": "S11",
+    "topic": "Ciclo de datos · arquitectura",
+    "title": "Seguir un evento del sensor al panel",
+    "level": 2,
+    "kind": "FLUJO",
+    "prompt": "Un sensor produce {\"id\":\"T1\",\"ts\":\"2026-11-12T10:00:00Z\",\"temperatura\":23.4}. Dibuja cinco fases hasta un panel horario. Sitúa validación, deduplicación por id+ts, almacenamiento raw y agregación. Elige bloque, archivo u objeto para raw JSON histórico.",
+    "starter": "Generación → Ingesta → Almacenamiento → Transformación → Consumo",
+    "checks": [
+      "Cinco fases y ejemplo coherente",
+      "Conserva raw y controla duplicados",
+      "Objeto para raw histórico con justificación"
+    ],
+    "hint": "Un dashboard consume datos; no sustituye la ingesta ni el historial.",
+    "solution": "Generación: sensor T1 produce JSON.\nIngesta: broker recibe y valida esquema mínimo.\nAlmacenamiento: raw inmutable en objetos, organizado por fecha.\nTransformación: validar tipos, deduplicar id+ts, agregar temperatura por hora.\nConsumo: panel con media, conteo y retraso de actualización.\nBloque: discos/volúmenes; archivo: rutas compartidas; objeto: claves y metadatos para histórico.",
+    "why": "El evento no debe desaparecer al fallar una transformación. Definir cuarentena, trazabilidad y reintentos.",
+    "source": "06_BD_Sistemak/ariketak/2_Bizi_Zikloa_eta_Arkitektura/README.md",
+    "source_section": "Seguir un evento del sensor al panel"
+  },
+  {
+    "c": "systems",
+    "id": "S12",
+    "topic": "Formatos · analítica",
+    "title": "Elegir CSV, JSON o Parquet",
+    "level": 2,
+    "kind": "ANÁLISIS",
+    "prompt": "Debes intercambiar 100 filas con una hoja de cálculo, recibir eventos con campos anidados y consultar dos columnas de 10 millones de filas históricas. Elige formato para cada caso y explica lectura por filas/columnas.",
+    "starter": "Uso | Formato | Ventaja | Limitación",
+    "checks": [
+      "CSV para intercambio simple",
+      "JSON para estructura anidada",
+      "Parquet columnar para proyecciones analíticas"
+    ],
+    "hint": "El formato cambia el coste de leer columnas; no es lo mismo que la arquitectura Lake/Warehouse.",
+    "solution": "100 filas tabulares: CSV con separador y encoding documentados; no conserva tipos/esquema por sí solo.\nEventos anidados: JSON; flexible, pero debe validarse y puede ser verboso.\nDos columnas históricas: Parquet, columnar con compresión y tipos; evita leer columnas no necesarias cuando el motor lo soporta.\nCSV suele procesarse por filas; Parquet agrupa por columnas dentro de grupos de filas.",
+    "why": "Parquet no es una base de datos ni evita por sí solo todos los escaneos. Para muy pocos datos la simplicidad puede importar más que el rendimiento.",
+    "source": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+    "source_section": "Elegir CSV, JSON o Parquet"
+  },
+  {
+    "c": "applied",
+    "id": "A10",
+    "topic": "Kafka · offsets",
+    "title": "Reiniciar un consumidor sin duplicar el efecto",
+    "level": 2,
+    "kind": "FLUJO",
+    "prompt": "Un consumidor procesa offsets 40,41,42 de una partición. Guarda el resultado de 41 y falla antes de confirmar. Explica qué puede repetirse, cuándo confirmar y cómo diseñar una escritura idempotente por event_id.",
+    "starter": "Leer → Validar → Escribir efecto → Confirmar offset",
+    "checks": [
+      "Reconoce posible repetición de 41",
+      "Commit del siguiente offset a consumir",
+      "Upsert/deduplicación por identificador estable"
+    ],
+    "hint": "Procesar antes de confirmar reduce pérdidas, pero una caída entre ambas operaciones puede repetir el efecto.",
+    "solution": "Si el último commit indica continuar en 41, al reiniciar se vuelve a leer 41 aunque su efecto ya exista.\nValidar → escribir idempotentemente por event_id → confirmar siguiente offset 42 después de procesar 41.\nNo confirmar antes de completar el efecto: podría perderse.\nUn upsert por event_id o restricción única evita aplicar dos veces el mismo evento.\nEl estado confirmado pertenece al grupo, topic y partición.",
+    "why": "auto_offset_reset solo se usa cuando no hay offset válido; earliest no obliga a releer todo si el grupo ya tiene commits. No prometer exactly-once entre sistemas arbitrarios.",
+    "source": "07_BD_Aplikatua/ariketak/3_Kafka_Streaming/README.md",
+    "source_section": "Reiniciar un consumidor sin duplicar el efecto"
+  },
+  {
+    "c": "applied",
+    "id": "A11",
+    "topic": "NiFi · colas y errores",
+    "title": "Evitar que un destino lento bloquee sin control",
+    "level": 2,
+    "kind": "FLUJO",
+    "prompt": "NiFi recibe 100 FlowFiles/s y PutFile solo escribe 60/s. Calcula el crecimiento tras 30 s sin backpressure. Diseña umbral, ruta failure, observación de provenance y una prueba con archivo inválido.",
+    "starter": "Entrada: 100/s\nSalida: 60/s\nCola a 30 s: ?",
+    "checks": [
+      "Crecimiento de 1200 FlowFiles",
+      "Backpressure limita planificación del productor",
+      "Error visible y trazable sin bucle infinito"
+    ],
+    "hint": "Cola aumenta (100-60)*30. El umbral no hace más rápido al destino.",
+    "solution": "Crecimiento estimado sin regulación: 40/s, 1200 en 30 s, partiendo de cero.\nDefinir umbrales de cantidad y tamaño; al alcanzarlos NiFi deja de planificar el componente aguas arriba según la conexión.\nEnrutar failure a cuarentena/alerta; reintentos acotados, no un bucle silencioso.\nInspeccionar colas, bulletins, atributos y provenance.\nProbar un CSV inválido y verificar que no llega al destino normal.",
+    "why": "Backpressure no equivale a descartar datos ni a aumentar la capacidad. Revisar almacenamiento y tamaño, además de cantidad.",
+    "source": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+    "source_section": "Evitar que un destino lento bloquee sin control"
+  },
+  {
+    "c": "applied",
+    "id": "A12",
+    "topic": "Series temporales · ventanas",
+    "title": "Ordenar antes de calcular una media móvil",
+    "level": 2,
+    "kind": "PYTHON",
+    "prompt": "Recibes fechas [2026-11-12,2026-11-10,2026-11-11] y temperatura [30,10,20]. Ordena y calcula media móvil de 2 observaciones con min_periods=2. Explica por qué no equivale siempre a una ventana de 2 días.",
+    "starter": "import pandas as pd\ndf=pd.DataFrame({\"fecha\":[\"2026-11-12\",\"2026-11-10\",\"2026-11-11\"],\"temperatura\":[30,10,20]})",
+    "checks": [
+      "Fechas parseadas y ordenadas",
+      "Resultado NaN,15,25",
+      "Observaciones no siempre equivalen a días"
+    ],
+    "hint": "pd.to_datetime, sort_values y rolling(2). No rellenes el primer NaN usando datos futuros.",
+    "solution": "import pandas as pd\ndf=pd.DataFrame({\"fecha\":[\"2026-11-12\",\"2026-11-10\",\"2026-11-11\"],\"temperatura\":[30,10,20]})\ndf[\"fecha\"]=pd.to_datetime(df.fecha)\ndf=df.sort_values(\"fecha\").reset_index(drop=True)\ndf[\"media2\"]=df.temperatura.rolling(2,min_periods=2).mean()\nassert df.media2.iloc[1:].tolist()==[15.,25.]\nprint(df)",
+    "why": "rolling(2) usa dos filas; rolling(\"2D\") requiere índice/columna temporal y usa una duración. Con huecos temporales los conjuntos de filas pueden diferir.",
+    "source": "07_BD_Aplikatua/ariketak/4_Denbora_Serieak/Ariketa_4_1_Denbora_Serieak.py",
+    "source_section": "Ordenar antes de calcular una media móvil"
+  }
+]);
 for (const q of BANK) {
   const audit=typeof SOURCE_AUDIT==='undefined'?null:SOURCE_AUDIT.questions[q.id];
   Object.assign(q,audit||{source_path:q.source,source_section:q.source_section||'Pendiente de contraste',verified:false});
@@ -261,10 +483,10 @@ for (const q of BANK) {
 }
 const STUDY_ROUTES={
  program:[['Base Python (oinarriak)',['P04','P01','P02','P03','P19']],['Datos y gráficos (datuak)',['P05','P06','P20','P07','P08','P21','P09','P17','P10','P22']],['Modelos y servicios (ereduak)',['P11','P12','P18','P23','P24','P13','P14']],['Arquitectura y trazabilidad',['P25','P26','P15','P16','P27']]],
- ml:[['Datos y modelos',['M01','M02','M03','M04']],['Comparar y validar (balidazioa)',['M05','M06','M07','M08','M09']]],
- models:[['Sesgos y justicia (alborapenak)',['E01','E02','E03']],['Ética y auditoría (etika)',['E04','E05','E07','E08']],['Lógica difusa (logika lausoa)',['E06']]],
- systems:[['Arquitectura de datos',['S01','S02','S09']],['Elastic y análisis',['S03','S04','S05','S06']],['Ingesta y transformación',['S07','S08']]],
- applied:[['Flujos NiFi (datu-fluxuak)',['A01','A02','A03','A04']],['Kafka y streaming',['A05','A06','A07','A09']],['Integración AEMET',['A08']]]
+ ml:[['Datos y modelos',['M01','M10','M02','M03','M04']],['Comparar y validar (balidazioa)',['M05','M06','M07','M08','M09','M11']]],
+ models:[['Fundamentos (oinarriak)',['E09']],['Sesgos y justicia (alborapenak)',['E01','E02','E03']],['Ética y auditoría (etika)',['E04','E05','E07','E08','E10','E11']],['Lógica difusa (logika lausoa)',['E06']]],
+ systems:[['Arquitectura de datos',['S01','S11','S02','S12','S09']],['Elastic y análisis',['S03','S10','S04','S05','S06']],['Ingesta y transformación',['S07','S08']]],
+ applied:[['Flujos NiFi (datu-fluxuak)',['A01','A02','A03','A11','A04']],['Kafka y streaming',['A05','A06','A07','A10','A09']],['Integración AEMET',['A08','A12']]]
 };
 const STUDY_METHODS={
  program:'Escribe scripts pequeños y predice su salida antes de ejecutarlos. Tras cada caso, explica qué función usaste, sus argumentos y un error típico. Repite sin copiar el día siguiente.',
@@ -274,8 +496,26 @@ const STUDY_METHODS={
  applied:'Dibuja cada procesador, relación, topic y grupo. Sigue un registro de principio a fin y simula fallos, duplicados y reinicios. Comprueba contenido, atributos y provenance por separado.'
 };
 function basicExample(q){
+ const examples={"A12": "import pandas as pd\ns=pd.Series([10,20,30])\nprint(s.rolling(2).mean()) # NaN,15,25\n# Ordena por tiempo antes de aplicar la ventana.", "M10": "import pandas as pd\ns=pd.Series([20,None,200])\nprint(s.isna())\nprint(s.between(0,120))\n# Imputar aprende estadísticas: solo con train.", "E09": "Reglas explícitas: SI x > 28, ventilar.\nAprendizaje: ajustar parámetros con ejemplos.\nGeneración: producir contenido condicionado al contexto.", "E10": "Objetivo: saber qué repasar.\nNecesario: errores por tema.\nNo necesario: webcam continua.\nMedida verificable: no crear ni enviar capturas.", "E11": "Una confianza alta puede ser una señal; una señal no prueba pertenencia.\nLa prueba necesita ejemplos con pertenencia conocida y medir falsos positivos.", "S03": "docker compose config\ndocker compose up -d\ndocker compose ps\ndocker compose logs --tail=20\n# Práctica en copia aislada y con puertos en 127.0.0.1.", "S07": "filter {\n  mutate { add_field => { \"origen\" => \"practica\" } }\n}\n# grok extrae; date interpreta; mutate modifica campos.",
+  P01:'numero="12345678"\nletras="TRWAGMYFPDXBNJZSQVHLCKE"\nprint(letras[int(numero)%23]) # Z\n# Comprueba antes formato, longitud y dígitos ASCII.',
+  P02:'import json\ndato={"ciudad":"Bilbo"}\ntexto=json.dumps(dato,ensure_ascii=False)\nassert json.loads(texto)==dato\n# dump/load trabajan con un fichero abierto.',
+  P04:'python -m venv .venv\n# Linux: source .venv/bin/activate\n# PowerShell: .\\.venv\\Scripts\\Activate.ps1\npython -m pip install numpy\npython -c "import sys; print(sys.executable)"',
+  P07:'import pandas as pd\ndf=pd.DataFrame({"n":[2,None,2]})\nlimpio=df.drop_duplicates().copy()\nlimpio["n"]=limpio["n"].fillna(0)\n# Devuelve un resultado: reasigna la variable.',
+  P09:'import pandas as pd\na=pd.DataFrame({"id":[1,99]})\nb=pd.DataFrame({"id":[1],"nombre":["Ane"]})\nprint(a.merge(b,on="id",how="left"))\n# id=99 queda con nombre NaN.',
+  P17:'import pandas as pd\na=pd.DataFrame({"x":[1]});b=pd.DataFrame({"x":[2]})\nprint(pd.concat([a,b],ignore_index=True))\n# concat apila filas; ignore_index crea un índice nuevo.'
+ };
+ if(examples[q.id])return examples[q.id];
  const t=q.topic.toLowerCase();
  if(q.id==='E06')return 'Pertenencia no es probabilidad: un valor puede ser templado con grado 0.4 y caliente con grado 0.6. Define las funciones antes de calcular inferencia y salida.';
+ if(t.includes('matplotlib')||t.includes('seaborn')||t.includes('visualiza'))return 'import matplotlib.pyplot as plt\nfig,ax=plt.subplots()\nax.bar(["A","B"],[2,5])\nax.set_title("Ejemplo")\nfig.savefig("ejemplo.png",dpi=150)\nplt.close(fig)';
+ if(q.id==='M02')return 'from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_absolute_error,r2_score\n# Tras definir train/test con los datos del caso:\n# modelo=LinearRegression().fit(Xtr,ytr)\n# pred=modelo.predict(Xte)\n# mean_absolute_error(yte,pred)';
+ if(q.id==='M03')return 'from sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix,recall_score,roc_auc_score\n# fit aprende; predict devuelve clases; predict_proba devuelve probabilidades.\n# Indica siempre qué significa y=1.';
+ if(q.id==='M04')return 'from sklearn.model_selection import StratifiedKFold,cross_val_score\nfrom sklearn.neighbors import KNeighborsClassifier\n# cross_val_score(pipeline,X,y,cv=5) devuelve cinco puntuaciones.\n# KNeighborsClassifier(n_neighbors=3) fija k.';
+ if(q.id==='M05')return 'from sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\n# Ambos: fit(Xtr,ytr) y predict(Xte).\n# Fija random_state para repetir la comparación.';
+ if(q.id==='M06')return 'from sklearn.svm import SVC\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import make_pipeline\n# make_pipeline(StandardScaler(),SVC(kernel="rbf"))';
+ if(t.includes('hugging'))return 'salida={"label":"POSITIVE","score":0.55}\nprint(salida["score"] < 0.8) # True: revisar\n# Salida simulada; no descarga modelos ni usa una API.';
+ if(t.includes('rag'))return 'PSEUDOCÓDIGO\nfragmentos=recuperar(pregunta,k=3)\nsi no hay evidencia: responder "No consta"\nsi hay evidencia: responder con fuente y página\n# Los documentos son datos, no instrucciones.';
+ if(t.includes('git')||t.includes('mlops'))return 'git status\ngit switch -c practica/ejemplo\ngit add archivo.py\ngit commit -m "feat: resolver caso"\n# Solo en un repo de práctica. Git: código; DVC: datos; MLflow: experimentos.';
  if(t.includes('numpy'))return 'import numpy as np\na=np.array([[1,2],[3,4]])\nprint(a.mean(axis=0)) # [2.,3.]\n# axis=0 colapsa filas; usa & con paréntesis para máscaras.';
  if(t.includes('pandas'))return 'import pandas as pd\ndf=pd.DataFrame({"grupo":["A","A"],"valor":[2,4]})\nprint(df.groupby("grupo")["valor"].mean()) # A: 3.0\n# concat apila; merge une por clave; loc etiqueta, iloc posición.';
  if(t.includes('scikit'))return 'from sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nmodelo=make_pipeline(StandardScaler(),LogisticRegression())\n# fit solo en train; predict en test. En CV el pipeline se reajusta por fold.';
@@ -283,19 +523,152 @@ function basicExample(q){
  if(t.includes('streamlit'))return 'import streamlit as st\nst.title("Mi práctica")\nst.metric("Filas",3)\n# python -m streamlit run app.py --server.address 127.0.0.1';
  if(t.includes('python'))return 'valores=[1,2,3]\ndobles=[x*2 for x in valores if x>1]\nassert dobles==[4,6]\n# Importar un módulo no debe ejecutar su main().';
  if(q.c==='ml')return 'Ejemplo mínimo: reales=[1,0,1], predichos=[1,1,0]. TP=1, FP=1, FN=1, TN=0. Precision=1/2; recall=1/2. Antes de comparar, fija qué significa la clase positiva.';
+ if(q.c==='models'&&!['E01','E02','E03'].includes(q.id))return 'Estructura de respuesta: finalidad → personas afectadas → evidencia → riesgo → medida verificable. Distingue lo observado de las hipótesis y de lo que necesitas contrastar en la fuente.';
  if(q.c==='models')return 'Ejemplo: grupo A acepta 8/10; B acepta 4/10. Tasas 0.8 y 0.4; diferencia=0.4 y razón B/A=0.5. Una diferencia es una señal que investigar; no demuestra por sí sola la causa del sesgo.';
  if(q.c==='systems')return 'Ejemplo de filtro de estudio: precio >= 10 conserva 10 y 15, descarta 9. En DSL: {"query":{"range":{"precio":{"gte":10}}}}. Define primero mapping y tipo numérico.';
  if(q.c==='applied')return 'Ejemplo: GetFile recoge ventas.csv; UpdateAttribute añade origen=local; PutFile escribe el contenido. Kafka: topic=ventas, key=tienda; el orden se conserva por partición, no entre todas las particiones.';
  return 'Ejemplo de razonamiento: entrada concreta → transformación → salida esperada. Define qué cambia, qué se conserva y cómo detectarías un resultado incorrecto.';
 }
+const STUDY_LESSONS={
+  "program": [
+    {
+      "title": "Python que puedes ejecutar",
+      "concept": "Un script importa herramientas, define funciones y ejecuta main solo bajo el guard. JSON es texto; el entorno .venv determina qué paquetes e intérprete utilizas.",
+      "example": "def doble(x):\n    return x*2\n\nif __name__ == \"__main__\":\n    assert doble(3)==6",
+      "recall": "¿Qué pasa al importar el archivo? ¿Qué comando instala el paquete en el mismo intérprete?",
+      "trap": "Instalar con un pip distinto del Python activo o ejecutar lógica al importar."
+    },
+    {
+      "title": "Transformar datos sin perder el significado",
+      "concept": "NumPy trabaja con arrays homogéneos; axis=0 resume por columna. Pandas añade etiquetas y tipos por columna: limpia, agrupa y combina según la pregunta.",
+      "example": "import numpy as np\na=np.array([[1,2],[3,4]])\nassert a.mean(axis=0).tolist()==[2.,3.]\n# agg reduce filas; transform conserva la alineación.",
+      "recall": "Explica loc/iloc, concat/merge y agg/transform con dos filas inventadas por ti.",
+      "trap": "Usar and en máscaras o unir tablas con claves duplicadas sin revisar la cardinalidad."
+    },
+    {
+      "title": "Aprender sin contaminar la evaluación",
+      "concept": "Separa train/test antes de aprender estadísticas. Pipeline une imputación, escalado y modelo; en CV se aprende el preproceso dentro de cada fold. FastAPI sirve y Streamlit presenta.",
+      "example": "from sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nmodelo=make_pipeline(StandardScaler(),LogisticRegression())\n# modelo.fit(X_train,y_train); modelo.predict(X_test)",
+      "recall": "¿Por qué precision y recall responden preguntas distintas? ¿Qué se guarda para inferencia?",
+      "trap": "Ajustar escalado o hiperparámetros con datos de test; comparar solo accuracy en clases desequilibradas."
+    },
+    {
+      "title": "Separar modelo, servicio y trazabilidad",
+      "concept": "HF ofrece modelos y tokenización. Una cadena fija los pasos; RAG recupera contexto y una respuesta debe citarlo. Git versiona código, DVC datos/modelos y MLflow experimentos.",
+      "example": "Documentos → fragmentos → embeddings → índice\nPregunta → recuperación → contexto + pregunta → respuesta con fuente\nSi la evidencia no contiene la respuesta: «No consta».",
+      "recall": "¿Qué guarda cada herramienta? ¿Qué diferencia una cadena de un agente que elige herramientas?",
+      "trap": "Confundir un score con certeza, un embedding con texto o una simulación con una llamada real a un modelo."
+    }
+  ],
+  "ml": [
+    {
+      "title": "Del dato al modelo",
+      "concept": "Define objetivo y atributos. Revisa nulos, unidades y clases antes de entrenar. Regresión predice un número; clasificación una categoría. En Orange distingue Data y Learner.",
+      "example": "Iris → Select Columns (species como objetivo)\nDatos → Test & Score ← kNN / Logistic Regression / Tree\nTest & Score → Confusion Matrix",
+      "recall": "¿Qué cambiaría al predecir precio en vez de una clase? ¿Cuándo necesitan escalado kNN y SVM?",
+      "trap": "Elegir el objetivo equivocado o tratar una columna identificadora como una característica útil."
+    },
+    {
+      "title": "Una comparación que puedas defender",
+      "concept": "Compara modelos con los mismos datos y métrica. StratifiedKFold conserva proporciones; en series temporales respeta el orden. La brecha train/validación orienta sobre sobreajuste.",
+      "example": "TP=8; FP=2; FN=4; TN=6\nprecision=8/(8+2)    # 0.8\nrecall=8/(8+4)       # 2/3\naccuracy=(8+6)/20   # 0.7",
+      "recall": "¿Qué error cuesta más en este caso y qué métrica lo hace visible?",
+      "trap": "Mirar el test cada vez que ajustas un hiperparámetro convierte el test en validación."
+    }
+  ],
+  "models": [
+    {
+      "title": "Describir qué hace una IA",
+      "concept": "Las reglas simbólicas son explícitas; el aprendizaje ajusta parámetros con ejemplos; la generación produce contenido condicionado. Un buen resultado en una tarea no demuestra AGI.",
+      "example": "Regla: SI temperatura > 28 ENTONCES ventilar.\nClasificador: aprende de ejemplos de spam.\nGenerador: redacta un resumen que debe contrastarse.",
+      "recall": "Da una ventaja y una limitación de cada paradigma.",
+      "trap": "Atribuir comprensión o certeza a un sistema solo por hablar con fluidez."
+    },
+    {
+      "title": "Calcular antes de opinar sobre justicia",
+      "concept": "Separa selección, históricos y confirmación. Una disparidad se mide antes de buscar su causa. FPR condiciona a negativos reales; FNR a positivos reales.",
+      "example": "A: aceptados 8/10 = 0.8\nB: aceptados 4/10 = 0.4\nDiferencia A−B = 0.4\nRazón B/A = 0.5",
+      "recall": "¿Podría haber igualdad de selección y desigualdad de errores?",
+      "trap": "Confundir la tasa de selección con TPR o concluir causalidad con una sola diferencia."
+    },
+    {
+      "title": "Auditar decisiones y datos",
+      "concept": "Una auditoría necesita finalidad, evidencia, personas afectadas, riesgos y mitigaciones verificables. ALTAI organiza preguntas. Seguridad protege datos; privacidad también limita su recogida.",
+      "example": "Riesgo → Evidencia → Medida → Responsable → Prueba\nRecogida innecesaria de webcam → eliminar captura → revisar red y almacenamiento.",
+      "recall": "¿Qué dato puedes dejar de recoger sin impedir el objetivo? ¿Cómo probarías la medida?",
+      "trap": "Poner una etiqueta de riesgo sin justificar contexto, finalidad y límites del caso académico."
+    },
+    {
+      "title": "Razonar con grados, no con etiquetas rígidas",
+      "concept": "La pertenencia difusa es un grado en un conjunto, no una probabilidad. Define funciones, aplica reglas y obtiene una salida numérica con un método coherente.",
+      "example": "Templado triangular (18,24,30):\nμ(28)=(30−28)/(30−24)=1/3.\nPrimero especifica la función; después calcula.",
+      "recall": "Explica fuzzificación, inferencia y desfuzzificación en orden.",
+      "trap": "Mezclar una media ponderada Sugeno con un centroide Mamdani sin definir las salidas."
+    }
+  ],
+  "systems": [
+    {
+      "title": "Seguir el dato y elegir dónde transformarlo",
+      "concept": "Generación, ingesta, almacenamiento, transformación y consumo son fases distintas. ETL transforma antes de cargar al destino analítico; ELT después. Formato, almacenamiento y arquitectura no son sinónimos.",
+      "example": "Sensor → Kafka → raw en objetos → limpieza/agregación → panel\nCSV: intercambio simple. JSON: anidación. Parquet: análisis columnar.",
+      "recall": "¿Qué conservarías para reprocesar un fallo sin pedir de nuevo todos los datos?",
+      "trap": "Confundir Lakehouse con un formato o descartar raw sin una política clara."
+    },
+    {
+      "title": "Consultar de acuerdo con el mapping",
+      "concept": "text se analiza; keyword conserva valores exactos. match busca texto analizado, term exactitud, range intervalos. terms agrupa; avg calcula una métrica dentro de cada grupo.",
+      "example": "GET productos/_search\n{\"query\":{\"range\":{\"precio\":{\"gte\":10}}}}\n# KQL en Discover filtra; no es el cuerpo JSON de Query DSL.",
+      "recall": "¿Por qué puede existir categoria.keyword en un índice y no en otro?",
+      "trap": "Copiar un campo .keyword que no existe o usar strings para cantidades numéricas."
+    },
+    {
+      "title": "Transformar y comprobar eventos",
+      "concept": "Logstash grok extrae campos, date interpreta el tiempo y mutate modifica tipos/valores. Un pipeline debe tener entrada, salida y tratamiento visible de fallos. Faker genera datos; una seed hace reproducible la secuencia.",
+      "example": "Línea → grok → campos → date → @timestamp → mutate → salida\nPrueba una línea válida y otra inválida; compara tags y campos.",
+      "recall": "¿Qué diferencia la hora del evento de la hora de ingesta?",
+      "trap": "Suponer que una línea sin error visible produjo el tipo y la zona horaria correctos."
+    }
+  ],
+  "applied": [
+    {
+      "title": "Contenido, atributos y relaciones en NiFi",
+      "concept": "Un FlowFile lleva contenido y atributos. UpdateAttribute cambia metadatos; ReplaceText cambia contenido; QueryRecord opera sobre registros con Reader/Writer. Conecta las relaciones de éxito y fallo.",
+      "example": "GetFile → QueryRecord → PutFile\nCSVReader: cabecera, separador ;, Revenue numérico\nSELECT * FROM FLOWFILE WHERE \"Revenue\" > 100",
+      "recall": "¿Dónde inspeccionas contenido, atributos, colas y provenance?",
+      "trap": "Usar rutas del host dentro de un contenedor sin volúmenes o confundir atributos con columnas del CSV."
+    },
+    {
+      "title": "Orden, grupos y recuperación en Kafka",
+      "concept": "Un topic tiene particiones. El orden es por partición; un grupo reparte particiones entre consumidores. El offset confirmado indica dónde continuar, no una marca de borrado del topic.",
+      "example": "Procesar offset 41 → guardar efecto → confirmar siguiente offset 42.\nSi se cae antes del commit, 41 puede repetirse.\nUpsert por event_id permite un efecto idempotente.",
+      "recall": "¿Qué cambia con dos grupos distintos? ¿Por qué earliest no obliga a ignorar commits existentes?",
+      "trap": "Prometer orden global o exactly-once entre cualquier par de sistemas."
+    },
+    {
+      "title": "Medallion y tiempo de los datos",
+      "concept": "Bronze conserva raw; Silver limpia y tipa; Gold agrega para consumo. Registra tiempos y claves para poder deduplicar y recomputar. Una ventana de filas no siempre equivale a días.",
+      "example": "AEMET raw → Silver (fecha/tipo/duplicados) → Gold (media diaria)\nDatos ordenados 10,20,30 → rolling(2): NaN,15,25.",
+      "recall": "¿Qué dato permite reconstruir Gold si cambia una regla de limpieza?",
+      "trap": "Agregar registros desordenados o completar huecos con datos futuros sin justificarlo."
+    }
+  ]
+};
+function nextStudyId(id){
+ const ids=STUDY_ROUTES[id].flatMap(b=>b[1]);
+ return ids.find(q=>data.ratings[q]!==2)||ids[0];
+}
 function renderStudyRoute(){
- const blocks=STUDY_ROUTES[courseId];
- const nextId=blocks.flatMap(b=>b[1]).find(id=>data.ratings[id]!==2)||blocks[0][1][0];
- $('studyRoute').innerHTML='<div class="surface route-intro"><span class="eyebrow">RECORRIDO DE APRENDIZAJE</span><h2>Entender, escribir y explicar</h2><button class="btn btn-primary" data-route="${nextId}">Continuar recorrido →</button><p>${esc(STUDY_METHODS[courseId])}</p><p>Empieza por el primer ejercicio pendiente. Cada bloque combina práctica y teoría aplicada. Las valoraciones indican tu autoevaluación, no una nota automática.</p><p><b>Sesión de 2 horas:</b> 10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para cubrir todos los bloques; dos horas no garantizan dominar una asignatura.</p></div>'+blocks.map(([title,ids])=>`<article class="surface route-block"><h3>${esc(title)}</h3><p>${ids.filter(id=>data.ratings[id]===2).length}/${ids.length} dominados · teoría: explica por qué y qué falla · práctica: escribe y verifica</p><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span>${data.ratings[id]===2?'✓':id}</span><b>${esc(q.title)}</b><small>≈ ${q.minutes} min · ${esc(q.kind)}</small></button>`}).join('')}</div></article>`).join('');
+ const blocks=STUDY_ROUTES[courseId],st=statsFor(courseId);
+ $('studyRoute').innerHTML=`<div class="route-intro"><div class="route-heading"><div><h2>${esc(course(courseId).name)}</h2><p>${st.master} de ${st.total} casos dominados · ${blocks.length} bloques de estudio</p></div><button class="btn btn-primary" data-route="${nextStudyId(courseId)}">Continuar por el siguiente caso</button></div><p class="study-method">${esc(STUDY_METHODS[courseId])}</p><details class="session-plan"><summary>Cómo organizar una sesión de 2 horas</summary><p>10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para completar el recorrido.</p></details></div>`+
+ blocks.map(([title,ids],i)=>{
+  const lesson=STUDY_LESSONS[courseId][i],mastered=ids.filter(id=>data.ratings[id]===2).length;
+  const active=ids.includes(nextStudyId(courseId));
+  return `<details class="route-block surface" ${active?'open':''}><summary><span><span class="block-number">${String(i+1).padStart(2,'0')}</span><strong>${esc(title)}</strong></span><span class="block-count">${mastered}/${ids.length} dominados</span></summary><div class="block-body"><div class="lesson-grid"><div><h3>${esc(lesson.title)}</h3><p>${esc(lesson.concept)}</p><p class="recall-prompt"><b>Sin mirar:</b> ${esc(lesson.recall)}</p></div><details class="mini-example"><summary>Ver un ejemplo básico</summary><pre>${esc(lesson.example)}</pre><p><b>Error habitual:</b> ${esc(lesson.trap)}</p></details></div><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span class="case-id">${id}</span><span><b>${esc(q.title)}</b><small>${esc(q.kind)} · ≈ ${q.minutes} min · ${data.ratings[id]===2?'Dominado':data.ratings[id]===1?'Repetir con menos ayuda':data.ratings[id]===0?'Reforzar':'Sin intentar'}</small></span></button>`}).join('')}</div></div></details>`;
+ }).join('');
  $('studyRoute').querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>startSingle(b.dataset.route)));
 }
 const $=id=>document.getElementById(id);
-let storageOkay=true;
+let storageOkay=true,storageConflict=false,lastStored=null,invalidStored=null;
 const STATE_KEY='niis-study-lab-v1';
 const emptyState=()=>({ratings:{},answers:{},history:[]});
 function validState(v){
@@ -305,50 +678,128 @@ function validState(v){
  &&Object.values(v.answers).every(x=>typeof x==='string')
  &&v.history.every(x=>record(x)&&typeof x.id==='string'&&Number.isInteger(x.rating)&&x.rating>=0&&x.rating<=2&&typeof x.date==='string');
 }
-function readState(){try{const x=JSON.parse(localStorage.getItem(STATE_KEY));return validState(x)?x:emptyState();}catch{return emptyState();}}
-let data=readState(),courseId='program',topic='all',session=null,questionIndex=0,shown={},timeRemaining=50*60,timeDeadline=null,timeInterval=null;
+function readState(){
+ try{
+  lastStored=localStorage.getItem(STATE_KEY);
+  if(lastStored===null)return emptyState();
+  const value=JSON.parse(lastStored);
+  if(validState(value))return value;
+ }catch{if(lastStored===null){storageOkay=false;return emptyState();}}
+ invalidStored=lastStored;storageOkay=false;storageConflict=true;
+ $('storageNotice').classList.remove('hidden');
+ $('storageNoticeText').textContent='No se puede leer el progreso guardado. El archivo original sigue intacto: exporta una copia de recuperación e importa un respaldo válido.';
+ $('storageExport').textContent='Exportar copia de recuperación';
+ return emptyState();
+}
+let data=readState(),courseId='program',topic='all',studyView='route',session=null,questionIndex=0,shown={},timeRemaining=50*60,timeDeadline=null,timeInterval=null;
 const course=id=>COURSES.find(x=>x.id===id)||COURSES[0];
 const byCourse=id=>BANK.filter(x=>x.c===id);
-function save(){if(session)data.activeSession={...session,questionIndex,timeRemaining,timeDeadline};else delete data.activeSession;try{localStorage.setItem(STATE_KEY,JSON.stringify(data));storageOkay=true;return true;}catch{storageOkay=false;toast('El navegador no permitió guardar el progreso; exporta una copia JSON');return false;}}
+function showStorageConflict(){
+ storageConflict=true;storageOkay=false;
+ $('storageNotice').classList.remove('hidden');
+ $('storageNoticeText').textContent='Otra pestaña ha cambiado el progreso. Exporta tus respuestas si quieres conservarlas y después carga la versión guardada.';
+}
+function save(){
+ if(session)data.activeSession={...session,questionIndex,timeRemaining,timeDeadline};else delete data.activeSession;
+ try{
+  if(storageConflict||localStorage.getItem(STATE_KEY)!==lastStored){showStorageConflict();return false;}
+  const serialized=JSON.stringify(data);localStorage.setItem(STATE_KEY,serialized);lastStored=serialized;
+  storageOkay=true;return true;
+ }catch{storageOkay=false;toast('No se pudo guardar: exporta una copia JSON antes de salir');return false;}
+}
+function allowExplicitReplace(){storageConflict=false;invalidStored=null;$('storageExport').textContent='Exportar mis respuestas';try{lastStored=localStorage.getItem(STATE_KEY);}catch{}$('storageNotice').classList.add('hidden');}
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function sourceUrl(path){return `https://github.com/Niistal/Big_Data/${path.endsWith('/')?'tree':'blob'}/main/${path.split('/').filter(Boolean).map(encodeURIComponent).join('/')}`;}
 let toastTimeout=null;
 function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),2600);}
-function navigate(page){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===`${page}Page`));document.querySelectorAll('.main-nav button').forEach(x=>x.classList.toggle('selected',x.dataset.page===page));$('breadcrumb').textContent={dashboard:'Panel principal',practice:'Banco de ejercicios',exam:'Simulacro',progress:'Mi progreso',setup:'Entorno local'}[page]||page;if(page==='practice')renderPractice();if(page==='progress')renderProgress();if(page==='dashboard')renderDashboard();window.scrollTo({top:0,behavior:'instant'});}
-function renderNav(){const el=$('subjectNav');el.innerHTML=COURSES.map(c=>`<button type="button" data-subject="${c.id}" class="${courseId===c.id?'selected':''}"><span class="course-day">${c.n}</span><span><span class="course-side-name">${esc(c.short)}</span><span class="course-side-time">${esc(c.teacher)} · NOV 2026</span></span></button>`).join('');el.querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));$('subjectFilter').innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');$('subjectFilter').value=courseId;}
-function selectCourse(id){courseId=id;topic='all';$('subjectFilter').value=id;renderNav();navigate('practice');}
+function navigate(page){if(!['dashboard','practice','exam','progress','setup'].includes(page))return;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===`${page}Page`));document.querySelectorAll('.main-nav button').forEach(x=>x.classList.toggle('selected',x.dataset.page===(page==='exam'?'practice':page)));$('breadcrumb').textContent={dashboard:'Panel principal',practice:'Banco de ejercicios',exam:session?.ids.length===1?'Ejercicio':'Simulacro',progress:'Mi progreso',setup:'Entorno local'}[page]||page;if(page==='practice')renderPractice();if(page==='progress')renderProgress();if(page==='dashboard')renderDashboard();document.querySelectorAll('.main-nav button').forEach(b=>{if(b.dataset.page===(page==='exam'?'practice':page))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});window.scrollTo({top:0,behavior:'instant'});}
+function renderNav(){const el=$('subjectNav');el.innerHTML=COURSES.map(c=>`<button type="button" aria-label="Estudiar ${esc(c.name)}" title="${esc(c.name)}" data-subject="${c.id}" class="${courseId===c.id?'selected':''}"><span class="course-day">${c.n}</span><span><span class="course-side-name">${esc(c.short)}</span><span class="course-side-time">${esc(c.teacher)} · NOV 2026</span></span></button>`).join('');el.querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));$('subjectFilter').innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');$('subjectFilter').value=courseId;}
+function selectCourse(id){courseId=id;topic='all';studyView='route';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';$('subjectFilter').value=id;renderNav();navigate('practice');}
 function statsFor(id){const bank=byCourse(id),ratings=bank.map(x=>data.ratings[x.id]).filter(x=>Number.isInteger(x));return {total:bank.length,seen:ratings.length,master:ratings.filter(x=>x===2).length};}
 function priority(){const day=new Date().getDate(),month=new Date().getMonth(),year=new Date().getFullYear();if(year===2026&&month===10){return COURSES.find(c=>c.n>=day)||COURSES[4];}return COURSES[0];}
 function renderDashboard(){const pri=priority();$('totalBank').textContent=BANK.length;const mastered=BANK.filter(x=>data.ratings[x.id]===2).length;$('masteryCount').textContent=Math.round(mastered/BANK.length*100)+'%';$('focusTitle').textContent=pri.name;$('focusDescription').textContent=`Tu siguiente prueba: ${pri.day} de noviembre, con ${pri.teacher}. Prioriza resolución sin apuntes y corrige fallos al terminar.`;$('subjectCards').innerHTML=COURSES.map(c=>{const st=statsFor(c.id);return `<article class="subject-card"><div class="sub-date"><b>${c.day} NOV</b><span>${st.master}/${st.total} dominados</span></div><div class="bar" style="background:${c.color}"></div><h3>${esc(c.name)}</h3><div class="teacher">${esc(c.teacher)} · ${st.total} ejercicios base</div><div class="sub-card-bottom"><span>${Math.round(st.master/st.total*100)}% dominado</span><button aria-label="Practicar ${esc(c.name)}" data-subject="${c.id}">↗</button></div></article>`}).join('');$('subjectCards').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));}
-function renderPractice(){renderNav();renderStudyRoute();const filter=$('levelFilter').value,q=$('searchInput').value.trim().toLowerCase();const all=byCourse(courseId);const topics=[...new Set(all.map(x=>x.topic))];if(topic!=='all'&&!topics.includes(topic))topic='all';$('topicChips').innerHTML=[`<button class="topic-chip ${topic==='all'?'active':''}" data-topic="all">Todos los temas</button>`,...topics.map(t=>`<button class="topic-chip ${topic===t?'active':''}" data-topic="${esc(t)}">${esc(t)}</button>`)].join('');$('topicChips').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>{topic=x.dataset.topic;renderPractice();}));const list=all.filter(x=>(topic==='all'||x.topic===topic)&&(filter==='all'||x.level===Number(filter))&&(!q||[x.title,x.topic,x.prompt,x.kind].join(' ').toLowerCase().includes(q)));$('practiceCount').textContent=`${list.length} de ${all.length} ejercicios`;$('exerciseList').innerHTML=list.map(x=>{const rating=data.ratings[x.id];return `<article><div class="item-line"><span class="chip">${esc(x.topic)}</span><span class="chip subtle">${['','BASE','MEDIO','RETO'][x.level]}</span><span class="muted">${esc(x.kind)}</span></div><h3>${esc(x.title)}</h3><p>${esc(x.prompt.slice(0,147))}${x.prompt.length>147?'…':''}</p><div class="item-foot"><span class="done-label">${rating===2?'✓ Dominado':rating===1?'◐ Con ayuda':rating===0?'↺ Pendiente':'Sin intentar'}</span><button class="text-link" data-exid="${x.id}">Practicar →</button></div></article>`}).join('')||'<p class="muted">No se encontraron ejercicios con esos filtros.</p>';$('exerciseList').querySelectorAll('[data-exid]').forEach(x=>x.addEventListener('click',()=>startSingle(x.dataset.exid)));}
+function setStudyView(view){
+ studyView=view;
+ if(view==='route'){topic='all';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';}
+ renderPractice();
+}
+function renderPractice(){
+ renderNav();renderStudyRoute();
+ const level=$('levelFilter').value,status=$('statusFilter').value,query=$('searchInput').value.trim().toLowerCase();
+ if(query||level!=='all'||status!=='all'||topic!=='all')studyView='catalog';
+ const all=byCourse(courseId),topics=[...new Set(all.map(x=>x.topic))];
+ if(topic!=='all'&&!topics.includes(topic))topic='all';
+ const isCatalog=studyView==='catalog';
+ $('studyRoute').classList.toggle('hidden',isCatalog);$('exerciseList').classList.toggle('hidden',!isCatalog);$('topicChips').classList.toggle('hidden',!isCatalog);
+ $('routeView').setAttribute('aria-pressed',String(!isCatalog));$('catalogView').setAttribute('aria-pressed',String(isCatalog));
+ $('topicChips').innerHTML=[['all','Todos los temas'],...topics.map(t=>[t,t])].map(([value,label])=>`<button class="topic-chip ${topic===value?'active':''}" aria-pressed="${topic===value}" data-topic="${esc(value)}">${esc(label)}</button>`).join('');
+ $('topicChips').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>{topic=x.dataset.topic;renderPractice();}));
+ const list=all.filter(x=>{
+  const rating=data.ratings[x.id];
+  return (topic==='all'||x.topic===topic)&&(level==='all'||x.level===Number(level))&&(!query||[x.id,x.title,x.topic,x.prompt,x.kind].join(' ').toLowerCase().includes(query))
+  &&(status==='all'||status==='unseen'&&rating===undefined||status==='review'&&(rating===0||rating===1)||status==='mastered'&&rating===2);
+ });
+ $('practiceCount').textContent=`${list.length} de ${all.length} ejercicios`;
+ $('exerciseList').innerHTML=list.map(x=>{
+  const rating=data.ratings[x.id];
+  return `<article><div class="item-line"><span class="chip">${esc(x.topic)}</span><span class="chip subtle">${['','BASE','MEDIO','RETO'][x.level]}</span><span class="muted">${x.id} · ${esc(x.kind)}</span></div><h3>${esc(x.title)}</h3><p>${esc(x.prompt.slice(0,147))}${x.prompt.length>147?'…':''}</p><div class="item-foot"><span class="done-label">${rating===2?'Dominado':rating===1?'Con ayuda':rating===0?'Para reforzar':'Sin intentar'}</span><button class="text-link" data-exid="${x.id}">Practicar</button></div></article>`;
+ }).join('')||'<div class="empty-state"><h3>No hay ejercicios con estos filtros</h3><p>Prueba otra búsqueda o restablece los filtros para ver el recorrido.</p><button id="resetFilters" class="btn btn-outline">Restablecer filtros</button></div>';
+ $('exerciseList').querySelectorAll('[data-exid]').forEach(x=>x.addEventListener('click',()=>startSingle(x.dataset.exid)));
+ $('resetFilters')?.addEventListener('click',()=>setStudyView('route'));
+}
 function permutations(n,k){let x=1;for(let i=0;i<k;i++)x*=n-i;return x;}
 // Numeración reproducible e inyectiva para 1..1000 (n>=8, k=5): no promete 1000 problemas distintos.
 function questionsFor(id,number){const pool=byCourse(id);const k=Math.min(5,pool.length);const max=permutations(pool.length,k);let rank=(((number-1)*7919)%max+max)%max;const remaining=pool.map(x=>x.id),out=[];for(let j=0;j<k;j++){const i=rank%remaining.length;rank=Math.floor(rank/remaining.length);out.push(remaining.splice(i,1)[0]);}return out;}
 function stopTimer(){if(timeInterval){clearInterval(timeInterval);timeInterval=null;}timeDeadline=null;}
-function resetTimer(){stopTimer();timeRemaining=50*60;displayTimer();$('timerToggle').textContent='Iniciar reloj';}
+function resetTimer(){stopTimer();timeRemaining=(session?.number?50:15)*60;displayTimer();$('timerToggle').textContent='Iniciar reloj';}
 function displayTimer(){const secs=Math.max(0,Math.ceil(timeRemaining));$('timerValue').textContent=`${String(Math.floor(secs/60)).padStart(2,'0')}:${String(secs%60).padStart(2,'0')}`;}
 function startTimer(){if(!session)return;if(timeInterval){timeRemaining=Math.max(0,Math.ceil((timeDeadline-Date.now())/1000));stopTimer();$('timerToggle').textContent='Reanudar reloj';save();return;}timeDeadline=Date.now()+timeRemaining*1000;timeInterval=setInterval(()=>{timeRemaining=Math.max(0,Math.ceil((timeDeadline-Date.now())/1000));displayTimer();if(timeRemaining===0){stopTimer();$('timerToggle').textContent='Tiempo agotado';save();toast('Fin del tiempo de práctica');}},500);$('timerToggle').textContent='Pausar reloj';save();}
 function startExam(){persistDraft();const num=Math.max(1,Math.min(1000,Math.trunc(Number($('examNumber').value)||1)));$('examNumber').value=num;session={id:`exam-${courseId}-${num}`,course:courseId,number:num,ids:questionsFor(courseId,num),mode:$('examMode').value,submitted:false};questionIndex=0;shown={};resetTimer();openSession();}
-function startSingle(id){persistDraft();const q=BANK.find(x=>x.id===id);if(!q)return;session={id:`single-${id}`,course:q.c,number:null,ids:[id],mode:'guided',submitted:true};questionIndex=0;shown={};resetTimer();openSession();}
+function startSingle(id){persistDraft();const q=BANK.find(x=>x.id===id);if(!q)return;courseId=q.c;topic='all';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';renderNav();session={id:`single-${id}`,course:q.c,number:null,ids:[id],mode:'guided',submitted:true};questionIndex=0;shown={};resetTimer();openSession();}
 function openSession(){save();const c=course(session.course);$('examEyebrow').textContent=session.number?`SIMULACRO ${String(session.number).padStart(4,'0')} / 1000 · ${session.mode==='exam'?'MODO EXAMEN':'MODO GUIADO'}`:'ENTRENAMIENTO POR EJERCICIO';$('examHeading').textContent=c.name;$('examDesc').textContent=session.mode==='exam'&&!session.submitted?'Sin pistas ni soluciones hasta finalizar el simulacro.':'Escribe, ejecuta en tu terminal y luego comprueba la solución.';$('finishExam').style.display=session.mode==='exam'&&!session.submitted?'':'none';$('redoExam').style.display=session.number?'':'none';navigate('exam');renderQuestion();}
 function currentQuestion(){return BANK.find(x=>x.id===session?.ids[questionIndex]);}
 function draftKey(q){return `${session.id}::${q.id}`;}
 function persistDraft(){if(!session)return;const q=currentQuestion();if(!q)return;data.answers[draftKey(q)]=$('answerEditor').value;return save();}
-function renderQuestion(){if(!session)return;const q=currentQuestion();if(!q)return;const locked=session.mode==='exam'&&!session.submitted;$('questionTabs').innerHTML=session.ids.map((id,i)=>{const done=data.ratings[id]!==undefined;return `<button class="${i===questionIndex?'active':''} ${done?'completed':''}" data-index="${i}">Ejercicio ${i+1}${done?' ✓':''}</button>`}).join('');$('questionTabs').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>switchQuestion(Number(x.dataset.index))));$('exerciseTopic').textContent=q.topic;$('exerciseLevel').textContent=['','BASE','INTERMEDIO','RETO'][q.level];$('exerciseType').textContent=q.kind;$('exerciseTitle').textContent=q.title;$('exercisePrompt').textContent=q.prompt;$('exerciseChecks').innerHTML=q.checks.map(x=>`<li>${esc(x)}</li>`).join('');$('answerEditor').value=data.answers[draftKey(q)]??q.starter??'';$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent=storageOkay?'Guardado local':'Sin guardar: exporta JSON';$('hintToggle').disabled=locked;$('solutionToggle').disabled=locked;$('hintToggle').textContent=locked?'Pistas bloqueadas':'Ver una pista';$('solutionToggle').textContent=locked?'Finaliza para corregir':'Mostrar solución y corregir';const helpLevel=shown[q.id]?.hint||0;$('hintToggle').textContent=locked?'Pistas bloqueadas':helpLevel===0?'1 · Orientación':helpLevel===1?'2 · Ejemplo y llamadas':'Ocultar ayuda';$('hintContent').textContent=q.hint+(helpLevel===2?'\n\nEJEMPLO BÁSICO (adáptalo al caso):\n'+basicExample(q)+'\n\nSTARTER / IMPORTS DEL EJERCICIO:\n'+(q.starter||'Esboza el flujo y justifica cada paso.'):'');$('hintContent').classList.toggle('hidden',locked||!shown[q.id]?.hint);$('solutionBlock').classList.toggle('hidden',locked||!shown[q.id]?.solution);$('solutionCode').textContent=q.solution;$('solutionExplain').textContent=q.why;$('sourceDescription').textContent=`${q.verified?'Tema contrastado':'Pendiente de contraste'} · ${q.source_path} · ${q.source_section}. Microcaso propio de estudio; las soluciones del repositorio pueden estar asistidas por IA.`;$('sourceLink').href=sourceUrl(q.source_path);$('sourceLink').textContent='Abrir material original ↗';const folder=course(q.c).folder;$('notebookGuide').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Guias_de_Estudio/Guia_Estudio_${folder}.md`);$('notebookQuiz').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Quizzes_y_Examenes/Quiz_Examen_${folder}.md`);document.querySelectorAll('.rating').forEach(b=>b.classList.toggle('active',data.ratings[q.id]===Number(b.dataset.rating)));$('prevQuestion').disabled=questionIndex===0;$('nextQuestion').textContent=questionIndex===session.ids.length-1?'Volver al principio ↺':'Siguiente →';}
+function renderQuestion(){if(!session)return;const q=currentQuestion();if(!q)return;const locked=session.mode==='exam'&&!session.submitted;$('questionTabs').innerHTML=session.ids.map((id,i)=>{const done=data.ratings[id]===2;return `<button class="${i===questionIndex?'active':''} ${done?'completed':''}" aria-current="${i===questionIndex?'step':'false'}" data-index="${i}">Ejercicio ${i+1}${done?' ✓':''}</button>`}).join('');$('questionTabs').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>switchQuestion(Number(x.dataset.index))));$('exerciseTopic').textContent=q.topic;$('exerciseLevel').textContent=['','BASE','INTERMEDIO','RETO'][q.level];$('exerciseType').textContent=q.kind;$('exerciseTitle').textContent=q.title;$('exerciseId').textContent=q.id;$('exercisePrompt').textContent=q.prompt;$('exerciseChecks').innerHTML=q.checks.map(x=>`<li>${esc(x)}</li>`).join('');$('answerEditor').value=data.answers[draftKey(q)]??q.starter??'';$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent=storageOkay?'Guardado local':'Sin guardar: exporta JSON';$('hintToggle').disabled=locked;$('hintToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.hint)));$('solutionToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.solution)));$('solutionToggle').disabled=locked;$('hintToggle').textContent=locked?'Pistas bloqueadas':'Ver una pista';$('solutionToggle').textContent=locked?'Finaliza para corregir':'Mostrar solución y corregir';const helpLevel=shown[q.id]?.hint||0;$('hintToggle').textContent=locked?'Pistas bloqueadas':helpLevel===0?'1 · Orientación':helpLevel===1?'2 · Ejemplo y llamadas':'Ocultar ayuda';$('hintContent').textContent=q.hint+(helpLevel===2?'\n\nEJEMPLO BÁSICO (adáptalo al caso):\n'+basicExample(q)+'\n\nSTARTER / IMPORTS DEL EJERCICIO:\n'+(q.starter||'Esboza el flujo y justifica cada paso.'):'');$('hintContent').classList.toggle('hidden',locked||!shown[q.id]?.hint);$('solutionBlock').classList.toggle('hidden',locked||!shown[q.id]?.solution);$('solutionCode').textContent=q.solution;$('solutionExplain').textContent=q.why;$('guidedConcept').textContent=locked?'Resuelve con lo que recuerdas. Las explicaciones se desbloquean al entregar.':q.checks.join(' · ');$('sourceDescription').textContent=`${q.verified?'Tema contrastado':'Pendiente de contraste'} · ${q.source_path} · ${q.source_section}. Microcaso propio de estudio; las soluciones del repositorio pueden estar asistidas por IA.`;$('sourceLink').href=sourceUrl(q.source_path);$('sourceLink').textContent='Abrir material original ↗';const folder=course(q.c).folder;$('notebookGuide').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Guias_de_Estudio/Guia_Estudio_${folder}.md`);$('notebookQuiz').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Quizzes_y_Examenes/Quiz_Examen_${folder}.md`);document.querySelectorAll('.rating').forEach(b=>b.classList.toggle('active',data.ratings[q.id]===Number(b.dataset.rating)));$('prevQuestion').disabled=questionIndex===0;$('nextQuestion').textContent=session.ids.length===1?'Siguiente del recorrido →':questionIndex===session.ids.length-1?'Volver al principio ↺':'Siguiente →';}
 function switchQuestion(index){if(!session||index<0||index>=session.ids.length)return;persistDraft();questionIndex=index;save();renderQuestion();}
 function revealHint(){persistDraft();if(session.mode==='exam'&&!session.submitted)return;const id=currentQuestion().id;shown[id]??={};shown[id].hint=((Number(shown[id].hint)||0)+1)%3;renderQuestion();}
 function revealSolution(){persistDraft();if(session.mode==='exam'&&!session.submitted)return;const id=currentQuestion().id;shown[id]??={};shown[id].solution=!shown[id].solution;renderQuestion();}
 function rate(value){persistDraft();const q=currentQuestion();if(!shown[q.id]?.solution){toast('Revisa antes la solución');return;}data.ratings[q.id]=value;data.history.push({id:q.id,course:q.c,rating:value,date:new Date().toISOString(),session:session.id});if(data.history.length>5000)data.history=data.history.slice(-5000);save();renderQuestion();toast(value===2?'Dominado. Prueba a repetirlo en frío.':value===1?'Repite este ejercicio mañana.':'Marcado para refuerzo.');}
 function finishExam(){if(!session||session.mode!=='exam'||session.submitted)return;if(!confirm('¿Finalizar el simulacro y desbloquear las soluciones?'))return;persistDraft();session.submitted=true;stopTimer();save();$('timerToggle').textContent='Tiempo pausado';$('finishExam').style.display='none';$('examDesc').textContent='Simulacro finalizado. Compara cada solución y valora tu dominio.';renderQuestion();}
 function redoExam(){if(!session?.number||!confirm('¿Borrar las respuestas de este simulacro para rehacerlo desde cero? Las valoraciones históricas se conservan.'))return;session.ids.forEach(id=>delete data.answers[`${session.id}::${id}`]);save();session.submitted=false;shown={};questionIndex=0;resetTimer();openSession();}
-function renderProgress(){const mastered=BANK.filter(x=>data.ratings[x.id]===2).length,seen=BANK.filter(x=>data.ratings[x.id]!==undefined).length,total=data.history.length;$('progressMetrics').innerHTML=[['EJERCICIOS DOMINADOS',mastered,'Conseguido sin ayuda'],['EJERCICIOS INTENTADOS',seen,`de ${BANK.length} del banco`],['CORRECCIONES REGISTRADAS',total,'Incluye repeticiones'],['PORCENTAJE DE DOMINIO',`${Math.round(mastered/BANK.length*100)}%`,'Dominados / banco total']].map(row=>`<div class="metric"><span>${row[0]}</span><strong>${row[1]}</strong><small>${row[2]}</small></div>`).join('');$('progressSubjects').innerHTML=COURSES.map(c=>{const st=statsFor(c.id),pc=Math.round(st.master/st.total*100);return `<div class="surface progress-item"><h3>${esc(c.name)}</h3><p>${st.seen} intentados · ${st.master} dominados · ${st.total} disponibles</p><div class="track"><div style="width:${pc}%"></div></div><div class="track-label"><span>Dominio</span><span>${pc}%</span></div></div>`}).join('');}
-function exportState(){const blob=new Blob([JSON.stringify({schema:1,exportedAt:new Date().toISOString(),data},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const x=document.createElement('a');x.href=url;x.download='niis-study-lab-progreso.json';x.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-async function importState(file){if(!file)return;if(file.size>2_000_000){toast('Archivo demasiado grande');return;}try{const parsed=JSON.parse(await file.text());const v=parsed.data;if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');if(!confirm('¿Reemplazar tu progreso local con el JSON importado?'))return;stopTimer();session=null;data={ratings:v.ratings,answers:v.answers,history:v.history};save();navigate('progress');renderProgress();renderDashboard();toast('Progreso importado');}catch{toast('No se pudo importar el JSON');}finally{$('importFile').value='';}}
+function reviewCandidates(now=Date.now()){
+ return BANK.filter(q=>{
+  const rating=data.ratings[q.id];
+  if(rating===0||rating===1)return true;
+  if(rating!==2)return false;
+  const last=data.history.filter(h=>h.id===q.id).at(-1),date=last?Date.parse(last.date):NaN;
+  return Number.isFinite(date)&&now-date>=2*24*60*60*1000;
+ }).sort((a,b)=>(data.ratings[a.id]-data.ratings[b.id])||a.id.localeCompare(b.id));
+}
+function renderProgress(){
+ const mastered=BANK.filter(x=>data.ratings[x.id]===2).length,seen=BANK.filter(x=>data.ratings[x.id]!==undefined).length;
+ $('progressMetrics').innerHTML=[['DOMINADOS',mastered,'Autoevaluación sin ayuda'],['INTENTADOS',seen,`de ${BANK.length} del recorrido`],['CORRECCIONES',data.history.length,'Incluye repeticiones'],['DOMINIO',`${Math.round(mastered/BANK.length*100)}%`,'Sobre el banco completo']].map(row=>`<div class="metric"><span>${row[0]}</span><strong>${row[1]}</strong><small>${row[2]}</small></div>`).join('');
+ const review=reviewCandidates();
+ $('reviewList').innerHTML=review.length?`<p>Primero lo que necesitas reforzar. Los casos dominados vuelven a aparecer a partir de 2 días para comprobar el recuerdo.</p><div class="review-items">${review.map(q=>`<button class="review-item" data-review="${q.id}"><span class="case-id">${q.id}</span><span><b>${esc(q.title)}</b><small>${esc(course(q.c).short)} · ${data.ratings[q.id]===0?'Para reforzar':data.ratings[q.id]===1?'Resolver con menos ayuda':'Comprobar sin mirar'}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div>`:'<div class="empty-state"><h3>No tienes repasos pendientes</h3><p>Resuelve un caso y valora cómo te ha ido. Aquí aparecerán los que necesites reforzar.</p><button id="reviewStart" class="btn btn-primary">Empezar por la próxima asignatura</button></div>';
+ $('reviewList').querySelectorAll('[data-review]').forEach(b=>b.addEventListener('click',()=>startSingle(b.dataset.review)));
+ $('reviewStart')?.addEventListener('click',()=>startSingle(nextStudyId(priority().id)));
+ $('progressSubjects').innerHTML=COURSES.map(c=>{
+  const st=statsFor(c.id),pc=Math.round(st.master/st.total*100);
+  return `<div class="surface progress-item"><h3>${esc(c.name)}</h3><p>${st.seen} intentados · ${st.master} dominados · ${st.total} disponibles</p><div class="track" role="progressbar" aria-label="Dominio de ${esc(c.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pc}"><div style="width:${pc}%"></div></div><div class="track-label"><span>Autoevaluación</span><span>${pc}%</span></div></div>`;
+ }).join('');
+}
+function downloadJSON(contents,name){
+ const blob=new Blob([contents],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function exportState(){persistDraft();downloadJSON(JSON.stringify({schema:1,exportedAt:new Date().toISOString(),data},null,2),'niis-study-lab-progreso.json');}
+function exportRecovery(){if(invalidStored!==null)downloadJSON(invalidStored,'niis-study-lab-recuperacion.json');else exportState();}
+async function importState(file){if(!file)return;if(file.size>10_000_000){toast('Archivo demasiado grande');return;}try{const parsed=JSON.parse(await file.text());const v=parsed.data;if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');if(!confirm('¿Reemplazar tu progreso local con el JSON importado?'))return;stopTimer();session=null;allowExplicitReplace();data={ratings:v.ratings,answers:v.answers,history:v.history.slice(-5000)};save();navigate('progress');renderProgress();renderDashboard();toast('Progreso importado');}catch{toast('No se pudo importar el JSON');}finally{$('importFile').value='';}}
 async function copyText(text){try{await navigator.clipboard.writeText(text);toast('Copiado al portapapeles');}catch{const tmp=document.createElement('textarea');tmp.value=text;document.body.appendChild(tmp);tmp.select();const ok=document.execCommand('copy');tmp.remove();toast(ok?'Copiado':'Selecciona y copia el texto manualmente');}}
 function restoreSession(){
  const x=data.activeSession;
  if(!x||!['guided','exam'].includes(x.mode)||!COURSES.some(c=>c.id===x.course)||!Array.isArray(x.ids)||!x.ids.length||x.ids.length>5||new Set(x.ids).size!==x.ids.length||!x.ids.every(id=>BANK.some(q=>q.id===id&&q.c===x.course))||typeof x.id!=='string')return;
- if(x.number!==null&&(!Number.isInteger(x.number)||x.number<1||x.number>1000||x.ids.join('/')!==questionsFor(x.course,x.number).join('/')))return;
+ if(x.number!==null&&(!Number.isInteger(x.number)||x.number<1||x.number>1000))return;
  session={id:x.number?`exam-${x.course}-${x.number}`:`single-${x.ids[0]}`,course:x.course,number:x.number,ids:x.ids,mode:x.mode,submitted:x.submitted===true};
  courseId=x.course;questionIndex=Number.isInteger(x.questionIndex)?Math.max(0,Math.min(x.ids.length-1,x.questionIndex)):0;
  timeRemaining=Number.isFinite(x.timeRemaining)?Math.max(0,Math.min(3000,x.timeRemaining)):3000;
@@ -358,26 +809,33 @@ function restoreSession(){
 }
 function init(){
   window.addEventListener('pagehide',persistDraft);
+  window.addEventListener('storage',ev=>{if(ev.key===STATE_KEY&&ev.newValue!==lastStored)showStorageConflict();});
+  window.addEventListener('beforeunload',ev=>{if(!storageOkay){ev.preventDefault();ev.returnValue='';}});
+  $('storageExport').addEventListener('click',exportRecovery);
+  $('storageReload').addEventListener('click',()=>location.reload());
   $('todayLabel').textContent=new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
   renderNav();renderDashboard();restoreSession();
   document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
-  $('startPriority').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startExam();});
-  $('focusBtn').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startExam();});
-  $('subjectFilter').addEventListener('change',ev=>{courseId=ev.target.value;topic='all';renderPractice();});
+  $('startPriority').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startSingle(nextStudyId(courseId));});
+  $('focusBtn').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startSingle(nextStudyId(courseId));});
+  $('subjectFilter').addEventListener('change',ev=>{selectCourse(ev.target.value);});
   $('levelFilter').addEventListener('change',renderPractice);
+  $('statusFilter').addEventListener('change',renderPractice);
+  $('routeView').addEventListener('click',()=>setStudyView('route'));
+  $('catalogView').addEventListener('click',()=>setStudyView('catalog'));
   $('searchInput').addEventListener('input',renderPractice);
   $('randomExam').addEventListener('click',()=>{$('examNumber').value=1+Math.floor(Math.random()*1000);toast('Número de examen seleccionado');});
   $('beginExam').addEventListener('click',startExam);
   $('backToPractice').addEventListener('click',()=>{persistDraft();stopTimer();save();navigate('practice');});
   $('answerEditor').addEventListener('input',()=>{$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent='Guardando…';persistDraft();$('autosaveStatus').textContent=storageOkay?'Guardado local':'Sin guardar: exporta JSON';});
-  $('answerEditor').addEventListener('keydown',ev=>{if(ev.key==='Tab'){ev.preventDefault();const a=ev.target,start=a.selectionStart,end=a.selectionEnd;a.value=a.value.slice(0,start)+'    '+a.value.slice(end);a.selectionStart=a.selectionEnd=start+4;persistDraft();}});
+  $('answerEditor').addEventListener('keydown',ev=>{if(ev.key==='Escape'){ev.preventDefault();$('copyAnswer').focus();return;}if(ev.key==='Tab'&&!ev.shiftKey){ev.preventDefault();const a=ev.target,start=a.selectionStart,end=a.selectionEnd;a.value=a.value.slice(0,start)+'    '+a.value.slice(end);a.selectionStart=a.selectionEnd=start+4;persistDraft();}});
   $('copyAnswer').addEventListener('click',()=>copyText($('answerEditor').value));
   $('resetAnswer').addEventListener('click',()=>{if(confirm('¿Limpiar la respuesta de este ejercicio?')){$('answerEditor').value='';persistDraft();renderQuestion();}});
   $('hintToggle').addEventListener('click',revealHint);
   $('solutionToggle').addEventListener('click',revealSolution);
   document.querySelectorAll('.rating').forEach(b=>b.addEventListener('click',()=>rate(Number(b.dataset.rating))));
   $('prevQuestion').addEventListener('click',()=>switchQuestion(questionIndex-1));
-  $('nextQuestion').addEventListener('click',()=>switchQuestion(questionIndex===session.ids.length-1?0:questionIndex+1));
+  $('nextQuestion').addEventListener('click',()=>{if(session.ids.length===1){const ids=STUDY_ROUTES[session.course].flatMap(b=>b[1]);const index=ids.indexOf(currentQuestion().id);if(index===ids.length-1){persistDraft();stopTimer();const completedCourse=session.course;session=null;save();selectCourse(completedCourse);toast('Has llegado al final del recorrido. Revisa lo que quede por reforzar.');}else startSingle(ids[index+1]);}else switchQuestion(questionIndex===session.ids.length-1?0:questionIndex+1);});
   $('timerToggle').addEventListener('click',startTimer);
   $('finishExam').addEventListener('click',finishExam);
   $('redoExam').addEventListener('click',redoExam);
@@ -385,7 +843,7 @@ function init(){
   $('progressExport').addEventListener('click',exportState);
   $('importBtn').addEventListener('click',()=>$('importFile').click());
   $('importFile').addEventListener('change',ev=>importState(ev.target.files[0]));
-  $('clearProgress').addEventListener('click',()=>{if(confirm('¿Restablecer TODO el progreso y las respuestas locales? Esta acción no se puede deshacer.')){stopTimer();session=null;shown={};data=emptyState();save();navigate('progress');renderProgress();renderDashboard();toast('Progreso restablecido');}});
+  $('clearProgress').addEventListener('click',()=>{if(confirm('¿Restablecer TODO el progreso y las respuestas locales? Esta acción no se puede deshacer.')){stopTimer();session=null;shown={};allowExplicitReplace();data=emptyState();save();navigate('progress');renderProgress();renderDashboard();toast('Progreso restablecido');}});
   document.querySelectorAll('.copy-pre').forEach(b=>b.addEventListener('click',()=>copyText($(b.dataset.target).textContent)));
 }
 init();
