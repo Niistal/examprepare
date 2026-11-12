@@ -1,0 +1,50 @@
+{
+  "M01": {
+    "csv": "orange-cr7.csv",
+    "workflow": "orange-M01.ows",
+    "dataset": "cr7",
+    "provenance": "04_Ikaskuntza_Automatikorako_Sistemak/1_Datuak_eta_Aurreprozesamendua/cr7_analisia/cr7_career_goals.csv"
+  },
+  "M02": {
+    "csv": "orange-diabetes.csv",
+    "workflow": "orange-M02.ows",
+    "dataset": "diabetes",
+    "provenance": "Caso original M02; dataset incorporado de scikit-learn/Orange"
+  },
+  "M03": {
+    "csv": "orange-breast-cancer.csv",
+    "workflow": "orange-M03.ows",
+    "dataset": "breast-cancer",
+    "provenance": "Caso original M03; dataset incorporado de scikit-learn/Orange"
+  },
+  "M04": {
+    "csv": "orange-wine.csv",
+    "workflow": "orange-M04.ows",
+    "dataset": "wine",
+    "provenance": "Caso original M04; dataset incorporado de scikit-learn/Orange"
+  },
+  "M05": {
+    "csv": "orange-iris.csv",
+    "workflow": "orange-M05.ows",
+    "dataset": "iris",
+    "provenance": "Caso original M05; dataset incorporado de scikit-learn/Orange"
+  },
+  "M06": {
+    "csv": "orange-iris.csv",
+    "workflow": "orange-M06.ows",
+    "dataset": "iris",
+    "provenance": "Caso original M06; dataset incorporado de scikit-learn/Orange"
+  },
+  "M09": {
+    "csv": "orange-iris.csv",
+    "workflow": "orange-M09.ows",
+    "dataset": "iris",
+    "provenance": "Caso original M09; dataset incorporado de scikit-learn/Orange"
+  },
+  "M10": {
+    "csv": "orange-audit.csv",
+    "workflow": "orange-M10.ows",
+    "dataset": "audit",
+    "provenance": "Datos sintéticos del caso M10; cuatro registros"
+  }
+}

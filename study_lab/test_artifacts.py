@@ -2,8 +2,9 @@
 from pathlib import Path
 import hashlib,json,subprocess,sys
 root=Path(__file__).resolve().parent
-shell=(root/'shell.html').read_text(encoding='utf-8')
-expected=shell.replace('/*__CSS__*/',(root/'style.css').read_text(encoding='utf-8')).replace('/*__JS__*/','const PYTHON_WORKER_SOURCE='+json.dumps((root/'python-worker.mjs').read_text(encoding='utf-8'),ensure_ascii=True).replace('<','\\u003c')+';\n'+'\n'.join((root/name).read_text(encoding='utf-8') for name in ('sources.js','materials.js','app.js')))
+from build import render
+expected, learning_js = render()
+assert (root/'learning-content.js').read_text(encoding='utf-8') == learning_js
 assert (root/'index.html').read_text(encoding='utf-8')==expected,'Ejecuta python build.py'
 bank=json.loads(subprocess.check_output(['node',str(root/'scripts/export_bank.cjs')]))
 audit=json.loads((root/'sources.json').read_text(encoding='utf-8'))

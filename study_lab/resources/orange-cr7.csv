@@ -1,0 +1,980 @@
+Goal_ID,Date,Year,Season,Match_Type,Team,Opponent,Competition,Venue,Minute,Minute_Period,Half,Goal_Type,Match_Result,Score_After_Goal,Goal_Assist,Competition_Category,Game_Deciding_Goal,Goal_Method
+1,2002-10-07,2002,2002-03,Club,Sporting CP,Moreirense FC,Liga Portugal,Home,34,31-45',1st Half,Solo run,Win,2:00,Unassisted,Liga Portugal,No,Other
+2,2002-10-07,2002,2002-03,Club,Sporting CP,Moreirense FC,Liga Portugal,Home,95,90+ Stoppage,2nd Half,Header,Win,3:00,Rui Jorge,Liga Portugal,Yes,Header
+3,2002-10-26,2002,2002-03,Club,Sporting CP,Boavista FC,Liga Portugal,Away,88,76-90',2nd Half,Right foot,Win,1:02,Carlos Martins,Liga Portugal,Yes,Right foot
+4,2002-11-24,2002,2002-03,Club,Sporting CP,CD Estarreja,Taca de Portugal Placard,Home,67,61-75',2nd Half,Left foot,Win,3:00,Cesar Prates,Other Competitions,No,Left foot
+5,2002-12-18,2002,2002-03,Club,Sporting CP,FC Oliveira do Hospital,Taca de Portugal Placard,Home,13,01-15',1st Half,Right foot,Win,3:00,Unassisted,Other Competitions,No,Right foot
+6,2003-11-01,2003,2003-04,Club,Manchester United,Portsmouth FC,Premier League,Home,80,76-90',2nd Half,Direct free kick,Win,2:00,Direct free kick,Premier League,Yes,Direct free kick
+7,2004-02-14,2004,2003-04,Club,Manchester United,Manchester City,FA Cup,Home,74,61-75',2nd Half,Right foot,Win,3:00,Unassisted,Domestic Cups,Yes,Right foot
+8,2004-03-20,2004,2003-04,Club,Manchester United,Tottenham,Premier League,Home,89,76-90',2nd Half,Right foot,Win,2:00,Unassisted,Premier League,Yes,Right foot
+9,2004-04-10,2004,2003-04,Club,Manchester United,Birmingham City,Premier League,Away,60,46-60',2nd Half,Header,Win,1:01,Ryan Giggs,Premier League,No,Header
+10,2004-05-15,2004,2003-04,Club,Manchester United,Aston Villa,Premier League,Away,4,01-15',1st Half,Right foot,Win,0:01,Unassisted,Premier League,No,Right foot
+11,2004-05-22,2004,2003-04,Club,Manchester United,Millwall FC,FA Cup,Home,44,31-45',1st Half,Header,Win,1:00,Gary Neville,Domestic Cups,No,Header
+12,2004-06-12,2004,2003-04,International,Portugal,Greece,UEFA Euro 2004,Home,90,76-90',2nd Half,Right foot,Loss,1–2,Portugal Teammate,UEFA Euro,No,Right foot
+13,2004-06-30,2004,2003-04,International,Portugal,Netherlands,UEFA Euro 2004,Home,26,16-30',1st Half,Right foot,Win,1–0,Portugal Teammate,UEFA Euro,No,Right foot
+14,2004-09-04,2004,2004-05,International,Portugal,Latvia,2006 FIFA World Cup qualification,Away,57,46-60',2nd Half,Right foot,Win,1–0,Portugal Teammate,WC Qualification,No,Right foot
+15,2004-09-08,2004,2004-05,International,Portugal,Estonia,2006 FIFA World Cup qualification,Home,75,61-75',2nd Half,Left foot,Win,1–0,Portugal Teammate,WC Qualification,Yes,Left foot
+16,2004-10-13,2004,2004-05,International,Portugal,Russia,2006 FIFA World Cup qualification,Home,39,31-45',1st Half,Header,Win,2–0,Portugal Teammate,WC Qualification,No,Header
+17,2004-10-13,2004,2004-05,International,Portugal,Russia,2006 FIFA World Cup qualification,Home,39,31-45',1st Half,Right foot,Win,4–0,Portugal Teammate,WC Qualification,No,Right foot
+18,2004-11-17,2004,2004-05,International,Portugal,Luxembourg,2006 FIFA World Cup qualification,Away,28,16-30',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+19,2004-12-04,2004,2004-05,Club,Manchester United,Southampton FC,Premier League,Home,87,76-90',2nd Half,Right foot,Win,3:00,Gary Neville,Premier League,Yes,Right foot
+20,2005-01-19,2005,2004-05,Club,Manchester United,Exeter City,FA Cup,Away,9,01-15',1st Half,Right foot,Win,0:01,Paul Scholes,Domestic Cups,No,Right foot
+21,2005-01-22,2005,2004-05,Club,Manchester United,Aston Villa,Premier League,Home,8,01-15',1st Half,Right foot,Win,1:00,Louis Saha,Premier League,No,Right foot
+22,2005-02-01,2005,2004-05,Club,Manchester United,Arsenal,Premier League,Away,54,46-60',2nd Half,Left foot,Win,2:02,Ryan Giggs,Premier League,No,Left foot
+23,2005-02-01,2005,2004-05,Club,Manchester United,Arsenal,Premier League,Away,58,46-60',2nd Half,Tap-in,Win,2:03,Ryan Giggs,Premier League,No,Other
+24,2005-02-19,2005,2004-05,Club,Manchester United,Everton FC,FA Cup,Away,58,46-60',2nd Half,Tap-in,Win,0:02,Paul Scholes,Domestic Cups,No,Other
+25,2005-03-12,2005,2004-05,Club,Manchester United,Southampton FC,FA Cup,Away,46,31-45' (Stoppage),1st Half,Left foot,Win,0:02,Ruud van Nistelrooy,Domestic Cups,No,Left foot
+26,2005-03-19,2005,2004-05,Club,Manchester United,Fulham FC,Premier League,Home,21,16-30',1st Half,Right foot,Win,1:00,Roy Keane,Premier League,No,Right foot
+27,2005-04-17,2005,2004-05,Club,Manchester United,Newcastle,FA Cup,Away,76,76-90',2nd Half,Right foot,Win,1:04,Ruud van Nistelrooy,Domestic Cups,Yes,Right foot
+28,2005-06-04,2005,2004-05,International,Portugal,Slovakia,2006 FIFA World Cup qualification,Home,42,31-45',1st Half,Left foot,Win,2–0,Portugal Teammate,WC Qualification,No,Left foot
+29,2005-06-08,2005,2004-05,International,Portugal,Estonia,2006 FIFA World Cup qualification,Away,32,31-45',1st Half,Right foot,Win,1–0,Portugal Teammate,WC Qualification,No,Right foot
+30,2005-08-09,2005,2005-06,Club,Manchester United,Debreceni VSC,UEFA Champions League Qualifying,Home,63,61-75',2nd Half,Right foot,Win,3:00,Paul Scholes,UEFA Champions League,No,Right foot
+31,2005-10-29,2005,2005-06,Club,Manchester United,Middlesbrough FC,Premier League,Away,90,76-90',2nd Half,Header,Loss,4:01,Paul Scholes,Premier League,No,Header
+32,2005-11-30,2005,2005-06,Club,Manchester United,West Bromwich Albion,EFL Cup,Home,12,01-15',1st Half,Penalty,Win,1:01,Penalty,Domestic Cups,No,Penalty
+33,2005-12-31,2005,2005-06,Club,Manchester United,Bolton Wanderers,Premier League,Home,68,61-75',2nd Half,Right foot,Win,3:01,Wayne Rooney,Premier League,No,Right foot
+34,2005-12-31,2005,2005-06,Club,Manchester United,Bolton Wanderers,Premier League,Home,90,76-90',2nd Half,Left foot,Win,4:01,Ruud van Nistelrooy,Premier League,Yes,Left foot
+35,2006-02-04,2006,2005-06,Club,Manchester United,Fulham FC,Premier League,Home,14,01-15',1st Half,Direct free kick,Win,2:00,Direct free kick,Premier League,No,Direct free kick
+36,2006-02-04,2006,2005-06,Club,Manchester United,Fulham FC,Premier League,Home,87,76-90',2nd Half,Right foot,Win,4:02,Unassisted,Premier League,Yes,Right foot
+37,2006-02-11,2006,2005-06,Club,Manchester United,Portsmouth FC,Premier League,Away,38,31-45',1st Half,Left foot,Win,0:02,Unassisted,Premier League,No,Left foot
+38,2006-02-11,2006,2005-06,Club,Manchester United,Portsmouth FC,Premier League,Away,45,31-45',1st Half,Right foot,Win,0:03,Wayne Rooney,Premier League,No,Right foot
+39,2006-02-26,2006,2005-06,Club,Manchester United,Wigan Athletic,EFL Cup,Home,59,46-60',2nd Half,Right foot,Win,3:00,Louis Saha,Domestic Cups,No,Right foot
+40,2006-03-01,2006,2005-06,International,Portugal,Saudi Arabia,Friendly,Neutral,55,46-60',2nd Half,Header,Win,1–0,Portugal Teammate,International Friendly,No,Header
+41,2006-03-01,2006,2005-06,International,Portugal,Saudi Arabia,Friendly,Neutral,55,46-60',2nd Half,Right foot,Win,3–0,Portugal Teammate,International Friendly,No,Right foot
+42,2006-03-06,2006,2005-06,Club,Manchester United,Wigan Athletic,Premier League,Away,74,61-75',2nd Half,Right foot,Win,1:01,Ruud van Nistelrooy,Premier League,Yes,Right foot
+43,2006-05-07,2006,2005-06,Club,Manchester United,Charlton Athletic,Premier League,Home,23,16-30',1st Half,Left foot,Win,2:00,Ryan Giggs,Premier League,No,Left foot
+44,2006-06-17,2006,2005-06,International,Portugal,Iran,2006 FIFA World Cup,Neutral,80,76-90',2nd Half,Penalty,Win,2–0,Penalty,FIFA World Cup,Yes,Penalty
+45,2006-08-20,2006,2006-07,Club,Manchester United,Fulham FC,Premier League,Home,19,16-30',1st Half,Right foot,Win,4:00,Wayne Rooney,Premier League,No,Right foot
+46,2006-09-23,2006,2006-07,Club,Manchester United,Reading FC,Premier League,Away,73,61-75',2nd Half,Right foot,Draw,1:01,John OShea,Premier League,No,Right foot
+47,2006-10-07,2006,2006-07,International,Portugal,Azerbaijan,UEFA Euro 2008 qualifying,Home,25,16-30',1st Half,Right foot,Win,1–0,Portugal Teammate,Euro Qualification,No,Right foot
+48,2006-10-07,2006,2006-07,International,Portugal,Azerbaijan,UEFA Euro 2008 qualifying,Home,25,16-30',1st Half,Right foot,Win,3–0,Portugal Teammate,Euro Qualification,No,Right foot
+49,2006-10-28,2006,2006-07,Club,Manchester United,Bolton Wanderers,Premier League,Away,82,76-90',2nd Half,Right foot,Win,0:03,Louis Saha,Premier League,Yes,Right foot
+50,2006-11-04,2006,2006-07,Club,Manchester United,Portsmouth FC,Premier League,Home,10,01-15',1st Half,Direct free kick,Win,2:00,Direct free kick,Premier League,No,Direct free kick
+51,2006-11-15,2006,2006-07,International,Portugal,Kazakhstan,UEFA Euro 2008 qualifying,Home,30,16-30',1st Half,Header,Win,2–0,Portugal Teammate,Euro Qualification,No,Header
+52,2006-11-29,2006,2006-07,Club,Manchester United,Everton FC,Premier League,Home,39,31-45',1st Half,Right foot,Win,1:00,Unassisted,Premier League,No,Right foot
+53,2006-12-09,2006,2006-07,Club,Manchester United,Manchester City,Premier League,Home,84,76-90',2nd Half,Right foot,Win,3:01,Unassisted,Premier League,Yes,Right foot
+54,2006-12-23,2006,2006-07,Club,Manchester United,Aston Villa,Premier League,Away,58,46-60',2nd Half,Right foot,Win,0:01,Unassisted,Premier League,No,Right foot
+55,2006-12-23,2006,2006-07,Club,Manchester United,Aston Villa,Premier League,Away,85,76-90',2nd Half,Right foot,Win,0:03,Gary Neville,Premier League,Yes,Right foot
+56,2006-12-26,2006,2006-07,Club,Manchester United,Wigan Athletic,Premier League,Home,47,46-60',2nd Half,Right foot,Win,1:00,Paul Scholes,Premier League,No,Right foot
+57,2006-12-26,2006,2006-07,Club,Manchester United,Wigan Athletic,Premier League,Home,50,46-60',2nd Half,Right foot,Win,2:00,Ji-sung Park,Premier League,No,Right foot
+58,2006-12-30,2006,2006-07,Club,Manchester United,Reading FC,Premier League,Home,58,46-60',2nd Half,Right foot,Win,2:01,Ole Gunnar Solskjaer,Premier League,No,Right foot
+59,2006-12-30,2006,2006-07,Club,Manchester United,Reading FC,Premier League,Home,77,76-90',2nd Half,Right foot,Win,3:01,Ryan Giggs,Premier League,Yes,Right foot
+60,2007-01-13,2007,2006-07,Club,Manchester United,Aston Villa,Premier League,Home,34,31-45',1st Half,Header,Win,3:00,Michael Carrick,Premier League,No,Header
+61,2007-01-31,2007,2006-07,Club,Manchester United,Watford FC,Premier League,Home,12,01-15',1st Half,Penalty,Win,1:00,Penalty,Premier League,No,Penalty
+62,2007-02-03,2007,2006-07,Club,Manchester United,Tottenham,Premier League,Away,45,31-45',1st Half,Penalty,Win,0:01,Penalty,Premier League,No,Penalty
+63,2007-02-24,2007,2006-07,Club,Manchester United,Fulham FC,Premier League,Away,88,76-90',2nd Half,Solo run,Win,1:02,Unassisted,Premier League,Yes,Other
+64,2007-03-10,2007,2006-07,Club,Manchester United,Middlesbrough FC,FA Cup,Away,68,61-75',2nd Half,Penalty,Draw,2:02,Penalty,Domestic Cups,No,Penalty
+65,2007-03-19,2007,2006-07,Club,Manchester United,Middlesbrough FC,FA Cup,Home,76,76-90',2nd Half,Penalty,Win,1:00,Penalty,Domestic Cups,Yes,Penalty
+66,2007-03-24,2007,2006-07,International,Portugal,Belgium,UEFA Euro 2008 qualifying,Home,55,46-60',2nd Half,Left foot,Win,2–0,Portugal Teammate,Euro Qualification,No,Left foot
+67,2007-03-24,2007,2006-07,International,Portugal,Belgium,UEFA Euro 2008 qualifying,Home,55,46-60',2nd Half,Right foot,Win,4–0,Portugal Teammate,Euro Qualification,No,Right foot
+68,2007-04-10,2007,2006-07,Club,Manchester United,AS Roma,UEFA Champions League,Home,44,31-45',1st Half,Right foot,Win,4:00,Ryan Giggs,UEFA Champions League,No,Right foot
+69,2007-04-10,2007,2006-07,Club,Manchester United,AS Roma,UEFA Champions League,Home,49,46-60',2nd Half,Right foot,Win,5:00,Ryan Giggs,UEFA Champions League,No,Right foot
+70,2007-04-14,2007,2006-07,Club,Manchester United,Watford FC,FA Cup,Away,28,16-30',1st Half,Right foot,Win,1:02,Wayne Rooney,Domestic Cups,No,Right foot
+71,2007-04-24,2007,2006-07,Club,Manchester United,AC Milan,UEFA Champions League,Home,5,01-15',1st Half,Header,Win,1:00,Ryan Giggs,UEFA Champions League,No,Header
+72,2007-05-05,2007,2006-07,Club,Manchester United,Manchester City,Premier League,Away,34,31-45',1st Half,Penalty,Win,0:01,Penalty,Premier League,No,Penalty
+73,2007-08-22,2007,2007-08,International,Portugal,Armenia,UEFA Euro 2008 qualifying,Away,37,31-45',1st Half,Right foot,Draw,1–1,Portugal Teammate,Euro Qualification,No,Right foot
+74,2007-09-08,2007,2007-08,International,Portugal,Poland,UEFA Euro 2008 qualifying,Home,73,61-75',2nd Half,Right foot,Draw,2–1,Portugal Teammate,Euro Qualification,No,Right foot
+75,2007-09-19,2007,2007-08,Club,Manchester United,Sporting CP,UEFA Champions League,Away,62,61-75',2nd Half,Header,Win,0:01,Wes Brown,UEFA Champions League,No,Header
+76,2007-09-29,2007,2007-08,Club,Manchester United,Birmingham City,Premier League,Away,51,46-60',2nd Half,Right foot,Win,0:01,Unassisted,Premier League,No,Right foot
+77,2007-10-06,2007,2007-08,Club,Manchester United,Wigan Athletic,Premier League,Home,59,46-60',2nd Half,Header,Win,2:00,Ryan Giggs,Premier League,No,Header
+78,2007-10-06,2007,2007-08,Club,Manchester United,Wigan Athletic,Premier League,Home,76,76-90',2nd Half,Right foot,Win,3:00,Wayne Rooney,Premier League,Yes,Right foot
+79,2007-10-17,2007,2007-08,International,Portugal,Kazakhstan,UEFA Euro 2008 qualifying,Away,90,76-90',2nd Half,Header,Win,2–0,Portugal Teammate,Euro Qualification,Yes,Header
+80,2007-10-23,2007,2007-08,Club,Manchester United,Dynamo Kyiv,UEFA Champions League,Away,41,31-45',1st Half,Penalty,Win,1:03,Penalty,UEFA Champions League,No,Penalty
+81,2007-10-23,2007,2007-08,Club,Manchester United,Dynamo Kyiv,UEFA Champions League,Away,68,61-75',2nd Half,Header,Win,1:04,Ryan Giggs,UEFA Champions League,No,Header
+82,2007-11-03,2007,2007-08,Club,Manchester United,Arsenal,Premier League,Away,82,76-90',2nd Half,Right foot,Draw,1:02,Patrice Evra,Premier League,No,Right foot
+83,2007-11-07,2007,2007-08,Club,Manchester United,Dynamo Kyiv,UEFA Champions League,Home,88,76-90',2nd Half,Right foot,Win,4:00,Patrice Evra,UEFA Champions League,Yes,Right foot
+84,2007-11-11,2007,2007-08,Club,Manchester United,Blackburn Rovers,Premier League,Home,34,31-45',1st Half,Header,Win,1:00,Ryan Giggs,Premier League,No,Header
+85,2007-11-11,2007,2007-08,Club,Manchester United,Blackburn Rovers,Premier League,Home,35,31-45',1st Half,Right foot,Win,2:00,Carlos Tevez,Premier League,No,Right foot
+86,2007-11-27,2007,2007-08,Club,Manchester United,Sporting CP,UEFA Champions League,Home,93,90+ Stoppage,2nd Half,Direct free kick,Win,2:01,Direct free kick,UEFA Champions League,Yes,Direct free kick
+87,2007-12-03,2007,2007-08,Club,Manchester United,Fulham FC,Premier League,Home,10,01-15',1st Half,Right foot,Win,1:00,Nemanja Vidicâ€Ž,Premier League,No,Right foot
+88,2007-12-03,2007,2007-08,Club,Manchester United,Fulham FC,Premier League,Home,58,46-60',2nd Half,Header,Win,2:00,John OShea,Premier League,No,Header
+89,2007-12-08,2007,2007-08,Club,Manchester United,Derby County,Premier League,Home,90,76-90',2nd Half,Penalty,Win,4:01,Penalty,Premier League,Yes,Penalty
+90,2007-12-23,2007,2007-08,Club,Manchester United,Everton FC,Premier League,Home,22,16-30',1st Half,Left foot,Win,1:00,Carlos Tevez,Premier League,No,Left foot
+91,2007-12-23,2007,2007-08,Club,Manchester United,Everton FC,Premier League,Home,87,76-90',2nd Half,Penalty,Win,2:01,Penalty,Premier League,Yes,Penalty
+92,2007-12-26,2007,2007-08,Club,Manchester United,Sunderland AFC,Premier League,Away,45,31-45',1st Half,Direct free kick,Win,0:03,Direct free kick,Premier League,No,Direct free kick
+93,2007-12-29,2007,2007-08,Club,Manchester United,West Ham United,Premier League,Away,14,01-15',1st Half,Header,Loss,0:01,Ryan Giggs,Premier League,No,Header
+94,2008-01-05,2008,2007-08,Club,Manchester United,Aston Villa,FA Cup,Away,81,76-90',2nd Half,Left foot,Win,0:01,Ryan Giggs,Domestic Cups,Yes,Left foot
+95,2008-01-12,2008,2007-08,Club,Manchester United,Newcastle,Premier League,Home,48,46-60',2nd Half,Direct free kick,Win,1:00,Direct free kick,Premier League,No,Direct free kick
+96,2008-01-12,2008,2007-08,Club,Manchester United,Newcastle,Premier League,Home,70,61-75',2nd Half,Right foot,Win,3:00,Carlos Tevez,Premier League,Yes,Right foot
+97,2008-01-12,2008,2007-08,Club,Manchester United,Newcastle,Premier League,Home,88,76-90',2nd Half,Left foot,Win,5:00,Unassisted,Premier League,Yes,Left foot
+98,2008-01-19,2008,2007-08,Club,Manchester United,Reading FC,Premier League,Away,92,90+ Stoppage,2nd Half,Right foot,Win,0:02,Unassisted,Premier League,Yes,Right foot
+99,2008-01-27,2008,2007-08,Club,Manchester United,Tottenham,FA Cup,Home,69,61-75',2nd Half,Penalty,Win,2:01,Penalty,Domestic Cups,No,Penalty
+100,2008-01-27,2008,2007-08,Club,Manchester United,Tottenham,FA Cup,Home,88,76-90',2nd Half,Right foot,Win,3:01,Ryan Giggs,Domestic Cups,Yes,Right foot
+101,2008-01-30,2008,2007-08,Club,Manchester United,Portsmouth FC,Premier League,Home,10,01-15',1st Half,Right foot,Win,1:00,Nani,Premier League,No,Right foot
+102,2008-01-30,2008,2007-08,Club,Manchester United,Portsmouth FC,Premier League,Home,12,01-15',1st Half,Direct free kick,Win,2:00,Direct free kick,Premier League,No,Direct free kick
+103,2008-02-23,2008,2007-08,Club,Manchester United,Newcastle,Premier League,Away,45,31-45',1st Half,Right foot,Win,0:02,Michael Carrick,Premier League,No,Right foot
+104,2008-02-23,2008,2007-08,Club,Manchester United,Newcastle,Premier League,Away,56,46-60',2nd Half,Right foot,Win,0:03,Unassisted,Premier League,No,Right foot
+105,2008-03-04,2008,2007-08,Club,Manchester United,Olympique Lyon,UEFA Champions League,Home,41,31-45',1st Half,Left foot,Win,1:00,Unassisted,UEFA Champions League,No,Left foot
+106,2008-03-15,2008,2007-08,Club,Manchester United,Derby County,Premier League,Away,76,76-90',2nd Half,Right foot,Win,0:01,Wayne Rooney,Premier League,Yes,Right foot
+107,2008-03-19,2008,2007-08,Club,Manchester United,Bolton Wanderers,Premier League,Home,8,01-15',1st Half,Right foot,Win,1:00,Unassisted,Premier League,No,Right foot
+108,2008-03-19,2008,2007-08,Club,Manchester United,Bolton Wanderers,Premier League,Home,19,16-30',1st Half,Direct free kick,Win,2:00,Direct free kick,Premier League,No,Direct free kick
+109,2008-03-23,2008,2007-08,Club,Manchester United,Liverpool,Premier League,Home,79,76-90',2nd Half,Header,Win,2:00,Nani,Premier League,Yes,Header
+110,2008-03-29,2008,2007-08,Club,Manchester United,Aston Villa,Premier League,Home,16,16-30',1st Half,Right foot,Win,1:00,Unassisted,Premier League,No,Right foot
+111,2008-04-01,2008,2007-08,Club,Manchester United,AS Roma,UEFA Champions League,Away,39,31-45',1st Half,Header,Win,0:01,Paul Scholes,UEFA Champions League,No,Header
+112,2008-04-06,2008,2007-08,Club,Manchester United,Middlesbrough FC,Premier League,Away,9,01-15',1st Half,Left foot,Draw,0:01,Michael Carrick,Premier League,No,Left foot
+113,2008-04-13,2008,2007-08,Club,Manchester United,Arsenal,Premier League,Home,53,46-60',2nd Half,Penalty,Win,1:01,Penalty,Premier League,No,Penalty
+114,2008-05-03,2008,2007-08,Club,Manchester United,West Ham United,Premier League,Home,3,01-15',1st Half,Right foot,Win,1:00,Edwin van der Sar,Premier League,No,Right foot
+115,2008-05-03,2008,2007-08,Club,Manchester United,West Ham United,Premier League,Home,24,16-30',1st Half,Right foot,Win,2:00,Owen Hargreaves,Premier League,No,Right foot
+116,2008-05-11,2008,2007-08,Club,Manchester United,Wigan Athletic,Premier League,Away,32,31-45',1st Half,Penalty,Win,0:01,Penalty,Premier League,No,Penalty
+117,2008-05-21,2008,2007-08,Club,Manchester United,Chelsea,UEFA Champions League,Home,26,16-30',1st Half,Header,Win,1:00,Wes Brown,UEFA Champions League,No,Header
+118,2008-06-11,2008,2007-08,International,Portugal,Czech Republic,UEFA Euro 2008,Neutral,63,61-75',2nd Half,Right foot,Win,2–1,Portugal Teammate,UEFA Euro,No,Right foot
+119,2008-09-23,2008,2008-09,Club,Manchester United,Middlesbrough FC,EFL Cup,Home,25,16-30',1st Half,Header,Win,1:00,Ryan Giggs,Domestic Cups,No,Header
+120,2008-09-27,2008,2008-09,Club,Manchester United,Bolton Wanderers,Premier League,Home,59,46-60',2nd Half,Penalty,Win,1:00,Penalty,Premier League,No,Penalty
+121,2008-10-18,2008,2008-09,Club,Manchester United,West Bromwich Albion,Premier League,Home,69,61-75',2nd Half,Left foot,Win,2:00,Wayne Rooney,Premier League,No,Left foot
+122,2008-10-29,2008,2008-09,Club,Manchester United,West Ham United,Premier League,Home,14,01-15',1st Half,Left foot,Win,1:00,Nani,Premier League,No,Left foot
+123,2008-10-29,2008,2008-09,Club,Manchester United,West Ham United,Premier League,Home,30,16-30',1st Half,Right foot,Win,2:00,Dimitar Berbatov,Premier League,No,Right foot
+124,2008-11-01,2008,2008-09,Club,Manchester United,Hull City,Premier League,Home,3,01-15',1st Half,Left foot,Win,1:00,Dimitar Berbatov,Premier League,No,Left foot
+125,2008-11-01,2008,2008-09,Club,Manchester United,Hull City,Premier League,Home,43,31-45',1st Half,Header,Win,3:01,Nani,Premier League,No,Header
+126,2008-11-15,2008,2008-09,Club,Manchester United,Stoke City,Premier League,Home,3,01-15',1st Half,Direct free kick,Win,1:00,Direct free kick,Premier League,No,Direct free kick
+127,2008-11-15,2008,2008-09,Club,Manchester United,Stoke City,Premier League,Home,88,76-90',2nd Half,Direct free kick,Win,5:00,Direct free kick,Premier League,Yes,Direct free kick
+128,2008-12-18,2008,2008-09,Club,Manchester United,Gamba Osaka,FIFA Club World Cup,Away,46,31-45' (Stoppage),1st Half,Header,Win,0:02,Ryan Giggs,FIFA Club World Cup,No,Header
+129,2009-01-20,2009,2008-09,Club,Manchester United,Derby County,EFL Cup,Home,89,76-90',2nd Half,Penalty,Win,4:01,Penalty,Domestic Cups,Yes,Penalty
+130,2009-01-27,2009,2008-09,Club,Manchester United,West Bromwich Albion,Premier League,Away,65,61-75',2nd Half,Right foot,Win,0:04,Ryan Giggs,Premier League,No,Right foot
+131,2009-01-27,2009,2008-09,Club,Manchester United,West Bromwich Albion,Premier League,Away,73,61-75',2nd Half,Right foot,Win,0:05,Dimitar Berbatov,Premier League,Yes,Right foot
+132,2009-01-31,2009,2008-09,Club,Manchester United,Everton FC,Premier League,Home,43,31-45',1st Half,Penalty,Win,1:00,Penalty,Premier League,No,Penalty
+133,2009-02-11,2009,2008-09,International,Portugal,Finland,Friendly,Home,55,46-60',2nd Half,Penalty,Win,1–0,Penalty,International Friendly,No,Penalty
+134,2009-02-15,2009,2008-09,Club,Manchester United,Derby County,FA Cup,Away,68,61-75',2nd Half,Header,Win,1:03,Ryan Giggs,Domestic Cups,No,Header
+135,2009-02-21,2009,2008-09,Club,Manchester United,Blackburn Rovers,Premier League,Home,60,46-60',2nd Half,Direct free kick,Win,2:01,Direct free kick,Premier League,No,Direct free kick
+136,2009-03-11,2009,2008-09,Club,Manchester United,FC Internazionale,UEFA Champions League,Home,49,46-60',2nd Half,Header,Win,2:00,Wayne Rooney,UEFA Champions League,No,Header
+137,2009-03-14,2009,2008-09,Club,Manchester United,Liverpool,Premier League,Home,22,16-30',1st Half,Penalty,Loss,1:00,Penalty,Premier League,No,Penalty
+138,2009-04-05,2009,2008-09,Club,Manchester United,Aston Villa,Premier League,Home,11,01-15',1st Half,Direct free kick,Win,1:00,Direct free kick,Premier League,No,Direct free kick
+139,2009-04-05,2009,2008-09,Club,Manchester United,Aston Villa,Premier League,Home,80,76-90',2nd Half,Left foot,Win,2:02,Michael Carrick,Premier League,Yes,Left foot
+140,2009-04-15,2009,2008-09,Club,Manchester United,FC Porto,UEFA Champions League,Away,6,01-15',1st Half,Long distance shot,Win,0:01,Anderson,UEFA Champions League,No,Other
+141,2009-04-25,2009,2008-09,Club,Manchester United,Tottenham,Premier League,Home,57,46-60',2nd Half,Penalty,Win,1:02,Penalty,Premier League,No,Penalty
+142,2009-04-25,2009,2008-09,Club,Manchester United,Tottenham,Premier League,Home,68,61-75',2nd Half,Header,Win,3:02,Wayne Rooney,Premier League,No,Header
+143,2009-05-05,2009,2008-09,Club,Manchester United,Arsenal,UEFA Champions League,Away,11,01-15',1st Half,Direct free kick,Win,0:02,Direct free kick,UEFA Champions League,No,Direct free kick
+144,2009-05-05,2009,2008-09,Club,Manchester United,Arsenal,UEFA Champions League,Away,61,61-75',2nd Half,Right foot,Win,0:03,Wayne Rooney,UEFA Champions League,No,Right foot
+145,2009-05-10,2009,2008-09,Club,Manchester United,Manchester City,Premier League,Home,17,16-30',1st Half,Direct free kick,Win,1:00,Direct free kick,Premier League,No,Direct free kick
+146,2009-08-29,2009,2009-10,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,35,31-45',1st Half,Penalty,Win,2:01,Penalty,La Liga,No,Penalty
+147,2009-09-12,2009,2009-10,Club,Real Madrid,Espanyol,LaLiga,Away,90,76-90',2nd Half,Right foot,Win,0:03,Guti,La Liga,Yes,Right foot
+148,2009-09-15,2009,2009-10,Club,Real Madrid,FC Zürich,UEFA Champions League,Away,27,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,UEFA Champions League,No,Direct free kick
+149,2009-09-15,2009,2009-10,Club,Real Madrid,FC Zürich,UEFA Champions League,Away,89,76-90',2nd Half,Direct free kick,Win,2:04,Direct free kick,UEFA Champions League,Yes,Direct free kick
+150,2009-09-20,2009,2009-10,Club,Real Madrid,Xerez CD,LaLiga,Home,1,01-15',1st Half,Right foot,Win,1:00,Unassisted,La Liga,No,Right foot
+151,2009-09-20,2009,2009-10,Club,Real Madrid,Xerez CD,LaLiga,Home,75,61-75',2nd Half,Header,Win,2:00,Esteban Granero,La Liga,Yes,Header
+152,2009-09-23,2009,2009-10,Club,Real Madrid,Villarreal,LaLiga,Away,2,01-15',1st Half,Right foot,Win,0:01,Unassisted,La Liga,No,Right foot
+153,2009-09-30,2009,2009-10,Club,Real Madrid,Olympique Marseille,UEFA Champions League,Home,58,46-60',2nd Half,Left foot,Win,1:00,Pepe,UEFA Champions League,No,Left foot
+154,2009-09-30,2009,2009-10,Club,Real Madrid,Olympique Marseille,UEFA Champions League,Home,64,61-75',2nd Half,Right foot,Win,3:00,Karim Benzema,UEFA Champions League,No,Right foot
+155,2009-12-05,2009,2009-10,Club,Real Madrid,UD Almeria,LaLiga,Home,84,76-90',2nd Half,Right foot,Win,4:02,Gonzalo Higuain,La Liga,Yes,Right foot
+156,2009-12-08,2009,2009-10,Club,Real Madrid,Olympique Marseille,UEFA Champions League,Away,5,01-15',1st Half,Direct free kick,Win,0:01,Direct free kick,UEFA Champions League,No,Direct free kick
+157,2009-12-08,2009,2009-10,Club,Real Madrid,Olympique Marseille,UEFA Champions League,Away,80,76-90',2nd Half,Right foot,Win,1:03,Lassana Diarra,UEFA Champions League,Yes,Right foot
+158,2009-12-19,2009,2009-10,Club,Real Madrid,Real Zaragoza,LaLiga,Home,50,46-60',2nd Half,Left foot,Win,5:00,Ezequiel Garay,La Liga,No,Left foot
+159,2010-01-24,2010,2009-10,Club,Real Madrid,Málaga,LaLiga,Home,35,31-45',1st Half,Right foot,Win,1:00,Kaka,La Liga,No,Right foot
+160,2010-01-24,2010,2009-10,Club,Real Madrid,Málaga,LaLiga,Home,39,31-45',1st Half,Right foot,Win,2:00,Guti,La Liga,No,Right foot
+161,2010-02-13,2010,2009-10,Club,Real Madrid,Xerez CD,LaLiga,Away,69,61-75',2nd Half,Header,Win,0:02,Kaka,La Liga,No,Header
+162,2010-02-13,2010,2009-10,Club,Real Madrid,Xerez CD,LaLiga,Away,71,61-75',2nd Half,Left foot,Win,0:03,Kaka,La Liga,Yes,Left foot
+163,2010-02-21,2010,2009-10,Club,Real Madrid,Villarreal,LaLiga,Home,18,16-30',1st Half,Direct free kick,Win,1:00,Direct free kick,La Liga,No,Direct free kick
+164,2010-02-27,2010,2009-10,Club,Real Madrid,CD Tenerife,LaLiga,Away,78,76-90',2nd Half,Penalty,Win,1:04,Penalty,La Liga,Yes,Penalty
+165,2010-03-06,2010,2009-10,Club,Real Madrid,Sevilla,LaLiga,Home,59,46-60',2nd Half,Left foot,Win,1:02,Unassisted,La Liga,No,Left foot
+166,2010-03-10,2010,2009-10,Club,Real Madrid,Olympique Lyon,UEFA Champions League,Home,6,01-15',1st Half,Left foot,Draw,1:00,Guti,UEFA Champions League,No,Left foot
+167,2010-03-14,2010,2009-10,Club,Real Madrid,Real Valladolid CF,LaLiga,Away,29,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+168,2010-03-25,2010,2009-10,Club,Real Madrid,Getafe,LaLiga,Away,13,01-15',1st Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+169,2010-03-25,2010,2009-10,Club,Real Madrid,Getafe,LaLiga,Away,36,31-45',1st Half,Right foot,Win,0:04,Unassisted,La Liga,No,Right foot
+170,2010-04-04,2010,2009-10,Club,Real Madrid,Racing Santander,LaLiga,Away,23,16-30',1st Half,Penalty,Win,0:01,Penalty,La Liga,No,Penalty
+171,2010-04-15,2010,2009-10,Club,Real Madrid,UD Almeria,LaLiga,Away,26,16-30',1st Half,Left foot,Win,1:01,Unassisted,La Liga,No,Left foot
+172,2010-04-18,2010,2009-10,Club,Real Madrid,Valencia,LaLiga,Home,77,76-90',2nd Half,Right foot,Win,2:00,Marcelo,La Liga,Yes,Right foot
+173,2010-05-02,2010,2009-10,Club,Real Madrid,Osasuna,LaLiga,Home,25,16-30',1st Half,Right foot,Win,1:01,Unassisted,La Liga,No,Right foot
+174,2010-05-02,2010,2009-10,Club,Real Madrid,Osasuna,LaLiga,Home,89,76-90',2nd Half,Header,Win,3:02,Gonzalo Higuain,La Liga,Yes,Header
+175,2010-05-05,2010,2009-10,Club,Real Madrid,RCD Mallorca,LaLiga,Away,26,16-30',1st Half,Right foot,Win,1:01,Sergio Ramos,La Liga,No,Right foot
+176,2010-05-05,2010,2009-10,Club,Real Madrid,RCD Mallorca,LaLiga,Away,56,46-60',2nd Half,Right foot,Win,1:02,Sergio Ramos,La Liga,No,Right foot
+177,2010-05-05,2010,2009-10,Club,Real Madrid,RCD Mallorca,LaLiga,Away,71,61-75',2nd Half,Right foot,Win,1:03,Unassisted,La Liga,Yes,Right foot
+178,2010-05-08,2010,2009-10,Club,Real Madrid,Athletic Club,LaLiga,Home,21,16-30',1st Half,Penalty,Win,1:00,Penalty,La Liga,No,Penalty
+179,2010-06-21,2010,2009-10,International,Portugal,North Korea,2010 FIFA World Cup,Neutral,87,76-90',2nd Half,Right foot,Win,6–0,Portugal Teammate,FIFA World Cup,Yes,Right foot
+180,2010-09-21,2010,2010-11,Club,Real Madrid,Espanyol,LaLiga,Home,28,16-30',1st Half,Penalty,Win,1:00,Penalty,La Liga,No,Penalty
+181,2010-10-03,2010,2010-11,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,4,01-15',1st Half,Header,Win,1:00,Mesut Ozil,La Liga,No,Header
+182,2010-10-03,2010,2010-11,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,89,76-90',2nd Half,Left foot,Win,6:01,Xabi Alonso,La Liga,Yes,Left foot
+183,2010-10-08,2010,2010-11,International,Portugal,Denmark,UEFA Euro 2012 qualifying,Home,85,76-90',2nd Half,Left foot,Win,3–1,Portugal Teammate,Euro Qualification,Yes,Left foot
+184,2010-10-12,2010,2010-11,International,Portugal,Iceland,UEFA Euro 2012 qualifying,Away,3,01-15',1st Half,Header,Win,1–0,Portugal Teammate,Euro Qualification,No,Header
+185,2010-10-16,2010,2010-11,Club,Real Madrid,Málaga,LaLiga,Away,45,31-45',1st Half,Right foot,Win,0:02,Mesut Ozil,La Liga,No,Right foot
+186,2010-10-16,2010,2010-11,Club,Real Madrid,Málaga,LaLiga,Away,50,46-60',2nd Half,Penalty,Win,0:03,Penalty,La Liga,No,Penalty
+187,2010-10-19,2010,2010-11,Club,Real Madrid,AC Milan,UEFA Champions League,Home,13,01-15',1st Half,Direct free kick,Win,1:00,Direct free kick,UEFA Champions League,No,Direct free kick
+188,2010-10-23,2010,2010-11,Club,Real Madrid,Racing Santander,LaLiga,Home,15,01-15',1st Half,Right foot,Win,2:00,Gonzalo Higuain,La Liga,No,Right foot
+189,2010-10-23,2010,2010-11,Club,Real Madrid,Racing Santander,LaLiga,Home,26,16-30',1st Half,Left foot,Win,3:00,Mesut Ozil,La Liga,No,Left foot
+190,2010-10-23,2010,2010-11,Club,Real Madrid,Racing Santander,LaLiga,Home,47,46-60',2nd Half,Right foot,Win,4:00,Angel Di Maria,La Liga,No,Right foot
+191,2010-10-23,2010,2010-11,Club,Real Madrid,Racing Santander,LaLiga,Home,55,46-60',2nd Half,Penalty,Win,5:00,Penalty,La Liga,No,Penalty
+192,2010-10-30,2010,2010-11,Club,Real Madrid,Hercules CF,LaLiga,Away,82,76-90',2nd Half,Right foot,Win,1:02,Karim Benzema,La Liga,Yes,Right foot
+193,2010-10-30,2010,2010-11,Club,Real Madrid,Hercules CF,LaLiga,Away,86,76-90',2nd Half,Right foot,Win,1:03,Karim Benzema,La Liga,Yes,Right foot
+194,2010-11-10,2010,2010-11,Club,Real Madrid,Real Murcia CF,Copa del Rey,Home,76,76-90',2nd Half,Left foot,Win,3:00,Angel Di Maria,Domestic Cups,Yes,Left foot
+195,2010-11-20,2010,2010-11,Club,Real Madrid,Athletic Club,LaLiga,Home,30,16-30',1st Half,Left foot,Win,2:00,Mesut Ozil,La Liga,No,Left foot
+196,2010-11-20,2010,2010-11,Club,Real Madrid,Athletic Club,LaLiga,Home,62,61-75',2nd Half,Direct free kick,Win,4:01,Direct free kick,La Liga,No,Direct free kick
+197,2010-11-20,2010,2010-11,Club,Real Madrid,Athletic Club,LaLiga,Home,91,90+ Stoppage,2nd Half,Penalty,Win,5:01,Penalty,La Liga,Yes,Penalty
+198,2010-11-23,2010,2010-11,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Away,70,61-75',2nd Half,Left foot,Win,0:03,Angel Di Maria,UEFA Champions League,Yes,Left foot
+199,2010-11-23,2010,2010-11,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Away,81,76-90',2nd Half,Penalty,Win,0:04,Penalty,UEFA Champions League,Yes,Penalty
+200,2010-12-04,2010,2010-11,Club,Real Madrid,Valencia,LaLiga,Home,72,61-75',2nd Half,Left foot,Win,1:00,Mesut Ozil,La Liga,Yes,Left foot
+201,2010-12-04,2010,2010-11,Club,Real Madrid,Valencia,LaLiga,Home,86,76-90',2nd Half,Right foot,Win,2:00,Unassisted,La Liga,Yes,Right foot
+202,2010-12-08,2010,2010-11,Club,Real Madrid,AJ Auxerre,UEFA Champions League,Home,49,46-60',2nd Half,Right foot,Win,2:00,Marcelo,UEFA Champions League,No,Right foot
+203,2010-12-12,2010,2010-11,Club,Real Madrid,Real Zaragoza,LaLiga,Away,43,31-45',1st Half,Direct free kick,Win,0:02,Direct free kick,La Liga,No,Direct free kick
+204,2010-12-22,2010,2010-11,Club,Real Madrid,Levante,Copa del Rey,Home,44,31-45',1st Half,Right foot,Win,4:00,Karim Benzema,Domestic Cups,No,Right foot
+205,2010-12-22,2010,2010-11,Club,Real Madrid,Levante,Copa del Rey,Home,71,61-75',2nd Half,Right foot,Win,6:00,Angel Di Maria,Domestic Cups,Yes,Right foot
+206,2010-12-22,2010,2010-11,Club,Real Madrid,Levante,Copa del Rey,Home,73,61-75',2nd Half,Right foot,Win,7:00,Karim Benzema,Domestic Cups,Yes,Right foot
+207,2011-01-03,2011,2010-11,Club,Real Madrid,Getafe,LaLiga,Away,11,01-15',1st Half,Penalty,Win,0:01,Penalty,La Liga,No,Penalty
+208,2011-01-03,2011,2010-11,Club,Real Madrid,Getafe,LaLiga,Away,57,46-60',2nd Half,Right foot,Win,1:03,Karim Benzema,La Liga,No,Right foot
+209,2011-01-09,2011,2010-11,Club,Real Madrid,Villarreal,LaLiga,Home,10,01-15',1st Half,Right foot,Win,1:01,Mesut Ozil,La Liga,No,Right foot
+210,2011-01-09,2011,2010-11,Club,Real Madrid,Villarreal,LaLiga,Home,45,31-45',1st Half,Header,Win,2:02,Xabi Alonso,La Liga,No,Header
+211,2011-01-09,2011,2010-11,Club,Real Madrid,Villarreal,LaLiga,Home,79,76-90',2nd Half,Left foot,Win,3:02,Kaka,La Liga,Yes,Left foot
+212,2011-01-13,2011,2010-11,Club,Real Madrid,Atlético Madrid,Copa del Rey,Home,60,46-60',2nd Half,Right foot,Win,2:01,Mesut Ozil,Domestic Cups,No,Right foot
+213,2011-01-20,2011,2010-11,Club,Real Madrid,Atlético Madrid,Copa del Rey,Away,22,16-30',1st Half,Right foot,Win,0:01,Sergio Ramos,Domestic Cups,No,Right foot
+214,2011-02-06,2011,2010-11,Club,Real Madrid,Real Sociedad,LaLiga,Home,20,16-30',1st Half,Left foot,Win,2:00,Kaka,La Liga,No,Left foot
+215,2011-02-06,2011,2010-11,Club,Real Madrid,Real Sociedad,LaLiga,Home,42,31-45',1st Half,Header,Win,3:00,Mesut Ozil,La Liga,No,Header
+216,2011-02-09,2011,2010-11,International,Portugal,Argentina,Friendly,Neutral,55,46-60',2nd Half,Right foot,Loss,1–1,Portugal Teammate,International Friendly,No,Right foot
+217,2011-03-03,2011,2010-11,Club,Real Madrid,Málaga,LaLiga,Home,50,46-60',2nd Half,Left foot,Win,4:00,Mesut Ozil,La Liga,No,Left foot
+218,2011-03-03,2011,2010-11,Club,Real Madrid,Málaga,LaLiga,Home,67,61-75',2nd Half,Penalty,Win,6:00,Penalty,La Liga,No,Penalty
+219,2011-03-03,2011,2010-11,Club,Real Madrid,Málaga,LaLiga,Home,76,76-90',2nd Half,Right foot,Win,7:00,Sergio Canales,La Liga,Yes,Right foot
+220,2011-04-05,2011,2010-11,Club,Real Madrid,Tottenham,UEFA Champions League,Home,87,76-90',2nd Half,Right foot,Win,4:00,Kaka,UEFA Champions League,Yes,Right foot
+221,2011-04-09,2011,2010-11,Club,Real Madrid,Athletic Club,LaLiga,Away,70,61-75',2nd Half,Right foot,Win,0:03,Esteban Granero,La Liga,Yes,Right foot
+222,2011-04-13,2011,2010-11,Club,Real Madrid,Tottenham,UEFA Champions League,Away,50,46-60',2nd Half,Right foot,Win,0:01,Sami Khedira,UEFA Champions League,No,Right foot
+223,2011-04-16,2011,2010-11,Club,Real Madrid,Barcelona,LaLiga,Home,82,76-90',2nd Half,Penalty,Draw,1:01,Penalty,La Liga,No,Penalty
+224,2011-04-20,2011,2010-11,Club,Real Madrid,Barcelona,Copa del Rey,Away,103,Extra Time,Extra Time,Header,Win,0:01,Angel Di Maria,Domestic Cups,Yes,Header
+225,2011-05-07,2011,2010-11,Club,Real Madrid,Sevilla,LaLiga,Away,30,16-30',1st Half,Right foot,Win,0:02,Pepe,La Liga,No,Right foot
+226,2011-05-07,2011,2010-11,Club,Real Madrid,Sevilla,LaLiga,Away,64,61-75',2nd Half,Right foot,Win,1:04,Unassisted,La Liga,No,Right foot
+227,2011-05-07,2011,2010-11,Club,Real Madrid,Sevilla,LaLiga,Away,70,61-75',2nd Half,Right foot,Win,1:05,Mesut Ozil,La Liga,Yes,Right foot
+228,2011-05-07,2011,2010-11,Club,Real Madrid,Sevilla,LaLiga,Away,76,76-90',2nd Half,Right foot,Win,1:06,Karim Benzema,La Liga,Yes,Right foot
+229,2011-05-10,2011,2010-11,Club,Real Madrid,Getafe,LaLiga,Home,23,16-30',1st Half,Header,Win,1:00,Mesut Ozil,La Liga,No,Header
+230,2011-05-10,2011,2010-11,Club,Real Madrid,Getafe,LaLiga,Home,57,46-60',2nd Half,Left foot,Win,2:00,Mesut Ozil,La Liga,No,Left foot
+231,2011-05-10,2011,2010-11,Club,Real Madrid,Getafe,LaLiga,Home,91,90+ Stoppage,2nd Half,Penalty,Win,4:00,Penalty,La Liga,Yes,Penalty
+232,2011-05-15,2011,2010-11,Club,Real Madrid,Villarreal,LaLiga,Away,22,16-30',1st Half,Direct free kick,Win,0:02,Direct free kick,La Liga,No,Direct free kick
+233,2011-05-15,2011,2010-11,Club,Real Madrid,Villarreal,LaLiga,Away,90,76-90',2nd Half,Direct free kick,Win,1:03,Direct free kick,La Liga,Yes,Direct free kick
+234,2011-05-21,2011,2010-11,Club,Real Madrid,UD Almeria,LaLiga,Home,4,01-15',1st Half,Right foot,Win,1:00,Sergio Ramos,La Liga,No,Right foot
+235,2011-05-21,2011,2010-11,Club,Real Madrid,UD Almeria,LaLiga,Home,76,76-90',2nd Half,Right foot,Win,7:01,Sergio Ramos,La Liga,Yes,Right foot
+236,2011-08-10,2011,2011-12,International,Portugal,Luxembourg,Friendly,Home,55,46-60',2nd Half,Right foot,Win,2–0,Portugal Teammate,International Friendly,No,Right foot
+237,2011-08-17,2011,2011-12,Club,Real Madrid,Barcelona,Supercopa,Away,20,16-30',1st Half,Right foot,Loss,1:01,Karim Benzema,Supercups,No,Right foot
+238,2011-08-28,2011,2011-12,Club,Real Madrid,Real Zaragoza,LaLiga,Away,23,16-30',1st Half,Left foot,Win,0:01,Mesut Ozil,La Liga,No,Left foot
+239,2011-08-28,2011,2011-12,Club,Real Madrid,Real Zaragoza,LaLiga,Away,70,61-75',2nd Half,Right foot,Win,0:04,Angel Di Maria,La Liga,Yes,Right foot
+240,2011-08-28,2011,2011-12,Club,Real Madrid,Real Zaragoza,LaLiga,Away,86,76-90',2nd Half,Right foot,Win,0:06,Kaka,La Liga,Yes,Right foot
+241,2011-09-02,2011,2011-12,International,Portugal,Cyprus,UEFA Euro 2012 qualifying,Away,35,31-45',1st Half,Penalty,Win,1–0,Penalty,Euro Qualification,No,Penalty
+242,2011-09-02,2011,2011-12,International,Portugal,Cyprus,UEFA Euro 2012 qualifying,Away,35,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,Euro Qualification,No,Right foot
+243,2011-09-10,2011,2011-12,Club,Real Madrid,Getafe,LaLiga,Home,59,46-60',2nd Half,Penalty,Win,2:01,Penalty,La Liga,No,Penalty
+244,2011-09-24,2011,2011-12,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,39,31-45',1st Half,Left foot,Win,1:01,Kaka,La Liga,No,Left foot
+245,2011-09-24,2011,2011-12,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,51,46-60',2nd Half,Penalty,Win,3:01,Penalty,La Liga,No,Penalty
+246,2011-09-24,2011,2011-12,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,84,76-90',2nd Half,Penalty,Win,6:02,Penalty,La Liga,Yes,Penalty
+247,2011-09-27,2011,2011-12,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Home,25,16-30',1st Half,Right foot,Win,1:00,Karim Benzema,UEFA Champions League,No,Right foot
+248,2011-10-11,2011,2011-12,International,Portugal,Denmark,UEFA Euro 2012 qualifying,Away,90,76-90',2nd Half,Header,Loss,1–2,Portugal Teammate,Euro Qualification,No,Header
+249,2011-10-22,2011,2011-12,Club,Real Madrid,Málaga,LaLiga,Away,24,16-30',1st Half,Left foot,Win,0:02,Angel Di Maria,La Liga,No,Left foot
+250,2011-10-22,2011,2011-12,Club,Real Madrid,Málaga,LaLiga,Away,28,16-30',1st Half,Right foot,Win,0:03,Xabi Alonso,La Liga,No,Right foot
+251,2011-10-22,2011,2011-12,Club,Real Madrid,Málaga,LaLiga,Away,38,31-45',1st Half,Right foot,Win,0:04,Sergio Ramos,La Liga,No,Right foot
+252,2011-11-02,2011,2011-12,Club,Real Madrid,Olympique Lyon,UEFA Champions League,Away,25,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,UEFA Champions League,No,Direct free kick
+253,2011-11-02,2011,2011-12,Club,Real Madrid,Olympique Lyon,UEFA Champions League,Away,69,61-75',2nd Half,Penalty,Win,0:02,Penalty,UEFA Champions League,No,Penalty
+254,2011-11-06,2011,2011-12,Club,Real Madrid,Osasuna,LaLiga,Home,23,16-30',1st Half,Header,Win,1:00,Angel Di Maria,La Liga,No,Header
+255,2011-11-06,2011,2011-12,Club,Real Madrid,Osasuna,LaLiga,Home,55,46-60',2nd Half,Penalty,Win,4:01,Penalty,La Liga,No,Penalty
+256,2011-11-06,2011,2011-12,Club,Real Madrid,Osasuna,LaLiga,Home,58,46-60',2nd Half,Header,Win,5:01,alvaro Arbeloa,La Liga,No,Header
+257,2011-11-15,2011,2011-12,International,Portugal,Bosnia and Herzegovina,UEFA Euro 2012 qualifying,Home,8,01-15',1st Half,Right foot,Win,1–0,Portugal Teammate,Euro Qualification,No,Right foot
+258,2011-11-15,2011,2011-12,International,Portugal,Bosnia and Herzegovina,UEFA Euro 2012 qualifying,Home,8,01-15',1st Half,Left foot,Win,3–1,Portugal Teammate,Euro Qualification,No,Left foot
+259,2011-11-19,2011,2011-12,Club,Real Madrid,Valencia,LaLiga,Away,79,76-90',2nd Half,Right foot,Win,1:03,Pepe,La Liga,Yes,Right foot
+260,2011-11-26,2011,2011-12,Club,Real Madrid,Atlético Madrid,LaLiga,Home,24,16-30',1st Half,Penalty,Win,1:01,Penalty,La Liga,No,Penalty
+261,2011-11-26,2011,2011-12,Club,Real Madrid,Atlético Madrid,LaLiga,Home,82,76-90',2nd Half,Penalty,Win,4:01,Penalty,La Liga,Yes,Penalty
+262,2011-12-03,2011,2011-12,Club,Real Madrid,Sporting Gijón,LaLiga,Away,65,61-75',2nd Half,Right foot,Win,0:02,Angel Di Maria,La Liga,No,Right foot
+263,2011-12-13,2011,2011-12,Club,Real Madrid,SD Ponferradina,Copa del Rey,Away,74,61-75',2nd Half,Left foot,Win,0:02,Gonzalo Higuain,Domestic Cups,Yes,Left foot
+264,2011-12-17,2011,2011-12,Club,Real Madrid,Sevilla,LaLiga,Away,10,01-15',1st Half,Right foot,Win,0:01,Angel Di Maria,La Liga,No,Right foot
+265,2011-12-17,2011,2011-12,Club,Real Madrid,Sevilla,LaLiga,Away,41,31-45',1st Half,Right foot,Win,0:03,Karim Benzema,La Liga,No,Right foot
+266,2011-12-17,2011,2011-12,Club,Real Madrid,Sevilla,LaLiga,Away,86,76-90',2nd Half,Penalty,Win,1:05,Penalty,La Liga,Yes,Penalty
+267,2012-01-07,2012,2011-12,Club,Real Madrid,Granada,LaLiga,Home,89,76-90',2nd Half,Right foot,Win,5:01,Unassisted,La Liga,Yes,Right foot
+268,2012-01-18,2012,2011-12,Club,Real Madrid,Barcelona,Copa del Rey,Home,11,01-15',1st Half,Left foot,Loss,1:00,Karim Benzema,Domestic Cups,No,Left foot
+269,2012-01-22,2012,2011-12,Club,Real Madrid,Athletic Club,LaLiga,Home,46,46-60',2nd Half,Penalty,Win,2:01,Penalty,La Liga,No,Penalty
+270,2012-01-22,2012,2011-12,Club,Real Madrid,Athletic Club,LaLiga,Home,67,61-75',2nd Half,Penalty,Win,3:01,Penalty,La Liga,No,Penalty
+271,2012-01-25,2012,2011-12,Club,Real Madrid,Barcelona,Copa del Rey,Away,68,61-75',2nd Half,Right foot,Draw,2:01,Mesut Ozil,Domestic Cups,No,Right foot
+272,2012-01-28,2012,2011-12,Club,Real Madrid,Real Zaragoza,LaLiga,Home,48,46-60',2nd Half,Right foot,Win,2:01,Mesut Ozil,La Liga,No,Right foot
+273,2012-02-12,2012,2011-12,Club,Real Madrid,Levante,LaLiga,Home,45,31-45',1st Half,Penalty,Win,1:01,Penalty,La Liga,No,Penalty
+274,2012-02-12,2012,2011-12,Club,Real Madrid,Levante,LaLiga,Home,50,46-60',2nd Half,Header,Win,2:01,Gonzalo Higuain,La Liga,No,Header
+275,2012-02-12,2012,2011-12,Club,Real Madrid,Levante,LaLiga,Home,57,46-60',2nd Half,Right foot,Win,3:01,Fabio Coentrão,La Liga,No,Right foot
+276,2012-02-18,2012,2011-12,Club,Real Madrid,Racing Santander,LaLiga,Home,6,01-15',1st Half,Header,Win,1:00,Kaka,La Liga,No,Header
+277,2012-02-21,2012,2011-12,Club,Real Madrid,CSKA Moscow,UEFA Champions League,Away,28,16-30',1st Half,Left foot,Draw,0:01,Fabio Coentrão,UEFA Champions League,No,Left foot
+278,2012-02-26,2012,2011-12,Club,Real Madrid,Rayo Vallecano,LaLiga,Away,53,46-60',2nd Half,Right foot,Win,0:01,Unassisted,La Liga,No,Right foot
+279,2012-03-04,2012,2011-12,Club,Real Madrid,Espanyol,LaLiga,Home,23,16-30',1st Half,Left foot,Win,1:00,Gonzalo Higuain,La Liga,No,Left foot
+280,2012-03-10,2012,2011-12,Club,Real Madrid,Real Betis,LaLiga,Away,52,46-60',2nd Half,Left foot,Win,1:02,Marcelo,La Liga,No,Left foot
+281,2012-03-10,2012,2011-12,Club,Real Madrid,Real Betis,LaLiga,Away,73,61-75',2nd Half,Left foot,Win,2:03,Unassisted,La Liga,Yes,Left foot
+282,2012-03-14,2012,2011-12,Club,Real Madrid,CSKA Moscow,UEFA Champions League,Home,55,46-60',2nd Half,Right foot,Win,2:00,Sergio Ramos,UEFA Champions League,No,Right foot
+283,2012-03-14,2012,2011-12,Club,Real Madrid,CSKA Moscow,UEFA Champions League,Home,94,90+ Stoppage,2nd Half,Right foot,Win,4:01,Karim Benzema,UEFA Champions League,Yes,Right foot
+284,2012-03-21,2012,2011-12,Club,Real Madrid,Villarreal,LaLiga,Away,61,61-75',2nd Half,Right foot,Draw,0:01,Mesut Ozil,La Liga,No,Right foot
+285,2012-03-24,2012,2011-12,Club,Real Madrid,Real Sociedad,LaLiga,Home,32,31-45',1st Half,Right foot,Win,2:00,Kaka,La Liga,No,Right foot
+286,2012-03-24,2012,2011-12,Club,Real Madrid,Real Sociedad,LaLiga,Home,55,46-60',2nd Half,Right foot,Win,5:01,Gonzalo Higuain,La Liga,No,Right foot
+287,2012-03-31,2012,2011-12,Club,Real Madrid,Osasuna,LaLiga,Away,37,31-45',1st Half,Long distance shot,Win,0:02,Xabi Alonso,La Liga,No,Other
+288,2012-03-31,2012,2011-12,Club,Real Madrid,Osasuna,LaLiga,Away,70,61-75',2nd Half,Direct free kick,Win,1:04,Direct free kick,La Liga,Yes,Direct free kick
+289,2012-04-04,2012,2011-12,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Home,26,16-30',1st Half,Right foot,Win,1:00,Marcelo,UEFA Champions League,No,Right foot
+290,2012-04-04,2012,2011-12,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Home,75,61-75',2nd Half,Direct free kick,Win,3:01,Direct free kick,UEFA Champions League,Yes,Direct free kick
+291,2012-04-11,2012,2011-12,Club,Real Madrid,Atlético Madrid,LaLiga,Away,24,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+292,2012-04-11,2012,2011-12,Club,Real Madrid,Atlético Madrid,LaLiga,Away,67,61-75',2nd Half,Long distance shot,Win,1:02,Unassisted,La Liga,No,Other
+293,2012-04-11,2012,2011-12,Club,Real Madrid,Atlético Madrid,LaLiga,Away,82,76-90',2nd Half,Penalty,Win,1:03,Penalty,La Liga,Yes,Penalty
+294,2012-04-14,2012,2011-12,Club,Real Madrid,Sporting Gijón,LaLiga,Home,74,61-75',2nd Half,Header,Win,2:01,Angel Di Maria,La Liga,Yes,Header
+295,2012-04-21,2012,2011-12,Club,Real Madrid,Barcelona,LaLiga,Away,73,61-75',2nd Half,Right foot,Win,1:02,Mesut Ozil,La Liga,Yes,Right foot
+296,2012-04-25,2012,2011-12,Club,Real Madrid,Bayern Munich,UEFA Champions League,Home,6,01-15',1st Half,Penalty,Loss,1:00,Penalty,UEFA Champions League,No,Penalty
+297,2012-04-25,2012,2011-12,Club,Real Madrid,Bayern Munich,UEFA Champions League,Home,14,01-15',1st Half,Right foot,Loss,2:00,Mesut Ozil,UEFA Champions League,No,Right foot
+298,2012-04-29,2012,2011-12,Club,Real Madrid,Sevilla,LaLiga,Home,19,16-30',1st Half,Right foot,Win,1:00,Karim Benzema,La Liga,No,Right foot
+299,2012-05-02,2012,2011-12,Club,Real Madrid,Athletic Club,LaLiga,Away,49,46-60',2nd Half,Header,Win,0:03,Xabi Alonso,La Liga,No,Header
+300,2012-05-05,2012,2011-12,Club,Real Madrid,Granada,LaLiga,Away,81,76-90',2nd Half,Penalty,Win,1:01,Penalty,La Liga,Yes,Penalty
+301,2012-05-13,2012,2011-12,Club,Real Madrid,RCD Mallorca,LaLiga,Home,18,16-30',1st Half,Header,Win,1:00,Marcelo,La Liga,No,Header
+302,2012-06-17,2012,2011-12,International,Portugal,Netherlands,UEFA Euro 2012,Neutral,28,16-30',1st Half,Right foot,Win,1–1,Portugal Teammate,UEFA Euro,No,Right foot
+303,2012-06-17,2012,2011-12,International,Portugal,Netherlands,UEFA Euro 2012,Neutral,28,16-30',1st Half,Right foot,Win,2–1,Portugal Teammate,UEFA Euro,No,Right foot
+304,2012-06-21,2012,2011-12,International,Portugal,Czech Republic,UEFA Euro 2012,Neutral,79,76-90',2nd Half,Header,Win,1–0,Portugal Teammate,UEFA Euro,Yes,Header
+305,2012-08-15,2012,2012-13,International,Portugal,Panama,Friendly,Home,55,46-60',2nd Half,Left foot,Win,2–0,Portugal Teammate,International Friendly,No,Left foot
+306,2012-08-23,2012,Dec-13,Club,Real Madrid,Barcelona,Supercopa,Away,55,46-60',2nd Half,Header,Loss,0:01,Mesut Ozil,Supercups,No,Header
+307,2012-08-29,2012,Dec-13,Club,Real Madrid,Barcelona,Supercopa,Home,19,16-30',1st Half,Right foot,Win,2:00,Sami Khedira,Supercups,No,Right foot
+308,2012-09-02,2012,Dec-13,Club,Real Madrid,Granada,LaLiga,Home,25,16-30',1st Half,Right foot,Win,1:00,Jose Callejón,La Liga,No,Right foot
+309,2012-09-02,2012,Dec-13,Club,Real Madrid,Granada,LaLiga,Home,53,46-60',2nd Half,Left foot,Win,2:00,Unassisted,La Liga,No,Left foot
+310,2012-09-07,2012,2012-13,International,Portugal,Luxembourg,2014 FIFA World Cup qualification,Away,28,16-30',1st Half,Right foot,Win,1–1,Portugal Teammate,WC Qualification,No,Right foot
+311,2012-09-18,2012,Dec-13,Club,Real Madrid,Manchester City,UEFA Champions League,Home,90,76-90',2nd Half,Right foot,Win,3:02,Marcelo,UEFA Champions League,Yes,Right foot
+312,2012-09-24,2012,Dec-13,Club,Real Madrid,Rayo Vallecano,LaLiga,Away,69,61-75',2nd Half,Penalty,Win,0:02,Penalty,La Liga,No,Penalty
+313,2012-09-30,2012,Dec-13,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,23,16-30',1st Half,Penalty,Win,1:01,Penalty,La Liga,No,Penalty
+314,2012-09-30,2012,Dec-13,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,44,31-45',1st Half,Header,Win,3:01,Sergio Ramos,La Liga,No,Header
+315,2012-09-30,2012,Dec-13,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,84,76-90',2nd Half,Penalty,Win,5:01,Penalty,La Liga,Yes,Penalty
+316,2012-10-03,2012,Dec-13,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Away,42,31-45',1st Half,Right foot,Win,0:01,Karim Benzema,UEFA Champions League,No,Right foot
+317,2012-10-03,2012,Dec-13,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Away,79,76-90',2nd Half,Right foot,Win,1:03,Karim Benzema,UEFA Champions League,Yes,Right foot
+318,2012-10-03,2012,Dec-13,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Away,81,76-90',2nd Half,Left foot,Win,1:04,Sami Khedira,UEFA Champions League,Yes,Left foot
+319,2012-10-07,2012,Dec-13,Club,Real Madrid,Barcelona,LaLiga,Away,22,16-30',1st Half,Left foot,Draw,0:01,Karim Benzema,La Liga,No,Left foot
+320,2012-10-07,2012,Dec-13,Club,Real Madrid,Barcelona,LaLiga,Away,66,61-75',2nd Half,Right foot,Draw,2:02,Mesut Ozil,La Liga,No,Right foot
+321,2012-10-20,2012,Dec-13,Club,Real Madrid,Celta Vigo,LaLiga,Home,67,61-75',2nd Half,Penalty,Win,2:00,Penalty,La Liga,No,Penalty
+322,2012-10-24,2012,Dec-13,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Away,38,31-45',1st Half,Right foot,Loss,1:01,Mesut Ozil,UEFA Champions League,No,Right foot
+323,2012-10-28,2012,Dec-13,Club,Real Madrid,RCD Mallorca,LaLiga,Away,22,16-30',1st Half,Right foot,Win,0:02,Gonzalo Higuain,La Liga,No,Right foot
+324,2012-10-28,2012,Dec-13,Club,Real Madrid,RCD Mallorca,LaLiga,Away,73,61-75',2nd Half,Right foot,Win,0:04,Gonzalo Higuain,La Liga,Yes,Right foot
+325,2012-11-11,2012,Dec-13,Club,Real Madrid,Levante,LaLiga,Away,20,16-30',1st Half,Right foot,Win,0:01,Unassisted,La Liga,No,Right foot
+326,2012-12-01,2012,Dec-13,Club,Real Madrid,Atlético Madrid,LaLiga,Home,16,16-30',1st Half,Direct free kick,Win,1:00,Direct free kick,La Liga,No,Direct free kick
+327,2012-12-04,2012,Dec-13,Club,Real Madrid,Ajax Amsterdam,UEFA Champions League,Home,13,01-15',1st Half,Right foot,Win,1:00,Karim Benzema,UEFA Champions League,No,Right foot
+328,2012-12-12,2012,Dec-13,Club,Real Madrid,Celta Vigo,Copa del Rey,Away,87,76-90',2nd Half,Left foot,Loss,2:01,Xabi Alonso,Domestic Cups,No,Left foot
+329,2012-12-16,2012,Dec-13,Club,Real Madrid,Espanyol,LaLiga,Home,45,31-45',1st Half,Right foot,Draw,1:01,Sami Khedira,La Liga,No,Right foot
+330,2013-01-06,2013,Dec-13,Club,Real Madrid,Real Sociedad,LaLiga,Home,67,61-75',2nd Half,Left foot,Win,3:02,Karim Benzema,La Liga,No,Left foot
+331,2013-01-06,2013,Dec-13,Club,Real Madrid,Real Sociedad,LaLiga,Home,70,61-75',2nd Half,Direct free kick,Win,4:02,Direct free kick,La Liga,Yes,Direct free kick
+332,2013-01-09,2013,Dec-13,Club,Real Madrid,Celta Vigo,Copa del Rey,Home,2,01-15',1st Half,Right foot,Win,1:00,alvaro Arbeloa,Domestic Cups,No,Right foot
+333,2013-01-09,2013,Dec-13,Club,Real Madrid,Celta Vigo,Copa del Rey,Home,24,16-30',1st Half,Left foot,Win,2:00,Luka Modric,Domestic Cups,No,Left foot
+334,2013-01-09,2013,Dec-13,Club,Real Madrid,Celta Vigo,Copa del Rey,Home,87,76-90',2nd Half,Left foot,Win,3:00,Gonzalo Higuain,Domestic Cups,Yes,Left foot
+335,2013-01-20,2013,Dec-13,Club,Real Madrid,Valencia,LaLiga,Away,35,31-45',1st Half,Left foot,Win,0:03,Fabio Coentrão,La Liga,No,Left foot
+336,2013-01-20,2013,Dec-13,Club,Real Madrid,Valencia,LaLiga,Away,41,31-45',1st Half,Right foot,Win,0:04,Mesut Ozil,La Liga,No,Right foot
+337,2013-01-27,2013,Dec-13,Club,Real Madrid,Getafe,LaLiga,Home,62,61-75',2nd Half,Left foot,Win,2:00,Mesut Ozil,La Liga,No,Left foot
+338,2013-01-27,2013,Dec-13,Club,Real Madrid,Getafe,LaLiga,Home,65,61-75',2nd Half,Header,Win,3:00,Angel Di Maria,La Liga,No,Header
+339,2013-01-27,2013,Dec-13,Club,Real Madrid,Getafe,LaLiga,Home,72,61-75',2nd Half,Penalty,Win,4:00,Penalty,La Liga,Yes,Penalty
+340,2013-02-06,2013,2012-13,International,Portugal,Ecuador,Friendly,Home,55,46-60',2nd Half,Right foot,Loss,1–1,Portugal Teammate,International Friendly,No,Right foot
+341,2013-02-09,2013,Dec-13,Club,Real Madrid,Sevilla,LaLiga,Home,26,16-30',1st Half,Left foot,Win,2:00,Kaka,La Liga,No,Left foot
+342,2013-02-09,2013,Dec-13,Club,Real Madrid,Sevilla,LaLiga,Home,46,46-60',2nd Half,Left foot,Win,3:00,alvaro Arbeloa,La Liga,No,Left foot
+343,2013-02-09,2013,Dec-13,Club,Real Madrid,Sevilla,LaLiga,Home,59,46-60',2nd Half,Right foot,Win,4:00,Gonzalo Higuain,La Liga,No,Right foot
+344,2013-02-13,2013,Dec-13,Club,Real Madrid,Manchester United,UEFA Champions League,Home,30,16-30',1st Half,Header,Draw,1:01,Angel Di Maria,UEFA Champions League,No,Header
+345,2013-02-26,2013,Dec-13,Club,Real Madrid,Barcelona,Copa del Rey,Away,12,01-15',1st Half,Penalty,Win,0:01,Penalty,Domestic Cups,No,Penalty
+346,2013-02-26,2013,Dec-13,Club,Real Madrid,Barcelona,Copa del Rey,Away,57,46-60',2nd Half,Left foot,Win,0:02,Unassisted,Domestic Cups,No,Left foot
+347,2013-03-05,2013,Dec-13,Club,Real Madrid,Manchester United,UEFA Champions League,Away,69,61-75',2nd Half,Right foot,Win,1:02,Gonzalo Higuain,UEFA Champions League,No,Right foot
+348,2013-03-10,2013,Dec-13,Club,Real Madrid,Celta Vigo,LaLiga,Away,61,61-75',2nd Half,Left foot,Win,0:01,Jose Callejón,La Liga,No,Left foot
+349,2013-03-10,2013,Dec-13,Club,Real Madrid,Celta Vigo,LaLiga,Away,71,61-75',2nd Half,Penalty,Win,1:02,Penalty,La Liga,Yes,Penalty
+350,2013-03-16,2013,Dec-13,Club,Real Madrid,RCD Mallorca,LaLiga,Home,52,46-60',2nd Half,Header,Win,2:02,Mesut Ozil,La Liga,No,Header
+351,2013-03-30,2013,Dec-13,Club,Real Madrid,Real Zaragoza,LaLiga,Away,38,31-45',1st Half,Long distance shot,Draw,1:01,Unassisted,La Liga,No,Other
+352,2013-04-03,2013,Dec-13,Club,Real Madrid,Galatasaray,UEFA Champions League,Home,9,01-15',1st Half,Left foot,Win,1:00,Mesut Ozil,UEFA Champions League,No,Left foot
+353,2013-04-06,2013,Dec-13,Club,Real Madrid,Levante,LaLiga,Home,84,76-90',2nd Half,Right foot,Win,3:01,Gonzalo Higuain,La Liga,Yes,Right foot
+354,2013-04-09,2013,Dec-13,Club,Real Madrid,Galatasaray,UEFA Champions League,Away,8,01-15',1st Half,Right foot,Loss,0:01,Sami Khedira,UEFA Champions League,No,Right foot
+355,2013-04-09,2013,Dec-13,Club,Real Madrid,Galatasaray,UEFA Champions League,Away,92,90+ Stoppage,2nd Half,Right foot,Loss,3:02,Karim Benzema,UEFA Champions League,No,Right foot
+356,2013-04-14,2013,Dec-13,Club,Real Madrid,Athletic Club,LaLiga,Away,2,01-15',1st Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+357,2013-04-14,2013,Dec-13,Club,Real Madrid,Athletic Club,LaLiga,Away,68,61-75',2nd Half,Header,Win,0:02,Xabi Alonso,La Liga,No,Header
+358,2013-04-24,2013,Dec-13,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Away,43,31-45',1st Half,Right foot,Loss,1:01,Gonzalo Higuain,UEFA Champions League,No,Right foot
+359,2013-05-04,2013,Dec-13,Club,Real Madrid,Real Valladolid CF,LaLiga,Home,32,31-45',1st Half,Header,Win,2:01,Angel Di Maria,La Liga,No,Header
+360,2013-05-04,2013,Dec-13,Club,Real Madrid,Real Valladolid CF,LaLiga,Home,70,61-75',2nd Half,Header,Win,4:02,Mesut Ozil,La Liga,Yes,Header
+361,2013-05-08,2013,Dec-13,Club,Real Madrid,Málaga,LaLiga,Home,26,16-30',1st Half,Right foot,Win,2:01,Xabi Alonso,La Liga,No,Right foot
+362,2013-05-17,2013,Dec-13,Club,Real Madrid,Atlético Madrid,Copa del Rey,Away,14,01-15',1st Half,Header,Loss,0:01,Luka Modric,Domestic Cups,No,Header
+363,2013-06-10,2013,2012-13,International,Portugal,Croatia,Friendly,Neutral,55,46-60',2nd Half,Right foot,Win,1–0,Portugal Teammate,International Friendly,No,Right foot
+364,2013-08-14,2013,2013-14,International,Portugal,Netherlands,Friendly,Home,55,46-60',2nd Half,Header,Draw,1–1,Portugal Teammate,International Friendly,No,Header
+365,2013-09-01,2013,2013-14,Club,Real Madrid,Athletic Club,LaLiga,Home,45,31-45',1st Half,Header,Win,2:00,Angel Di Maria,La Liga,No,Header
+366,2013-09-06,2013,2013-14,International,Portugal,Northern Ireland,2014 FIFA World Cup qualification,Away,68,61-75',2nd Half,Right foot,Win,2–2,Portugal Teammate,WC Qualification,No,Right foot
+367,2013-09-06,2013,2013-14,International,Portugal,Northern Ireland,2014 FIFA World Cup qualification,Away,68,61-75',2nd Half,Right foot,Win,3–2,Portugal Teammate,WC Qualification,No,Right foot
+368,2013-09-06,2013,2013-14,International,Portugal,Northern Ireland,2014 FIFA World Cup qualification,Away,68,61-75',2nd Half,Right foot,Win,4–2,Portugal Teammate,WC Qualification,No,Right foot
+369,2013-09-14,2013,2013-14,Club,Real Madrid,Villarreal,LaLiga,Away,64,61-75',2nd Half,Right foot,Draw,1:02,Unassisted,La Liga,No,Right foot
+370,2013-09-17,2013,2013-14,Club,Real Madrid,Galatasaray,UEFA Champions League,Away,63,61-75',2nd Half,Left foot,Win,0:03,Isco,UEFA Champions League,No,Left foot
+371,2013-09-17,2013,2013-14,Club,Real Madrid,Galatasaray,UEFA Champions League,Away,66,61-75',2nd Half,Tap-in,Win,0:04,Sergio Ramos,UEFA Champions League,No,Other
+372,2013-09-17,2013,2013-14,Club,Real Madrid,Galatasaray,UEFA Champions League,Away,90,76-90',2nd Half,Left foot,Win,1:06,Karim Benzema,UEFA Champions League,Yes,Left foot
+373,2013-09-22,2013,2013-14,Club,Real Madrid,Getafe,LaLiga,Home,34,31-45',1st Half,Penalty,Win,2:01,Penalty,La Liga,No,Penalty
+374,2013-09-22,2013,2013-14,Club,Real Madrid,Getafe,LaLiga,Home,90,76-90',2nd Half,Right foot,Win,4:01,Sami Khedira,La Liga,Yes,Right foot
+375,2013-09-25,2013,2013-14,Club,Real Madrid,Elche CF,LaLiga,Away,51,46-60',2nd Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+376,2013-09-25,2013,2013-14,Club,Real Madrid,Elche CF,LaLiga,Away,96,90+ Stoppage,2nd Half,Penalty,Win,1:02,Penalty,La Liga,Yes,Penalty
+377,2013-10-02,2013,2013-14,Club,Real Madrid,FC Copenhagen,UEFA Champions League,Home,21,16-30',1st Half,Header,Win,1:00,Marcelo,UEFA Champions League,No,Header
+378,2013-10-02,2013,2013-14,Club,Real Madrid,FC Copenhagen,UEFA Champions League,Home,65,61-75',2nd Half,Header,Win,2:00,Angel Di Maria,UEFA Champions League,No,Header
+379,2013-10-05,2013,2013-14,Club,Real Madrid,Levante,LaLiga,Away,94,90+ Stoppage,2nd Half,Right foot,Win,2:03,Luka Modric,La Liga,Yes,Right foot
+380,2013-10-19,2013,2013-14,Club,Real Madrid,Málaga,LaLiga,Home,91,90+ Stoppage,2nd Half,Penalty,Win,2:00,Penalty,La Liga,Yes,Penalty
+381,2013-10-23,2013,2013-14,Club,Real Madrid,Juventus,UEFA Champions League,Home,4,01-15',1st Half,Right foot,Win,1:00,Angel Di Maria,UEFA Champions League,No,Right foot
+382,2013-10-23,2013,2013-14,Club,Real Madrid,Juventus,UEFA Champions League,Home,29,16-30',1st Half,Penalty,Win,2:01,Penalty,UEFA Champions League,No,Penalty
+383,2013-10-30,2013,2013-14,Club,Real Madrid,Sevilla,LaLiga,Home,31,31-45',1st Half,Penalty,Win,3:00,Penalty,La Liga,No,Penalty
+384,2013-10-30,2013,2013-14,Club,Real Madrid,Sevilla,LaLiga,Home,60,46-60',2nd Half,Right foot,Win,5:02,Gareth Bale,La Liga,No,Right foot
+385,2013-10-30,2013,2013-14,Club,Real Madrid,Sevilla,LaLiga,Home,71,61-75',2nd Half,Right foot,Win,6:03,Karim Benzema,La Liga,Yes,Right foot
+386,2013-11-02,2013,2013-14,Club,Real Madrid,Rayo Vallecano,LaLiga,Away,3,01-15',1st Half,Right foot,Win,0:01,Luka Modric,La Liga,No,Right foot
+387,2013-11-02,2013,2013-14,Club,Real Madrid,Rayo Vallecano,LaLiga,Away,48,46-60',2nd Half,Right foot,Win,0:03,Gareth Bale,La Liga,No,Right foot
+388,2013-11-05,2013,2013-14,Club,Real Madrid,Juventus,UEFA Champions League,Away,52,46-60',2nd Half,Right foot,Draw,1:01,Karim Benzema,UEFA Champions League,No,Right foot
+389,2013-11-09,2013,2013-14,Club,Real Madrid,Real Sociedad,LaLiga,Home,12,01-15',1st Half,Right foot,Win,1:00,Karim Benzema,La Liga,No,Right foot
+390,2013-11-09,2013,2013-14,Club,Real Madrid,Real Sociedad,LaLiga,Home,27,16-30',1st Half,Penalty,Win,3:00,Penalty,La Liga,No,Penalty
+391,2013-11-09,2013,2013-14,Club,Real Madrid,Real Sociedad,LaLiga,Home,76,76-90',2nd Half,Direct free kick,Win,5:01,Direct free kick,La Liga,Yes,Direct free kick
+392,2013-11-15,2013,2013-14,International,Portugal,Sweden,2014 FIFA World Cup qualification,Home,82,76-90',2nd Half,Left foot,Win,1–0,Portugal Teammate,WC Qualification,Yes,Left foot
+393,2013-11-19,2013,2013-14,International,Portugal,Sweden,2014 FIFA World Cup qualification,Away,50,46-60',2nd Half,Header,Win,1–0,Portugal Teammate,WC Qualification,No,Header
+394,2013-11-19,2013,2013-14,International,Portugal,Sweden,2014 FIFA World Cup qualification,Away,50,46-60',2nd Half,Right foot,Win,2–2,Portugal Teammate,WC Qualification,No,Right foot
+395,2013-11-19,2013,2013-14,International,Portugal,Sweden,2014 FIFA World Cup qualification,Away,50,46-60',2nd Half,Right foot,Win,3–2,Portugal Teammate,WC Qualification,No,Right foot
+396,2013-11-23,2013,2013-14,Club,Real Madrid,UD Almeria,LaLiga,Away,3,01-15',1st Half,Left foot,Win,0:01,Isco,La Liga,No,Left foot
+397,2013-12-10,2013,2013-14,Club,Real Madrid,FC Copenhagen,UEFA Champions League,Away,48,46-60',2nd Half,Right foot,Win,0:02,Pepe,UEFA Champions League,No,Right foot
+398,2013-12-22,2013,2013-14,Club,Real Madrid,Valencia,LaLiga,Away,40,31-45',1st Half,Header,Win,1:02,Angel Di Maria,La Liga,No,Header
+399,2014-01-06,2014,2013-14,Club,Real Madrid,Celta Vigo,LaLiga,Home,82,76-90',2nd Half,Right foot,Win,2:00,Daniel Carvajal,La Liga,Yes,Right foot
+400,2014-01-06,2014,2013-14,Club,Real Madrid,Celta Vigo,LaLiga,Home,90,76-90',2nd Half,Right foot,Win,3:00,Gareth Bale,La Liga,Yes,Right foot
+401,2014-01-15,2014,2013-14,Club,Real Madrid,Osasuna,Copa del Rey,Away,22,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,Domestic Cups,No,Direct free kick
+402,2014-01-18,2014,2013-14,Club,Real Madrid,Real Betis,LaLiga,Away,10,01-15',1st Half,Right foot,Win,0:01,Angel Di Maria,La Liga,No,Right foot
+403,2014-01-25,2014,2013-14,Club,Real Madrid,Granada,LaLiga,Home,57,46-60',2nd Half,Right foot,Win,1:00,Luka Modric,La Liga,No,Right foot
+404,2014-02-11,2014,2013-14,Club,Real Madrid,Atlético Madrid,Copa del Rey,Away,6,01-15',1st Half,Penalty,Win,0:01,Penalty,Domestic Cups,No,Penalty
+405,2014-02-11,2014,2013-14,Club,Real Madrid,Atlético Madrid,Copa del Rey,Away,15,01-15',1st Half,Penalty,Win,0:02,Penalty,Domestic Cups,No,Penalty
+406,2014-02-26,2014,2013-14,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Away,52,46-60',2nd Half,Left foot,Win,0:03,Gareth Bale,UEFA Champions League,No,Left foot
+407,2014-02-26,2014,2013-14,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Away,89,76-90',2nd Half,Right foot,Win,0:06,Karim Benzema,UEFA Champions League,Yes,Right foot
+408,2014-03-02,2014,2013-14,Club,Real Madrid,Atlético Madrid,LaLiga,Away,82,76-90',2nd Half,Right foot,Draw,2:02,Gareth Bale,La Liga,No,Right foot
+409,2014-03-05,2014,2013-14,International,Portugal,Cameroon,Friendly,Home,55,46-60',2nd Half,Left foot,Win,1–0,Portugal Teammate,International Friendly,No,Left foot
+410,2014-03-05,2014,2013-14,International,Portugal,Cameroon,Friendly,Home,55,46-60',2nd Half,Right foot,Win,5–1,Portugal Teammate,International Friendly,No,Right foot
+411,2014-03-09,2014,2013-14,Club,Real Madrid,Levante,LaLiga,Home,11,01-15',1st Half,Header,Win,1:00,Angel Di Maria,La Liga,No,Header
+412,2014-03-15,2014,2013-14,Club,Real Madrid,Málaga,LaLiga,Away,23,16-30',1st Half,Right foot,Win,0:01,Gareth Bale,La Liga,No,Right foot
+413,2014-03-18,2014,2013-14,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Home,22,16-30',1st Half,Right foot,Win,1:00,Gareth Bale,UEFA Champions League,No,Right foot
+414,2014-03-18,2014,2013-14,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Home,74,61-75',2nd Half,Right foot,Win,2:01,Unassisted,UEFA Champions League,Yes,Right foot
+415,2014-03-23,2014,2013-14,Club,Real Madrid,Barcelona,LaLiga,Home,55,46-60',2nd Half,Penalty,Loss,3:02,Penalty,La Liga,No,Penalty
+416,2014-03-26,2014,2013-14,Club,Real Madrid,Sevilla,LaLiga,Away,14,01-15',1st Half,Direct free kick,Loss,0:01,Direct free kick,La Liga,No,Direct free kick
+417,2014-03-29,2014,2013-14,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,15,01-15',1st Half,Right foot,Win,1:00,Gareth Bale,La Liga,No,Right foot
+418,2014-04-02,2014,2013-14,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Home,57,46-60',2nd Half,Left foot,Win,3:00,Luka Modric,UEFA Champions League,No,Left foot
+419,2014-04-26,2014,2013-14,Club,Real Madrid,Osasuna,LaLiga,Home,6,01-15',1st Half,Long distance shot,Win,1:00,Angel Di Maria,La Liga,No,Other
+420,2014-04-26,2014,2013-14,Club,Real Madrid,Osasuna,LaLiga,Home,52,46-60',2nd Half,Long distance shot,Win,2:00,Isco,La Liga,No,Other
+421,2014-04-29,2014,2013-14,Club,Real Madrid,Bayern Munich,UEFA Champions League,Away,34,31-45',1st Half,Counter attack goal,Win,0:03,Gareth Bale,UEFA Champions League,No,Other
+422,2014-04-29,2014,2013-14,Club,Real Madrid,Bayern Munich,UEFA Champions League,Away,90,76-90',2nd Half,Direct free kick,Win,0:04,Direct free kick,UEFA Champions League,Yes,Direct free kick
+423,2014-05-04,2014,2013-14,Club,Real Madrid,Valencia,LaLiga,Home,90,76-90',2nd Half,Right foot,Draw,2:02,Angel Di Maria,La Liga,No,Right foot
+424,2014-05-24,2014,2013-14,Club,Real Madrid,Atlético Madrid,UEFA Champions League,Home,120,Extra Time,Extra Time,Penalty,Win,4:01,Penalty,UEFA Champions League,Yes,Penalty
+425,2014-06-26,2014,2013-14,International,Portugal,Ghana,2014 FIFA World Cup,Neutral,80,76-90',2nd Half,Header,Win,2–1,Portugal Teammate,FIFA World Cup,Yes,Header
+426,2014-08-12,2014,2014-15,Club,Real Madrid,Sevilla,UEFA Super Cup,Home,30,16-30',1st Half,Right foot,Win,1:00,Gareth Bale,Supercups,No,Right foot
+427,2014-08-12,2014,2014-15,Club,Real Madrid,Sevilla,UEFA Super Cup,Home,49,46-60',2nd Half,Left foot,Win,2:00,Karim Benzema,Supercups,No,Left foot
+428,2014-08-25,2014,2014-15,Club,Real Madrid,Córdoba CF,LaLiga,Home,90,76-90',2nd Half,Right foot,Win,2:00,Isco,La Liga,Yes,Right foot
+429,2014-09-13,2014,2014-15,Club,Real Madrid,Atlético Madrid,LaLiga,Home,25,16-30',1st Half,Penalty,Loss,1:01,Penalty,La Liga,No,Penalty
+430,2014-09-16,2014,2014-15,Club,Real Madrid,FC Basel 1893,UEFA Champions League,Home,31,31-45',1st Half,Right foot,Win,3:00,Gareth Bale,UEFA Champions League,No,Right foot
+431,2014-09-20,2014,2014-15,Club,Real Madrid,Deportivo La Coruña,LaLiga,Away,29,16-30',1st Half,Header,Win,0:01,alvaro Arbeloa,La Liga,No,Header
+432,2014-09-20,2014,2014-15,Club,Real Madrid,Deportivo La Coruña,LaLiga,Away,41,31-45',1st Half,Left foot,Win,0:03,Karim Benzema,La Liga,No,Left foot
+433,2014-09-20,2014,2014-15,Club,Real Madrid,Deportivo La Coruña,LaLiga,Away,78,76-90',2nd Half,Left foot,Win,1:06,James Rodriguez,La Liga,Yes,Left foot
+434,2014-09-23,2014,2014-15,Club,Real Madrid,Elche CF,LaLiga,Home,28,16-30',1st Half,Penalty,Win,2:01,Penalty,La Liga,No,Penalty
+435,2014-09-23,2014,2014-15,Club,Real Madrid,Elche CF,LaLiga,Home,32,31-45',1st Half,Header,Win,3:01,Marcelo,La Liga,No,Header
+436,2014-09-23,2014,2014-15,Club,Real Madrid,Elche CF,LaLiga,Home,80,76-90',2nd Half,Penalty,Win,4:01,Penalty,La Liga,Yes,Penalty
+437,2014-09-23,2014,2014-15,Club,Real Madrid,Elche CF,LaLiga,Home,90,76-90',2nd Half,Right foot,Win,5:01,Gareth Bale,La Liga,Yes,Right foot
+438,2014-09-27,2014,2014-15,Club,Real Madrid,Villarreal,LaLiga,Away,40,31-45',1st Half,Right foot,Win,0:02,Karim Benzema,La Liga,No,Right foot
+439,2014-10-01,2014,2014-15,Club,Real Madrid,Ludogorets Razgrad,UEFA Champions League,Away,25,16-30',1st Half,Penalty,Win,1:01,Penalty,UEFA Champions League,No,Penalty
+440,2014-10-05,2014,2014-15,Club,Real Madrid,Athletic Club,LaLiga,Home,3,01-15',1st Half,Header,Win,1:00,Gareth Bale,La Liga,No,Header
+441,2014-10-05,2014,2014-15,Club,Real Madrid,Athletic Club,LaLiga,Home,55,46-60',2nd Half,Right foot,Win,3:00,Gareth Bale,La Liga,No,Right foot
+442,2014-10-05,2014,2014-15,Club,Real Madrid,Athletic Club,LaLiga,Home,89,76-90',2nd Half,Deflected shot,Win,5:00,Pepe,La Liga,Yes,Other
+443,2014-10-14,2014,2014-15,International,Portugal,Denmark,UEFA Euro 2016 qualifying,Away,90,76-90',2nd Half,Right foot,Win,1–0,Portugal Teammate,Euro Qualification,Yes,Right foot
+444,2014-10-18,2014,2014-15,Club,Real Madrid,Levante,LaLiga,Away,13,01-15',1st Half,Penalty,Win,0:01,Penalty,La Liga,No,Penalty
+445,2014-10-18,2014,2014-15,Club,Real Madrid,Levante,LaLiga,Away,61,61-75',2nd Half,Right foot,Win,0:03,Isco,La Liga,No,Right foot
+446,2014-10-22,2014,2014-15,Club,Real Madrid,Liverpool,UEFA Champions League,Away,23,16-30',1st Half,Right foot,Win,0:01,James Rodriguez,UEFA Champions League,No,Right foot
+447,2014-10-25,2014,2014-15,Club,Real Madrid,Barcelona,LaLiga,Home,35,31-45',1st Half,Penalty,Win,1:01,Penalty,La Liga,No,Penalty
+448,2014-11-01,2014,2014-15,Club,Real Madrid,Granada,LaLiga,Away,2,01-15',1st Half,Right foot,Win,0:01,Karim Benzema,La Liga,No,Right foot
+449,2014-11-08,2014,2014-15,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,83,76-90',2nd Half,Right foot,Win,5:01,Isco,La Liga,Yes,Right foot
+450,2014-11-14,2014,2014-15,International,Portugal,Armenia,UEFA Euro 2016 qualifying,Home,72,61-75',2nd Half,Left foot,Win,1–0,Portugal Teammate,Euro Qualification,Yes,Left foot
+451,2014-11-22,2014,2014-15,Club,Real Madrid,SD Eibar,LaLiga,Away,43,31-45',1st Half,Right foot,Win,0:02,Daniel Carvajal,La Liga,No,Right foot
+452,2014-11-22,2014,2014-15,Club,Real Madrid,SD Eibar,LaLiga,Away,83,76-90',2nd Half,Penalty,Win,0:04,Penalty,La Liga,Yes,Penalty
+453,2014-11-26,2014,2014-15,Club,Real Madrid,FC Basel 1893,UEFA Champions League,Away,35,31-45',1st Half,Left foot,Win,0:01,Karim Benzema,UEFA Champions League,No,Left foot
+454,2014-12-06,2014,2014-15,Club,Real Madrid,Celta Vigo,LaLiga,Home,36,31-45',1st Half,Penalty,Win,1:00,Penalty,La Liga,No,Penalty
+455,2014-12-06,2014,2014-15,Club,Real Madrid,Celta Vigo,LaLiga,Home,65,61-75',2nd Half,Right foot,Win,2:00,Unassisted,La Liga,No,Right foot
+456,2014-12-06,2014,2014-15,Club,Real Madrid,Celta Vigo,LaLiga,Home,81,76-90',2nd Half,Left foot,Win,3:00,Marcelo,La Liga,Yes,Left foot
+457,2014-12-09,2014,2014-15,Club,Real Madrid,Ludogorets Razgrad,UEFA Champions League,Home,20,16-30',1st Half,Penalty,Win,1:00,Penalty,UEFA Champions League,No,Penalty
+458,2014-12-12,2014,2014-15,Club,Real Madrid,UD Almeria,LaLiga,Away,81,76-90',2nd Half,Right foot,Win,1:03,Karim Benzema,La Liga,Yes,Right foot
+459,2014-12-12,2014,2014-15,Club,Real Madrid,UD Almeria,LaLiga,Away,89,76-90',2nd Half,Right foot,Win,1:04,Daniel Carvajal,La Liga,Yes,Right foot
+460,2015-01-04,2015,2014-15,Club,Real Madrid,Valencia,LaLiga,Away,14,01-15',1st Half,Penalty,Loss,0:01,Penalty,La Liga,No,Penalty
+461,2015-01-15,2015,2014-15,Club,Real Madrid,Atlético Madrid,Copa del Rey,Home,54,46-60',2nd Half,Header,Draw,2:02,Gareth Bale,Domestic Cups,No,Header
+462,2015-01-18,2015,2014-15,Club,Real Madrid,Getafe,LaLiga,Away,63,61-75',2nd Half,Left foot,Win,0:01,Karim Benzema,La Liga,No,Left foot
+463,2015-01-18,2015,2014-15,Club,Real Madrid,Getafe,LaLiga,Away,79,76-90',2nd Half,Header,Win,0:03,James Rodriguez,La Liga,Yes,Header
+464,2015-02-18,2015,2014-15,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Away,26,16-30',1st Half,Header,Win,0:01,Daniel Carvajal,UEFA Champions League,No,Header
+465,2015-02-22,2015,2014-15,Club,Real Madrid,Elche CF,LaLiga,Away,69,61-75',2nd Half,Header,Win,0:02,Isco,La Liga,No,Header
+466,2015-03-01,2015,2014-15,Club,Real Madrid,Villarreal,LaLiga,Home,52,46-60',2nd Half,Penalty,Draw,1:00,Penalty,La Liga,No,Penalty
+467,2015-03-10,2015,2014-15,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Home,25,16-30',1st Half,Header,Loss,1:01,Toni Kroos,UEFA Champions League,No,Header
+468,2015-03-10,2015,2014-15,Club,Real Madrid,FC Schalke 04,UEFA Champions League,Home,45,31-45',1st Half,Header,Loss,2:02,Fabio Coentrão,UEFA Champions League,No,Header
+469,2015-03-22,2015,2014-15,Club,Real Madrid,Barcelona,LaLiga,Away,31,31-45',1st Half,Right foot,Loss,1:01,Karim Benzema,La Liga,No,Right foot
+470,2015-04-05,2015,2014-15,Club,Real Madrid,Granada,LaLiga,Home,30,16-30',1st Half,Right foot,Win,2:00,James Rodriguez,La Liga,No,Right foot
+471,2015-04-05,2015,2014-15,Club,Real Madrid,Granada,LaLiga,Home,36,31-45',1st Half,Right foot,Win,3:00,Unassisted,La Liga,No,Right foot
+472,2015-04-05,2015,2014-15,Club,Real Madrid,Granada,LaLiga,Home,38,31-45',1st Half,Long distance shot,Win,4:00,Gareth Bale,La Liga,No,Other
+473,2015-04-05,2015,2014-15,Club,Real Madrid,Granada,LaLiga,Home,54,46-60',2nd Half,Header,Win,6:00,Gareth Bale,La Liga,No,Header
+474,2015-04-05,2015,2014-15,Club,Real Madrid,Granada,LaLiga,Home,90,76-90',2nd Half,Header,Win,9:01,Luka Modric,La Liga,Yes,Header
+475,2015-04-08,2015,2014-15,Club,Real Madrid,Rayo Vallecano,LaLiga,Away,68,61-75',2nd Half,Header,Win,0:01,Daniel Carvajal,La Liga,No,Header
+476,2015-04-11,2015,2014-15,Club,Real Madrid,SD Eibar,LaLiga,Home,21,16-30',1st Half,Direct free kick,Win,1:00,Direct free kick,La Liga,No,Direct free kick
+477,2015-04-18,2015,2014-15,Club,Real Madrid,Málaga,LaLiga,Home,92,90+ Stoppage,2nd Half,Left foot,Win,3:01,Chicharito,La Liga,Yes,Left foot
+478,2015-05-02,2015,2014-15,Club,Real Madrid,Sevilla,LaLiga,Away,36,31-45',1st Half,Header,Win,0:01,Isco,La Liga,No,Header
+479,2015-05-02,2015,2014-15,Club,Real Madrid,Sevilla,LaLiga,Away,37,31-45',1st Half,Right foot,Win,0:02,Chicharito,La Liga,No,Right foot
+480,2015-05-02,2015,2014-15,Club,Real Madrid,Sevilla,LaLiga,Away,69,61-75',2nd Half,Header,Win,1:03,Gareth Bale,La Liga,No,Header
+481,2015-05-05,2015,2014-15,Club,Real Madrid,Juventus,UEFA Champions League,Away,27,16-30',1st Half,Header,Loss,1:01,James Rodriguez,UEFA Champions League,No,Header
+482,2015-05-13,2015,2014-15,Club,Real Madrid,Juventus,UEFA Champions League,Home,23,16-30',1st Half,Penalty,Draw,1:00,Penalty,UEFA Champions League,No,Penalty
+483,2015-05-17,2015,2014-15,Club,Real Madrid,Espanyol,LaLiga,Away,59,46-60',2nd Half,Left foot,Win,0:01,Karim Benzema,La Liga,No,Left foot
+484,2015-05-17,2015,2014-15,Club,Real Madrid,Espanyol,LaLiga,Away,83,76-90',2nd Half,Right foot,Win,1:03,Chicharito,La Liga,Yes,Right foot
+485,2015-05-17,2015,2014-15,Club,Real Madrid,Espanyol,LaLiga,Away,91,90+ Stoppage,2nd Half,Header,Win,1:04,James Rodriguez,La Liga,Yes,Header
+486,2015-05-23,2015,2014-15,Club,Real Madrid,Getafe,LaLiga,Home,13,01-15',1st Half,Header,Win,1:00,Marcelo,La Liga,No,Header
+487,2015-05-23,2015,2014-15,Club,Real Madrid,Getafe,LaLiga,Home,32,31-45',1st Half,Direct free kick,Win,2:02,Direct free kick,La Liga,No,Direct free kick
+488,2015-05-23,2015,2014-15,Club,Real Madrid,Getafe,LaLiga,Home,34,31-45',1st Half,Penalty,Win,3:02,Penalty,La Liga,No,Penalty
+489,2015-06-13,2015,2014-15,International,Portugal,Armenia,UEFA Euro 2016 qualifying,Away,29,16-30',1st Half,Right foot,Win,1–1,Portugal Teammate,Euro Qualification,No,Right foot
+490,2015-06-13,2015,2014-15,International,Portugal,Armenia,UEFA Euro 2016 qualifying,Away,29,16-30',1st Half,Right foot,Win,2–1,Portugal Teammate,Euro Qualification,No,Right foot
+491,2015-06-13,2015,2014-15,International,Portugal,Armenia,UEFA Euro 2016 qualifying,Away,29,16-30',1st Half,Header,Win,3–1,Portugal Teammate,Euro Qualification,No,Header
+492,2015-09-12,2015,2015-16,Club,Real Madrid,Espanyol,LaLiga,Away,7,01-15',1st Half,Right foot,Win,0:01,Luka Modric,La Liga,No,Right foot
+493,2015-09-12,2015,2015-16,Club,Real Madrid,Espanyol,LaLiga,Away,17,16-30',1st Half,Penalty,Win,0:02,Penalty,La Liga,No,Penalty
+494,2015-09-12,2015,2015-16,Club,Real Madrid,Espanyol,LaLiga,Away,20,16-30',1st Half,Left foot,Win,0:03,Gareth Bale,La Liga,No,Left foot
+495,2015-09-12,2015,2015-16,Club,Real Madrid,Espanyol,LaLiga,Away,62,61-75',2nd Half,Right foot,Win,0:05,Gareth Bale,La Liga,No,Right foot
+496,2015-09-12,2015,2015-16,Club,Real Madrid,Espanyol,LaLiga,Away,81,76-90',2nd Half,Right foot,Win,0:06,Lucas Vazquez,La Liga,Yes,Right foot
+497,2015-09-15,2015,2015-16,Club,Real Madrid,Shakhtar Donetsk,UEFA Champions League,Home,56,46-60',2nd Half,Penalty,Win,2:00,Penalty,UEFA Champions League,No,Penalty
+498,2015-09-15,2015,2015-16,Club,Real Madrid,Shakhtar Donetsk,UEFA Champions League,Home,64,61-75',2nd Half,Penalty,Win,3:00,Penalty,UEFA Champions League,No,Penalty
+499,2015-09-15,2015,2015-16,Club,Real Madrid,Shakhtar Donetsk,UEFA Champions League,Home,82,76-90',2nd Half,Header,Win,4:00,Unassisted,UEFA Champions League,Yes,Header
+500,2015-09-30,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Away,29,16-30',1st Half,Right foot,Win,0:01,Isco,UEFA Champions League,No,Right foot
+501,2015-09-30,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Away,90,76-90',2nd Half,Left foot,Win,0:02,Lucas Vazquez,UEFA Champions League,Yes,Left foot
+502,2015-10-17,2015,2015-16,Club,Real Madrid,Levante,LaLiga,Home,30,16-30',1st Half,Right foot,Win,2:00,Toni Kroos,La Liga,No,Right foot
+503,2015-10-24,2015,2015-16,Club,Real Madrid,Celta Vigo,LaLiga,Away,8,01-15',1st Half,Right foot,Win,0:01,Lucas Vazquez,La Liga,No,Right foot
+504,2015-10-31,2015,2015-16,Club,Real Madrid,UD Las Palmas,LaLiga,Home,14,01-15',1st Half,Header,Win,2:00,Marcelo,La Liga,No,Header
+505,2015-11-25,2015,2015-16,Club,Real Madrid,Shakhtar Donetsk,UEFA Champions League,Away,18,16-30',1st Half,Header,Win,0:01,Gareth Bale,UEFA Champions League,No,Header
+506,2015-11-25,2015,2015-16,Club,Real Madrid,Shakhtar Donetsk,UEFA Champions League,Away,70,61-75',2nd Half,Right foot,Win,0:04,Gareth Bale,UEFA Champions League,Yes,Right foot
+507,2015-11-29,2015,2015-16,Club,Real Madrid,SD Eibar,LaLiga,Away,82,76-90',2nd Half,Penalty,Win,0:02,Penalty,La Liga,Yes,Penalty
+508,2015-12-05,2015,2015-16,Club,Real Madrid,Getafe,LaLiga,Home,38,31-45',1st Half,Right foot,Win,4:00,Toni Kroos,La Liga,No,Right foot
+509,2015-12-08,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Home,39,31-45',1st Half,Direct free kick,Win,3:00,Direct free kick,UEFA Champions League,No,Direct free kick
+510,2015-12-08,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Home,47,46-60',2nd Half,Tap-in,Win,4:00,Unassisted,UEFA Champions League,No,Other
+511,2015-12-08,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Home,50,46-60',2nd Half,Right foot,Win,5:00,Danilo,UEFA Champions League,No,Right foot
+512,2015-12-08,2015,2015-16,Club,Real Madrid,Malmö FF,UEFA Champions League,Home,59,46-60',2nd Half,Right foot,Win,6:00,Isco,UEFA Champions League,No,Right foot
+513,2015-12-20,2015,2015-16,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,30,16-30',1st Half,Penalty,Win,3:02,Penalty,La Liga,No,Penalty
+514,2015-12-20,2015,2015-16,Club,Real Madrid,Rayo Vallecano,LaLiga,Home,54,46-60',2nd Half,Header,Win,6:02,James Rodriguez,La Liga,No,Header
+515,2015-12-30,2015,2015-16,Club,Real Madrid,Real Sociedad,LaLiga,Home,42,31-45',1st Half,Penalty,Win,1:00,Penalty,La Liga,No,Penalty
+516,2015-12-30,2015,2015-16,Club,Real Madrid,Real Sociedad,LaLiga,Home,68,61-75',2nd Half,Left foot,Win,2:01,Marcelo,La Liga,No,Left foot
+517,2016-01-17,2016,2015-16,Club,Real Madrid,Sporting Gijón,LaLiga,Home,9,01-15',1st Half,Left foot,Win,2:00,Karim Benzema,La Liga,No,Left foot
+518,2016-01-17,2016,2015-16,Club,Real Madrid,Sporting Gijón,LaLiga,Home,18,16-30',1st Half,Left foot,Win,4:00,Daniel Carvajal,La Liga,No,Left foot
+519,2016-01-31,2016,2015-16,Club,Real Madrid,Espanyol,LaLiga,Home,12,01-15',1st Half,Penalty,Win,2:00,Penalty,La Liga,No,Penalty
+520,2016-01-31,2016,2015-16,Club,Real Madrid,Espanyol,LaLiga,Home,45,31-45',1st Half,Left foot,Win,4:00,Unassisted,La Liga,No,Left foot
+521,2016-01-31,2016,2015-16,Club,Real Madrid,Espanyol,LaLiga,Home,82,76-90',2nd Half,Header,Win,5:00,Jese,La Liga,Yes,Header
+522,2016-02-13,2016,2015-16,Club,Real Madrid,Athletic Club,LaLiga,Home,3,01-15',1st Half,Right foot,Win,1:00,Karim Benzema,La Liga,No,Right foot
+523,2016-02-13,2016,2015-16,Club,Real Madrid,Athletic Club,LaLiga,Home,87,76-90',2nd Half,Right foot,Win,4:01,Lucas Vazquez,La Liga,Yes,Right foot
+524,2016-02-17,2016,2015-16,Club,Real Madrid,AS Roma,UEFA Champions League,Away,57,46-60',2nd Half,Right foot,Win,0:01,Marcelo,UEFA Champions League,No,Right foot
+525,2016-02-21,2016,2015-16,Club,Real Madrid,Málaga,LaLiga,Away,33,31-45',1st Half,Header,Draw,0:01,Toni Kroos,La Liga,No,Header
+526,2016-03-02,2016,2015-16,Club,Real Madrid,Levante,LaLiga,Away,34,31-45',1st Half,Penalty,Win,0:01,Penalty,La Liga,No,Penalty
+527,2016-03-05,2016,2015-16,Club,Real Madrid,Celta Vigo,LaLiga,Home,50,46-60',2nd Half,Long distance shot,Win,2:00,Sergio Ramos,La Liga,No,Other
+528,2016-03-05,2016,2015-16,Club,Real Madrid,Celta Vigo,LaLiga,Home,58,46-60',2nd Half,Direct free kick,Win,3:00,Direct free kick,La Liga,No,Direct free kick
+529,2016-03-05,2016,2015-16,Club,Real Madrid,Celta Vigo,LaLiga,Home,64,61-75',2nd Half,Right foot,Win,4:01,Isco,La Liga,No,Right foot
+530,2016-03-05,2016,2015-16,Club,Real Madrid,Celta Vigo,LaLiga,Home,76,76-90',2nd Half,Header,Win,5:01,Jese,La Liga,Yes,Header
+531,2016-03-08,2016,2015-16,Club,Real Madrid,AS Roma,UEFA Champions League,Home,64,61-75',2nd Half,Right foot,Win,1:00,Lucas Vazquez,UEFA Champions League,No,Right foot
+532,2016-03-20,2016,2015-16,Club,Real Madrid,Sevilla,LaLiga,Home,64,61-75',2nd Half,Left foot,Win,2:00,Danilo,La Liga,No,Left foot
+533,2016-03-29,2016,2015-16,International,Portugal,Belgium,Friendly,Home,55,46-60',2nd Half,Left foot,Win,2–0,Portugal Teammate,International Friendly,No,Left foot
+534,2016-04-02,2016,2015-16,Club,Real Madrid,Barcelona,LaLiga,Away,85,76-90',2nd Half,Right foot,Win,1:02,Gareth Bale,La Liga,Yes,Right foot
+535,2016-04-09,2016,2015-16,Club,Real Madrid,SD Eibar,LaLiga,Home,19,16-30',1st Half,Right foot,Win,3:00,Jese,La Liga,No,Right foot
+536,2016-04-12,2016,2015-16,Club,Real Madrid,VfL Wolfsburg,UEFA Champions League,Home,16,16-30',1st Half,Right foot,Win,1:00,Daniel Carvajal,UEFA Champions League,No,Right foot
+537,2016-04-12,2016,2015-16,Club,Real Madrid,VfL Wolfsburg,UEFA Champions League,Home,17,16-30',1st Half,Header,Win,2:00,Toni Kroos,UEFA Champions League,No,Header
+538,2016-04-12,2016,2015-16,Club,Real Madrid,VfL Wolfsburg,UEFA Champions League,Home,77,76-90',2nd Half,Direct free kick,Win,3:00,Direct free kick,UEFA Champions League,Yes,Direct free kick
+539,2016-04-16,2016,2015-16,Club,Real Madrid,Getafe,LaLiga,Away,92,90+ Stoppage,2nd Half,Left foot,Win,1:05,Jese,La Liga,Yes,Left foot
+540,2016-05-08,2016,2015-16,Club,Real Madrid,Valencia,LaLiga,Home,26,16-30',1st Half,Right foot,Win,1:00,Marcelo,La Liga,No,Right foot
+541,2016-05-08,2016,2015-16,Club,Real Madrid,Valencia,LaLiga,Home,59,46-60',2nd Half,Left foot,Win,3:01,James Rodriguez,La Liga,No,Left foot
+542,2016-05-14,2016,2015-16,Club,Real Madrid,Deportivo La Coruña,LaLiga,Away,8,01-15',1st Half,Left foot,Win,0:01,Karim Benzema,La Liga,No,Left foot
+543,2016-05-14,2016,2015-16,Club,Real Madrid,Deportivo La Coruña,LaLiga,Away,25,16-30',1st Half,Header,Win,0:02,Toni Kroos,La Liga,No,Header
+544,2016-06-08,2016,2015-16,International,Portugal,Estonia,Friendly,Home,55,46-60',2nd Half,Right foot,Win,1–0,Portugal Teammate,International Friendly,No,Right foot
+545,2016-06-08,2016,2015-16,International,Portugal,Estonia,Friendly,Home,55,46-60',2nd Half,Right foot,Win,3–0,Portugal Teammate,International Friendly,No,Right foot
+546,2016-06-22,2016,2015-16,International,Portugal,Hungary,UEFA Euro 2016,Neutral,50,46-60',2nd Half,Right foot,Draw,2–2,Portugal Teammate,UEFA Euro,No,Right foot
+547,2016-06-22,2016,2015-16,International,Portugal,Hungary,UEFA Euro 2016,Neutral,50,46-60',2nd Half,Header,Draw,3–3,Portugal Teammate,UEFA Euro,No,Header
+548,2016-07-06,2016,2015-16,International,Portugal,Wales,UEFA Euro 2016,Neutral,50,46-60',2nd Half,Right foot,Win,1–0,Portugal Teammate,UEFA Euro,No,Right foot
+549,2016-09-10,2016,2016-17,Club,Real Madrid,Osasuna,LaLiga,Home,6,01-15',1st Half,Right foot,Win,1:00,Gareth Bale,La Liga,No,Right foot
+550,2016-09-14,2016,2016-17,Club,Real Madrid,Sporting CP,UEFA Champions League,Home,89,76-90',2nd Half,Direct free kick,Win,1:01,Direct free kick,UEFA Champions League,Yes,Direct free kick
+551,2016-09-27,2016,2016-17,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Away,17,16-30',1st Half,Right foot,Draw,0:01,Gareth Bale,UEFA Champions League,No,Right foot
+552,2016-10-07,2016,2016-17,International,Portugal,Andorra,2018 FIFA World Cup qualification,Home,2,01-15',1st Half,Right foot,Win,1–0,Portugal Teammate,WC Qualification,No,Right foot
+553,2016-10-07,2016,2016-17,International,Portugal,Andorra,2018 FIFA World Cup qualification,Home,2,01-15',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+554,2016-10-07,2016,2016-17,International,Portugal,Andorra,2018 FIFA World Cup qualification,Home,2,01-15',1st Half,Left foot,Win,4–0,Portugal Teammate,WC Qualification,No,Left foot
+555,2016-10-07,2016,2016-17,International,Portugal,Andorra,2018 FIFA World Cup qualification,Home,2,01-15',1st Half,Header,Win,5–0,Portugal Teammate,WC Qualification,No,Header
+556,2016-10-10,2016,2016-17,International,Portugal,Faroe Islands,2018 FIFA World Cup qualification,Away,65,61-75',2nd Half,Right foot,Win,4–0,Portugal Teammate,WC Qualification,No,Right foot
+557,2016-10-15,2016,2016-17,Club,Real Madrid,Real Betis,LaLiga,Away,78,76-90',2nd Half,Right foot,Win,1:06,alvaro Morata,La Liga,Yes,Right foot
+558,2016-10-29,2016,2016-17,Club,Real Madrid,Deportivo Alaves,LaLiga,Away,17,16-30',1st Half,Penalty,Win,1:01,Penalty,La Liga,No,Penalty
+559,2016-10-29,2016,2016-17,Club,Real Madrid,Deportivo Alaves,LaLiga,Away,33,31-45',1st Half,Right foot,Win,1:02,Karim Benzema,La Liga,No,Right foot
+560,2016-10-29,2016,2016-17,Club,Real Madrid,Deportivo Alaves,LaLiga,Away,88,76-90',2nd Half,Right foot,Win,1:04,Marcelo,La Liga,Yes,Right foot
+561,2016-11-13,2016,2016-17,International,Portugal,Latvia,2018 FIFA World Cup qualification,Home,28,16-30',1st Half,Penalty,Win,1–0,Penalty,WC Qualification,No,Penalty
+562,2016-11-13,2016,2016-17,International,Portugal,Latvia,2018 FIFA World Cup qualification,Home,28,16-30',1st Half,Left foot,Win,3–1,Portugal Teammate,WC Qualification,No,Left foot
+563,2016-11-19,2016,2016-17,Club,Real Madrid,Atlético Madrid,LaLiga,Away,23,16-30',1st Half,Direct free kick,Win,0:01,Direct free kick,La Liga,No,Direct free kick
+564,2016-11-19,2016,2016-17,Club,Real Madrid,Atlético Madrid,LaLiga,Away,71,61-75',2nd Half,Penalty,Win,0:02,Penalty,La Liga,Yes,Penalty
+565,2016-11-19,2016,2016-17,Club,Real Madrid,Atlético Madrid,LaLiga,Away,77,76-90',2nd Half,Right foot,Win,0:03,Gareth Bale,La Liga,Yes,Right foot
+566,2016-11-26,2016,2016-17,Club,Real Madrid,Sporting Gijón,LaLiga,Home,5,01-15',1st Half,Penalty,Win,1:00,Penalty,La Liga,No,Penalty
+567,2016-11-26,2016,2016-17,Club,Real Madrid,Sporting Gijón,LaLiga,Home,18,16-30',1st Half,Header,Win,2:00,Nacho Fernandez,La Liga,No,Header
+568,2016-12-15,2016,2016-17,Club,Real Madrid,CF America,FIFA Club World Cup,Away,93,90+ Stoppage,2nd Half,Right foot,Win,0:02,James Rodriguez,FIFA Club World Cup,Yes,Right foot
+569,2016-12-18,2016,2016-17,Club,Real Madrid,Kashima Antlers,FIFA Club World Cup,Home,60,46-60',2nd Half,Penalty,Win,2:02,Penalty,FIFA Club World Cup,No,Penalty
+570,2016-12-18,2016,2016-17,Club,Real Madrid,Kashima Antlers,FIFA Club World Cup,Home,97,Extra Time,Extra Time,Left foot,Win,3:02,Karim Benzema,FIFA Club World Cup,Yes,Left foot
+571,2016-12-18,2016,2016-17,Club,Real Madrid,Kashima Antlers,FIFA Club World Cup,Home,104,Extra Time,Extra Time,Left foot,Win,4:02,Toni Kroos,FIFA Club World Cup,Yes,Left foot
+572,2017-01-07,2017,2016-17,Club,Real Madrid,Granada,LaLiga,Home,27,16-30',1st Half,Header,Win,3:00,Marcelo,La Liga,No,Header
+573,2017-01-15,2017,2016-17,Club,Real Madrid,Sevilla,LaLiga,Away,67,61-75',2nd Half,Penalty,Loss,0:01,Penalty,La Liga,No,Penalty
+574,2017-01-25,2017,2016-17,Club,Real Madrid,Celta Vigo,Copa del Rey,Away,62,61-75',2nd Half,Direct free kick,Draw,1:01,Direct free kick,Domestic Cups,No,Direct free kick
+575,2017-01-29,2017,2016-17,Club,Real Madrid,Real Sociedad,LaLiga,Home,51,46-60',2nd Half,Right foot,Win,2:00,Mateo Kovacic,La Liga,No,Right foot
+576,2017-02-11,2017,2016-17,Club,Real Madrid,Osasuna,LaLiga,Away,24,16-30',1st Half,Right foot,Win,0:01,Karim Benzema,La Liga,No,Right foot
+577,2017-02-22,2017,2016-17,Club,Real Madrid,Valencia,LaLiga,Away,44,31-45',1st Half,Header,Loss,2:01,Marcelo,La Liga,No,Header
+578,2017-02-26,2017,2016-17,Club,Real Madrid,Villarreal,LaLiga,Away,74,61-75',2nd Half,Penalty,Win,2:02,Penalty,La Liga,Yes,Penalty
+579,2017-03-01,2017,2016-17,Club,Real Madrid,UD Las Palmas,LaLiga,Home,86,76-90',2nd Half,Penalty,Draw,2:03,Penalty,La Liga,No,Penalty
+580,2017-03-01,2017,2016-17,Club,Real Madrid,UD Las Palmas,LaLiga,Home,89,76-90',2nd Half,Header,Draw,3:03,James Rodriguez,La Liga,No,Header
+581,2017-03-12,2017,2016-17,Club,Real Madrid,Real Betis,LaLiga,Home,41,31-45',1st Half,Header,Win,1:01,Marcelo,La Liga,No,Header
+582,2017-03-25,2017,2016-17,International,Portugal,Hungary,2018 FIFA World Cup qualification,Home,36,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+583,2017-03-25,2017,2016-17,International,Portugal,Hungary,2018 FIFA World Cup qualification,Home,36,31-45',1st Half,Header,Win,3–0,Portugal Teammate,WC Qualification,No,Header
+584,2017-03-28,2017,2016-17,International,Portugal,Sweden,Friendly,Home,55,46-60',2nd Half,Right foot,Loss,1–0,Portugal Teammate,International Friendly,No,Right foot
+585,2017-04-12,2017,2016-17,Club,Real Madrid,Bayern Munich,UEFA Champions League,Away,47,46-60',2nd Half,Right foot,Win,1:01,Daniel Carvajal,UEFA Champions League,No,Right foot
+586,2017-04-12,2017,2016-17,Club,Real Madrid,Bayern Munich,UEFA Champions League,Away,77,76-90',2nd Half,Right foot,Win,1:02,Marco Asensio,UEFA Champions League,Yes,Right foot
+587,2017-04-18,2017,2016-17,Club,Real Madrid,Bayern Munich,UEFA Champions League,Home,76,76-90',2nd Half,Header,Win,1:01,Casemiro,UEFA Champions League,Yes,Header
+588,2017-04-18,2017,2016-17,Club,Real Madrid,Bayern Munich,UEFA Champions League,Home,105,Extra Time,Extra Time,Left foot,Win,2:02,Sergio Ramos,UEFA Champions League,Yes,Left foot
+589,2017-04-18,2017,2016-17,Club,Real Madrid,Bayern Munich,UEFA Champions League,Home,109,Extra Time,Extra Time,Right foot,Win,3:02,Marcelo,UEFA Champions League,Yes,Right foot
+590,2017-04-29,2017,2016-17,Club,Real Madrid,Valencia,LaLiga,Home,27,16-30',1st Half,Header,Win,1:00,Daniel Carvajal,La Liga,No,Header
+591,2017-05-02,2017,2016-17,Club,Real Madrid,Atlético Madrid,UEFA Champions League,Home,10,01-15',1st Half,Header,Win,1:00,Casemiro,UEFA Champions League,No,Header
+592,2017-05-02,2017,2016-17,Club,Real Madrid,Atlético Madrid,UEFA Champions League,Home,73,61-75',2nd Half,Right foot,Win,2:00,Karim Benzema,UEFA Champions League,Yes,Right foot
+593,2017-05-02,2017,2016-17,Club,Real Madrid,Atlético Madrid,UEFA Champions League,Home,86,76-90',2nd Half,Right foot,Win,3:00,Lucas Vazquez,UEFA Champions League,Yes,Right foot
+594,2017-05-14,2017,2016-17,Club,Real Madrid,Sevilla,LaLiga,Home,23,16-30',1st Half,Right foot,Win,2:00,Unassisted,La Liga,No,Right foot
+595,2017-05-14,2017,2016-17,Club,Real Madrid,Sevilla,LaLiga,Home,78,76-90',2nd Half,Left foot,Win,3:01,Toni Kroos,La Liga,Yes,Left foot
+596,2017-05-17,2017,2016-17,Club,Real Madrid,Celta Vigo,LaLiga,Away,10,01-15',1st Half,Left foot,Win,0:01,Unassisted,La Liga,No,Left foot
+597,2017-05-17,2017,2016-17,Club,Real Madrid,Celta Vigo,LaLiga,Away,48,46-60',2nd Half,Left foot,Win,0:02,Isco,La Liga,No,Left foot
+598,2017-05-21,2017,2016-17,Club,Real Madrid,Málaga,LaLiga,Away,2,01-15',1st Half,Right foot,Win,0:01,Isco,La Liga,No,Right foot
+599,2017-06-03,2017,2016-17,Club,Real Madrid,Juventus,UEFA Champions League,Away,20,16-30',1st Half,Right foot,Win,0:01,Daniel Carvajal,UEFA Champions League,No,Right foot
+600,2017-06-03,2017,2016-17,Club,Real Madrid,Juventus,UEFA Champions League,Away,64,61-75',2nd Half,Right foot,Win,1:03,Luka Modric,UEFA Champions League,No,Right foot
+601,2017-06-09,2017,2016-17,International,Portugal,Latvia,2018 FIFA World Cup qualification,Away,41,31-45',1st Half,Left foot,Win,1–0,Portugal Teammate,WC Qualification,No,Left foot
+602,2017-06-09,2017,2016-17,International,Portugal,Latvia,2018 FIFA World Cup qualification,Away,41,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+603,2017-06-21,2017,2016-17,International,Portugal,Russia,2017 FIFA Confederations Cup,Away,8,01-15',1st Half,Right foot,Win,1–0,Portugal Teammate,FIFA Confederations Cup,No,Right foot
+604,2017-06-24,2017,2016-17,International,Portugal,New Zealand,2017 FIFA Confederations Cup,Neutral,33,31-45',1st Half,Penalty,Win,1–0,Penalty,FIFA Confederations Cup,No,Penalty
+605,2017-08-13,2017,2017-18,Club,Real Madrid,Barcelona,Supercopa,Away,80,76-90',2nd Half,Right foot,Win,1:02,Isco,Supercups,Yes,Right foot
+606,2017-08-31,2017,2017-18,International,Portugal,Faroe Islands,2018 FIFA World Cup qualification,Home,3,01-15',1st Half,Left foot,Win,1–0,Portugal Teammate,WC Qualification,No,Left foot
+607,2017-08-31,2017,2017-18,International,Portugal,Faroe Islands,2018 FIFA World Cup qualification,Home,3,01-15',1st Half,Penalty,Win,2–0,Penalty,WC Qualification,No,Penalty
+608,2017-08-31,2017,2017-18,International,Portugal,Faroe Islands,2018 FIFA World Cup qualification,Home,3,01-15',1st Half,Right foot,Win,4–1,Portugal Teammate,WC Qualification,No,Right foot
+609,2017-09-13,2017,2017-18,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Home,12,01-15',1st Half,Counter attack goal,Win,1:00,Gareth Bale,UEFA Champions League,No,Other
+610,2017-09-13,2017,2017-18,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Home,51,46-60',2nd Half,Penalty,Win,2:00,Penalty,UEFA Champions League,No,Penalty
+611,2017-09-26,2017,2017-18,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Away,49,46-60',2nd Half,Left foot,Win,0:02,Gareth Bale,UEFA Champions League,No,Left foot
+612,2017-09-26,2017,2017-18,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Away,79,76-90',2nd Half,Right foot,Win,1:03,Luka Modric,UEFA Champions League,Yes,Right foot
+613,2017-10-07,2017,2017-18,International,Portugal,Andorra,2018 FIFA World Cup qualification,Away,63,61-75',2nd Half,Right foot,Win,1–0,Portugal Teammate,WC Qualification,No,Right foot
+614,2017-10-14,2017,2017-18,Club,Real Madrid,Getafe,LaLiga,Away,85,76-90',2nd Half,Right foot,Win,1:02,Isco,La Liga,Yes,Right foot
+615,2017-10-17,2017,2017-18,Club,Real Madrid,Tottenham,UEFA Champions League,Home,43,31-45',1st Half,Penalty,Draw,1:01,Penalty,UEFA Champions League,No,Penalty
+616,2017-11-01,2017,2017-18,Club,Real Madrid,Tottenham,UEFA Champions League,Away,80,76-90',2nd Half,Right foot,Loss,3:01,Borja Mayoral,UEFA Champions League,No,Right foot
+617,2017-11-21,2017,2017-18,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Away,49,46-60',2nd Half,Header,Win,0:05,Marcelo,UEFA Champions League,No,Header
+618,2017-11-21,2017,2017-18,Club,Real Madrid,APOEL Nicosia,UEFA Champions League,Away,54,46-60',2nd Half,Left foot,Win,0:06,Unassisted,UEFA Champions League,No,Left foot
+619,2017-11-25,2017,2017-18,Club,Real Madrid,Málaga,LaLiga,Home,76,76-90',2nd Half,Right foot,Win,3:02,Unassisted,La Liga,Yes,Right foot
+620,2017-12-06,2017,2017-18,Club,Real Madrid,Borussia Dortmund,UEFA Champions League,Home,12,01-15',1st Half,Right foot,Win,2:00,Mateo Kovacic,UEFA Champions League,No,Right foot
+621,2017-12-09,2017,2017-18,Club,Real Madrid,Sevilla,LaLiga,Home,23,16-30',1st Half,Right foot,Win,2:00,Marco Asensio,La Liga,No,Right foot
+622,2017-12-09,2017,2017-18,Club,Real Madrid,Sevilla,LaLiga,Home,31,31-45',1st Half,Penalty,Win,3:00,Penalty,La Liga,No,Penalty
+623,2017-12-13,2017,2017-18,Club,Real Madrid,Al-Jazira (Abu Dhabi),FIFA Club World Cup,Away,53,46-60',2nd Half,Right foot,Win,1:01,Luka Modric,FIFA Club World Cup,No,Right foot
+624,2017-12-16,2017,2017-18,Club,Real Madrid,Grêmio Foot-Ball Porto Alegrense,FIFA Club World Cup,Home,53,46-60',2nd Half,Direct free kick,Win,1:00,Direct free kick,FIFA Club World Cup,No,Direct free kick
+625,2018-01-21,2018,2017-18,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,78,76-90',2nd Half,Left foot,Win,5:01,Casemiro,La Liga,Yes,Left foot
+626,2018-01-21,2018,2017-18,Club,Real Madrid,Deportivo La Coruña,LaLiga,Home,84,76-90',2nd Half,Header,Win,6:01,Lucas Vazquez,La Liga,Yes,Header
+627,2018-01-27,2018,2017-18,Club,Real Madrid,Valencia,LaLiga,Away,16,16-30',1st Half,Penalty,Win,0:01,Penalty,La Liga,No,Penalty
+628,2018-01-27,2018,2017-18,Club,Real Madrid,Valencia,LaLiga,Away,38,31-45',1st Half,Penalty,Win,0:02,Penalty,La Liga,No,Penalty
+629,2018-02-10,2018,2017-18,Club,Real Madrid,Real Sociedad,LaLiga,Home,27,16-30',1st Half,Right foot,Win,2:00,Marcelo,La Liga,No,Right foot
+630,2018-02-10,2018,2017-18,Club,Real Madrid,Real Sociedad,LaLiga,Home,37,31-45',1st Half,Header,Win,4:00,Luka Modric,La Liga,No,Header
+631,2018-02-10,2018,2017-18,Club,Real Madrid,Real Sociedad,LaLiga,Home,80,76-90',2nd Half,Tap-in,Win,5:01,Unassisted,La Liga,Yes,Other
+632,2018-02-14,2018,2017-18,Club,Real Madrid,Paris Saint-Germain,UEFA Champions League,Home,45,31-45',1st Half,Penalty,Win,1:01,Penalty,UEFA Champions League,No,Penalty
+633,2018-02-14,2018,2017-18,Club,Real Madrid,Paris Saint-Germain,UEFA Champions League,Home,83,76-90',2nd Half,Tap-in,Win,2:01,Unassisted,UEFA Champions League,Yes,Other
+634,2018-02-18,2018,2017-18,Club,Real Madrid,Real Betis,LaLiga,Away,65,61-75',2nd Half,Right foot,Win,2:04,Casemiro,La Liga,No,Right foot
+635,2018-02-24,2018,2017-18,Club,Real Madrid,Deportivo Alaves,LaLiga,Home,44,31-45',1st Half,Left foot,Win,1:00,Karim Benzema,La Liga,No,Left foot
+636,2018-02-24,2018,2017-18,Club,Real Madrid,Deportivo Alaves,LaLiga,Home,61,61-75',2nd Half,Right foot,Win,3:00,Lucas Vazquez,La Liga,No,Right foot
+637,2018-03-03,2018,2017-18,Club,Real Madrid,Getafe,LaLiga,Home,46,31-45' (Stoppage),1st Half,Left foot,Win,2:00,Karim Benzema,La Liga,No,Left foot
+638,2018-03-03,2018,2017-18,Club,Real Madrid,Getafe,LaLiga,Home,78,76-90',2nd Half,Header,Win,3:01,Marcelo,La Liga,Yes,Header
+639,2018-03-06,2018,2017-18,Club,Real Madrid,Paris Saint-Germain,UEFA Champions League,Away,51,46-60',2nd Half,Header,Win,0:01,Lucas Vazquez,UEFA Champions League,No,Header
+640,2018-03-10,2018,2017-18,Club,Real Madrid,SD Eibar,LaLiga,Away,33,31-45',1st Half,Right foot,Win,0:01,Luka Modric,La Liga,No,Right foot
+641,2018-03-10,2018,2017-18,Club,Real Madrid,SD Eibar,LaLiga,Away,84,76-90',2nd Half,Header,Win,1:02,Daniel Carvajal,La Liga,Yes,Header
+642,2018-03-18,2018,2017-18,Club,Real Madrid,Girona FC,LaLiga,Home,11,01-15',1st Half,Left foot,Win,1:00,Toni Kroos,La Liga,No,Left foot
+643,2018-03-18,2018,2017-18,Club,Real Madrid,Girona FC,LaLiga,Home,47,46-60',2nd Half,Left foot,Win,2:01,Karim Benzema,La Liga,No,Left foot
+644,2018-03-18,2018,2017-18,Club,Real Madrid,Girona FC,LaLiga,Home,64,61-75',2nd Half,Tap-in,Win,4:01,Unassisted,La Liga,No,Other
+645,2018-03-18,2018,2017-18,Club,Real Madrid,Girona FC,LaLiga,Home,91,90+ Stoppage,2nd Half,Right foot,Win,6:03,Toni Kroos,La Liga,Yes,Right foot
+646,2018-03-23,2018,2017-18,International,Portugal,Egypt,Friendly,Neutral,55,46-60',2nd Half,Header,Win,1–1,Portugal Teammate,International Friendly,No,Header
+647,2018-03-23,2018,2017-18,International,Portugal,Egypt,Friendly,Neutral,55,46-60',2nd Half,Right foot,Win,2–1,Portugal Teammate,International Friendly,No,Right foot
+648,2018-04-03,2018,2017-18,Club,Real Madrid,Juventus,UEFA Champions League,Away,3,01-15',1st Half,Right foot,Win,0:01,Isco,UEFA Champions League,No,Right foot
+649,2018-04-03,2018,2017-18,Club,Real Madrid,Juventus,UEFA Champions League,Away,64,61-75',2nd Half,Right foot,Win,0:02,Daniel Carvajal,UEFA Champions League,No,Right foot
+650,2018-04-08,2018,2017-18,Club,Real Madrid,Atlético Madrid,LaLiga,Home,53,46-60',2nd Half,Right foot,Draw,1:00,Gareth Bale,La Liga,No,Right foot
+651,2018-04-11,2018,2017-18,Club,Real Madrid,Juventus,UEFA Champions League,Home,97,90+ Stoppage,2nd Half,Penalty,Loss,1:03,Penalty,UEFA Champions League,No,Penalty
+652,2018-04-18,2018,2017-18,Club,Real Madrid,Athletic Club,LaLiga,Home,87,76-90',2nd Half,Right foot,Draw,1:01,Luka Modric,La Liga,No,Right foot
+653,2018-05-06,2018,2017-18,Club,Real Madrid,Barcelona,LaLiga,Away,14,01-15',1st Half,Right foot,Draw,1:01,Karim Benzema,La Liga,No,Right foot
+654,2018-05-19,2018,2017-18,Club,Real Madrid,Villarreal,LaLiga,Away,32,31-45',1st Half,Header,Draw,0:02,Marcelo,La Liga,No,Header
+655,2018-06-15,2018,2017-18,International,Portugal,Spain,2018 FIFA World Cup,Neutral,4,01-15',1st Half,Penalty,Draw,1–0,Penalty,FIFA World Cup,No,Penalty
+656,2018-06-15,2018,2017-18,International,Portugal,Spain,2018 FIFA World Cup,Neutral,4,01-15',1st Half,Right foot,Draw,2–1,Portugal Teammate,FIFA World Cup,No,Right foot
+657,2018-06-15,2018,2017-18,International,Portugal,Spain,2018 FIFA World Cup,Neutral,4,01-15',1st Half,Left foot,Draw,3–3,Portugal Teammate,FIFA World Cup,No,Left foot
+658,2018-06-20,2018,2017-18,International,Portugal,Morocco,2018 FIFA World Cup,Neutral,4,01-15',1st Half,Header,Win,1–0,Portugal Teammate,FIFA World Cup,No,Header
+659,2018-09-16,2018,2018-19,Club,Juventus,US Sassuolo,Serie A,Home,50,46-60',2nd Half,Tap-in,Win,1:00,Unassisted,Serie A,No,Other
+660,2018-09-16,2018,2018-19,Club,Juventus,US Sassuolo,Serie A,Home,65,61-75',2nd Half,Left foot,Win,2:00,Emre Can,Serie A,No,Left foot
+661,2018-09-23,2018,2018-19,Club,Juventus,Frosinone Calcio,Serie A,Away,81,76-90',2nd Half,Left foot,Win,0:01,Unassisted,Serie A,Yes,Left foot
+662,2018-10-06,2018,2018-19,Club,Juventus,Udinese Calcio,Serie A,Away,37,31-45',1st Half,Left foot,Win,0:02,Mario Mandzukic,Serie A,No,Left foot
+663,2018-10-20,2018,2018-19,Club,Juventus,Genoa CFC,Serie A,Home,18,16-30',1st Half,Tap-in,Draw,1:00,Unassisted,Serie A,No,Other
+664,2018-10-27,2018,2018-19,Club,Juventus,Empoli FC,Serie A,Away,54,46-60',2nd Half,Penalty,Win,1:01,Penalty,Serie A,No,Penalty
+665,2018-10-27,2018,2018-19,Club,Juventus,Empoli FC,Serie A,Away,70,61-75',2nd Half,Right foot,Win,1:02,Blaise Matuidi,Serie A,Yes,Right foot
+666,2018-11-07,2018,2018-19,Club,Juventus,Manchester United,UEFA Champions League,Home,65,61-75',2nd Half,Right foot,Loss,1:00,Leonardo Bonucci,UEFA Champions League,No,Right foot
+667,2018-11-11,2018,2018-19,Club,Juventus,AC Milan,Serie A,Away,81,76-90',2nd Half,Tap-in,Win,0:02,Unassisted,Serie A,Yes,Other
+668,2018-11-24,2018,2018-19,Club,Juventus,SPAL,Serie A,Home,29,16-30',1st Half,Left foot,Win,1:00,Miralem Pjanic,Serie A,No,Left foot
+669,2018-12-01,2018,2018-19,Club,Juventus,ACF Fiorentina,Serie A,Away,79,76-90',2nd Half,Penalty,Win,0:03,Penalty,Serie A,Yes,Penalty
+670,2018-12-15,2018,2018-19,Club,Juventus,Torino FC,Serie A,Away,70,61-75',2nd Half,Penalty,Win,0:01,Penalty,Serie A,Yes,Penalty
+671,2018-12-26,2018,2018-19,Club,Juventus,Atalanta BC,Serie A,Away,78,76-90',2nd Half,Header,Draw,2:02,Giorgio Chiellini,Serie A,No,Header
+672,2018-12-29,2018,2018-19,Club,Juventus,UC Sampdoria,Serie A,Home,2,01-15',1st Half,Right foot,Win,1:00,Paulo Dybala,Serie A,No,Right foot
+673,2018-12-29,2018,2018-19,Club,Juventus,UC Sampdoria,Serie A,Home,65,61-75',2nd Half,Penalty,Win,2:01,Penalty,Serie A,No,Penalty
+674,2019-01-16,2019,2018-19,Club,Juventus,AC Milan,Supercoppa Italiana,Home,61,61-75',2nd Half,Header,Win,1:00,Miralem Pjanic,Domestic Cups,No,Header
+675,2019-01-27,2019,2018-19,Club,Juventus,SS Lazio,Serie A,Away,88,76-90',2nd Half,Penalty,Win,1:02,Penalty,Serie A,Yes,Penalty
+676,2019-02-02,2019,2018-19,Club,Juventus,Parma Calcio 1913,Serie A,Home,36,31-45',1st Half,Right foot,Draw,1:00,Blaise Matuidi,Serie A,No,Right foot
+677,2019-02-02,2019,2018-19,Club,Juventus,Parma Calcio 1913,Serie A,Home,66,61-75',2nd Half,Header,Draw,3:01,Mario Mandzukic,Serie A,No,Header
+678,2019-02-10,2019,2018-19,Club,Juventus,US Sassuolo,Serie A,Away,70,61-75',2nd Half,Header,Win,0:02,Miralem Pjanic,Serie A,Yes,Header
+679,2019-02-15,2019,2018-19,Club,Juventus,Frosinone Calcio,Serie A,Home,63,61-75',2nd Half,Right foot,Win,3:00,Mario Mandzukic,Serie A,No,Right foot
+680,2019-03-12,2019,2018-19,Club,Juventus,Atlético Madrid,UEFA Champions League,Home,27,16-30',1st Half,Header,Win,1:00,Federico Bernardeschi,UEFA Champions League,No,Header
+681,2019-03-12,2019,2018-19,Club,Juventus,Atlético Madrid,UEFA Champions League,Home,49,46-60',2nd Half,Header,Win,2:00,João Cancelo,UEFA Champions League,No,Header
+682,2019-03-12,2019,2018-19,Club,Juventus,Atlético Madrid,UEFA Champions League,Home,86,76-90',2nd Half,Penalty,Win,3:00,Penalty,UEFA Champions League,Yes,Penalty
+683,2019-04-10,2019,2018-19,Club,Juventus,Ajax Amsterdam,UEFA Champions League,Away,45,31-45',1st Half,Header,Draw,0:01,João Cancelo,UEFA Champions League,No,Header
+684,2019-04-16,2019,2018-19,Club,Juventus,Ajax Amsterdam,UEFA Champions League,Home,28,16-30',1st Half,Header,Loss,1:00,Miralem Pjanic,UEFA Champions League,No,Header
+685,2019-04-27,2019,2018-19,Club,Juventus,Inter Milan,Serie A,Away,62,61-75',2nd Half,Left foot,Draw,1:01,Miralem Pjanic,Serie A,No,Left foot
+686,2019-05-03,2019,2018-19,Club,Juventus,Torino FC,Serie A,Home,84,76-90',2nd Half,Header,Draw,1:01,Leonardo Spinazzola,Serie A,No,Header
+687,2019-06-05,2019,2018-19,International,Portugal,Switzerland,2019 UEFA Nations League Finals,Home,25,16-30',1st Half,Right foot,Win,1–0,Portugal Teammate,UEFA Nations League,No,Right foot
+688,2019-06-05,2019,2018-19,International,Portugal,Switzerland,2019 UEFA Nations League Finals,Home,25,16-30',1st Half,Right foot,Win,2–1,Portugal Teammate,UEFA Nations League,No,Right foot
+689,2019-06-05,2019,2018-19,International,Portugal,Switzerland,2019 UEFA Nations League Finals,Home,25,16-30',1st Half,Left foot,Win,3–1,Portugal Teammate,UEFA Nations League,No,Left foot
+690,2019-08-31,2019,2019-20,Club,Juventus,SSC Napoli,Serie A,Home,62,61-75',2nd Half,Left foot,Win,3:00,Douglas Costa,Serie A,No,Left foot
+691,2019-09-07,2019,2019-20,International,Portugal,Serbia,UEFA Euro 2020 qualifying,Away,80,76-90',2nd Half,Right foot,Win,3–1,Portugal Teammate,Euro Qualification,Yes,Right foot
+692,2019-09-10,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Away,7,01-15',1st Half,Penalty,Win,1–0,Penalty,Euro Qualification,No,Penalty
+693,2019-09-10,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Away,7,01-15',1st Half,Right foot,Win,2–1,Portugal Teammate,Euro Qualification,No,Right foot
+694,2019-09-10,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Away,7,01-15',1st Half,Left foot,Win,3–1,Portugal Teammate,Euro Qualification,No,Left foot
+695,2019-09-10,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Away,7,01-15',1st Half,Right foot,Win,4–1,Portugal Teammate,Euro Qualification,No,Right foot
+696,2019-09-21,2019,2019-20,Club,Juventus,Hellas Verona,Serie A,Home,49,46-60',2nd Half,Penalty,Win,2:01,Penalty,Serie A,No,Penalty
+697,2019-09-28,2019,2019-20,Club,Juventus,SPAL,Serie A,Home,78,76-90',2nd Half,Header,Win,2:00,Paulo Dybala,Serie A,Yes,Header
+698,2019-10-01,2019,2019-20,Club,Juventus,Bayer 04 Leverkusen,UEFA Champions League,Home,89,76-90',2nd Half,Right foot,Win,3:00,Paulo Dybala,UEFA Champions League,Yes,Right foot
+699,2019-10-11,2019,2019-20,International,Portugal,Luxembourg,UEFA Euro 2020 qualifying,Home,65,61-75',2nd Half,Right foot,Win,2–0,Portugal Teammate,Euro Qualification,No,Right foot
+700,2019-10-14,2019,2019-20,International,Portugal,Ukraine,UEFA Euro 2020 qualifying,Away,72,61-75',2nd Half,Penalty,Loss,1–2,Penalty,Euro Qualification,No,Penalty
+701,2019-10-19,2019,2019-20,Club,Juventus,Bologna FC 1909,Serie A,Home,19,16-30',1st Half,Right foot,Win,1:00,Unassisted,Serie A,No,Right foot
+702,2019-10-30,2019,2019-20,Club,Juventus,Genoa CFC,Serie A,Home,96,90+ Stoppage,2nd Half,Penalty,Win,2:01,Penalty,Serie A,Yes,Penalty
+703,2019-11-14,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Home,7,01-15',1st Half,Penalty,Win,1–0,Penalty,Euro Qualification,No,Penalty
+704,2019-11-14,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Home,7,01-15',1st Half,Right foot,Win,2–0,Portugal Teammate,Euro Qualification,No,Right foot
+705,2019-11-14,2019,2019-20,International,Portugal,Lithuania,UEFA Euro 2020 qualifying,Home,7,01-15',1st Half,Right foot,Win,6–0,Portugal Teammate,Euro Qualification,No,Right foot
+706,2019-11-17,2019,2019-20,International,Portugal,Luxembourg,UEFA Euro 2020 qualifying,Away,86,76-90',2nd Half,Right foot,Win,2–0,Portugal Teammate,Euro Qualification,Yes,Right foot
+707,2019-12-01,2019,2019-20,Club,Juventus,US Sassuolo,Serie A,Home,68,61-75',2nd Half,Penalty,Draw,2:02,Penalty,Serie A,No,Penalty
+708,2019-12-07,2019,2019-20,Club,Juventus,SS Lazio,Serie A,Away,25,16-30',1st Half,Tap-in,Loss,0:01,Rodrigo Bentancur,Serie A,No,Other
+709,2019-12-11,2019,2019-20,Club,Juventus,Bayer 04 Leverkusen,UEFA Champions League,Away,75,61-75',2nd Half,Right foot,Win,0:01,Paulo Dybala,UEFA Champions League,Yes,Right foot
+710,2019-12-15,2019,2019-20,Club,Juventus,Udinese Calcio,Serie A,Home,9,01-15',1st Half,Right foot,Win,1:00,Unassisted,Serie A,No,Right foot
+711,2019-12-15,2019,2019-20,Club,Juventus,Udinese Calcio,Serie A,Home,37,31-45',1st Half,Left foot,Win,2:00,Gonzalo Higuain,Serie A,No,Left foot
+712,2019-12-18,2019,2019-20,Club,Juventus,UC Sampdoria,Serie A,Away,45,31-45',1st Half,Header,Win,1:02,Alex Sandro,Serie A,No,Header
+713,2020-01-06,2020,2019-20,Club,Juventus,Cagliari Calcio,Serie A,Home,49,46-60',2nd Half,Right foot,Win,1:00,Unassisted,Serie A,No,Right foot
+714,2020-01-06,2020,2019-20,Club,Juventus,Cagliari Calcio,Serie A,Home,67,61-75',2nd Half,Penalty,Win,2:00,Penalty,Serie A,No,Penalty
+715,2020-01-06,2020,2019-20,Club,Juventus,Cagliari Calcio,Serie A,Home,82,76-90',2nd Half,Left foot,Win,4:00,Douglas Costa,Serie A,Yes,Left foot
+716,2020-01-12,2020,2019-20,Club,Juventus,AS Roma,Serie A,Away,10,01-15',1st Half,Penalty,Win,0:02,Penalty,Serie A,No,Penalty
+717,2020-01-19,2020,2019-20,Club,Juventus,Parma Calcio 1913,Serie A,Home,43,31-45',1st Half,Deflected shot,Win,1:00,Blaise Matuidi,Serie A,No,Other
+718,2020-01-19,2020,2019-20,Club,Juventus,Parma Calcio 1913,Serie A,Home,58,46-60',2nd Half,Right foot,Win,2:01,Paulo Dybala,Serie A,No,Right foot
+719,2020-01-22,2020,2019-20,Club,Juventus,AS Roma,Italy Cup,Home,26,16-30',1st Half,Left foot,Win,1:00,Gonzalo Higuain,Domestic Cups,No,Left foot
+720,2020-01-26,2020,2019-20,Club,Juventus,SSC Napoli,Serie A,Away,90,76-90',2nd Half,Right foot,Loss,2:01,Rodrigo Bentancur,Serie A,No,Right foot
+721,2020-02-02,2020,2019-20,Club,Juventus,ACF Fiorentina,Serie A,Home,40,31-45',1st Half,Penalty,Win,1:00,Penalty,Serie A,No,Penalty
+722,2020-02-02,2020,2019-20,Club,Juventus,ACF Fiorentina,Serie A,Home,80,76-90',2nd Half,Penalty,Win,2:00,Penalty,Serie A,Yes,Penalty
+723,2020-02-08,2020,2019-20,Club,Juventus,Hellas Verona,Serie A,Away,65,61-75',2nd Half,Right foot,Loss,0:01,Rodrigo Bentancur,Serie A,No,Right foot
+724,2020-02-13,2020,2019-20,Club,Juventus,AC Milan,Italy Cup,Away,91,90+ Stoppage,2nd Half,Penalty,Draw,1:01,Penalty,Domestic Cups,No,Penalty
+725,2020-02-22,2020,2019-20,Club,Juventus,SPAL,Serie A,Away,39,31-45',1st Half,Tap-in,Win,0:01,Juan Cuadrado,Serie A,No,Other
+726,2020-06-22,2020,2019-20,Club,Juventus,Bologna FC 1909,Serie A,Away,23,16-30',1st Half,Penalty,Win,0:01,Penalty,Serie A,No,Penalty
+727,2020-06-26,2020,2019-20,Club,Juventus,US Lecce,Serie A,Home,62,61-75',2nd Half,Penalty,Win,2:00,Penalty,Serie A,No,Penalty
+728,2020-06-30,2020,2019-20,Club,Juventus,Genoa CFC,Serie A,Away,56,46-60',2nd Half,Long distance shot,Win,0:02,Miralem Pjanic,Serie A,No,Other
+729,2020-07-04,2020,2019-20,Club,Juventus,Torino FC,Serie A,Home,61,61-75',2nd Half,Direct free kick,Win,3:01,Direct free kick,Serie A,No,Direct free kick
+730,2020-07-07,2020,2019-20,Club,Juventus,AC Milan,Serie A,Away,53,46-60',2nd Half,Left foot,Loss,0:02,Juan Cuadrado,Serie A,No,Left foot
+731,2020-07-11,2020,2019-20,Club,Juventus,Atalanta BC,Serie A,Home,55,46-60',2nd Half,Penalty,Draw,1:01,Penalty,Serie A,No,Penalty
+732,2020-07-11,2020,2019-20,Club,Juventus,Atalanta BC,Serie A,Home,90,76-90',2nd Half,Penalty,Draw,2:02,Penalty,Serie A,No,Penalty
+733,2020-07-20,2020,2019-20,Club,Juventus,SS Lazio,Serie A,Home,51,46-60',2nd Half,Penalty,Win,1:00,Penalty,Serie A,No,Penalty
+734,2020-07-20,2020,2019-20,Club,Juventus,SS Lazio,Serie A,Home,54,46-60',2nd Half,Counter attack goal,Win,2:00,Paulo Dybala,Serie A,No,Other
+735,2020-07-26,2020,2019-20,Club,Juventus,UC Sampdoria,Serie A,Home,52,31-45' (Stoppage),1st Half,Right foot,Win,1:00,Miralem Pjanic,Serie A,No,Right foot
+736,2020-08-07,2020,2019-20,Club,Juventus,Olympique Lyon,UEFA Champions League,Home,43,31-45',1st Half,Penalty,Win,1:01,Penalty,UEFA Champions League,No,Penalty
+737,2020-08-07,2020,2019-20,Club,Juventus,Olympique Lyon,UEFA Champions League,Home,60,46-60',2nd Half,Left foot,Win,2:01,Federico Bernardeschi,UEFA Champions League,No,Left foot
+738,2020-09-08,2020,2020-21,International,Portugal,Sweden,2020–21 UEFA Nations League A,Away,45,31-45',1st Half,Header,Win,1–0,Portugal Teammate,UEFA Nations League,No,Header
+739,2020-09-08,2020,2020-21,International,Portugal,Sweden,2020–21 UEFA Nations League A,Away,45,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,UEFA Nations League,No,Right foot
+740,2020-09-20,2020,2020-21,Club,Juventus,UC Sampdoria,Serie A,Home,88,76-90',2nd Half,Right foot,Win,3:00,Aaron Ramsey,Serie A,Yes,Right foot
+741,2020-09-27,2020,2020-21,Club,Juventus,AS Roma,Serie A,Away,44,31-45',1st Half,Penalty,Draw,1:01,Penalty,Serie A,No,Penalty
+742,2020-09-27,2020,2020-21,Club,Juventus,AS Roma,Serie A,Away,69,61-75',2nd Half,Header,Draw,2:02,Danilo,Serie A,No,Header
+743,2020-11-01,2020,2020-21,Club,Juventus,Spezia Calcio,Serie A,Away,59,46-60',2nd Half,Right foot,Win,1:02,alvaro Morata,Serie A,No,Right foot
+744,2020-11-01,2020,2020-21,Club,Juventus,Spezia Calcio,Serie A,Away,76,76-90',2nd Half,Penalty,Win,1:04,Penalty,Serie A,Yes,Penalty
+745,2020-11-08,2020,2020-21,Club,Juventus,SS Lazio,Serie A,Away,15,01-15',1st Half,Right foot,Draw,0:01,Juan Cuadrado,Serie A,No,Right foot
+746,2020-11-11,2020,2020-21,International,Portugal,Andorra,Friendly,Home,55,46-60',2nd Half,Right foot,Win,6–0,Portugal Teammate,International Friendly,No,Right foot
+747,2020-11-21,2020,2020-21,Club,Juventus,Cagliari Calcio,Serie A,Home,38,31-45',1st Half,Right foot,Win,1:00,alvaro Morata,Serie A,No,Right foot
+748,2020-11-21,2020,2020-21,Club,Juventus,Cagliari Calcio,Serie A,Home,42,31-45',1st Half,Right foot,Win,2:00,Merih Demiral,Serie A,No,Right foot
+749,2020-11-24,2020,2020-21,Club,Juventus,Ferencvarosi TC,UEFA Champions League,Home,35,31-45',1st Half,Left foot,Win,1:01,Juan Cuadrado,UEFA Champions League,No,Left foot
+750,2020-12-02,2020,2020-21,Club,Juventus,Dynamo Kyiv,UEFA Champions League,Home,57,46-60',2nd Half,Right foot,Win,2:00,alvaro Morata,UEFA Champions League,No,Right foot
+751,2020-12-08,2020,2020-21,Club,Juventus,Barcelona,UEFA Champions League,Away,13,01-15',1st Half,Penalty,Win,0:01,Penalty,UEFA Champions League,No,Penalty
+752,2020-12-08,2020,2020-21,Club,Juventus,Barcelona,UEFA Champions League,Away,52,46-60',2nd Half,Penalty,Win,0:03,Penalty,UEFA Champions League,No,Penalty
+753,2020-12-13,2020,2020-21,Club,Juventus,Genoa CFC,Serie A,Away,78,76-90',2nd Half,Penalty,Win,1:02,Penalty,Serie A,Yes,Penalty
+754,2020-12-13,2020,2020-21,Club,Juventus,Genoa CFC,Serie A,Away,89,76-90',2nd Half,Penalty,Win,1:03,Penalty,Serie A,Yes,Penalty
+755,2020-12-19,2020,2020-21,Club,Juventus,Parma Calcio 1913,Serie A,Away,26,16-30',1st Half,Header,Win,0:02,alvaro Morata,Serie A,No,Header
+756,2020-12-19,2020,2020-21,Club,Juventus,Parma Calcio 1913,Serie A,Away,48,46-60',2nd Half,Left foot,Win,0:03,Aaron Ramsey,Serie A,No,Left foot
+757,2021-01-03,2021,2020-21,Club,Juventus,Udinese Calcio,Serie A,Home,31,31-45',1st Half,Right foot,Win,1:00,Aaron Ramsey,Serie A,No,Right foot
+758,2021-01-03,2021,2020-21,Club,Juventus,Udinese Calcio,Serie A,Home,70,61-75',2nd Half,Left foot,Win,3:00,Rodrigo Bentancur,Serie A,Yes,Left foot
+759,2021-01-10,2021,2020-21,Club,Juventus,US Sassuolo,Serie A,Home,92,90+ Stoppage,2nd Half,Right foot,Win,3:01,Danilo,Serie A,Yes,Right foot
+760,2021-01-20,2021,2020-21,Club,Juventus,SSC Napoli,Supercoppa Italiana,Home,64,61-75',2nd Half,Tap-in,Win,1:00,Unassisted,Domestic Cups,No,Other
+761,2021-02-02,2021,2020-21,Club,Juventus,Inter Milan,Italy Cup,Away,26,16-30',1st Half,Penalty,Win,1:01,Penalty,Domestic Cups,No,Penalty
+762,2021-02-02,2021,2020-21,Club,Juventus,Inter Milan,Italy Cup,Away,35,31-45',1st Half,Left foot,Win,1:02,Unassisted,Domestic Cups,No,Left foot
+763,2021-02-06,2021,2020-21,Club,Juventus,AS Roma,Serie A,Home,13,01-15',1st Half,Left foot,Win,1:00,alvaro Morata,Serie A,No,Left foot
+764,2021-02-22,2021,2020-21,Club,Juventus,FC Crotone,Serie A,Home,38,31-45',1st Half,Header,Win,1:00,Alex Sandro,Serie A,No,Header
+765,2021-02-22,2021,2020-21,Club,Juventus,FC Crotone,Serie A,Home,46,31-45' (Stoppage),1st Half,Header,Win,2:00,Aaron Ramsey,Serie A,No,Header
+766,2021-02-27,2021,2020-21,Club,Juventus,Hellas Verona,Serie A,Away,49,46-60',2nd Half,Right foot,Draw,0:01,Federico Chiesa,Serie A,No,Right foot
+767,2021-03-02,2021,2020-21,Club,Juventus,Spezia Calcio,Serie A,Home,89,76-90',2nd Half,Counter attack goal,Win,3:00,Rodrigo Bentancur,Serie A,Yes,Other
+768,2021-03-14,2021,2020-21,Club,Juventus,Cagliari Calcio,Serie A,Away,10,01-15',1st Half,Header,Win,0:01,Juan Cuadrado,Serie A,No,Header
+769,2021-03-14,2021,2020-21,Club,Juventus,Cagliari Calcio,Serie A,Away,25,16-30',1st Half,Penalty,Win,0:02,Penalty,Serie A,No,Penalty
+770,2021-03-14,2021,2020-21,Club,Juventus,Cagliari Calcio,Serie A,Away,32,31-45',1st Half,Left foot,Win,0:03,Federico Chiesa,Serie A,No,Left foot
+771,2021-03-30,2021,2020-21,International,Portugal,Luxembourg,2022 FIFA World Cup qualification,Away,51,46-60',2nd Half,Right foot,Win,2–1,Portugal Teammate,WC Qualification,No,Right foot
+772,2021-04-03,2021,2020-21,Club,Juventus,Torino FC,Serie A,Away,79,76-90',2nd Half,Header,Draw,2:02,Giorgio Chiellini,Serie A,No,Header
+773,2021-04-07,2021,2020-21,Club,Juventus,SSC Napoli,Serie A,Home,13,01-15',1st Half,Right foot,Win,1:00,Federico Chiesa,Serie A,No,Right foot
+774,2021-05-02,2021,2020-21,Club,Juventus,Udinese Calcio,Serie A,Away,83,76-90',2nd Half,Penalty,Win,1:01,Penalty,Serie A,Yes,Penalty
+775,2021-05-02,2021,2020-21,Club,Juventus,Udinese Calcio,Serie A,Away,89,76-90',2nd Half,Header,Win,1:02,Adrien Rabiot,Serie A,Yes,Header
+776,2021-05-12,2021,2020-21,Club,Juventus,US Sassuolo,Serie A,Away,45,31-45',1st Half,Left foot,Win,0:02,Unassisted,Serie A,No,Left foot
+777,2021-05-15,2021,2020-21,Club,Juventus,Inter Milan,Serie A,Home,24,16-30',1st Half,Right foot,Win,1:00,Unassisted,Serie A,No,Right foot
+778,2021-06-09,2021,2020-21,International,Portugal,Israel,Friendly,Home,55,46-60',2nd Half,Left foot,Win,2–0,Portugal Teammate,International Friendly,No,Left foot
+779,2021-06-15,2021,2020-21,International,Portugal,Hungary,UEFA Euro 2020,Away,87,76-90',2nd Half,Penalty,Win,2–0,Penalty,UEFA Euro,Yes,Penalty
+780,2021-06-15,2021,2020-21,International,Portugal,Hungary,UEFA Euro 2020,Away,87,76-90',2nd Half,Right foot,Win,3–0,Portugal Teammate,UEFA Euro,Yes,Right foot
+781,2021-06-19,2021,2020-21,International,Portugal,Germany,UEFA Euro 2020,Away,15,01-15',1st Half,Right foot,Loss,1–0,Portugal Teammate,UEFA Euro,No,Right foot
+782,2021-06-23,2021,2020-21,International,Portugal,France,UEFA Euro 2020,Neutral,31,31-45',1st Half,Penalty,Draw,1–0,Penalty,UEFA Euro,No,Penalty
+783,2021-06-23,2021,2020-21,International,Portugal,France,UEFA Euro 2020,Neutral,31,31-45',1st Half,Penalty,Draw,2–2,Penalty,UEFA Euro,No,Penalty
+784,2021-09-01,2021,2021-22,International,Portugal,Republic of Ireland,2022 FIFA World Cup qualification,Home,89,76-90',2nd Half,Header,Win,1–1,Portugal Teammate,WC Qualification,Yes,Header
+785,2021-09-01,2021,2021-22,International,Portugal,Republic of Ireland,2022 FIFA World Cup qualification,Home,89,76-90',2nd Half,Right foot,Win,2–1,Portugal Teammate,WC Qualification,Yes,Right foot
+786,2021-09-11,2021,2021-22,Club,Manchester United,Newcastle,Premier League,Home,47,31-45' (Stoppage),1st Half,Tap-in,Win,1:00,Unassisted,Premier League,No,Other
+787,2021-09-11,2021,2021-22,Club,Manchester United,Newcastle,Premier League,Home,62,61-75',2nd Half,Left foot,Win,2:01,Luke Shaw,Premier League,No,Left foot
+788,2021-09-14,2021,2021-22,Club,Manchester United,BSC Young Boys,UEFA Champions League,Away,13,01-15',1st Half,Right foot,Loss,0:01,Bruno Fernandes,UEFA Champions League,No,Right foot
+789,2021-09-19,2021,2021-22,Club,Manchester United,West Ham United,Premier League,Away,35,31-45',1st Half,Right foot,Win,1:01,Unassisted,Premier League,No,Right foot
+790,2021-09-29,2021,2021-22,Club,Manchester United,Villarreal,UEFA Champions League,Home,95,90+ Stoppage,2nd Half,Right foot,Win,2:01,Jesse Lingard,UEFA Champions League,Yes,Right foot
+791,2021-10-09,2021,2021-22,International,Portugal,Qatar,Friendly,Home,55,46-60',2nd Half,Left foot,Win,1–0,Portugal Teammate,International Friendly,No,Left foot
+792,2021-10-12,2021,2021-22,International,Portugal,Luxembourg,2022 FIFA World Cup qualification,Home,8,01-15',1st Half,Penalty,Win,1–0,Penalty,WC Qualification,No,Penalty
+793,2021-10-12,2021,2021-22,International,Portugal,Luxembourg,2022 FIFA World Cup qualification,Home,8,01-15',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+794,2021-10-12,2021,2021-22,International,Portugal,Luxembourg,2022 FIFA World Cup qualification,Home,8,01-15',1st Half,Header,Win,5–0,Portugal Teammate,WC Qualification,No,Header
+795,2021-10-20,2021,2021-22,Club,Manchester United,Atalanta BC,UEFA Champions League,Home,81,76-90',2nd Half,Header,Win,3:02,Luke Shaw,UEFA Champions League,Yes,Header
+796,2021-10-30,2021,2021-22,Club,Manchester United,Tottenham,Premier League,Away,39,31-45',1st Half,Right foot,Win,0:01,Bruno Fernandes,Premier League,No,Right foot
+797,2021-11-02,2021,2021-22,Club,Manchester United,Atalanta BC,UEFA Champions League,Away,46,31-45' (Stoppage),1st Half,Right foot,Draw,1:01,Bruno Fernandes,UEFA Champions League,No,Right foot
+798,2021-11-02,2021,2021-22,Club,Manchester United,Atalanta BC,UEFA Champions League,Away,91,90+ Stoppage,2nd Half,Right foot,Draw,2:02,Mason Greenwood,UEFA Champions League,No,Right foot
+799,2021-11-23,2021,2021-22,Club,Manchester United,Villarreal,UEFA Champions League,Away,78,76-90',2nd Half,Right foot,Win,0:01,Unassisted,UEFA Champions League,Yes,Right foot
+800,2021-12-02,2021,2021-22,Club,Manchester United,Arsenal,Premier League,Home,52,46-60',2nd Half,Right foot,Win,2:01,Marcus Rashford,Premier League,No,Right foot
+801,2021-12-02,2021,2021-22,Club,Manchester United,Arsenal,Premier League,Home,70,61-75',2nd Half,Penalty,Win,3:02,Penalty,Premier League,Yes,Penalty
+802,2021-12-11,2021,2021-22,Club,Manchester United,Norwich City,Premier League,Away,75,61-75',2nd Half,Penalty,Win,0:01,Penalty,Premier League,Yes,Penalty
+803,2021-12-30,2021,2021-22,Club,Manchester United,Burnley FC,Premier League,Home,35,31-45',1st Half,Right foot,Win,3:00,Unassisted,Premier League,No,Right foot
+804,2022-02-15,2022,2021-22,Club,Manchester United,Brighton & Hove Albion,Premier League,Home,51,46-60',2nd Half,Right foot,Win,1:00,Scott McTominay,Premier League,No,Right foot
+805,2022-03-12,2022,2021-22,Club,Manchester United,Tottenham,Premier League,Home,12,01-15',1st Half,Right foot,Win,1:00,Fred,Premier League,No,Right foot
+806,2022-03-12,2022,2021-22,Club,Manchester United,Tottenham,Premier League,Home,38,31-45',1st Half,Right foot,Win,2:01,Jadon Sancho,Premier League,No,Right foot
+807,2022-03-12,2022,2021-22,Club,Manchester United,Tottenham,Premier League,Home,81,76-90',2nd Half,Header,Win,3:02,Alex Telles,Premier League,Yes,Header
+808,2022-04-16,2022,2021-22,Club,Manchester United,Norwich City,Premier League,Home,7,01-15',1st Half,Right foot,Win,1:00,Anthony Elanga,Premier League,No,Right foot
+809,2022-04-16,2022,2021-22,Club,Manchester United,Norwich City,Premier League,Home,32,31-45',1st Half,Header,Win,2:00,Alex Telles,Premier League,No,Header
+810,2022-04-16,2022,2021-22,Club,Manchester United,Norwich City,Premier League,Home,76,76-90',2nd Half,Direct free kick,Win,3:02,Direct free kick,Premier League,Yes,Direct free kick
+811,2022-04-23,2022,2021-22,Club,Manchester United,Arsenal,Premier League,Away,34,31-45',1st Half,Left foot,Loss,2:01,Nemanja MatiÄ‡,Premier League,No,Left foot
+812,2022-04-28,2022,2021-22,Club,Manchester United,Chelsea,Premier League,Home,62,61-75',2nd Half,Right foot,Draw,1:01,Nemanja MatiÄ‡,Premier League,No,Right foot
+813,2022-05-02,2022,2021-22,Club,Manchester United,Brentford FC,Premier League,Home,61,61-75',2nd Half,Penalty,Win,2:00,Penalty,Premier League,No,Penalty
+814,2022-06-05,2022,2021-22,International,Portugal,Switzerland,2022–23 UEFA Nations League A,Home,35,31-45',1st Half,Penalty,Win,2–0,Penalty,UEFA Nations League,No,Penalty
+815,2022-06-05,2022,2021-22,International,Portugal,Switzerland,2022–23 UEFA Nations League A,Home,35,31-45',1st Half,Right foot,Win,3–0,Portugal Teammate,UEFA Nations League,No,Right foot
+816,2022-09-15,2022,2022-23,Club,Manchester United,FC Sheriff,Europa League,Away,39,31-45',1st Half,Penalty,Win,0:02,Penalty,UEFA Euro,No,Penalty
+817,2022-09-15,2022,2022-23,Club,Manchester United,Sheriff Tiraspol,UEFA Europa League,Away,39,31-45',1st Half,Penalty,Win,2-0,Penalty,UEFA Euro,No,Penalty
+818,2022-10-09,2022,2022-23,Club,Manchester United,Everton FC,Premier League,Away,44,31-45',1st Half,Counter attack goal,Win,1:2,Casemiro,Premier League,No,Other
+819,2022-10-27,2022,2022-23,Club,Manchester United,FC Sheriff,Europa League,Home,81,76-90',2nd Half,Left foot,Win,3:0,Unassisted,UEFA Euro,Yes,Left foot
+820,2022-10-27,2022,2022-23,Club,Manchester United,Sheriff Tiraspol,UEFA Europa League,Home,81,76-90',2nd Half,Left foot,Win,3-0,Marcus Rashford,UEFA Euro,Yes,Left foot
+821,2022-11-24,2022,2022-23,International,Portugal,Ghana,2022 FIFA World Cup,Neutral,65,61-75',2nd Half,Penalty,Win,1–0,Penalty,FIFA World Cup,No,Penalty
+822,2023-02-03,2023,2022-23,Club,Al-Nassr,Al-Fateh,Saudi Pro League,Away,93,90+ Stoppage,2nd Half,Penalty,Draw,2:2,Penalty,Saudi Pro League,No,Penalty
+823,2023-02-09,2023,2022-23,Club,Al-Nassr,Al-Wehda FC,Saudi Pro League,Away,21,16-30',1st Half,Left foot,Win,0:1,Abdulrahman Ghareeb,Saudi Pro League,No,Left foot
+824,2023-02-09,2023,2022-23,Club,Al-Nassr,Al-Wehda FC,Saudi Pro League,Away,40,31-45',1st Half,Right foot,Win,0:2,Sami Al-Najei,Saudi Pro League,No,Right foot
+825,2023-02-09,2023,2022-23,Club,Al-Nassr,Al-Wehda FC,Saudi Pro League,Away,53,46-60',2nd Half,Penalty,Win,0:3,Penalty,Saudi Pro League,No,Penalty
+826,2023-02-09,2023,2022-23,Club,Al-Nassr,Al-Wehda FC,Saudi Pro League,Away,61,61-75',2nd Half,Right foot,Win,0:4,Unassisted,Saudi Pro League,No,Right foot
+827,2023-02-25,2023,2022-23,Club,Al-Nassr,Damac FC,Saudi Pro League,Away,18,16-30',1st Half,Penalty,Win,0:1,Penalty,Saudi Pro League,No,Penalty
+828,2023-02-25,2023,2022-23,Club,Al-Nassr,Damac FC,Saudi Pro League,Away,23,16-30',1st Half,Left foot,Win,0:2,Sultan Al-Ghannam,Saudi Pro League,No,Left foot
+829,2023-02-25,2023,2022-23,Club,Al-Nassr,Damac FC,Saudi Pro League,Away,44,31-45',1st Half,Counter attack goal,Win,0:3,Ayman Yahya,Saudi Pro League,No,Other
+830,2023-03-18,2023,2022-23,Club,Al-Nassr,Abha Club,Saudi Pro League,Home,78,76-90',2nd Half,Direct free kick,Win,1:1,Direct free kick,Saudi Pro League,Yes,Direct free kick
+831,2023-03-23,2023,2022-23,International,Portugal,Liechtenstein,UEFA Euro 2024 qualifying,Home,51,46-60',2nd Half,Penalty,Win,3–0,Penalty,Euro Qualification,No,Penalty
+832,2023-03-23,2023,2022-23,International,Portugal,Liechtenstein,UEFA Euro 2024 qualifying,Home,51,46-60',2nd Half,Header,Win,4–0,Portugal Teammate,Euro Qualification,No,Header
+833,2023-03-26,2023,2022-23,International,Portugal,Luxembourg,UEFA Euro 2024 qualifying,Away,9,01-15',1st Half,Right foot,Win,1–0,Portugal Teammate,Euro Qualification,No,Right foot
+834,2023-03-26,2023,2022-23,International,Portugal,Luxembourg,UEFA Euro 2024 qualifying,Away,9,01-15',1st Half,Right foot,Win,4–0,Portugal Teammate,Euro Qualification,No,Right foot
+835,2023-04-04,2023,2022-23,Club,Al-Nassr,Al-Adalah FC,Saudi Pro League,Away,40,31-45',1st Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+836,2023-04-04,2023,2022-23,Club,Al-Nassr,Al-Adalah FC,Saudi Pro League,Away,66,61-75',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+837,2023-04-28,2023,2022-23,Club,Al-Nassr,Al-Raed FC,Saudi Pro League,Home,4,01-15',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+838,2023-05-16,2023,2022-23,Club,Al-Nassr,Al-Tai FC,Saudi Pro League,Away,52,46-60',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+839,2023-05-23,2023,2022-23,Club,Al-Nassr,Al-Shabab FC (Riyadh),Saudi Pro League,Home,59,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+840,2023-06-20,2023,2022-23,International,Portugal,Iceland,UEFA Euro 2024 qualifying,Away,89,76-90',2nd Half,Right foot,Win,1–0,Portugal Teammate,Euro Qualification,Yes,Right foot
+841,2023-07-31,2023,2023-24,Club,Al-Nassr,Union Sportive Monastirienne (football),Saudi Pro League,Away,74,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+842,2023-08-03,2023,2023-24,Club,Al-Nassr,Zamalek SC,Saudi Pro League,Away,87,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+843,2023-08-06,2023,2023-24,Club,Al-Nassr,Raja CA,Saudi Pro League,Away,19,16-30',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+844,2023-08-09,2023,2023-24,Club,Al-Nassr,Al-Shorta SC,Saudi Pro League,Away,75,61-75',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,Yes,Penalty
+845,2023-08-12,2023,2023-24,Club,Al-Nassr,Al Hilal SFC,Saudi Pro League,Away,74,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+846,2023-08-12,2023,2023-24,Club,Al-Nassr,Al Hilal SFC,Saudi Pro League,Away,97,Extra Time,Extra Time,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+847,2023-08-25,2023,2023-24,Club,Al-Nassr,Al-Fateh SC,Saudi Pro League,Away,38,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+848,2023-08-25,2023,2023-24,Club,Al-Nassr,Al-Fateh SC,Saudi Pro League,Away,55,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+849,2023-08-25,2023,2023-24,Club,Al-Nassr,Al-Fateh SC,Saudi Pro League,Away,96,90+ Stoppage,2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+850,2023-08-29,2023,2023-24,Club,Al-Nassr,Al-Shabab FC (Riyadh),Saudi Pro League,Home,13,01-15',1st Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+851,2023-08-29,2023,2023-24,Club,Al-Nassr,Al-Shabab FC (Riyadh),Saudi Pro League,Home,38,31-45',1st Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+852,2023-09-02,2023,2023-24,Club,Al-Nassr,Al-Hazem F.C.,Saudi Pro League,Away,68,61-75',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+853,2023-09-16,2023,2023-24,Club,Al-Nassr,Al-Raed FC,Saudi Pro League,Away,78,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+854,2023-09-22,2023,2023-24,Club,Al-Nassr,Al-Ahli Saudi FC,Saudi Pro League,Home,4,01-15',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+855,2023-09-22,2023,2023-24,Club,Al-Nassr,Al-Ahli Saudi FC,Saudi Pro League,Home,52,46-60',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+856,2023-09-29,2023,2023-24,Club,Al-Nassr,Al-Tai FC,Saudi Pro League,Away,87,76-90',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,Yes,Penalty
+857,2023-10-02,2023,2023-24,Club,Al-Nassr,FC Istiklol,Saudi Pro League,Home,66,61-75',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+858,2023-10-13,2023,2023-24,International,Portugal,Slovakia,UEFA Euro 2024 qualifying,Home,29,16-30',1st Half,Penalty,Win,2–0,Penalty,Euro Qualification,No,Penalty
+859,2023-10-13,2023,2023-24,International,Portugal,Slovakia,UEFA Euro 2024 qualifying,Home,29,16-30',1st Half,Header,Win,3–1,Portugal Teammate,Euro Qualification,No,Header
+860,2023-10-16,2023,2023-24,International,Portugal,Bosnia and Herzegovina,UEFA Euro 2024 qualifying,Away,5,01-15',1st Half,Penalty,Win,1–0,Penalty,Euro Qualification,No,Penalty
+861,2023-10-16,2023,2023-24,International,Portugal,Bosnia and Herzegovina,UEFA Euro 2024 qualifying,Away,5,01-15',1st Half,Right foot,Win,2–0,Portugal Teammate,Euro Qualification,No,Right foot
+862,2023-10-21,2023,2023-24,Club,Al-Nassr,Damac FC,Saudi Pro League,Home,56,46-60',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+863,2023-10-24,2023,2023-24,Club,Al-Nassr,Al-Duhail SC,Saudi Pro League,Home,61,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+864,2023-10-24,2023,2023-24,Club,Al-Nassr,Al-Duhail SC,Saudi Pro League,Home,81,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+865,2023-10-31,2023,2023-24,Club,Al-Nassr,Al-Ettifaq FC,Saudi Pro League,Home,107,Extra Time,Extra Time,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+866,2023-11-04,2023,2023-24,Club,Al-Nassr,Khaleej FC,Saudi Pro League,Home,26,16-30',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+867,2023-11-11,2023,2023-24,Club,Al-Nassr,Al Wehda FC,Saudi Pro League,Away,49,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+868,2023-11-16,2023,2023-24,International,Portugal,Liechtenstein,UEFA Euro 2024 qualifying,Away,46,46-60',2nd Half,Left foot,Win,1–0,Portugal Teammate,Euro Qualification,No,Left foot
+869,2023-11-24,2023,2023-24,Club,Al-Nassr,Al-Okhdood Club,Saudi Pro League,Home,77,76-90',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+870,2023-11-24,2023,2023-24,Club,Al-Nassr,Al-Okhdood Club,Saudi Pro League,Home,80,76-90',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Left foot
+871,2023-12-08,2023,2023-24,Club,Al-Nassr,Al-Riyadh SC,Saudi Pro League,Home,31,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+872,2023-12-11,2023,2023-24,Club,Al-Nassr,Al-Shabab FC (Riyadh),Saudi Pro League,Away,74,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+873,2023-12-22,2023,2023-24,Club,Al-Nassr,Ettifaq FC,Saudi Pro League,Home,73,61-75',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,Yes,Penalty
+874,2023-12-26,2023,2023-24,Club,Al-Nassr,Al-Ittihad Club (Jeddah),Saudi Pro League,Away,19,16-30',1st Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+875,2023-12-26,2023,2023-24,Club,Al-Nassr,Al-Ittihad Club (Jeddah),Saudi Pro League,Away,68,61-75',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+876,2023-12-30,2023,2023-24,Club,Al-Nassr,Al-Taawoun FC,Saudi Pro League,Away,92,90+ Stoppage,2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Left foot
+877,2024-02-14,2024,2023-24,Club,Al-Nassr,Al-Fayha FC,Saudi Pro League,Away,81,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+878,2024-02-17,2024,2023-24,Club,Al-Nassr,Al-Fateh SC,Saudi Pro League,Home,17,16-30',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+879,2024-02-21,2024,2023-24,Club,Al-Nassr,Al-Fayha FC,Saudi Pro League,Home,86,76-90',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Right foot
+880,2024-02-25,2024,2023-24,Club,Al-Nassr,Al-Shabab FC (Riyadh),Saudi Pro League,Away,21,16-30',1st Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+881,2024-03-11,2024,2023-24,Club,Al-Nassr,Al Ain FC,Saudi Pro League,Home,118,Extra Time,Extra Time,Penalty,Win,1-0,Penalty,Saudi Pro League,Yes,Penalty
+882,2024-03-15,2024,2023-24,Club,Al-Nassr,Al-Ahli Saudi FC,Saudi Pro League,Away,68,61-75',2nd Half,Penalty,Win,1-0,Penalty,Saudi Pro League,No,Penalty
+883,2024-03-30,2024,2023-24,Club,Al-Nassr,Al-Tai FC,Saudi Pro League,Home,64,61-75',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+884,2024-03-30,2024,2023-24,Club,Al-Nassr,Al-Tai FC,Saudi Pro League,Home,67,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+885,2024-03-30,2024,2023-24,Club,Al-Nassr,Al-Tai FC,Saudi Pro League,Home,87,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+886,2024-04-02,2024,2023-24,Club,Al-Nassr,Abha Club,Saudi Pro League,Away,11,01-15',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+887,2024-04-02,2024,2023-24,Club,Al-Nassr,Abha Club,Saudi Pro League,Away,21,16-30',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+888,2024-04-02,2024,2023-24,Club,Al-Nassr,Abha Club,Saudi Pro League,Away,42,31-45',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+889,2024-04-08,2024,2023-24,Club,Al-Nassr,Al Hilal SFC,Saudi Pro League,Away,99,90+ Stoppage,2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,Yes,Header
+890,2024-05-01,2024,2023-24,Club,Al-Nassr,Al-Khaleej FC,Saudi Pro League,Home,17,16-30',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+891,2024-05-01,2024,2023-24,Club,Al-Nassr,Al-Khaleej FC,Saudi Pro League,Home,57,46-60',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+892,2024-05-04,2024,2023-24,Club,Al-Nassr,Al Wehda FC,Saudi Pro League,Home,5,01-15',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Right foot
+893,2024-05-04,2024,2023-24,Club,Al-Nassr,Al Wehda FC,Saudi Pro League,Home,12,01-15',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+894,2024-05-04,2024,2023-24,Club,Al-Nassr,Al Wehda FC,Saudi Pro League,Home,52,46-60',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Left foot
+895,2024-05-09,2024,2023-24,Club,Al-Nassr,Al-Okhdood Club,Saudi Pro League,Away,15,01-15',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+896,2024-05-27,2024,2023-24,Club,Al-Nassr,Al-Ittihad Club (Jeddah),Saudi Pro League,Home,48,31-45' (Stoppage),1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+897,2024-05-27,2024,2023-24,Club,Al-Nassr,Al-Ittihad Club (Jeddah),Saudi Pro League,Home,69,61-75',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,Saudi Pro League,No,Header
+898,2024-06-11,2024,2023-24,International,Portugal,Republic of Ireland,Friendly,Home,55,46-60',2nd Half,Right foot,Win,2–0,Portugal Teammate,International Friendly,No,Right foot
+899,2024-06-11,2024,2023-24,International,Portugal,Republic of Ireland,Friendly,Home,55,46-60',2nd Half,Header,Win,3–0,Portugal Teammate,International Friendly,No,Header
+900,2024-08-14,2024,2024-25,Club,Al-Nassr,Al Taawoun FC,AFC Champions League,Away,57,46-60',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+901,2024-08-17,2024,2024-25,Club,Al-Nassr,Al Hilal SFC,AFC Champions League,Home,44,31-45',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+902,2024-08-22,2024,2024-25,Club,Al-Nassr,Al-Raed FC,AFC Champions League,Home,34,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+903,2024-08-27,2024,2024-25,Club,Al-Nassr,Al-Fayha FC,AFC Champions League,Away,55,31-45' (Stoppage),1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+904,2024-09-05,2024,2024-25,International,Portugal,Croatia,2024–25 UEFA Nations League A,Home,34,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,UEFA Nations League,No,Right foot
+905,2024-09-08,2024,2024-25,International,Portugal,Scotland,2024–25 UEFA Nations League A,Home,88,76-90',2nd Half,Left foot,Win,2–1,Portugal Teammate,UEFA Nations League,Yes,Left foot
+906,2024-09-20,2024,2024-25,Club,Al-Nassr,Al-Ettifaq FC,AFC Champions League,Away,33,31-45',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+907,2024-09-27,2024,2024-25,Club,Al-Nassr,Al Wehda FC,AFC Champions League,Home,56,46-60',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+908,2024-09-30,2024,2024-25,Club,Al-Nassr,Al Rayyan SC,AFC Champions League,Home,76,76-90',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Left foot
+909,2024-10-05,2024,2024-25,Club,Al-Nassr,Al-Orobah FC,AFC Champions League,Home,17,16-30',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+910,2024-10-12,2024,2024-25,International,Portugal,Poland,2024–25 UEFA Nations League A,Away,37,31-45',1st Half,Right foot,Win,2–0,Portugal Teammate,UEFA Nations League,No,Right foot
+911,2024-10-18,2024,2024-25,Club,Al-Nassr,Al Shabab FC (Riyadh),AFC Champions League,Away,97,90+ Stoppage,2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,Yes,Penalty
+912,2024-11-05,2024,2024-25,Club,Al-Nassr,Al Ain FC,AFC Champions League,Home,31,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+913,2024-11-15,2024,2024-25,International,Portugal,Poland,2024–25 UEFA Nations League A,Home,72,61-75',2nd Half,Penalty,Win,2–0,Penalty,UEFA Nations League,Yes,Penalty
+914,2024-11-15,2024,2024-25,International,Portugal,Poland,2024–25 UEFA Nations League A,Home,72,61-75',2nd Half,Header,Win,5–0,Portugal Teammate,UEFA Nations League,Yes,Header
+915,2024-11-22,2024,2024-25,Club,Al-Nassr,Al Qadsiah FC,AFC Champions League,Home,32,31-45',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+916,2024-11-25,2024,2024-25,Club,Al-Nassr,Al-Gharafa SC,AFC Champions League,Away,46,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+917,2024-11-25,2024,2024-25,Club,Al-Nassr,Al-Gharafa SC,AFC Champions League,Away,64,61-75',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+918,2024-11-29,2024,2024-25,Club,Al-Nassr,Damac FC,AFC Champions League,Home,17,16-30',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+919,2024-11-29,2024,2024-25,Club,Al-Nassr,Damac FC,AFC Champions League,Home,79,76-90',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Right foot
+920,2024-12-06,2024,2024-25,Club,Al-Nassr,Al-Ittihad Club (Jeddah),AFC Champions League,Away,57,46-60',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+921,2025-01-09,2025,2024-25,Club,Al-Nassr,Al-Okhdood Club,AFC Champions League,Home,42,31-45',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+922,2025-01-21,2025,2024-25,Club,Al-Nassr,Al-Khaleej FC,AFC Champions League,Away,65,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+923,2025-01-21,2025,2024-25,Club,Al-Nassr,Al-Khaleej FC,AFC Champions League,Away,98,90+ Stoppage,2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Right foot
+924,2025-01-26,2025,2024-25,Club,Al-Nassr,Al Fateh SC,AFC Champions League,Home,87,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Header
+925,2025-01-30,2025,2024-25,Club,Al-Nassr,Al Raed FC,AFC Champions League,Away,35,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+926,2025-02-03,2025,2024-25,Club,Al-Nassr,Al Wasl FC,AFC Champions League,Home,44,31-45',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+927,2025-02-03,2025,2024-25,Club,Al-Nassr,Al Wasl FC,AFC Champions League,Home,78,76-90',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Header
+928,2025-02-07,2025,2024-25,Club,Al-Nassr,Al-Fayha FC,AFC Champions League,Home,74,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Right foot
+929,2025-02-25,2025,2024-25,Club,Al-Nassr,Al Wehda FC,AFC Champions League,Away,48,46-60',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+930,2025-03-07,2025,2024-25,Club,Al-Nassr,Al Shabab FC (Riyadh),AFC Champions League,Home,52,31-45' (Stoppage),1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+931,2025-03-10,2025,2024-25,Club,Al-Nassr,Esteghlal F.C.,AFC Champions League,Home,27,16-30',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+932,2025-03-14,2025,2024-25,Club,Al-Nassr,Al-Kholood Club,AFC Champions League,Home,4,01-15',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+933,2025-03-23,2025,2024-25,International,Portugal,Denmark,2024–25 UEFA Nations League A,Home,72,61-75',2nd Half,Left foot,Win,2–1,Portugal Teammate,UEFA Nations League,Yes,Left foot
+934,2025-04-04,2025,2024-25,Club,Al-Nassr,Al Hilal SFC,AFC Champions League,Away,47,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+935,2025-04-04,2025,2024-25,Club,Al-Nassr,Al Hilal SFC,AFC Champions League,Away,88,76-90',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,Yes,Penalty
+936,2025-04-12,2025,2024-25,Club,Al-Nassr,Al-Riyadh SC,AFC Champions League,Home,56,46-60',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+937,2025-04-12,2025,2024-25,Club,Al-Nassr,Al-Riyadh SC,AFC Champions League,Home,64,61-75',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+938,2025-04-26,2025,2024-25,Club,Al-Nassr,Yokohama F. Marinos,AFC Champions League,Away,38,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+939,2025-05-21,2025,2024-25,Club,Al-Nassr,Al-Khaleej FC,AFC Champions League,Home,97,90+ Stoppage,2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,Yes,Penalty
+940,2025-05-26,2025,2024-25,Club,Al-Nassr,Al Fateh SC,AFC Champions League,Away,42,31-45',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+941,2025-06-04,2025,2024-25,International,Portugal,Germany,2025 UEFA Nations League Finals,Away,68,61-75',2nd Half,Right foot,Win,2–1,Portugal Teammate,UEFA Nations League,No,Right foot
+942,2025-06-08,2025,2024-25,International,Portugal,Spain,2025 UEFA Nations League Finals,Neutral,61,61-75',2nd Half,Right foot,Loss,2–2,Portugal Teammate,UEFA Nations League,No,Right foot
+943,2025-07-30,2025,2025-26,Club,Al-Nassr,Toulouse FC,AFC Champions League,Home,33,31-45',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+944,2025-08-07,2025,2025-26,Club,Al-Nassr,Rio Ave F.C.,AFC Champions League,Home,44,31-45',1st Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Left foot
+945,2025-08-07,2025,2025-26,Club,Al-Nassr,Rio Ave F.C.,AFC Champions League,Home,63,61-75',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+946,2025-08-07,2025,2025-26,Club,Al-Nassr,Rio Ave F.C.,AFC Champions League,Home,68,61-75',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+947,2025-08-10,2025,2025-26,Club,Al-Nassr,UD Almería,AFC Champions League,Away,17,16-30',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+948,2025-08-10,2025,2025-26,Club,Al-Nassr,UD Almería,AFC Champions League,Away,39,31-45',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+949,2025-08-29,2025,2025-26,Club,Al-Nassr,Al Taawoun FC,AFC Champions League,Away,54,46-60',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+950,2025-09-06,2025,2025-26,International,Portugal,Armenia,2026 FIFA World Cup qualification,Away,21,16-30',1st Half,Right foot,Win,2–0,Portugal Teammate,WC Qualification,No,Right foot
+951,2025-09-06,2025,2025-26,International,Portugal,Armenia,2026 FIFA World Cup qualification,Away,21,16-30',1st Half,Header,Win,4–0,Portugal Teammate,WC Qualification,No,Header
+952,2025-09-09,2025,2025-26,International,Portugal,Hungary,2026 FIFA World Cup qualification,Away,58,46-60',2nd Half,Penalty,Win,2–1,Penalty,WC Qualification,No,Penalty
+953,2025-09-20,2025,2025-26,Club,Al-Nassr,Al-Riyadh SC,AFC Champions League,Home,33,31-45',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+954,2025-09-20,2025,2025-26,Club,Al-Nassr,Al-Riyadh SC,AFC Champions League,Home,76,76-90',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Left foot
+955,2025-09-26,2025,2025-26,Club,Al-Nassr,Al-Ittihad Club (Jeddah),AFC Champions League,Away,35,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+956,2025-10-14,2025,2025-26,International,Portugal,Hungary,2026 FIFA World Cup qualification,Home,22,16-30',1st Half,Right foot,Draw,1–1,Portugal Teammate,WC Qualification,No,Right foot
+957,2025-10-14,2025,2025-26,International,Portugal,Hungary,2026 FIFA World Cup qualification,Home,22,16-30',1st Half,Right foot,Draw,2–1,Portugal Teammate,WC Qualification,No,Right foot
+958,2025-10-18,2025,2025-26,Club,Al-Nassr,Al Fateh SC,AFC Champions League,Home,60,46-60',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+959,2025-10-25,2025,2025-26,Club,Al-Nassr,Al-Hazem FC,AFC Champions League,Away,88,76-90',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Left foot
+960,2025-11-01,2025,2025-26,Club,Al-Nassr,Al-Fayha Club,AFC Champions League,Home,37,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+961,2025-11-01,2025,2025-26,Club,Al-Nassr,Al-Fayha Club,AFC Champions League,Home,104,90+ Stoppage,2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,Yes,Penalty
+962,2025-11-08,2025,2025-26,Club,Al-Nassr,Neom SC,AFC Champions League,Away,65,61-75',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+963,2025-11-23,2025,2025-26,Club,Al-Nassr,Al-Khaleej FC,AFC Champions League,Home,96,90+ Stoppage,2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Header
+964,2025-12-27,2025,2025-26,Club,Al-Nassr,Al-Okhdood Club,AFC Champions League,Home,31,31-45',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+965,2025-12-27,2025,2025-26,Club,Al-Nassr,Al-Okhdood Club,AFC Champions League,Home,48,31-45' (Stoppage),1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+966,2025-12-30,2025,2025-26,Club,Al-Nassr,Al-Ettifaq Club,AFC Champions League,Away,67,61-75',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+967,2026-01-08,2026,2025-26,Club,Al-Nassr,Al Qadsiah FC,AFC Champions League,Home,81,76-90',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,Yes,Penalty
+968,2026-01-12,2026,2025-26,Club,Al-Nassr,Al Hilal SFC,AFC Champions League,Away,42,31-45',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+969,2026-01-21,2026,2025-26,Club,Al-Nassr,Damac Club,AFC Champions League,Away,50,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+970,2026-01-30,2026,2025-26,Club,Al-Nassr,Al-Kholood Club,AFC Champions League,Away,47,46-60',2nd Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+971,2026-02-14,2026,2025-26,Club,Al-Nassr,Al Fateh SC,AFC Champions League,Away,18,16-30',1st Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Header
+972,2026-02-21,2026,2025-26,Club,Al-Nassr,Al-Hazem FC,AFC Champions League,Home,13,01-15',1st Half,Right foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,No,Right foot
+973,2026-02-21,2026,2025-26,Club,Al-Nassr,Al-Hazem FC,AFC Champions League,Home,80,76-90',2nd Half,Left foot,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Left foot
+974,2026-02-25,2026,2025-26,Club,Al-Nassr,Al-Najma SC (Saudi Arabia),AFC Champions League,Away,7,01-15',1st Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+975,2026-02-28,2026,2025-26,Club,Al-Nassr,Al-Fayha Club,AFC Champions League,Away,72,61-75',2nd Half,Header,Win,1-0,Sadio Mané / Otávio / Talisca,AFC Champions League,Yes,Header
+976,2026-04-03,2026,2025-26,Club,Al-Nassr,Al-Najma SC (Saudi Arabia),AFC Champions League,Home,56,46-60',2nd Half,Penalty,Win,1-0,Penalty,AFC Champions League,No,Penalty
+977,2026-06-23,2026,2025-26,International,Portugal,Uzbekistan,2026 FIFA World Cup,Neutral,6,01-15',1st Half,Left foot,Win,1–0,Portugal Teammate,FIFA World Cup,No,Left foot
+978,2026-06-23,2026,2025-26,International,Portugal,Uzbekistan,2026 FIFA World Cup,Neutral,6,01-15',1st Half,Header,Win,3–0,Portugal Teammate,FIFA World Cup,No,Header
+979,2026-07-02,2026,2025-26,International,Portugal,Croatia,2026 FIFA World Cup,Neutral,68,61-75',2nd Half,Penalty,Win,1–1,Penalty,FIFA World Cup,No,Penalty

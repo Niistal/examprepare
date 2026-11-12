@@ -1,6 +1,12 @@
 # Estado de NIIS Study Lab — revisión de cierre, 12/11/2026
 
-## HECHAS
+## Entrega de modalidades posterior a PR #4
+
+Implementados el motor por modalidad, 106 preguntas/20 temas, teoría sin Python, corrección/repaso/persistencia y ocho prácticas Orange con recursos completos. Véase [IMPLEMENTACION_MODALIDADES.md](IMPLEMENTACION_MODALIDADES.md) para archivos, evidencia y comandos. Las suites nuevas y existentes pasan; 42 soluciones de código siguen ejecutándose. Se conserva el parche OCI worker-src self y su prueba. No se despliega ni se fusiona esta ampliación automáticamente.
+
+Actualización autorizada de QA: servicios Docker verificados en contenedores desechables (Elastic/Kibana, NiFi, Kafka/Connect FileStream y Logstash); widgets GUI reales de Orange y apertura desde el puente comprobados con Qt offscreen. Véase [QA_INTEGRACION_DOCKER.md](QA_INTEGRACION_DOCKER.md). Windows nativo y conectores JDBC/MongoDB no certificados; issue #2 sigue abierta para esos límites. Delegación T3 bloqueada por falta de runtimeModes anunciados para full-access; revisión principal SELF_REVIEW / NOT_INDEPENDENT.
+
+## Registro anterior · HECHAS
 
 - Enfoque práctico: referencias de fórmula/API dadas en ocho casos, visibles incluso en examen. NumPy y métricas se resuelven con llamadas e interpretación; fuzzy Sugeno tiene datos y fórmula facilitados.
 - Catálogo conectado de **657 recursos**: 187 Programazioa, 117 Sistemas ML, 48 Modelos, 95 BD Sistemak, 196 BD Aplikatua y 14 generales. Asignación estricta por carpetas; nuevos módulos y ambigüedades separados. Erronkas excluidas. Metadatos y encabezados únicamente.
