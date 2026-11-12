@@ -14,6 +14,7 @@ import subprocess
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
+from material_assets import MaterialAssets
 
 ROOT = Path(__file__).resolve().parent
 PRACTICES = json.loads((ROOT / 'resources/orange-manifest.json').read_text(encoding='utf-8'))
@@ -71,6 +72,15 @@ class LocalHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
+        if path.startswith('/api/materials/'):
+            if self.headers.get('Host') != f'127.0.0.1:{self.server.server_port}':return self.reply(403, {'error':'Host local requerido'})
+            status,headers,file,start,length=self.server.material_assets.response(path.removeprefix('/api/materials/'),self.headers.get('Range'),'download=1' in urlsplit(self.path).query)
+            self.send_response(status)
+            for key,value in headers.items():self.send_header(key,value)
+            self.end_headers()
+            if file and self.command!='HEAD':
+                for chunk in self.server.material_assets.chunks(file,start,length):self.wfile.write(chunk)
+            return
         if path == '/api/tools/status':
             if not self.authorized():
                 return self.reply(403, {'error': 'Autorización local requerida'})
@@ -79,7 +89,8 @@ class LocalHandler(SimpleHTTPRequestHandler):
             if self.headers.get('Host') != f'127.0.0.1:{self.server.server_port}':
                 return self.reply(403, {'error': 'Abre la dirección 127.0.0.1 indicada al arrancar'})
             html = (ROOT / 'index.html').read_text(encoding='utf-8')
-            html = html.replace('<script>', '<script>const LOCAL_TOOL_TOKEN=' + json.dumps(self.server.token) + ';</script><script>', 1)
+            asset_bootstrap='const MATERIAL_ASSET_BASE="/api/materials/";' if (ROOT/'material-assets').is_dir() else ''
+            html = html.replace('<script>', '<script>'+asset_bootstrap+'const LOCAL_TOOL_TOKEN=' + json.dumps(self.server.token) + ';</script><script>', 1)
             return self.reply(200, html, 'text/html')
         # Only serve explicit public resources; never expose source trees, dotfiles or secrets.
         if path == '/python-worker.mjs' or path in PUBLIC_RESOURCES:
@@ -87,6 +98,7 @@ class LocalHandler(SimpleHTTPRequestHandler):
         return self.reply(404, {'error': 'Recurso no disponible'})
 
     def do_HEAD(self):
+        if urlsplit(self.path).path.startswith('/api/materials/'):return self.do_GET()
         self.send_error(405)
 
     def do_POST(self):
@@ -130,6 +142,7 @@ class LocalHandler(SimpleHTTPRequestHandler):
 
 def create_server(port=8080):
     server = ThreadingHTTPServer(('127.0.0.1', port), functools.partial(LocalHandler, directory=str(ROOT)))
+    server.material_assets = MaterialAssets(ROOT)
     server.token = secrets.token_urlsafe(32)
     return server
 

@@ -6,7 +6,7 @@ import fcntl,hashlib,json,os,re,sys,tempfile
 from pathlib import Path
 APP=Path('/opt/niis-study-lab')
 STATE=Path('/var/lib/study-lab-publisher')
-RUNTIME=['distribution/server.py','distribution/login.html','distribution/sync.js']
+RUNTIME=['distribution/server.py','distribution/login.html','distribution/sync.js','study_lab/material_assets.py','study_lab/material-library.json']
 MAX_SIZE=8*1024*1024
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
