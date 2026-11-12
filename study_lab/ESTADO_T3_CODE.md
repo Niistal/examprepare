@@ -20,6 +20,8 @@
 - Build autónomo sincronizado y empaquetado separado para la web privada. El alojamiento conserva acceso exclusivo al propietario mediante autenticación gestionada de ChatGPT; no hay contraseñas en JS/Git ni endpoint que ejecute código arbitrario.
 - Historial y código en la rama `feat/niis-study-lab`; PR #4 y seguimiento en issues #1–#3. No merge ni push a la rama principal.
 
+- Actualización periódica activada tras las 08:10: cada 30 minutos, primera prevista a las 08:40:20 Madrid. La tarea todavía no ha ejecutado su primer run; el punto de entrada se probó manualmente y devolvió sin cambios. Depende de T3/equipo/conexiones disponibles. No confundirlo con una sincronización cloud del progreso.
+
 ## PRUEBAS
 
 Suite ejecutada desde el entorno propio del laboratorio:
@@ -29,6 +31,9 @@ Suite ejecutada desde el entorno propio del laboratorio:
 ```
 
 Resultados de esta revisión:
+
+- Supervisión hasta las **08:10 Europe/Madrid**: 343 comprobaciones locales entre 04:21 y 08:09:47, cero fallos, sin cambios de fuente y respuestas anónimas 403 en las comprobaciones periódicas. Última verificación HTTPS posterior al plazo: contenido de aplicación y cabeceras coincidentes; política privada de un usuario y cero grupos. Apuntes y aplicación limpios antes de registrar este cierre.
+- Se detuvo el ChromeDriver temporal propio al finalizar. El servidor de estudio en 127.0.0.1:8080 permanece disponible.
 
 - Sintaxis JS, build y standalone: PASS.
 - Generador: PASS, 1.000 secuencias ordenadas únicas/reproducibles por materia, cinco casos distintos por prueba y cobertura completa de las rutas.

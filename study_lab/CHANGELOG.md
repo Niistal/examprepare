@@ -42,3 +42,4 @@
 - Favicon SVG integrado sin petición externa/404; los tests ya no excluyen ese recurso al comprobar errores de consola. Foco accesible al título de página y de pregunta, con regresiones de navegador.
 - Prueba prolongada repetida tras corregir el favicon: 905 segundos reales, recarga, deadline y borrador íntegros, sin errores de consola.
 - Navegador temporal sobre la web privada real: 11 comprobaciones funcionales PASS, sin excepciones de aplicación; avisos de Cloudflare separados. Credencial de servicio limitada al origen y sin propagarse por redirects.
+- Cierre después de las 08:10: 343 comprobaciones de supervisión sin incidencias; HTTPS y fuentes revalidados. Tarea de temario activada cada 30 minutos, primera prevista 08:40:20 Madrid; primer run aún no realizado. ChromeDriver temporal detenido; servidor local conservado.
