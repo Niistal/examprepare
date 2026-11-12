@@ -93,7 +93,7 @@ class Handler:
         self.send_header('X-Content-Type-Options','nosniff')
         self.send_header('Referrer-Policy','no-referrer')
         hashes=' '.join("'sha256-"+base64.b64encode(hashlib.sha256(code.encode()).digest()).decode()+"'" for code in re.findall(r'<script>([\s\S]*?)</script>',value)) if content_type=='text/html' else "'none'"
-        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src data: blob:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
+        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src 'self' data: blob:; media-src 'self'; frame-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
         if cookie:self.send_header('Set-Cookie',cookie)
         self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
     def cookie(self,token,max_age=604800):
