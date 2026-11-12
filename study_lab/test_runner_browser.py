@@ -71,6 +71,14 @@ with servers() as (local,hosted), sync_playwright() as pw:
         page.locator('#runAnswer').click();page.locator('#stopRun').wait_for(state='hidden',timeout=180000)
         assert page.locator('#runReview').get_attribute('data-status')=='error'
         assert 'NameError en la línea 1' in page.locator('#runReviewVerdict').inner_text()
+        # Previous button walks back along the study route for single exercises.
+        page.evaluate("startSingle('P05')")
+        assert not page.locator('#prevQuestion').is_disabled()
+        page.locator('#prevQuestion').click()
+        assert page.evaluate("currentQuestion().id")!='P05'
+        first=page.evaluate("routeIds()[0]");page.evaluate(f"startSingle('{first}')")
+        assert page.locator('#prevQuestion').is_disabled()
+        print('PASS previous button follows the route',flush=True)
         print('PASS reviewer: alternative accepted, wrong result rejected, error explained',flush=True)
         page.evaluate("startSingle('P10')")
         # A new run clears old files and captures show(), CSV and nested SVG output.
