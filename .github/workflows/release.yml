@@ -1,0 +1,52 @@
+name: Validate and publish release
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install playwright==1.65.1 -r distribution/requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - name: Configure Chrome for legacy WebDriver tests
+        run: |
+          test -x /usr/bin/chromium || sudo ln -s "$(command -v google-chrome)" /usr/bin/chromium
+          chromedriver --version
+      - name: Verify generated files and application behavior
+        run: |
+          python study_lab/test_artifacts.py
+          node --check study_lab/app.js
+          node study_lab/test_generador.cjs
+          node study_lab/test_learning.cjs
+          node study_lab/test_modalities.cjs
+          python study_lab/test_materials.py
+          python -m unittest distribution.test_server distribution.test_catalog -v
+          node distribution/test_sync.cjs
+          STUDY_GUNICORN=$(command -v gunicorn) python -m distribution.test_gunicorn
+          python -m distribution.test_browser
+          python study_lab/test_runner_browser.py
+      - name: Package the validated master commit
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        run: python distribution/package.py --output release.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        with:
+          name: study-release-${{ github.sha }}
+          path: release.tar.gz
+          if-no-files-found: error
+          retention-days: 14
