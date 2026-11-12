@@ -36,7 +36,10 @@ Resultados de esta revisión:
 - Fuentes: PASS, 73 rutas/secciones/hashes del repositorio conectado.
 - Catálogo: PASS, 13 pruebas de Git con asignación exacta, códigos ambiguos, derivados huérfanos, nuevas materias, fuentes hostiles, symlinks y fallos atómicos. 657 registros con huella y JSON/JS coherentes.
 - Guardas de automatización: PASS, 9 pruebas con repositorios temporales; trabajo/staging ajeno conservado, reanudación de commit/publicación y rechazo de cambios posteriores.
-- Worker: PASS, bytes exactos, cabeceras HTTP, HEAD sin cuerpo, rutas ocultas 404 y métodos de escritura 405.
+- Worker: PASS, bytes exactos, cabeceras HTTP, HEAD sin cuerpo, rutas ocultas 404 y métodos de escritura 405. HTTPS de producción: aplicación coincidente y cabeceras observadas, acceso de servicio 200 y anónimo 403. Cloudflare añade una detección al cierre, informada aparte sin relajar CSP.
+- Comprobador de publicación: PASS, siete pruebas de documento exacto, modificación, truncación y transformaciones desconocidas.
+- Cuota llena al importar: PASS, conserva original, evita mensaje de éxito falso y deja aviso persistente. Reanudación con banco cambiado: PASS, no reutiliza una secuencia antigua ni borra borradores.
+- Nuevos módulos: PASS, filtro individual fuera del calendario y regreso a la materia original sin mezcla.
 - Chromium: además, referencias visibles en examen, temario por materia, paginación, vacíos recuperables y protección ante títulos/IDs hostiles, a cuatro tamaños.
 - Python: PASS, **31 soluciones** con comprobaciones de resultado en directorios temporales. Incluye JSON, NumPy, Pandas, gráficos, clasificación, regresión, CV, Faker y ventanas temporales.
 - FastAPI P13: PASS, salud, producto 201, validación 422, OpenAPI y arranque HTTP real de `python -m uvicorn` en loopback/puerto efímero.

@@ -381,7 +381,7 @@ const SOURCE_AUDIT={
     },
     "A04": {
       "source_path": "07_BD_Aplikatua/2_Apache_NiFi_Aurreratua/06_ariketa_mariadb_mongodb/README.md",
-      "source_section": "6. Ariketa (DF2.2): MariaDB -> MongoDB bi aldaeratan (Docker Compose)",
+      "source_section": "6. Ariketa (DF2.2): MariaDB -\u003e MongoDB bi aldaeratan (Docker Compose)",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "386995f662e36932dacc389f3ad51524630b9e512f7c8ff98bce03bbf3805992",
@@ -501,7 +501,7 @@ const SOURCE_AUDIT={
     },
     "M10": {
       "source_path": "04_Ikaskuntza_Automatikorako_Sistemak/ariketak/1_Datuak_eta_Aurreprozesamendua/README.md",
-      "source_section": "1. Atala: Datuak eta Aurreprozesamendua (CR7 Dataset & Orange)",
+      "source_section": "1. Atala: Datuak eta Aurreprozesamendua (CR7 Dataset \u0026 Orange)",
       "verified": true,
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "5b53dd8ab72a9f04b6a2b985ca917cd7882032a1a06950c39f4ad22918b6ca83",

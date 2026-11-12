@@ -30,3 +30,7 @@
 - Mirror privado de lectura sin modificar la copia de apuntes; caché y metadatos para evitar descargar datos/binaries al indexar.
 - Guardas de sincronización, retomado de publicación y pruebas con repositorios Git temporales, rutas hostiles y commits ajenos.
 - Worker mínimo para servir el mismo documento con cabeceras HTTP, manteniendo la autenticación privada de Sites.
+
+- Corrección posterior: importar con cuota llena muestra fallo persistente y conserva el progreso original; recuperar el guardado retira el aviso. Simulacros con secuencia antigua no se reanudan contra un banco cambiado; sus borradores se conservan.
+- Selector individual para futuros módulos fuera del calendario, sin mezclar nuevas asignaturas con las cinco pruebas.
+- Comprobación HTTPS real de aplicación/cabeceras, con informe separado de la detección inyectada por Cloudflare. Siete pruebas impiden aceptar cambios del HTML como si fueran transformaciones conocidas.

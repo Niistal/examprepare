@@ -50,5 +50,5 @@ for q in bank:
 sha=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip()
 output={'repo':'Niistal/Big_Data','branch':'main','commit':sha,'questions':metadata}
 (root/'sources.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
-(root/'sources.js').write_text('const SOURCE_AUDIT='+json.dumps(output,ensure_ascii=False,indent=2)+';\n')
+(root/'sources.js').write_text('const SOURCE_AUDIT='+json.dumps(output,ensure_ascii=False,indent=2).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')+';\n')
 print(f'{len(metadata)} fuentes auditadas; commit {sha}; sin modificar el repositorio académico')

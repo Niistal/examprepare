@@ -12,7 +12,7 @@ Desde la raíz de `Niistal/examprepare`:
 python study_lab/scripts/prepare_material_sync.py --automation --apply
 ```
 
-No leas notebooks, PDFs, datos o todo el árbol en el contexto del modelo. El script valida origen/rama, usa un mirror Git privado separado, consulta tamaños por metadatos y solo extrae rutas/encabezados filtrados. Los archivos se asignan por carpetas exactas. Los proyectos Erronka y los códigos de módulo ambiguos se excluyen; el material general y nuevos módulos fuera del calendario permanecen separados.
+No leas notebooks, PDFs, datos o todo el árbol en el contexto del modelo. El script valida origen/rama, usa un mirror Git privado separado, consulta tamaños por metadatos y solo extrae rutas/encabezados filtrados. Los archivos se asignan por carpetas exactas. Los proyectos Erronka se excluyen; los códigos de módulo ambiguos se muestran sin asignación, nunca dentro de una materia parecida; el material general y nuevos módulos fuera del calendario permanecen separados.
 
 - `unchanged`: termina con un estado breve; no reconstruyas, comitees ni publiques.
 - `foreground_work`, `busy`, `blocked_worktree`, `blocked_upstream`: no alteres nada, no hagas stash/reset/pull/checkout/force. Informa brevemente del motivo. El script protege el trabajo de la sesión principal hasta el plazo registrado.
@@ -39,7 +39,8 @@ Si la guarda rechaza el commit o detecta cambios ajenos, detente sin push/deploy
 3. Obtén la credencial de fuente mediante la herramienta Sites. Entrégala al helper por stdin oculto y solo en memoria; no archivos, argumentos ni logs.
 4. Usa el workflow de fuentes Sites desde `hosted_study_lab/`, con el resultado de apertura y el archivo de publicación fuera del checkout. El build ya está verificado. El artefacto es un Worker estático, sin DB ni endpoints de ejecución; mantiene la autenticación de Sites.
 5. Publica mediante `save_version_and_deploy_private` con el `project_id`, SHA completo y archivo exactos que devolvió el helper. Reintenta una credencial caducada una vez para el mismo Site. Un error con `saved_version_id` se reanuda sin guardar duplicados. Sigue una publicación pendiente hasta estado terminal.
-6. Tras `succeeded`, registra la evidencia usando los identificadores devueltos:
+6. Tras `succeeded`, comprueba HTTPS con `verify_private_publication.py` si `get_site` devolvió acceso de servicio existente. Entrégalo únicamente por stdin oculto; el destino está limitado al origen de este Site y no sigue redirects. No generes un token de bypass ni uses el token Git. Verifica los bytes de aplicación y las cabeceras; una inyección de detección de Cloudflare al cierre se informa aparte y no justifica relajar CSP. No atribuyas esta prueba al login interactivo/MFA del propietario.
+7. Registra la evidencia usando los identificadores devueltos:
 
 ```sh
 python study_lab/scripts/prepare_material_sync.py --mark-published --deployment-id ID_DEVUELTO --version-id VERSION_DEVUELTA --hosted-commit SHA_DEVUELTO

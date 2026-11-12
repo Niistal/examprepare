@@ -784,8 +784,8 @@ function save(){
  try{
   if(storageConflict||localStorage.getItem(STATE_KEY)!==lastStored){showStorageConflict();return false;}
   const serialized=JSON.stringify(data);localStorage.setItem(STATE_KEY,serialized);lastStored=serialized;
-  storageOkay=true;return true;
- }catch{storageOkay=false;toast('No se pudo guardar: exporta una copia JSON antes de salir');return false;}
+  storageOkay=true;if(!storageConflict)$('storageNotice').classList.add('hidden');return true;
+ }catch{storageOkay=false;$('storageNotice').classList.remove('hidden');$('storageNoticeText').textContent='No se pudo guardar el progreso. Tus respuestas siguen en memoria: exporta una copia JSON antes de salir.';toast('No se pudo guardar: exporta una copia JSON antes de salir');return false;}
 }
 function allowExplicitReplace(){storageConflict=false;invalidStored=null;$('storageExport').textContent='Exportar mis respuestas';try{lastStored=localStorage.getItem(STATE_KEY);}catch{}$('storageNotice').classList.add('hidden');}
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -818,9 +818,15 @@ function materialSourceState(q){
 }
 function renderMaterials(){
  const scope=$('materialScope').value,type=$('materialType').value,query=$('materialSearch').value.trim().toLowerCase();
- const list=MATERIALS.resources.filter(r=>materialMatches(r,scope,type,query)),pageSize=18,pages=Math.max(1,Math.ceil(list.length/pageSize));
+ const known=new Set(COURSES.map(c=>c.id)),modules=MATERIALS.courses.filter(c=>c.id!=='general'&&!known.has(c.id));
+ const selected=$('materialModule').value;
+ $('materialModuleLabel').classList.toggle('hidden',scope!=='other');
+ $('materialModule').innerHTML='<option value="all">Todos los otros módulos</option>'+modules.map(m=>`<option value="${esc(m.id)}">${esc(m.label)}</option>`).join('');
+ $('materialModule').value=modules.some(m=>m.id===selected)?selected:'all';
+ const moduleId=$('materialModule').value;
+ const list=MATERIALS.resources.filter(r=>materialMatches(r,scope,type,query)&&(scope!=='other'||moduleId==='all'||r.course===moduleId)),pageSize=18,pages=Math.max(1,Math.ceil(list.length/pageSize));
  materialPage=Math.max(1,Math.min(pages,materialPage));
- const label=scope==='general'?'General del curso':scope==='other'?'Otros módulos fuera del calendario de exámenes':course(courseId).name;
+ const label=scope==='general'?'General del curso':scope==='other'?(modules.find(m=>m.id===moduleId)?.label||'Otros módulos fuera del calendario de exámenes'):course(courseId).name;
  $('materialHeading').textContent=label;
  $('materialCount').textContent=`${list.length} recursos · página ${materialPage} de ${pages}`;
  $('practiceCount').textContent=`${list.length} recursos del repositorio`;
@@ -909,12 +915,13 @@ function downloadJSON(contents,name){
 }
 function exportState(){persistDraft();downloadJSON(JSON.stringify({schema:1,exportedAt:new Date().toISOString(),data},null,2),'niis-study-lab-progreso.json');}
 function exportRecovery(){if(invalidStored!==null)downloadJSON(invalidStored,'niis-study-lab-recuperacion.json');else exportState();}
-async function importState(file){if(!file)return;if(file.size>10_000_000){toast('Archivo demasiado grande');return;}try{const parsed=JSON.parse(await file.text());const v=parsed.data;if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');if(!confirm('¿Reemplazar tu progreso local con el JSON importado?'))return;stopTimer();session=null;allowExplicitReplace();data={ratings:v.ratings,answers:v.answers,history:v.history.slice(-5000)};save();navigate('progress');renderProgress();renderDashboard();toast('Progreso importado');}catch{toast('No se pudo importar el JSON');}finally{$('importFile').value='';}}
+async function importState(file){if(!file)return;if(file.size>10_000_000){toast('Archivo demasiado grande');return;}try{const parsed=JSON.parse(await file.text());const v=parsed.data;if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');if(!confirm('¿Reemplazar tu progreso local con el JSON importado?'))return;stopTimer();session=null;allowExplicitReplace();data={ratings:v.ratings,answers:v.answers,history:v.history.slice(-5000)};const saved=save();navigate('progress');renderProgress();renderDashboard();toast(saved?'Progreso importado':'Respaldo cargado en memoria. Exporta JSON: no se pudo guardar.');}catch{toast('No se pudo importar el JSON');}finally{$('importFile').value='';}}
 async function copyText(text){try{await navigator.clipboard.writeText(text);toast('Copiado al portapapeles');}catch{const tmp=document.createElement('textarea');tmp.value=text;document.body.appendChild(tmp);tmp.select();const ok=document.execCommand('copy');tmp.remove();toast(ok?'Copiado':'Selecciona y copia el texto manualmente');}}
 function restoreSession(){
  const x=data.activeSession;
  if(!x||!['guided','exam'].includes(x.mode)||!COURSES.some(c=>c.id===x.course)||!Array.isArray(x.ids)||!x.ids.length||x.ids.length>5||new Set(x.ids).size!==x.ids.length||!x.ids.every(id=>BANK.some(q=>q.id===id&&q.c===x.course))||typeof x.id!=='string')return;
  if(x.number!==null&&(!Number.isInteger(x.number)||x.number<1||x.number>1000))return;
+ if(x.number&&JSON.stringify(x.ids)!==JSON.stringify(questionsFor(x.course,x.number))){toast('El banco ha cambiado: inicia de nuevo el simulacro. Tus borradores siguen guardados.');return;}
  session={id:x.number?`exam-${x.course}-${x.number}`:`single-${x.ids[0]}`,course:x.course,number:x.number,ids:x.ids,mode:x.mode,submitted:x.submitted===true};
  courseId=x.course;questionIndex=Number.isInteger(x.questionIndex)?Math.max(0,Math.min(x.ids.length-1,x.questionIndex)):0;
  timeRemaining=Number.isFinite(x.timeRemaining)?Math.max(0,Math.min(3000,x.timeRemaining)):3000;
@@ -939,7 +946,7 @@ function init(){
   $('routeView').addEventListener('click',()=>setStudyView('route'));
   $('catalogView').addEventListener('click',()=>setStudyView('catalog'));
   $('materialView').addEventListener('click',()=>setStudyView('materials'));
-  for(const id of ['materialScope','materialType'])$(id).addEventListener('change',()=>{materialPage=1;renderMaterials();});
+  for(const id of ['materialScope','materialType','materialModule'])$(id).addEventListener('change',()=>{materialPage=1;renderMaterials();});
   $('materialSearch').addEventListener('input',()=>{materialPage=1;renderMaterials();});
   $('materialPrev').addEventListener('click',()=>{materialPage--;renderMaterials();$('materialHeading').focus({preventScroll:true});});
   $('materialNext').addEventListener('click',()=>{materialPage++;renderMaterials();$('materialHeading').focus({preventScroll:true});});
@@ -963,7 +970,7 @@ function init(){
   $('progressExport').addEventListener('click',exportState);
   $('importBtn').addEventListener('click',()=>$('importFile').click());
   $('importFile').addEventListener('change',ev=>importState(ev.target.files[0]));
-  $('clearProgress').addEventListener('click',()=>{if(confirm('¿Restablecer TODO el progreso y las respuestas locales? Esta acción no se puede deshacer.')){stopTimer();session=null;shown={};allowExplicitReplace();data=emptyState();save();navigate('progress');renderProgress();renderDashboard();toast('Progreso restablecido');}});
+  $('clearProgress').addEventListener('click',()=>{if(confirm('¿Restablecer TODO el progreso y las respuestas locales? Esta acción no se puede deshacer.')){stopTimer();session=null;shown={};allowExplicitReplace();data=emptyState();const saved=save();navigate('progress');renderProgress();renderDashboard();toast(saved?'Progreso restablecido':'No se pudo guardar el reinicio. El progreso anterior permanece en el navegador.');}});
   document.querySelectorAll('.copy-pre').forEach(b=>b.addEventListener('click',()=>copyText($(b.dataset.target).textContent)));
 }
 init();

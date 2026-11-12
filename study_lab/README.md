@@ -163,7 +163,7 @@ Consulta `COBERTURA.md` para el mapa completo, `DESIGN.md` para el sistema de in
 
 **Temario de Big_Data** permite consultar 657 recursos versionados y sus encabezados, paginados y filtrados por materia/tipo. Cada enlace abre la revisión concreta de la fuente privada. General y otros módulos tienen espacios separados. Los ejemplos resueltos y NotebookLM se identifican como apoyo, sin atribuir autoría humana. No se copian cuerpos de apuntes, outputs ni datos al catálogo.
 
-La asignación depende de las carpetas exactas, nunca de palabras parecidas. Una materia nueva con raíz única aparece como otro módulo; un código duplicado, una carpeta renombrada de forma ambigua o un derivado sin raíz queda **sin asignar** para revisión. No se inventan fechas ni profesores. Los casos cuyo archivo fuente cambie muestran un aviso: sincronizar un índice no revalida una solución.
+La asignación depende de las carpetas exactas, nunca de palabras parecidas. Una materia nueva con raíz única aparece como otro módulo; un código duplicado, una carpeta renombrada de forma ambigua o un derivado sin raíz queda **sin asignar** para revisión. Otros módulos ofrece un selector individual para cada nueva carpeta. No se inventan fechas ni profesores. Los casos cuyo archivo fuente cambie muestran un aviso: sincronizar un índice no revalida una solución.
 
 Para actualizar manualmente desde la raíz del proyecto:
 

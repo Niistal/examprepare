@@ -20,13 +20,13 @@ Los 73 casos forman parte del paquete privado. No se han copiado los apuntes com
 
 - Fuente de desarrollo: repositorio privado https://github.com/Niistal/examprepare, rama `feat/niis-study-lab`.
 - Identidad Sites: `deployment/hosting.json`, sin secretos.
-- Ejecutar `python study_lab/scripts/build_hosted.py` desde la raíz: reconstruye el standalone y genera `hosted_study_lab/dist/index.html` y su manifest de alojamiento.
+- Ejecutar `python study_lab/scripts/build_hosted.py` desde la raíz: reconstruye el standalone y genera `hosted_study_lab/dist/server/index.js` y su manifest de alojamiento.
 - `hosted_study_lab/` es un checkout separado del repositorio de publicación Sites y está ignorado en el repositorio principal. Sus credenciales temporales se entregan al helper por stdin, nunca se guardan en archivos ni Git.
-- El paquete publicado contiene únicamente `.openai/hosting.json` y el HTML estático generado en `dist/`. No sirve el árbol del repositorio.
+- El paquete publicado contiene `.openai/hosting.json` y un Worker que responde con el HTML generado. Solo acepta GET/HEAD de `/` y `/index.html`; no sirve el árbol del repositorio ni ejecuta código del estudiante.
 - El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` evita llamadas de red desde la app; abrir una fuente de GitHub mediante un enlace sigue siendo posible.
-- Commit de publicación Sites: `07d84130575998f8b372b66e7deebedd4406086c`.
-- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_83f2dea3b2308191956cca41eaf68f04`.
-- Despliegue: `appgdep_6af5162c00c88191b2a4d1b60486f338`, estado `succeeded`.
+- Commit de publicación Sites: `d74a7be113d9d80f6234ad05c34571616a88c388`.
+- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_a9f7ce228d008191b0e6e3d1a9ff8d48`.
+- Despliegue: `appgdep_6af52a8525c08191b83577f42ea47cef`, estado `succeeded`.
 
 ## Pruebas de esta actualización
 
@@ -42,6 +42,14 @@ Para futuras publicaciones, usar la identidad existente y el workflow de Sites; 
 
 ## Revisión de cierre publicada
 
-73 casos y 16 lecciones por bloques, catálogo separado, filtro de estado, repaso, avance de recorrido, ayudas de funciones e interfaz pulida. Verificación actual: 30 scripts Python, FastAPI con Uvicorn real, Streamlit con fixture y los 73 casos en Chromium a 320/390/768/1440 px. También conflictos de pestaña, cuota llena y recuperación de progreso dañado. El paquete publicado se comparó byte por byte con el probado.
+73 casos y 16 lecciones por bloques, catálogo separado, filtro de estado, repaso, avance de recorrido, ayudas de funciones e interfaz pulida. Verificación actual: 31 scripts Python, FastAPI con Uvicorn real, Streamlit con fixture y los 73 casos en Chromium a 320/390/768/1440 px. También conflictos de pestaña, cuota llena y recuperación de progreso dañado. El paquete publicado se comparó byte por byte con el probado.
 
 Se conserva la política privada de un usuario y cero grupos. No se han generado ni guardado credenciales en Proton Pass. La primera respuesta de acceso anónimo observada fue 403; no se afirma haber probado un login del propietario ni su configuración MFA.
+
+## Temario conectado y cabeceras HTTP — 12/11, 03:55 Madrid
+
+La publicación indicada incorpora 657 recursos clasificados por carpeta, referencias de fórmulas dadas y avisos si cambia la fuente contrastada de un caso. No copia los cuerpos del repositorio. La automatización de actualización está especificada en [AUTOMATION.md](AUTOMATION.md).
+
+La comprobación HTTPS con acceso de servicio existente devolvió 200 y confirmó todos los bytes de la aplicación y las cabeceras HTTP CSP/frame-ancestors, private/no-store y nosniff. La petición anónima devolvió 403. Cloudflare añade al cierre un script de detección: se detecta y registra separado, sin relajar la CSP ni certificar ese código. Los bytes de la aplicación antes/después de esa inserción coinciden con el artefacto probado. No equivale a probar el login, MFA ni Proton Pass del propietario.
+
+El acceso de servicio se entregó únicamente por stdin oculto al comprobador y al origen exacto del Site, sin seguir redirects. No se generó un token nuevo ni se guardó en archivos/Git.
