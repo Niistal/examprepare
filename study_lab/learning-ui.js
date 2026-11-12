@@ -4,7 +4,7 @@ function learningState(){if(!data.learning)data=StudyEngine.migrate(data);return
 function lessonPool(){return LEARNING_CONTENT.lessons.filter(l=>l.course===courseId);}
 function questionPool(){return LEARNING_CONTENT.questions.filter(q=>q.course===courseId&&(learningTopic==='all'||q.topic===learningTopic));}
 function learningSource(s){return `<a href="${esc(sourceUrl(s.path,s.commit))}" target="_blank" rel="noopener noreferrer">Fuente ${s.status==='derived'?'derivada de NotebookLM':'contrastada'} · ${esc(s.path)}</a>`;}
-function modeLabel(id){return id==='models'?'THEORY + QUIZ':id==='systems'?'THEORY + QUIZ + EXTERNAL_TOOL':StudyEngine.courses[id];}
+function modeLabel(id){return {program:'Práctica Python',ml:'Orange y teoría',models:'Teoría y tests',systems:'Teoría y Elastic',applied:'NiFi y Kafka'}[id]||'Material de estudio';}
 function bootModalStudy(){
  for(const c of COURSES)c.modality=StudyEngine.courses[c.id];
  for(const q of BANK){q.modality=StudyEngine.cases[q.id];if(!q.modality)throw Error('Caso sin modalidad explícita: '+q.id);}
@@ -20,6 +20,8 @@ function bootModalStudy(){
 }
 function renderModalStudy(){
  const panel=$('modalStudy');if(!panel)return;
+ document.querySelector('.study-view-switch')?.classList.toggle('contextual-active',courseId!=='program'&&studyView==='route');
+ document.querySelector('.filterbar')?.classList.toggle('contextual-active',courseId!=='program'&&studyView==='route');
  panel.classList.toggle('hidden',courseId==='program'||studyView!=='route');
  if(courseId==='program'||studyView!=='route')return;
  $('studyRoute').classList.add('hidden');
@@ -27,7 +29,9 @@ function renderModalStudy(){
  if(learningCourse!==courseId){learningCourse=courseId;learningTopic='all';learningTab='Aprender';}
  const tabs=['Aprender','Practicar','Test','Simulacro','Repasar','Recursos'];
  const sum=StudyEngine.summary(questionPool(),learningState().attempts);
- panel.innerHTML=`<div class="section-heading"><div><span class="chip">${esc(modeLabel(courseId))}</span><h2>${esc(course(courseId).name)}</h2></div><span>${sum.percent===null?'Sin intentos':sum.percent+' % de aciertos'} · ${sum.mastered} dominadas · ${sum.pending} pendientes</span></div><p class="muted">Atajos: Alt+1…6 cambia de pestaña fuera de los campos de respuesta.</p><nav class="learning-tabs" aria-label="Modalidad de estudio">${tabs.map(t=>`<button class="btn ${learningTab===t?'btn-primary':'btn-outline'}" data-learning-tab="${t}" aria-pressed="${learningTab===t}">${t}</button>`).join('')}</nav><label class="learning-topic">Tema <select id="learningTopic"><option value="all">Todos los temas</option>${lessonPool().map(l=>`<option value="${l.id}" ${learningTopic===l.id?'selected':''}>${esc(l.title)}</option>`).join('')}</select></label><div id="learningBody"></div>`;
+ panel.innerHTML=`<div class="section-heading"><div><span class="chip">${esc(modeLabel(courseId))}</span><h2>${esc(course(courseId).name)}</h2><button id="openCourseMaterials" class="text-link">Abrir temario completo →</button> <button id="openCourseCatalog" class="text-link">Buscar casos</button></div><span>${sum.percent===null?'Sin intentos':sum.percent+' % de aciertos'} · ${sum.mastered} dominadas · ${sum.pending} pendientes</span></div><p class="muted">Atajos: Alt+1…6 cambia de pestaña fuera de los campos de respuesta.</p><nav class="learning-tabs" aria-label="Modalidad de estudio">${tabs.map(t=>`<button class="btn ${learningTab===t?'btn-primary':'btn-outline'}" data-learning-tab="${t}" aria-pressed="${learningTab===t}">${t}</button>`).join('')}</nav><label class="learning-topic">Tema <select id="learningTopic"><option value="all">Todos los temas</option>${lessonPool().map(l=>`<option value="${l.id}" ${learningTopic===l.id?'selected':''}>${esc(l.title)}</option>`).join('')}</select></label><div id="learningBody"></div>`;
+ $('openCourseMaterials').onclick=()=>$('materialView').click();
+ $('openCourseCatalog').onclick=()=>$('catalogView').click();
  panel.querySelectorAll('[data-learning-tab]').forEach(b=>b.onclick=()=>{learningTab=b.dataset.learningTab;renderModalStudy();});
  $('learningTopic').onchange=e=>{learningTopic=e.target.value;renderModalStudy();};
  if(learningTab==='Aprender')renderLessons();
@@ -38,6 +42,13 @@ function renderModalStudy(){
 }
 function renderLessons(){
  const lessons=lessonPool().filter(l=>learningTopic==='all'||l.id===learningTopic);
+ if(learningTopic==='all'){
+  $('learningBody').innerHTML='<div class="topic-library-intro"><h3>¿Qué vas a estudiar hoy?</h3><p>Elige un tema: explicación breve, un ejemplo y preguntas para comprobar lo aprendido.</p></div><div class="topic-overview">'+lessons.map((l,i)=>{
+   const qs=LEARNING_CONTENT.questions.filter(q=>q.course===courseId&&q.topic===l.id),st=StudyEngine.summary(qs,learningState().attempts);
+   return `<button class="topic-overview-row" data-learn-topic="${l.id}"><span class="topic-number">${String(i+1).padStart(2,'0')}</span><span class="topic-overview-copy"><strong>${esc(l.title)}</strong><span>${esc(l.example)}</span><small>${qs.length} preguntas · ${st.percent===null?'Por empezar':st.percent+' % de aciertos'}</small></span><span class="topic-arrow" aria-hidden="true">→</span></button>`;
+  }).join('')+'</div>';
+  $('learningBody').querySelectorAll('[data-learn-topic]').forEach(b=>b.onclick=()=>{learningTopic=b.dataset.learnTopic;renderModalStudy();});return;
+ }
  $('learningBody').innerHTML=lessons.map(l=>{
   const st=StudyEngine.summary(LEARNING_CONTENT.questions.filter(q=>q.course===courseId&&q.topic===l.id),learningState().attempts),card=learningState().cards[l.course+'::'+l.id];
   return `<article class="learning-lesson"><span class="chip">THEORY · ${st.mastered}/${st.mastered+st.pending} preguntas dominadas</span><h3>${esc(l.title)}</h3><h4>1 · Aprender</h4><p>${esc(l.concept)}</p><h4>2 · Entender</h4><p>${esc(l.example)}</p><details><summary>Ejemplo del mundo real y comparación</summary><p>${esc(l.real)}</p><p>${esc(l.comparison)}</p></details><h4>3 · Recordar sin mirar</h4><p>${esc(l.recall)}</p><details class="flashcard"><summary>Dar la vuelta a la tarjeta</summary><p>${esc(l.concept)}</p><div class="rating-row">${['No lo sé','Con ayuda','Lo sé'].map((name,i)=>`<button class="rating ${card?.rating===i?'active':''}" data-card="${l.id}" data-score="${i}">${name}</button>`).join('')}</div></details><h4>4–6 · Practicar, corregir y repasar</h4><button class="btn btn-primary" data-topic-test="${l.id}">Practicar 5 preguntas</button><p class="muted">${card?'Próximo repaso: '+esc(new Date(card.due).toLocaleString('es-ES')):'Tarjeta pendiente de valorar'}</p>${learningSource(l.source)}</article>`;

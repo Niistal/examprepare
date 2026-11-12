@@ -43,6 +43,22 @@ def main():
                 try:request('GET','/status');break
                 except OSError:time.sleep(.1)
             a=create();enter(a,'student1','register')
+            wait(a,"document.querySelector('.topbar-right #cloudAccountMenu') && !document.getElementById('cloudAccountMenu').open && getComputedStyle(document.getElementById('cloudAccountNotice')).display==='none'",'cuenta integrada sin barra ni aviso permanente')
+            js(a,"document.querySelector('#cloudAccountMenu summary').click()")
+            wait(a,"document.getElementById('cloudAccountMenu').open && [...document.querySelectorAll('#cloudAccountMenu button')].some(b=>b.textContent==='Exportar progreso')",'menú accesible conserva exportación y cuenta')
+            js(a,"document.querySelector('.hero h1').click()")
+            wait(a,"!document.getElementById('cloudAccountMenu').open",'menú se cierra al volver al estudio')
+            for width in [320,390,768,1440]:
+                request('POST',f'/session/{a}/window/rect',{'width':width,'height':950})
+                js(a,"navigate('dashboard')")
+                wait(a,"document.documentElement.scrollWidth<=innerWidth+1",f'panel responsive {width}px')
+                js(a,"selectCourse('models');learningTopic='all';learningTab='Aprender';renderModalStudy()")
+                wait(a,"document.querySelectorAll('.topic-overview-row').length===9 && getComputedStyle(document.querySelector('.filterbar .case-only')).display==='none' && document.documentElement.scrollWidth<=innerWidth+1",f'índice contextual responsive {width}px')
+                js(a,"document.getElementById('openCourseCatalog').click()")
+                wait(a,"studyView==='catalog' && getComputedStyle(document.querySelector('.filterbar .case-only')).display!=='none'",'catálogo original accesible con filtros')
+                js(a,"setStudyView('route');document.getElementById('openCourseMaterials').click()")
+                wait(a,"studyView==='materials' && !document.getElementById('materialPanel').classList.contains('hidden')",'temario completo accesible desde teoría')
+                js(a,"setStudyView('route')")
             if os.environ.get('NIIS_TEST_RUNNER'):
                 request('POST',f'/session/{a}/timeouts',{'script':180000})
                 def run_code(code):
@@ -67,7 +83,7 @@ def main():
             js(b,"document.getElementById('answerEditor').value='cambio desde B';persistDraft()")
             wait(b,"document.getElementById('cloudStatus').textContent==='Progreso guardado en tu cuenta'",'segundo dispositivo guarda revisión')
             js(a,"document.getElementById('answerEditor').value='cambio obsoleto desde A';persistDraft()")
-            wait(a,"document.getElementById('cloudStatus').textContent.includes('Conflicto')",'conflicto visible sin sobrescritura')
+            wait(a,"document.getElementById('cloudStatus').textContent.includes('Conflicto') && !document.getElementById('cloudAccountNotice').classList.contains('hidden') && document.getElementById('cloudSaveState').textContent==='Revisar guardado'",'conflicto visible fuera del menú sin sobrescritura')
             js(b,"window.onbeforeunload=null;location.reload()")
             wait(b,"document.getElementById('answerEditor').value==='cambio desde B'",'servidor conserva revisión correcta')
             request('POST',f'/session/{b}/window/rect',{'width':390,'height':844})

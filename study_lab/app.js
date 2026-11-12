@@ -1250,7 +1250,7 @@ function renderNav(){const el=$('subjectNav');el.innerHTML=COURSES.map(c=>`<butt
 function selectCourse(id){const nextView=studyView==='materials'?'materials':'route';courseId=id;topic='all';studyView=nextView;materialPage=1;$('materialScope').value='current';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';$('subjectFilter').value=id;renderNav();navigate('practice');}
 function statsFor(id){const bank=byCourse(id),ratings=bank.map(x=>data.ratings[x.id]).filter(x=>Number.isInteger(x));return {total:bank.length,seen:ratings.length,master:ratings.filter(x=>x===2).length};}
 function priority(){const day=new Date().getDate(),month=new Date().getMonth(),year=new Date().getFullYear();if(year===2026&&month===10){return COURSES.find(c=>c.n>=day)||COURSES[4];}return COURSES[0];}
-function renderDashboard(){const pri=priority();$('totalBank').textContent=BANK.length;const mastered=BANK.filter(x=>data.ratings[x.id]===2).length;$('masteryCount').textContent=Math.round(mastered/BANK.length*100)+'%';$('focusTitle').textContent=pri.name;$('focusDescription').textContent=`Tu siguiente prueba: ${pri.day} de noviembre, con ${pri.teacher}. Prioriza resolución sin apuntes y corrige fallos al terminar.`;$('subjectCards').innerHTML=COURSES.map(c=>{const st=statsFor(c.id);return `<article class="subject-card"><div class="sub-date"><b>${c.day} NOV</b><span>${st.master}/${st.total} dominados</span></div><div class="bar" style="background:${c.color}"></div><h3>${esc(c.name)}</h3><div class="teacher">${esc(c.teacher)} · ${st.total} ejercicios base</div><div class="modality-label">${typeof modeLabel==='function'?esc(modeLabel(c.id)||''):''}</div><div class="sub-card-bottom"><span>${Math.round(st.master/st.total*100)}% dominado</span><button aria-label="Practicar ${esc(c.name)}" data-subject="${c.id}">↗</button></div></article>`}).join('');$('subjectCards').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));}
+function renderDashboard(){const pri=priority();$('totalBank').textContent=BANK.length;const mastered=BANK.filter(x=>data.ratings[x.id]===2).length;$('masteryCount').textContent=Math.round(mastered/BANK.length*100)+'%';$('focusTitle').textContent=pri.name;$('focusDescription').textContent=`${pri.day} de noviembre · ${pri.teacher}. Retoma tu recorrido y prepara los conceptos y casos pendientes.`;if($('quizBankCount'))$('quizBankCount').textContent=typeof LEARNING_CONTENT!=='undefined'?LEARNING_CONTENT.questions.length:106;$('subjectCards').innerHTML=COURSES.map(c=>{const st=statsFor(c.id);return `<article class="subject-card"><div class="sub-date"><b>${c.day} NOV</b><span>${st.master}/${st.total} dominados</span></div><div class="bar" style="background:${c.color}"></div><h3 title="${esc(c.name)}">${esc(c.short)}</h3><div class="teacher">${esc(c.teacher)} · ${st.total} ejercicios base</div><div class="modality-label">${typeof modeLabel==='function'?esc(modeLabel(c.id)||''):''}</div><div class="sub-card-bottom"><span>${Math.round(st.master/st.total*100)}% dominado</span><button aria-label="Practicar ${esc(c.name)}" data-subject="${c.id}">↗</button></div></article>`}).join('');$('subjectCards').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>selectCourse(x.dataset.subject)));}
 function setStudyView(view){
  if(!['route','catalog','materials'].includes(view))return;
  studyView=view;
@@ -1360,7 +1360,7 @@ function renderProgress(){
  $('reviewStart')?.addEventListener('click',()=>startSingle(nextStudyId(priority().id)));
  $('progressSubjects').innerHTML=COURSES.map(c=>{
   const st=statsFor(c.id),pc=Math.round(st.master/st.total*100);
-  return `<div class="surface progress-item"><h3>${esc(c.name)}</h3><p>${st.seen} intentados · ${st.master} dominados · ${st.total} disponibles</p><div class="track" role="progressbar" aria-label="Dominio de ${esc(c.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pc}"><div style="width:${pc}%"></div></div><div class="track-label"><span>Autoevaluación</span><span>${pc}%</span></div></div>`;
+  return `<div class="surface progress-item"><h3 title="${esc(c.name)}">${esc(c.short)}</h3><p>${st.seen} intentados · ${st.master} dominados · ${st.total} disponibles</p><div class="track" role="progressbar" aria-label="Dominio de ${esc(c.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pc}"><div style="width:${pc}%"></div></div><div class="track-label"><span>Autoevaluación</span><span>${pc}%</span></div></div>`;
  }).join('');
 }
 function downloadJSON(contents,name){
@@ -1462,7 +1462,7 @@ function init(){
   renderNav();renderDashboard();restoreSession();
   document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
   $('startPriority').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startSingle(nextStudyId(courseId));});
-  $('focusBtn').addEventListener('click',()=>{courseId=priority().id;selectCourse(courseId);startSingle(nextStudyId(courseId));});
+  $('focusBtn').addEventListener('click',()=>selectCourse(priority().id));
   $('subjectFilter').addEventListener('change',ev=>{selectCourse(ev.target.value);});
   $('levelFilter').addEventListener('change',renderPractice);
   $('statusFilter').addEventListener('change',renderPractice);

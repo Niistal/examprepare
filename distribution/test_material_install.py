@@ -19,6 +19,8 @@ class MaterialInstallTests(unittest.TestCase):
         archive,digest=self.archive([('study_lab/material-assets/'+self.name,self.data,tarfile.REGTYPE)])
         result=install(archive,digest,self.root);self.assertEqual((self.original/self.name).read_bytes(),self.data)
         self.assertEqual((Path(result['previous_assets'])/'old-file').read_text(),'keep until success')
+        self.assertEqual(self.original.stat().st_mode & 0o777,0o755)
+        self.assertEqual((self.original/self.name).stat().st_mode & 0o777,0o644)
     def test_bad_members_missing_or_changed_bytes_preserve_current(self):
         for entries in [[],[('../escape',b'x',tarfile.REGTYPE)],[('study_lab/material-assets/'+self.name,self.data,tarfile.SYMTYPE)],[('study_lab/material-assets/'+self.name,b'x'*len(self.data),tarfile.REGTYPE)]]:
             with self.subTest(entries=entries):

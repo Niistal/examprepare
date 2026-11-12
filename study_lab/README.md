@@ -213,3 +213,7 @@ python study_lab/test_runner_browser.py
 ```
 
 Ejecuta estos comandos desde la raíz del repositorio. La suite comprueba gráficos y descargas reales, guardado por cuenta por encima de 2 MB, recarga, rechazo de importaciones demasiado grandes y vista móvil. Las pruebas del publicador con `fcntl` y de Gunicorn son específicas de Linux; la app local, el servidor de desarrollo y las suites generales se pueden comprobar en Windows.
+
+## Panel y cuenta
+
+El panel muestra las cinco asignaturas y el próximo examen. Las asignaturas teóricas tienen un índice de temas con acceso directo y conservan el catálogo de casos y el temario completo. El menú de cuenta de la esquina superior reúne exportación, recuperación y cierre de sesión. El estado de guardado es discreto; los errores y conflictos aparecen fuera del menú para poder reintentar o exportar sin perder respuestas.
