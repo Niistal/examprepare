@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>NIIS Study Lab · Intensivo Big Data 2026</title>
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">N<span>.</span></span><span><b>STUDY LAB</b><small>BIG DATA · 2026</small></span></div>
+    <div class="side-label">ESPACIO DE ESTUDIO</div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <button type="button" class="nav-item selected" data-page="dashboard"><span class="nav-ico">▦</span> Panel principal</button>
+      <button type="button" class="nav-item" data-page="practice"><span class="nav-ico">⌘</span> Banco de ejercicios</button>
+      <button type="button" class="nav-item" data-page="progress"><span class="nav-ico">▥</span> Mi progreso</button>
+      <button type="button" class="nav-item" data-page="setup"><span class="nav-ico">⌁</span> Entorno y comandos</button>
+    </nav>
+    <div class="side-label side-label-courses">ASIGNATURAS · 16–20 NOV</div>
+    <nav id="subjectNav" class="subject-nav" aria-label="Asignaturas"></nav>
+    <div class="sidebar-bottom"><div class="offline-dot"></div><div><b>100 % local</b><small>Datos guardados en este navegador</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="topbar-left"><span class="eyebrow">AABD / EXAM PREP</span><span class="topbar-slash">/</span><span id="breadcrumb">Panel principal</span></div><div class="topbar-right"><span id="todayLabel" class="today-label">12 NOV 2026</span><button class="icon-btn" id="exportBtn" title="Exportar progreso en JSON" aria-label="Exportar progreso">⇩</button></div></header>
+    <section id="dashboardPage" class="page active" aria-labelledby="homeTitle">
+      <div class="hero"><div class="hero-glow"></div><div class="hero-content"><div class="kicker"><span class="kicker-line"></span> SEMANA DE EXÁMENES · 2026</div><h1 id="homeTitle">Aprende haciéndolo.<br><em>No memorizando.</em></h1><p>Entrenamiento práctico sin IA durante los ejercicios. Escribe soluciones, falla, corrige y repite. Basado en tus asignaturas reales.</p><div class="hero-actions"><button class="btn btn-light" id="startPriority">Empezar intensivo <span>↗</span></button><button class="btn btn-ghost" data-page="practice">Explorar ejercicios <span>→</span></button></div></div><div class="hero-decoration"><div class="glow-ring">&lt;/&gt;</div><div class="code-motif">def aprender():<br>&nbsp; &nbsp; practicar()<br>&nbsp; &nbsp; repetir()</div></div></div>
+      <div class="metric-grid"><div class="metric"><span>ASIGNATURAS</span><strong>05</strong><small>Calendario de exámenes</small></div><div class="metric"><span>MÉTODO ACTIVO</span><strong>3 pasos</strong><small>Entiende · desarrolla · explica</small></div><div class="metric"><span>EJERCICIOS BASE</span><strong id="totalBank">—</strong><small>Desarrollo, SQL, pipelines y análisis</small></div><div class="metric"><span>DOMINIO PERSONAL</span><strong id="masteryCount">0%</strong><small>Autovaloración tras corregir</small></div></div>
+      <div class="section-heading"><div><span class="eyebrow">PLAN DE ATAQUE</span><h2>Tus cinco exámenes</h2></div><span class="muted">Selecciona una asignatura para practicar</span></div>
+      <div id="subjectCards" class="subjects-grid"></div>
+      <div class="bottom-grid"><div class="surface next-up"><div class="surface-heading"><div><span class="eyebrow">MÉTODO</span><h3>Ciclo de aprendizaje activo</h3></div><span class="step-mini">20–30 MIN</span></div><div class="method-list"><div><b>01</b><span><strong>Lee el caso</strong><small>Enunciado como un examen real, con datos y objetivo.</small></span></div><div><b>02</b><span><strong>Desarrolla sin mirar</strong><small>Escribe código, consulta tus apuntes si estás en modo guiado.</small></span></div><div><b>03</b><span><strong>Ejecuta en tu terminal</strong><small>VS Code / Python / Docker / Orange, según el ejercicio.</small></span></div><div><b>04</b><span><strong>Corrige y repite</strong><small>Compara con la solución y marca tu dominio real.</small></span></div></div></div><div class="surface focus-card"><span class="eyebrow">RECOMENDACIÓN DE HOY</span><h3 id="focusTitle">AA Programazioa</h3><p id="focusDescription">Empieza por escribir Python, NumPy y Pandas sin asistencia.</p><button id="focusBtn" class="btn btn-primary">Empezar ahora <span>→</span></button><div class="focus-foot">Recorrido finito · progreso local · a tu ritmo</div></div></div>
+    </section>
+    <section id="practicePage" class="page" aria-labelledby="practiceTitle"><div class="section-intro"><span class="eyebrow">BANCO DE ENTRENAMIENTO</span><h1 id="practiceTitle">Practica por asignatura</h1><p>Ejercicios breves y prácticos, organizados por temas. En cada intento debes explicar qué haces y comprobar el resultado.</p></div><div class="filterbar surface"><label>Asignatura <select id="subjectFilter"></select></label><label>Nivel <select id="levelFilter"><option value="all">Todos</option><option value="1">Base</option><option value="2">Intermedio</option><option value="3">Reto</option></select></label><label>Buscar <input id="searchInput" type="search" placeholder="pandas, kafka, JSON…"></label><span id="practiceCount" class="muted"></span></div><div id="studyRoute" class="study-route"></div><details class="surface optional-exam"><summary>Repasar con un simulacro de cinco ejercicios</summary><div class="exam-config"><div><span class="eyebrow">SIMULADOR DE EXÁMENES</span><h3>Simulacro para repasar</h3><p>El recorrido de abajo cubre el banco sin repeticiones. Si quieres repasar, un número reconstruye cinco ejercicios del banco; no es un nivel adicional.</p></div><div class="exam-controls"><label>Modo <select id="examMode"><option value="guided">Guiado</option><option value="exam">Sin ayudas</option></select></label><label>Examen nº <input id="examNumber" type="number" min="1" max="1000" value="1"></label><button class="btn btn-outline" id="randomExam">Aleatorio ↻</button><button class="btn btn-primary" id="beginExam">Comenzar examen →</button></div></div></details><div id="topicChips" class="topic-chips"></div><div id="exerciseList" class="exercise-list"></div></section>
+    <section id="examPage" class="page" aria-labelledby="examHeading"><div class="exam-header"><div><button class="text-back" id="backToPractice">← Volver al banco</button><div class="eyebrow" id="examEyebrow">SIMULACRO / 01</div><h1 id="examHeading">Entrenamiento</h1><p id="examDesc">Escribe una solución antes de revelar el ejemplo.</p></div><div class="exam-header-right"><span class="timer" id="timerValue">00:00</span><button class="btn btn-outline btn-small" id="timerToggle">Iniciar reloj</button><button class="btn btn-outline btn-small" id="finishExam">Finalizar y corregir</button><button class="btn btn-outline btn-small" id="redoExam">Rehacer desde cero</button></div></div><div id="questionTabs" class="question-tabs"></div><div class="exam-layout"><article class="exercise-panel surface"><div class="ex-meta"><span class="chip" id="exerciseTopic">Python</span><span class="chip subtle" id="exerciseLevel">BASE</span><span id="exerciseType" class="muted">PYTHON</span></div><h2 id="exerciseTitle">Ejercicio</h2><p id="exercisePrompt" class="exercise-prompt"></p><div class="criteria-title">Criterios de éxito</div><ul id="exerciseChecks" class="checks"></ul><div class="editor-top"><span>✎ Tu solución / razonamiento</span><span class="muted" id="autosaveStatus">Guardado local</span></div><textarea aria-label="Tu solución o razonamiento" id="answerEditor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Escribe aquí tu solución..."></textarea><div class="editor-toolbar"><button class="btn btn-outline btn-small" id="copyAnswer">Copiar respuesta</button><button class="btn btn-outline btn-small" id="resetAnswer">Limpiar</button><span class="muted" id="charCounter">0 caracteres</span></div></article><aside class="helper-panel"><div class="surface help-card"><span class="eyebrow">APRENDIZAJE GUIADO</span><h3>Piensa antes de mirar</h3><p>Intenta resolver el ejercicio completo. Si te atascas, desbloquea una pista; la solución queda oculta hasta que decidas corregir.</p><button class="btn btn-outline full" id="hintToggle">Ver una pista</button><div id="hintContent" class="hidden hint-content"></div><button class="btn btn-primary full" id="solutionToggle">Mostrar solución y corregir</button><div id="solutionBlock" class="hidden"><pre><code id="solutionCode"></code></pre><p id="solutionExplain" class="solution-explain"></p><div class="mark-title">¿Podrías repetirlo sin mirar?</div><div class="rating-row"><button class="rating" data-rating="0">No aún</button><button class="rating" data-rating="1">Con ayuda</button><button class="rating" data-rating="2">Solo/a</button></div></div></div><div class="surface source-card"><span class="eyebrow">FUENTE DE ESTUDIO</span><p id="sourceDescription">Material del repositorio</p><a id="sourceLink" target="_blank" rel="noopener noreferrer">Abrir en GitHub ↗</a><div class="source-note">Repositorio privado: inicia sesión en GitHub para abrir la fuente.</div><div class="notebook-links"><a id="notebookGuide" target="_blank" rel="noopener noreferrer">Guía de NotebookLM ↗</a><a id="notebookQuiz" target="_blank" rel="noopener noreferrer">Quiz de NotebookLM ↗</a></div></div><div class="exercise-navigation"><button id="prevQuestion" class="btn btn-outline">← Anterior</button><button id="nextQuestion" class="btn btn-light">Siguiente →</button></div></aside></div></section>
+    <section id="progressPage" class="page"><div class="section-intro"><span class="eyebrow">REGISTRO DE PRÁCTICA</span><h1>Tu progreso</h1><p>Se registra lo que has evaluado después de ver la solución, no la cantidad de respuestas escritas.</p></div><div id="progressMetrics" class="metric-grid"></div><div id="progressSubjects" class="progress-grid"></div><div class="surface data-tools"><div><h3>Tus datos son tuyos</h3><p>Puedes exportar el progreso en JSON, recuperarlo otro día o restablecerlo. La web no envía datos a ningún servidor.</p></div><div class="tool-actions"><button class="btn btn-outline" id="progressExport">Exportar JSON</button><button class="btn btn-outline" id="importBtn">Importar JSON</button><button class="btn btn-danger" id="clearProgress">Restablecer</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div></div></section>
+    <section id="setupPage" class="page"><div class="section-intro"><span class="eyebrow">LABORATORIO LOCAL</span><h1>Entorno listo para ejecutar</h1><p>La web funciona sin dependencias. El laboratorio de Python sí requiere un entorno separado, con imports explícitos y reproducibles.</p></div><div class="setup-grid"><div class="surface setup-card"><span class="eyebrow">01 / WINDOWS · POWERSHELL</span><h3>Crear y activar .venv</h3><pre id="winSetup">py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-study.txt
+python -m pip list
+python -m http.server 8080</pre><button class="btn btn-outline btn-small copy-pre" data-target="winSetup">Copiar comandos</button></div><div class="surface setup-card"><span class="eyebrow">02 / LINUX · OMARCHY</span><h3>Crear y activar .venv</h3><pre id="linuxSetup">python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-study.txt
+python -m pip list
+python -m http.server 8080</pre><button class="btn btn-outline btn-small copy-pre" data-target="linuxSetup">Copiar comandos</button></div><div class="surface setup-card"><span class="eyebrow">03 / IMPORTS HABITUALES</span><h3>Plantilla Python de examen</h3><pre id="importSetup">import json
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+
+
+def main() -> int:
+    # Escribe y prueba aquí tu solución.
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())</pre><button class="btn btn-outline btn-small copy-pre" data-target="importSetup">Copiar imports</button></div><div class="surface setup-card"><span class="eyebrow">04 / RECURSOS</span><h3>Material real de clase</h3><p>Rutas del repositorio verificadas: <code>ARIKETAK_AURKIBIDEA.md</code>, apuntes de Programazioa, <code>NotebookLM_Material_Estudio</code> y las carpetas de las cinco asignaturas.</p><a href="https://github.com/Niistal/Big_Data/tree/main" target="_blank" rel="noopener noreferrer" class="inline-link">Abrir Big_Data ↗</a><div class="setup-tip">Los enlaces de GitHub requieren acceso al repositorio privado. NotebookLM se utiliza aquí como fuente de teoría, guías y autoevaluación; no hay conexión en vivo con NotebookLM.</div></div></div><div class="surface setup-foot"><div><b>Importante</b><p>El editor HTML guarda texto, pero <strong>no ejecuta Python, SQL ni Docker</strong>. Para practicar de verdad, copia el código a tu proyecto local o ejecútalo en tu terminal. La corrección es manual: usa los criterios y comprueba resultados antes de marcar dominio.</p></div></div></section>
+    <footer>NIIS STUDY LAB <span>·</span> AABD 2026 <span>·</span> Construido para aprender sin depender de la IA durante el examen.</footer>
+  </main>
+</div><div id="toast" role="status" aria-live="polite"></div>
+<script>
+/*__JS__*/
+</script>
+</body>
+</html>
