@@ -749,6 +749,38 @@ const SOURCE_AUDIT={
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
       "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P35": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P36": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P37": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P38": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
     }
   }
 };
@@ -1509,6 +1541,97 @@ const PROGRAM_GUIDE={
   ]
 };
 BANK.push(...PROGRAM_GUIDE.cases);
+// Práctica adicional solicitada: datos sintéticos, autoría propia.
+BANK.push(...[
+  {
+    "c": "program",
+    "id": "P35",
+    "topic": "Pandas · selección y agrupación avanzada",
+    "title": "GroupBy: grupos nulos, size, count y transform",
+    "level": 4,
+    "kind": "PYTHON",
+    "prompt": "Calcula neto = unidades * precio * (1-descuento). Agrupa por tienda conservando la tienda nula y produce resumen con filas (size), clientes informados (count), clientes distintos no nulos (nunique) y total neto. Añade cuota_tienda a cada fila usando transform sin cambiar orden ni índice. No uses bucles. Esperado: A: filas 3, clientes 2, únicos 1, total 45; B: 2,2,2,48; tienda nula: 1,1,1,7. Las cuotas suman 1 dentro de cada tienda.",
+    "starter": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\n\n# Resuelve sobre todas las filas; no reinicies el índice.\n",
+    "checks": [
+      "Conserva la tienda nula con dropna=False",
+      "Distingue número de filas, valores presentes y clientes únicos",
+      "Mantén índice [40,10,70,20,90,30] y seis filas",
+      "Comprueba cuotas por grupo, incluyendo el nulo"
+    ],
+    "hint": "groupby(\"tienda\", dropna=False); size cuenta filas y count omite nulos. transform(\"sum\") devuelve el total alineado.",
+    "solution": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\ndf[\"neto\"]=df.unidades*df.precio*(1-df.descuento)\ng=df.groupby(\"tienda\",dropna=False)\nresumen=g.agg(filas=(\"cliente\",\"size\"),clientes=(\"cliente\",\"count\"),unicos=(\"cliente\",\"nunique\"),total=(\"neto\",\"sum\"))\ndf[\"cuota_tienda\"]=df.neto/g[\"neto\"].transform(\"sum\")\nassert resumen.loc[\"A\"].tolist()==[3,2,1,45]\nassert resumen.loc[\"B\"].tolist()==[2,2,2,48]\nassert resumen.loc[resumen.index.isna(),\"total\"].tolist()==[7]\nassert df.index.tolist()==[40,10,70,20,90,30]\nassert g[\"cuota_tienda\"].sum().round(10).eq(1).all()\nprint(resumen)\nprint(df)\n",
+    "why": "groupby divide por clave; agg reduce a una fila por grupo y transform conserva una salida por fila. dropna=False conserva claves nulas. Si un total fuera cero, la cuota necesita una regla explícita; en este dataset todos son positivos.",
+    "source": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/",
+    "source_section": "Práctica propia: datos sintéticos; no es un enunciado del profesor",
+    "verified": false
+  },
+  {
+    "c": "program",
+    "id": "P36",
+    "topic": "Pandas · selección y agrupación avanzada",
+    "title": "GroupBy.agg: precio ponderado y ranking por tienda",
+    "level": 5,
+    "kind": "PYTHON",
+    "prompt": "Obtén neto y agrupa por tienda y producto conservando claves nulas. Con agregaciones con nombre calcula unidades_totales, neto_total y operaciones. Después calcula precio_efectivo = neto_total/unidades_totales: no es la media simple del precio. Conserva grupos con unidades_totales >= 3 y elige el mayor neto_total de cada tienda; en empate gana producto ascendente. Esperado, en ese orden: A/X, 3 unidades, neto 30, 2 operaciones, precio 10; B/X, 4 unidades, neto 24, 1 operación, precio 6. No hardcodees la selección.",
+    "starter": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\n\n# Resuelve sobre todas las filas; no reinicies el índice.\n",
+    "checks": [
+      "Agrupa por dos claves y usa nombres de columnas explícitos",
+      "Calcula la razón de sumas después de agg",
+      "Filtra después de agregar",
+      "Ordena neto descendente y producto ascendente antes de deduplicar tienda"
+    ],
+    "hint": "as_index=False facilita operar con columnas. sort_values seguido de drop_duplicates(\"tienda\") permite un ganador determinista.",
+    "solution": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\ndf[\"neto\"]=df.unidades*df.precio*(1-df.descuento)\nresumen=df.groupby([\"tienda\",\"producto\"],dropna=False,as_index=False).agg(unidades_totales=(\"unidades\",\"sum\"),neto_total=(\"neto\",\"sum\"),operaciones=(\"producto\",\"size\"))\nresumen[\"precio_efectivo\"]=resumen.neto_total/resumen.unidades_totales\ncandidatos=resumen.loc[resumen.unidades_totales.ge(3)].copy()\nganadores=candidatos.sort_values([\"tienda\",\"neto_total\",\"producto\"],ascending=[True,False,True]).drop_duplicates(\"tienda\").reset_index(drop=True)\nassert ganadores[[\"tienda\",\"producto\"]].values.tolist()==[[\"A\",\"X\"],[\"B\",\"X\"]]\nassert ganadores.unidades_totales.tolist()==[3,4]\nassert ganadores.neto_total.tolist()==[30.,24.]\nassert ganadores.precio_efectivo.tolist()==[10.,6.]\nprint(ganadores.to_string(index=False))\n",
+    "why": "La media de precios por operación da el mismo peso a compras con cantidades distintas. La razón de sumas mide ingreso neto por unidad. Agrupar, agregar, filtrar y ordenar son pasos distintos; el desempate debe estar definido.",
+    "source": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/",
+    "source_section": "Práctica propia: datos sintéticos; no es un enunciado del profesor",
+    "verified": false
+  },
+  {
+    "c": "program",
+    "id": "P37",
+    "topic": "Pandas · selección y agrupación avanzada",
+    "title": "df.loc: máscaras alineadas y actualización segura",
+    "level": 4,
+    "kind": "PYTHON",
+    "prompt": "Crea una copia resultado. En filas con tienda A o B, unidades >= 2 y descuento igual a 0, fija descuento=0.10 mediante una única asignación loc. No cambies df. Crea seleccion con las filas actualizadas y solo tienda, producto, descuento en el orden original. Esperado: índices [40,70,90]. Luego ordena resultado por índice y selecciona tramo de etiquetas 20:70 (ambos extremos incluidos): índices [20,30,40,70]. Explica por qué df.loc[20:70] sobre el índice original desordenado no equivale al tramo ordenado.",
+    "starter": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\n\n# Resuelve sobre todas las filas; no reinicies el índice.\n",
+    "checks": [
+      "Combina máscaras con & y paréntesis",
+      "Asigna con resultado.loc[mascara,\"descuento\"]",
+      "Conserva el original y el orden de selección",
+      "Ordena antes del tramo de etiquetas"
+    ],
+    "hint": "loc usa etiquetas y alinea una Series booleana por índice. Usa .copy() y evita resultado[mascara][\"descuento\"] = ... .",
+    "solution": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\nresultado=df.copy()\nmascara=resultado.tienda.isin([\"A\",\"B\"]) & resultado.unidades.ge(2) & resultado.descuento.eq(0)\nresultado.loc[mascara,\"descuento\"]=0.10\nseleccion=resultado.loc[mascara,[\"tienda\",\"producto\",\"descuento\"]]\ntramo=resultado.sort_index().loc[20:70]\nassert seleccion.index.tolist()==[40,70,90]\nassert seleccion.descuento.eq(.1).all()\nassert df.descuento.tolist()==[0.,.5,0.,.25,0.,0.]\nassert tramo.index.tolist()==[20,30,40,70]\nprint(seleccion)\nprint(tramo)\n",
+    "why": "loc selecciona etiquetas, no posiciones. En un índice desordenado, un slice entre etiquetas existentes sigue el orden almacenado entre los extremos; no es una comparación numérica del índice. Ordena para obtener un intervalo de etiquetas predecible.",
+    "source": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/",
+    "source_section": "Práctica propia: datos sintéticos; no es un enunciado del profesor",
+    "verified": false
+  },
+  {
+    "c": "program",
+    "id": "P38",
+    "topic": "Pandas · selección y agrupación avanzada",
+    "title": "df.iloc: posiciones tras filtrar y ordenar",
+    "level": 5,
+    "kind": "PYTHON",
+    "prompt": "Filtra unidades >= 2, ordena por precio descendente y desempata por índice ascendente. Llama ordenado al resultado sin reiniciar índice. Extrae bloque con las filas de posiciones 1 a 2 (ambas) y las primeras tres columnas; extrae extremos con primera y última fila y columnas en posiciones 0 y 3. Esperado: ordenado tiene índices [90,40,20,70]; bloque [40,20]; extremos [90,70], columnas tienda y precio. Usa iloc para ambas selecciones. Demuestra que ordenado.iloc[0] tiene etiqueta 90 y que ordenado.loc[0] daría KeyError. Explica el extremo excluido y las posiciones negativas.",
+    "starter": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\n\n# Resuelve sobre todas las filas; no reinicies el índice.\n",
+    "checks": [
+      "Filtra antes de seleccionar posiciones",
+      "Desempata de forma estable por índice",
+      "Usa iloc[1:3,:3] e iloc[[0,-1],[0,3]]",
+      "No confundas posición 0 con etiqueta 0"
+    ],
+    "hint": "sort_index().sort_values(\"precio\", ascending=False, kind=\"stable\") conserva el orden por índice en empates. iloc acepta posiciones y slices cuyo final queda fuera.",
+    "solution": "import pandas as pd\ndf = pd.DataFrame({\"tienda\":[\"A\",\"A\",\"A\",\"B\",\"B\",None],\"producto\":[\"X\",\"X\",\"Y\",\"X\",\"Y\",\"X\"],\"unidades\":[2,1,3,4,2,1],\"precio\":[10.,20.,5.,8.,12.,7.],\"descuento\":[0.,0.5,0.,0.25,0.,0.],\"cliente\":[\"c1\",None,\"c1\",\"c2\",\"c3\",\"c4\"]}, index=[40,10,70,20,90,30])\nordenado=df.loc[df.unidades.ge(2)].sort_index().sort_values(\"precio\",ascending=False,kind=\"stable\")\nbloque=ordenado.iloc[1:3,:3]\nextremos=ordenado.iloc[[0,-1],[0,3]]\nassert ordenado.index.tolist()==[90,40,20,70]\nassert bloque.index.tolist()==[40,20]\nassert extremos.index.tolist()==[90,70]\nassert extremos.columns.tolist()==[\"tienda\",\"precio\"]\nassert ordenado.iloc[0].name==90\nassert 0 not in ordenado.index\nprint(bloque)\nprint(extremos)\n",
+    "why": "iloc opera sobre el orden actual: filtrar y ordenar cambian las posiciones, aunque las etiquetas se conserven. El slice 1:3 toma posiciones 1 y 2; -1 es la última. Una lista posicional booleana no tiene la alineación por etiquetas de loc.",
+    "source": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/",
+    "source_section": "Práctica propia: datos sintéticos; no es un enunciado del profesor",
+    "verified": false
+  }
+]);
 // Adaptación autorizada: referencias dadas, aplicación práctica sin demostraciones.
 const PRACTICAL_ADAPTATIONS={
   "P04": {
@@ -1640,6 +1763,7 @@ const STUDY_METHODS={
  applied:'Dibuja cada procesador, relación, topic y grupo. Sigue un registro de principio a fin y simula fallos, duplicados y reinicios. Comprueba contenido, atributos y provenance por separado.'
 };
 function basicExample(q){
+ if(["P35","P36","P37","P38"].includes(q.id))return STUDY_LESSONS.program[4+Number(q.id.slice(1))-35].example;
  if(q.guide)return '# Usa el DataFrame completo que ya carga el starter.\nprint(df.to_string(index=False))\nprint(df.shape)\n# Consulta los imports y las referencias facilitadas; adapta tu transformación a todas las filas.';
  const examples={"A12": "import pandas as pd\ns=pd.Series([10,20,30])\nprint(s.rolling(2).mean()) # NaN,15,25\n# Ordena por tiempo antes de aplicar la ventana.", "M10": "import pandas as pd\ns=pd.Series([20,None,200])\nprint(s.isna())\nprint(s.between(0,120))\n# Imputar aprende estadísticas: solo con train.", "E09": "Reglas explícitas: SI x > 28, ventilar.\nAprendizaje: ajustar parámetros con ejemplos.\nGeneración: producir contenido condicionado al contexto.", "E10": "Objetivo: saber qué repasar.\nNecesario: errores por tema.\nNo necesario: webcam continua.\nMedida verificable: no crear ni enviar capturas.", "E11": "Una confianza alta puede ser una señal; una señal no prueba pertenencia.\nLa prueba necesita ejemplos con pertenencia conocida y medir falsos positivos.", "S03": "docker compose config\ndocker compose up -d\ndocker compose ps\ndocker compose logs --tail=20\n# Práctica en copia aislada y con puertos en 127.0.0.1.", "S07": "filter {\n  mutate { add_field => { \"origen\" => \"practica\" } }\n}\n# grok extrae; date interpreta; mutate modifica campos.",
   P01:'numero="12345678"\nletras="TRWAGMYFPDXBNJZSQVHLCKE"\nprint(letras[int(numero)%23]) # Z\n# Comprueba antes formato, longitud y dígitos ASCII.',
@@ -1798,6 +1922,40 @@ const STUDY_LESSONS={
     }
   ]
 };
+STUDY_LESSONS.program.push(...[
+  {
+    "title": "GroupBy: dividir, agregar y conservar filas",
+    "concept": "Memoriza: groupby define grupos; agg resume; transform devuelve un valor por fila original. size cuenta filas; count cuenta valores no nulos; nunique cuenta valores distintos no nulos. dropna=False conserva grupos de clave nula.",
+    "example": "import pandas as pd\ndf=pd.DataFrame({\"g\":[\"A\",\"A\",\"B\"],\"x\":[2,None,6]})\nr=df.groupby(\"g\").agg(filas=(\"x\",\"size\"),validos=(\"x\",\"count\"),total=(\"x\",\"sum\"))\n# A: filas=2, validos=1, total=2; B: 1,1,6\ndf[\"media\"]=df.groupby(\"g\")[\"x\"].transform(\"mean\")\n# media: [2.,2.,6.]",
+    "recall": "Escribe la plantilla agg(nombre=(\"columna\",\"operacion\")) y explica qué cambia en el número de filas.",
+    "trap": "Asignar una Series agregada directamente a df: sus índices son grupos, no las etiquetas de las filas originales."
+  },
+  {
+    "title": "groupby.agg: varias claves y métricas con nombre",
+    "concept": "Memoriza el orden: preparar columnas → groupby → agg → métricas derivadas → filtrar → ordenar. as_index=False deja las claves como columnas. Una media ponderada se obtiene con suma(valor*peso)/suma(peso), no con la media simple de valores.",
+    "example": "import pandas as pd\ndf=pd.DataFrame({\"tienda\":[\"A\",\"A\"],\"producto\":[\"X\",\"X\"],\"u\":[1,3],\"precio\":[10,20]})\ndf[\"importe\"]=df.u*df.precio\nr=df.groupby([\"tienda\",\"producto\"],as_index=False).agg(unidades=(\"u\",\"sum\"),total=(\"importe\",\"sum\"))\nr[\"ponderado\"]=r.total/r.unidades\n# A/X: unidades=4, total=70, ponderado=17.5 (no 15)",
+    "recall": "¿Filtras operaciones antes de agrupar o grupos después? Di una pregunta que requiera cada opción.",
+    "trap": "Dividir por un total cero o calcular una media de medias sin ponderar por el tamaño de cada grupo."
+  },
+  {
+    "title": "df.loc: etiquetas, máscaras y asignación",
+    "concept": "Memoriza df.loc[filas, columnas]. Las filas son etiquetas o una máscara; las columnas son nombres. Un tramo de etiquetas incluye el extremo final. Combina condiciones con & o | y paréntesis. Modifica con una sola llamada loc.",
+    "example": "import pandas as pd\ndf=pd.DataFrame({\"x\":[2,8,4]},index=[10,20,30])\nprint(df.loc[10:20,\"x\"].tolist()) # [2,8]\nmask=(df.x>=4) & (df.x<8)\ndf.loc[mask,\"x\"]=0\nprint(df.x.tolist()) # [2,8,0]",
+    "recall": "Reproduce una selección por etiqueta, otra por máscara y una actualización sin indexación encadenada.",
+    "trap": "Usar and/or con Series, confundir etiquetas numéricas con posiciones o modificar una selección encadenada."
+  },
+  {
+    "title": "df.iloc: posiciones y extremo excluido",
+    "concept": "Memoriza df.iloc[filas, columnas]. Los selectores son posiciones enteras, listas o slices: inicio incluido y fin excluido. -1 es la última posición. Después de ordenar, las posiciones cambian y las etiquetas se mantienen.",
+    "example": "import pandas as pd\ndf=pd.DataFrame({\"x\":[2,8,4]},index=[10,20,30])\nprint(df.iloc[0:2,0].tolist()) # [2,8]\nprint(df.iloc[-1].name) # 30\nprint(df.sort_values(\"x\").iloc[1].name) # 30\n# df.loc[0] falla: no existe la etiqueta 0.",
+    "recall": "Explica qué devuelve iloc[1:3], qué devuelve loc[10:20] y por qué no son intercambiables.",
+    "trap": "Pasar nombres de columna a iloc o asumir que la primera posición sigue siendo la misma tras filtrar."
+  }
+]);
+
+function caseReadingHTML(q){
+ return `<details class="mini-example case-reading"><summary>Leer y aprender: ${esc(q.id)} · ${esc(q.title)}</summary><h4>Qué debes saber</h4><p>${esc(q.why)}</p><h4>Plantilla y ejemplo básico</h4><pre>${esc(basicExample(q))}</pre><details><summary>Ejemplo resuelto del caso · lee después de intentarlo</summary><pre>${esc(q.solution)}</pre></details><h4>Para recordar</h4><p>${esc(q.hint)}</p><ul>${q.checks.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="recall-prompt"><b>Sin mirar:</b> explica la entrada, el paso clave y la salida esperada; después reproduce el ejemplo y compruébalo.</p></details>`;
+}
 const DIFFICULTY_LESSONS=[
  {title:'Leer y reconocer',concept:'Identifica entradas, salidas y conceptos con una sola transformación. Los comandos de entorno se facilitan.',example:'Lee el caso → identifica datos → predice la salida → ejecuta.',recall:'Explica qué dato entra y qué debe salir.',trap:'Copiar sin comprobar el resultado.'},
  {title:'Aplicar una técnica',concept:'Resuelve una operación completa y comprueba todos los datos, no solo una muestra favorable.',example:'Antes/después: filas, columnas, tipos y errores.',recall:'¿Qué registros cambian y por qué?',trap:'Eliminar o transformar datos sin una regla explícita.'},
@@ -1822,9 +1980,9 @@ function renderStudyRoute(){
  (courseId==='program'?guideHTML():'')+blocks.map(([title,ids],i)=>{
   const lesson=DIFFICULTY_LESSONS[Math.max(0,BANK.find(q=>q.id===ids[0]).level-1)],mastered=ids.filter(id=>data.ratings[id]===2).length;
   const active=ids.includes(nextStudyId(courseId));
-  return `<details class="route-block surface" ${active?'open':''}><summary><span><span class="block-number">${String(i+1).padStart(2,'0')}</span><strong>${esc(title)}</strong></span><span class="block-count">${mastered}/${ids.length} dominados</span></summary><div class="block-body"><div class="lesson-grid"><div><h3>${esc(lesson.title)}</h3><p>${esc(lesson.concept)}</p><p class="recall-prompt"><b>Sin mirar:</b> ${esc(lesson.recall)}</p></div><details class="mini-example"><summary>Ver un ejemplo básico</summary><pre>${esc(lesson.example)}</pre><p><b>Error habitual:</b> ${esc(lesson.trap)}</p></details></div><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span class="case-id">${id}</span><span><b>${esc(q.title)}</b><small>${esc(q.kind)} · ≈ ${q.minutes} min · ${data.ratings[id]===2?'Dominado':data.ratings[id]===1?'Repetir con menos ayuda':data.ratings[id]===0?'Reforzar':'Sin intentar'}</small></span></button>`}).join('')}</div></div></details>`;
+  return `<details class="route-block surface" ${active?'open':''}><summary><span><span class="block-number">${String(i+1).padStart(2,'0')}</span><strong>${esc(title)}</strong></span><span class="block-count">${mastered}/${ids.length} dominados</span></summary><div class="block-body"><div class="lesson-grid"><div><h3>${esc(lesson.title)}</h3><p>${esc(lesson.concept)}</p><p class="recall-prompt"><b>Sin mirar:</b> ${esc(lesson.recall)}</p></div><details class="mini-example"><summary>Ver un ejemplo básico</summary><pre>${esc(lesson.example)}</pre><p><b>Error habitual:</b> ${esc(lesson.trap)}</p></details></div><section class="block-reading"><h3>Lectura del bloque · teoría y práctica</h3><p>Lee, predice la salida y repite sin mirar. Memoriza el patrón básico y explica cuándo aplicarlo.</p>${ids.map(id=>caseReadingHTML(BANK.find(q=>q.id===id))).join('')}</section><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span class="case-id">${id}</span><span><b>${esc(q.title)}</b><small>${esc(q.kind)} · ≈ ${q.minutes} min · ${data.ratings[id]===2?'Dominado':data.ratings[id]===1?'Repetir con menos ayuda':data.ratings[id]===0?'Reforzar':'Sin intentar'}</small></span></button>`}).join('')}</div></div></details>`;
  }).join('');
- $('studyRoute').innerHTML+=`<details class="surface theory-library"><summary>Consultar teoría por temas de esta asignatura</summary>${STUDY_LESSONS[courseId].map(l=>`<section><h3>${esc(l.title)}</h3><p>${esc(l.concept)}</p><pre>${esc(l.example)}</pre><p>${esc(l.recall)}</p><p>Error habitual: ${esc(l.trap)}</p></section>`).join('')}</details>`;
+ $('studyRoute').innerHTML+=`<details class="surface theory-library"><summary>Lectura y ejemplos · lo básico para recordar</summary>${STUDY_LESSONS[courseId].map(l=>`<section><h3>${esc(l.title)}</h3><p>${esc(l.concept)}</p><pre>${esc(l.example)}</pre><p>${esc(l.recall)}</p><p>Error habitual: ${esc(l.trap)}</p></section>`).join('')}</details>`;
  $('studyRoute').querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>startSingle(b.dataset.route)));
 }
 const $=id=>document.getElementById(id);

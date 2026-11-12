@@ -11,6 +11,7 @@ for(const c of COURSES){
  assert(STUDY_ROUTES[c.id].length===5&&STUDY_LESSONS[c.id].length>0,'Cinco dificultades y teoría conservada: '+c.id); const ids=STUDY_ROUTES[c.id].flatMap(b=>b[1]);assert(ids.every((id,i)=>!i||BANK.find(q=>q.id===ids[i-1]).level<=BANK.find(q=>q.id===id).level),'Orden fácil a muy difícil: '+c.id);
  renderStudyRoute();
  const html=$('studyRoute').innerHTML;
+ assert(STUDY_ROUTES[c.id].flatMap(b=>b[1]).every(id=>html.includes('Leer y aprender: '+id+' ·')),'Lectura específica de todos los casos: '+c.id);
  assert(!html.includes('$'+'{'),'Sin código de plantilla visible: '+c.id);
  assert(html.includes(STUDY_METHODS[c.id]),'Método real de la materia: '+c.id);
  assert(STUDY_LESSONS[c.id].every(x=>x.concept&&x.example&&x.recall&&x.trap),'Lecciones completas: '+c.id);

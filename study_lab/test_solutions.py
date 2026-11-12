@@ -1,9 +1,13 @@
 """Ejecuta soluciones propias en carpetas temporales, nunca en Big_Data."""
 import argparse,json,os,pathlib,subprocess,tempfile
 root=pathlib.Path(__file__).resolve().parent
-parser=argparse.ArgumentParser();parser.add_argument('--python',default=os.sys.executable);args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--python',default=os.sys.executable);parser.add_argument('--ids',nargs='+',help='Ejecuta solo estos casos');args=parser.parse_args()
 bank=json.loads(subprocess.check_output(['node',str(root/'scripts/export_bank.cjs')]))
 checks={
+'P35':'assert len(df)==6 and len(resumen)==3\nassert resumen.loc["A","clientes"]==2',
+'P36':'assert ganadores.operaciones.tolist()==[2,1]',
+'P37':'assert seleccion.columns.tolist()==["tienda","producto","descuento"]\nassert df.loc[40,"descuento"]==0',
+'P38':'assert bloque.columns.tolist()==["tienda","producto","unidades"]',
 'P01':'assert not validar_nif("²2345678Z")\nassert not validar_nif("１２３４５６７８Z")',
 'P02':'assert len(cargar("productos.json"))==2',
 'P03':'assert ordenadas==["Bilbo","Gasteiz","Donostia"]',
@@ -46,6 +50,10 @@ assert len(pipe.predict(pd.DataFrame({"edad":[None],"sueldo":[22],"ciudad":["Nue
 'P33':"assert len(validos)==38 and errores==[8,13,19]",
 'P34':"assert len(df)==36 and len(pred)==len(y_test) and pipe.named_steps['modelo'].class_weight=='balanced'"
 }
+if args.ids:
+    unknown=set(args.ids)-checks.keys()
+    if unknown:parser.error('Casos sin comprobaciones: '+', '.join(sorted(unknown)))
+    checks={k:v for k,v in checks.items() if k in args.ids}
 for q in bank:
     if q['id'] not in checks:continue
     with tempfile.TemporaryDirectory(prefix='niis-qa-') as folder:

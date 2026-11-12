@@ -642,6 +642,38 @@ const SOURCE_AUDIT={
       "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
       "source_sha256": "42ee80fb0d3a3408ca62cda12b0ac62b4c37d75bd734d4a13819c524cc458ccf",
       "source_git_blob": "f05d64337baef5fa4de72d6230c286ed52c6aa26"
+    },
+    "P35": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P36": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P37": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
+    },
+    "P38": {
+      "source_path": "05_AA_Programazioa/2_Datu_Zientzia/ariketak/2_Pandas/README.md",
+      "source_section": "Práctica propia con datos sintéticos sobre Pandas; referencia temática, sin contraste del nuevo enunciado",
+      "verified": false,
+      "verification_scope": "Ruta y tema contrastados; microcaso propio, no enunciado del profesor",
+      "source_sha256": "5631c29f40e6dbe5654eb09c190d99408ba4d0178d0de3f30e381f49b914b9b2",
+      "source_git_blob": "fc06fc088b71ad2475af8bbad56c8278bb340e2f"
     }
   }
 };
