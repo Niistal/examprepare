@@ -1439,10 +1439,48 @@ function stopPython(message='Ejecución detenida.'){
  $('runAnswer').disabled=false;$('stopRun').classList.add('hidden');if(message)$('runStatus').textContent=message;
 }
 function pythonCase(q){if(typeof StudyEngine!=='undefined'&&StudyEngine.cases[q?.id]!=='DEVELOPMENT')return false;return /PYTHON|PANDAS|NUMPY/i.test(q.kind)&&!['P13','P14'].includes(q.id);}
-function resetRunPanel(force=false){const key=session?.id+'::'+currentQuestion()?.id;if(!force&&key===runQuestionKey)return;runQuestionKey=key;stopPython('');clearRunFiles();$('runOutput').textContent='Todavía no has ejecutado código.';$('runStatus').textContent=pythonCase(currentQuestion())?'Ejecuta tu código para ver lo que imprime. La primera carga descarga Python y las librerías necesarias.':'Este ejercicio se realiza en su terminal o herramienta; el botón ejecuta únicamente Python.';$('runAnswer').disabled=!pythonCase(currentQuestion());}
+function resetRunPanel(force=false){const key=session?.id+'::'+currentQuestion()?.id;if(!force&&key===runQuestionKey)return;runQuestionKey=key;stopPython('');clearRunFiles();hideReview();$('runOutput').textContent='Todavía no has ejecutado código.';$('runStatus').textContent=pythonCase(currentQuestion())?'Ejecuta tu código: verás lo que imprime y el revisor te dirá si el resultado es correcto, aunque lo resuelvas de otra forma. La primera carga descarga Python y las librerías necesarias.':'Este ejercicio se realiza en su terminal o herramienta; el botón ejecuta únicamente Python.';$('runAnswer').disabled=!pythonCase(currentQuestion());}
+// Asistente: traduce el error de Python a una pista accionable, sin dar la solución.
+const PY_ERROR_TIPS={
+ SyntaxError:'Hay un error de escritura: revisa paréntesis, comillas, dos puntos al final de if/for/def y comas.',
+ IndentationError:'La sangría no cuadra: usa 4 espacios por nivel y no mezcles tabuladores.',
+ NameError:'Usas un nombre que no existe todavía: comprueba que la variable o función esté definida antes y escrita igual (mayúsculas incluidas), y que hayas hecho el import.',
+ TypeError:'Mezclas tipos incompatibles o llamas a una función con argumentos de más o de menos. Imprime type(...) de los valores implicados.',
+ ValueError:'El tipo es correcto pero el valor no: por ejemplo convertir texto no numérico, o formas de arrays/longitudes que no encajan.',
+ KeyError:'Esa clave o columna no existe. Imprime df.columns o dict.keys(): fíjate en espacios y mayúsculas.',
+ IndexError:'Accedes a una posición fuera de rango. Revisa len(...) y que los índices empiezan en 0.',
+ AttributeError:'Ese objeto no tiene ese método o atributo. Comprueba el tipo con type(...) y el nombre exacto del método.',
+ ZeroDivisionError:'Divides entre cero: protege el cálculo con una condición antes de dividir.',
+ ModuleNotFoundError:'Esa librería no está disponible en el navegador o está mal escrita. Revisa el nombre del import o ejecútalo en tu terminal.',
+ ImportError:'El import falla: revisa el nombre exacto de lo que importas y de qué módulo.',
+ FileNotFoundError:'El archivo no existe en este entorno. En el navegador solo hay lo que tu código crea: genera los datos o lee desde StringIO.',
+ AssertionError:'Un assert ha fallado: el resultado no es el que tú mismo esperabas. Imprime los valores justo antes del assert.',
+ RecursionError:'La recursión no termina: revisa el caso base.',
+ MemoryError:'Estás creando estructuras enormes: revisa los bucles y tamaños.',
+ PythonError:'Python ha fallado. Lee la última línea del mensaje: dice el tipo de error y el motivo.'
+};
+function explainPythonError(text){
+ const lines=String(text).trim().split('\n'),last=lines.filter(l=>/^\w+(Error|Exception|Warning)\b/.test(l)).pop()||lines.pop()||'';
+ const type=(last.match(/^(\w+)/)||[])[1]||'PythonError',line=[...String(text).matchAll(/File "<exec>", line (\d+)/g)].pop()?.[1];
+ return {verdict:`Error ${type}${line?' en la línea '+line:''}: ${last.slice(type.length+1).trim().slice(0,240)||'sin detalle'}`,tip:PY_ERROR_TIPS[type]||(type.endsWith('Error')?PY_ERROR_TIPS.PythonError:'')};
+}
+const REVIEW_VERDICTS={ok:'Correcto: tu código produce el mismo resultado que la solución.',partial:'Casi: parte del resultado coincide. Revisa lo marcado.',fail:'Todavía no: el resultado no coincide con lo que pide el ejercicio.',unavailable:'Sin revisión automática para este ejercicio.'};
+function showReview(status,items=[],notes=[]){
+ const box=$('runReview'),hide=session?.mode==='exam'&&!session.submitted;
+ box.dataset.status=status;box.classList.remove('hidden');
+ $('runReviewVerdict').textContent=REVIEW_VERDICTS[status]||String(status);
+ const list=$('runReviewItems');list.replaceChildren();
+ for(const item of hide?[]:items.slice(0,40)){const li=document.createElement('li');li.textContent=String(item.label);li.className=(item.ok?'':'bad')+(item.hard===false?' soft':'');list.append(li);}
+ $('runReviewNotes').textContent=hide&&status!=='unavailable'?'En el simulacro solo ves el veredicto; el detalle aparece al entregar.':notes.map(String).join(' ');
+}
+function showErrorReview(text){
+ const e=explainPythonError(text),box=$('runReview');box.dataset.status='error';box.classList.remove('hidden');
+ $('runReviewVerdict').textContent=e.verdict;$('runReviewItems').replaceChildren();$('runReviewNotes').textContent=e.tip;
+}
+function hideReview(){$('runReview').classList.add('hidden');$('runReviewItems').replaceChildren();}
 function runPython(){
  if(!pythonCase(currentQuestion()))return;persistDraft();const code=$('answerEditor').value;if(!code.trim()){toast('Escribe código Python antes de ejecutar');return;}
- clearRunFiles();stopPython('Preparando Python… La primera carga puede tardar.');$('runOutput').textContent='';$('runAnswer').disabled=true;$('stopRun').classList.remove('hidden');
+ clearRunFiles();hideReview();stopPython('Preparando Python… La primera carga puede tardar.');$('runOutput').textContent='';$('runAnswer').disabled=true;$('stopRun').classList.remove('hidden');
  try{
   const hosted=Boolean(document.querySelector('meta[http-equiv="Content-Security-Policy"]'));
   if(!hosted)workerURL=URL.createObjectURL(new Blob([PYTHON_WORKER_SOURCE],{type:'text/javascript'}));
@@ -1455,11 +1493,13 @@ function runPython(){
    if(m.type==='file')showRunFile(m);
    if(m.type==='loading')$('runStatus').textContent=String(m.text);
    if(m.type==='running'&&!runningStarted){runningStarted=true;$('runStatus').textContent='Ejecutando…';deadline(10000,'Detenido: se superó el límite de 10 segundos. Revisa los bucles.');}
-   if(m.type==='done'){if(!$('runOutput').textContent)$('runOutput').textContent=runFileURLs.length?'Archivos generados. Puedes verlos y descargarlos debajo.':'El programa terminó sin imprimir nada. Usa print(...) para ver valores.';stopPython('Ejecución terminada. Se muestra la salida, no una nota automática.');}
-   if(m.type==='error'){$('runOutput').textContent=($('runOutput').textContent+'\n'+String(m.text)).slice(0,20000);stopPython('Python encontró un error. Revisa el mensaje.');}
+   if(m.type==='reviewing'){$('runStatus').textContent='Revisando el resultado…';deadline(15000,'Tu código terminó, pero la revisión superó el tiempo límite.');}
+   if(m.type==='review'&&m.report&&typeof m.report==='object')showReview(String(m.report.status),Array.isArray(m.report.items)?m.report.items:[],Array.isArray(m.report.notes)?m.report.notes:[]);
+   if(m.type==='done'){if(!$('runOutput').textContent)$('runOutput').textContent=runFileURLs.length?'Archivos generados. Puedes verlos y descargarlos debajo.':'El programa terminó sin imprimir nada. Usa print(...) para ver valores.';stopPython('Ejecución terminada.');}
+   if(m.type==='error'){$('runOutput').textContent=($('runOutput').textContent+'\n'+String(m.text)).slice(0,20000);showErrorReview(m.text);stopPython('Python encontró un error. Mira la explicación del revisor.');}
   };
   worker.onerror=()=>stopPython('No se pudo iniciar Python. Comprueba la conexión o ejecútalo en tu terminal.');
-  worker.postMessage({code,wheels:PYTHON_EXTRA_WHEELS});
+  const q=currentQuestion();worker.postMessage({code,wheels:PYTHON_EXTRA_WHEELS,reference:typeof q.solution==='string'?q.solution:null,starter:typeof q.starter==='string'?q.starter:''});
  }catch{stopPython('Este navegador no pudo iniciar Python. Usa la ejecución en terminal.');}
 }
 function repeatExercise(){
