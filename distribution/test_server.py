@@ -68,6 +68,35 @@ class DistributionTests(unittest.TestCase):
             db.execute('UPDATE sessions SET expires=0')
         self.assertEqual(self.request('/',cookie=a)['status'],401)
         self.assertEqual(self.request('/api/login','POST',{'username':'student1','password':'wrong password 123'})['status'],401)
+    def test_recovery_rotates_code_password_and_revokes_sessions(self):
+        result=self.request('/api/register','POST',{'username':'recover-me','password':'old password 1234'})
+        code=json.loads(result['body'])['recovery_code'];cookie=result['headers']['Set-Cookie'].split(';')[0]
+        state={**EMPTY,'answers':{'P35':'must survive recovery'}}
+        page=self.request('/',cookie=cookie)
+        csrf=json.loads(page['body'].split('const CLOUD_BOOTSTRAP=',1)[1].split(';\n',1)[0])['csrf']
+        self.assertEqual(self.request('/api/progress','PUT',{'revision':0,'state':state},cookie,csrf)['status'],200)
+        bad=self.request('/api/recover','POST',{'username':'recover-me','password':'new password 1234','recovery_code':'a'*43})
+        self.assertEqual(bad['status'],401)
+        reset=self.request('/api/recover','POST',{'username':'recover-me','password':'new password 1234','recovery_code':code})
+        self.assertEqual(reset['status'],200);new_code=json.loads(reset['body'])['recovery_code'];self.assertNotEqual(code,new_code)
+        self.assertEqual(self.request('/api/progress',cookie=cookie)['status'],401)
+        self.assertEqual(self.request('/api/recover','POST',{'username':'recover-me','password':'another password 123','recovery_code':code})['status'],401)
+        self.assertEqual(self.request('/api/login','POST',{'username':'recover-me','password':'old password 1234'})['status'],401)
+        login=self.request('/api/login','POST',{'username':'recover-me','password':'new password 1234'})
+        fresh=login['headers']['Set-Cookie'].split(';')[0]
+        self.assertEqual(json.loads(self.request('/api/progress',cookie=fresh)['body'])['state'],state)
+        with self.app.db() as db:
+            stored=db.execute('SELECT code_hash FROM recovery').fetchone()[0]
+            self.assertNotEqual(stored,new_code);self.assertNotEqual(stored,code)
+
+    def test_existing_account_can_generate_recovery_only_after_reauth(self):
+        cookie,csrf=self.register()
+        with self.app.db() as db:db.execute('DELETE FROM recovery')
+        self.assertEqual(self.request('/api/recovery-code','POST',{'password':'wrong password 123'},cookie,csrf)['status'],401)
+        self.assertEqual(self.request('/api/recovery-code','POST',{'password':'a test password 123'},cookie)['status'],403)
+        result=self.request('/api/recovery-code','POST',{'password':'a test password 123'},cookie,csrf)
+        self.assertEqual(result['status'],200);self.assertEqual(len(json.loads(result['body'])['recovery_code']),43)
+
     def test_rate_limit_and_secure_cookie(self):
         for _ in range(30):self.request('/api/login','POST',{'username':'missing','password':'invalid password 123'})
         self.assertEqual(self.request('/api/register','POST',{'username':'new','password':'long password 123'})['status'],429)

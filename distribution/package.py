@@ -3,7 +3,7 @@ import argparse,hashlib,json,subprocess,tarfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);args=p.parse_args()
-paths=['study_lab/index.html','study_lab/python-worker.mjs','distribution/server.py','distribution/login.html','distribution/sync.js','distribution/requirements.txt','distribution/gunicorn.conf.py','distribution/study-lab.service','distribution/nginx.conf.template','distribution/Caddyfile.template']
+paths=['study_lab/index.html','study_lab/python-worker.mjs','distribution/server.py','distribution/login.html','distribution/sync.js','distribution/requirements.txt','distribution/gunicorn.conf.py','distribution/study-lab.service','distribution/nginx.conf.template','distribution/Caddyfile.template','distribution/catalog_receiver.py']
 if subprocess.check_output(['git','status','--porcelain','--',*paths],cwd=ROOT).strip():raise SystemExit('Commit the tested deployment files before packaging')
 sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
 with tarfile.open(args.output,'x:gz') as archive:

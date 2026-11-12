@@ -31,7 +31,14 @@ const cloudStorage=(()=>{
   const label=document.createElement('span');label.id='cloudStatus';label.role='status';label.textContent='Progreso guardado en tu cuenta';
   const retry=document.createElement('button');retry.textContent='Reintentar guardado';retry.onclick=()=>flush();
   const logout=document.createElement('button');logout.textContent='Cerrar sesión';logout.onclick=async()=>{if(!await flush())return;const r=await fetch('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:'{}'});if(r.ok)location.assign('/login');else status('No se pudo cerrar sesión; reintenta.');};
-  bar.append(name,label,' ',retry,' ',logout);document.body.prepend(bar);
+  const recovery=document.createElement('button');recovery.textContent='Código de recuperación';
+  recovery.onclick=()=>{
+   const dialog=document.createElement('dialog'),form=document.createElement('form'),heading=document.createElement('h2'),input=document.createElement('input'),generate=document.createElement('button'),close=document.createElement('button'),output=document.createElement('p');
+   heading.textContent='Guardar o renovar tu código';input.type='password';input.autocomplete='current-password';input.required=true;input.minLength=12;input.maxLength=256;input.placeholder='Contraseña actual';input.setAttribute('aria-label','Contraseña actual');generate.textContent='Generar código';close.textContent='Cerrar';close.type='button';close.onclick=()=>dialog.close();output.setAttribute('role','status');output.style.overflowWrap='anywhere';
+   form.onsubmit=async e=>{e.preventDefault();generate.disabled=true;try{const r=await fetch('/api/recovery-code',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:JSON.stringify({password:input.value})});input.value='';const result=await r.json();output.textContent=r.ok?'Guárdalo en un lugar privado. Sustituye al anterior: '+result.recovery_code:result.error;}catch{output.textContent='No se pudo conectar; reintenta.';}finally{generate.disabled=false;}};
+   form.append(heading,input,generate,close,output);dialog.append(form);dialog.addEventListener('close',()=>dialog.remove());document.body.append(dialog);dialog.showModal();input.focus();
+  };
+  bar.append(name,label,' ',retry,' ',recovery,' ',logout);document.body.prepend(bar);
  });
  return {getItem:()=>value,setItem:(_,next)=>{value=next;status('Pendiente de sincronizar…');clearTimeout(timer);timer=setTimeout(flush,400);},flush};
 })();

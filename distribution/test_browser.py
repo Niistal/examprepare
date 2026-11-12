@@ -34,6 +34,9 @@ def main():
         def enter(sid,name,action):
             request('POST',f'/session/{sid}/url',{'url':origin+'/login'})
             js(sid,"document.getElementById('username').value="+json.dumps(name)+";document.getElementById('password').value='browser test password 123';document.querySelector('button[value="+action+"]').click()")
+            if action=='register':
+                wait(sid,"!document.getElementById('codePanel').classList.contains('hidden')",'código personal mostrado al registrarse')
+                js(sid,"document.getElementById('continue').click()")
             wait(sid,"location.pathname==='/' && document.getElementById('cloudStatus')",action+' abre aplicación')
         try:
             for _ in range(80):
@@ -61,6 +64,19 @@ def main():
             wait(b,"location.pathname==='/login'",'cerrar sesión tras guardar')
             request('POST',f'/session/{b}/url',{'url':origin+'/'})
             wait(b,"!document.getElementById('answerEditor') && document.body.textContent.includes('Inicia sesión')",'salir retira acceso a respuestas')
+            enter(b,'student2','login')
+            js(b,"[...document.querySelectorAll('button')].find(x=>x.textContent==='Código de recuperación').click();document.querySelector('dialog input').value='browser test password 123';document.querySelector('dialog form').requestSubmit()")
+            wait(b,"document.querySelector('dialog p').textContent.includes('Sustituye al anterior: ')",'cuenta existente obtiene código tras confirmar contraseña')
+            code=js(b,"return document.querySelector('dialog p').textContent.split(': ').at(-1)")
+            js(b,"document.querySelector('dialog').close();[...document.querySelectorAll('button')].find(x=>x.textContent==='Cerrar sesión').click()")
+            wait(b,"location.pathname==='/login'",'logout antes de recuperar acceso')
+            js(b,"document.getElementById('recovery').open=true;document.querySelector('#recover [name=username]').value='student2';document.querySelector('#recover [name=recovery_code]').value="+json.dumps(code)+";document.querySelector('#recover [name=password]').value='new recovered password 123';document.getElementById('recover').requestSubmit()")
+            wait(b,"!document.getElementById('codePanel').classList.contains('hidden')",'recuperación muestra código de reemplazo')
+            assert js(b,"return document.getElementById('recoveryCode').textContent")!=code
+            js(b,"document.getElementById('continue').click()")
+            wait(b,"document.getElementById('login') && !document.getElementById('login').classList.contains('hidden')",'vuelve a entrar tras recuperar')
+            js(b,"document.getElementById('username').value='student2';document.getElementById('password').value='new recovered password 123';document.querySelector('button[value=login]').click()")
+            wait(b,"location.pathname==='/' && document.getElementById('cloudStatus')",'nueva contraseña abre la misma cuenta')
             for sid in sessions:
                 errors=[x for x in request('POST',f'/session/{sid}/log',{'type':'browser'}) if x.get('level')=='SEVERE' and 'favicon' not in x.get('message','') and not (x.get('source')=='network' and (('/api/progress' in x.get('message','') and '409 (Conflict)' in x.get('message','')) or (x.get('message','').startswith(origin+'/ - ') and '401 (Unauthorized)' in x.get('message',''))))]
                 assert not errors,errors

@@ -1,0 +1,9 @@
+[Unit]
+Description=Publish tested NIIS Study Lab catalog to existing OCI host
+[Service]
+Type=oneshot
+WorkingDirectory=/home/admin/.t3/projects/examprepare
+ExecStart=/usr/bin/python3 /home/admin/.t3/projects/examprepare/distribution/sync_catalog.py
+Environment=GIT_TERMINAL_PROMPT=0
+TimeoutStartSec=600
+UMask=0077

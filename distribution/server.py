@@ -39,6 +39,7 @@ class App:
             CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,username TEXT UNIQUE NOT NULL,salt BLOB NOT NULL,password TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,csrf TEXT NOT NULL,expires INTEGER NOT NULL);
             CREATE TABLE IF NOT EXISTS progress(user_id TEXT PRIMARY KEY,revision INTEGER NOT NULL,payload TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS recovery(user_id TEXT PRIMARY KEY,code_hash TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS attempts(key TEXT NOT NULL,created INTEGER NOT NULL);
             CREATE INDEX IF NOT EXISTS attempts_key ON attempts(key,created);
             ''')
@@ -139,10 +140,21 @@ class Handler:
         if self.header('Origin')!=self.server.origin:return self.reply(403,{'error':'Origen no permitido'})
         try:
             body=self.read_json();path=urlsplit(self.path).path
-            if path in {'/api/register','/api/login'} and self.command=='POST':return self.authenticate(path,body)
+            if path in {'/api/register','/api/login','/api/recover'} and self.command=='POST':return self.authenticate(path,body)
             user=self.identity()
             if not user:return self.reply(401,{'error':'Sesión caducada; exporta tus respuestas antes de volver a entrar'})
             if not hmac.compare_digest(self.header('X-CSRF-Token',''),user['csrf']):return self.reply(403,{'error':'CSRF inválido'})
+            if path=='/api/recovery-code' and self.command=='POST':
+                if self.rate_limited():return
+                password=body.get('password','')
+                if not isinstance(password,str) or not 12<=len(password)<=256:raise ValueError()
+                with self.server.db() as db:
+                    db.execute('BEGIN IMMEDIATE')
+                    account=db.execute('SELECT * FROM users WHERE id=?',(user['user_id'],)).fetchone()
+                    if not hmac.compare_digest(password_hash(password,account['salt']),account['password']):return self.reply(401,{'error':'Contraseña actual incorrecta'})
+                    code=secrets.token_urlsafe(32)
+                    db.execute('INSERT INTO recovery VALUES(?,?) ON CONFLICT(user_id) DO UPDATE SET code_hash=excluded.code_hash',(user['user_id'],hashlib.sha256(code.encode()).hexdigest()))
+                return self.reply(200,{'recovery_code':code})
             if path=='/api/logout' and self.command=='POST':
                 with self.server.db() as db:db.execute('DELETE FROM sessions WHERE token=?',(user['token'],))
                 return self.reply(200,{'ok':True},cookie=self.cookie('',0))
@@ -157,33 +169,53 @@ class Handler:
                 return self.reply(200,{'revision':revision+1})
             return self.reply(404,{'error':'Ruta no disponible'})
         except (ValueError,UnicodeError,TypeError):return self.reply(400,{'error':'Petición inválida'})
+    def rate_limited(self):
+        now=int(time.time());key=hashlib.sha256(self.client_address[0].encode()).hexdigest()
+        with self.server.db() as db:
+            db.execute('BEGIN IMMEDIATE');db.execute('DELETE FROM attempts WHERE created<?',(now-900,));db.execute('DELETE FROM sessions WHERE expires<?',(now,))
+            count=db.execute('SELECT COUNT(*) FROM attempts WHERE key=?',(key,)).fetchone()[0]
+            if count>=30:
+                self.reply(429,{'error':'Demasiados intentos; espera 15 minutos'});return True
+            db.execute('INSERT INTO attempts VALUES(?,?)',(key,now))
+        return False
+
     def authenticate(self,path,body):
         username=body.get('username','');password=body.get('password','')
         if not isinstance(username,str) or not isinstance(password,str):raise ValueError()
         username=username.strip().lower()
         if not re.fullmatch(r'[a-z0-9_.-]{3,40}',username) or not 12<=len(password)<=256:return self.reply(400,{'error':'Usuario: 3–40 letras/números, punto, guion o _. Contraseña: 12–256 caracteres.'})
-        now=int(time.time());key=hashlib.sha256(self.client_address[0].encode()).hexdigest()
-        with self.server.db() as db:
-            db.execute('BEGIN IMMEDIATE');db.execute('DELETE FROM attempts WHERE created<?',(now-900,));db.execute('DELETE FROM sessions WHERE expires<?',(now,))
-            count=db.execute('SELECT COUNT(*) FROM attempts WHERE key=?',(key,)).fetchone()[0]
-            if count>=30:return self.reply(429,{'error':'Demasiados intentos; espera 15 minutos'})
-            db.execute('INSERT INTO attempts VALUES(?,?)',(key,now))
+        now=int(time.time())
+        if self.rate_limited():return
         with self.server.db() as db:
             db.execute('BEGIN IMMEDIATE')
             row=db.execute('SELECT * FROM users WHERE username=?',(username,)).fetchone()
+            if path=='/api/recover':
+                supplied=body.get('recovery_code','')
+                if not isinstance(supplied,str) or not re.fullmatch(r'[A-Za-z0-9_-]{43}',supplied):return self.reply(401,{'error':'Usuario o código de recuperación incorrectos'})
+                recovery=db.execute('SELECT code_hash FROM recovery WHERE user_id=?',(row['id'] if row else '',)).fetchone()
+                digest=hashlib.sha256(supplied.encode()).hexdigest()
+                if not row or not recovery or not hmac.compare_digest(digest,recovery['code_hash']):return self.reply(401,{'error':'Usuario o código de recuperación incorrectos'})
+                salt=secrets.token_bytes(16);new_code=secrets.token_urlsafe(32)
+                db.execute('UPDATE users SET salt=?,password=? WHERE id=?',(salt,password_hash(password,salt),row['id']))
+                db.execute('UPDATE recovery SET code_hash=? WHERE user_id=?',(hashlib.sha256(new_code.encode()).hexdigest(),row['id']))
+                db.execute('DELETE FROM sessions WHERE user_id=?',(row['id'],))
+                return self.reply(200,{'ok':True,'recovery_code':new_code},cookie=self.cookie('',0))
+            code=None
             if path=='/api/register':
                 if db.execute('SELECT COUNT(*) FROM users').fetchone()[0]>=100:return self.reply(503,{'error':'Se ha alcanzado el límite de 100 cuentas; contacta con el propietario'})
                 if row:return self.reply(409,{'error':'Nombre no disponible'})
                 salt=secrets.token_bytes(16);digest=password_hash(password,salt);uid=secrets.token_hex(16)
                 try:db.execute('INSERT INTO users VALUES(?,?,?,?)',(uid,username,salt,digest))
                 except sqlite3.IntegrityError:return self.reply(409,{'error':'Nombre no disponible'})
+                code=secrets.token_urlsafe(32)
+                db.execute('INSERT INTO recovery VALUES(?,?)',(uid,hashlib.sha256(code.encode()).hexdigest()))
             else:
                 salt=row['salt'] if row else b'0'*16;actual=password_hash(password,salt)
                 if not row or not hmac.compare_digest(actual,row['password']):return self.reply(401,{'error':'Usuario o contraseña incorrectos'})
                 uid=row['id']
             token=secrets.token_urlsafe(32);csrf=secrets.token_urlsafe(32)
             db.execute('INSERT INTO sessions VALUES(?,?,?,?)',(hashlib.sha256(token.encode()).hexdigest(),uid,csrf,now+604800))
-        return self.reply(200,{'ok':True},cookie=self.cookie(token))
+        return self.reply(200,{'ok':True,**({'recovery_code':code} if code else {})},cookie=self.cookie(token))
 
 def create_app():
     db=Path(os.environ.get('STUDY_DB','/var/lib/study-lab/study.sqlite3'))
