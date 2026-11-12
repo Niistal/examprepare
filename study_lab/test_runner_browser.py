@@ -60,6 +60,27 @@ with servers() as (local,hosted), sync_playwright() as pw:
         page.goto(local);page.evaluate("startSingle('P10')")
         solution=page.evaluate("BANK.find(q=>q.id==='P10').solution")
         run_code(page,solution);check_files(page,['ventas.png'])
+        assert page.locator('#runReview').get_attribute('data-status')=='ok',page.locator('#runReview').inner_text()
+        # Reviewer: a different approach with other names passes; a wrong result and an error are explained.
+        page.evaluate("startSingle('P03')")
+        run_code(page,'etiquetas = [" bilbo ", "DONOSTIA", "bilbo", " gasteiz ", " "]\nvistos=[]\nfor e in etiquetas:\n    x=e.strip().capitalize()\n    if x and x not in vistos:\n        vistos.append(x)\nprint(sorted(vistos,key=len))')
+        assert page.locator('#runReview').get_attribute('data-status')=='ok',page.locator('#runReview').inner_text()
+        run_code(page,'etiquetas = [" bilbo ", "DONOSTIA"]\nfinal=[e.strip() for e in etiquetas]\nprint(final)')
+        assert page.locator('#runReview').get_attribute('data-status')=='fail',page.locator('#runReview').inner_text()
+        page.locator('#answerEditor').fill('print(nombre_inexistente)')
+        page.locator('#runAnswer').click();page.locator('#stopRun').wait_for(state='hidden',timeout=180000)
+        assert page.locator('#runReview').get_attribute('data-status')=='error'
+        assert 'NameError en la línea 1' in page.locator('#runReviewVerdict').inner_text()
+        # Previous button walks back along the study route for single exercises.
+        page.evaluate("startSingle('P05')")
+        assert not page.locator('#prevQuestion').is_disabled()
+        page.locator('#prevQuestion').click()
+        assert page.evaluate("currentQuestion().id")!='P05'
+        first=page.evaluate("routeIds()[0]");page.evaluate(f"startSingle('{first}')")
+        assert page.locator('#prevQuestion').is_disabled()
+        print('PASS previous button follows the route',flush=True)
+        print('PASS reviewer: alternative accepted, wrong result rejected, error explained',flush=True)
+        page.evaluate("startSingle('P10')")
         # A new run clears old files and captures show(), CSV and nested SVG output.
         run_code(page,"import matplotlib.pyplot as plt\nfrom pathlib import Path\nplt.plot([1,2],[3,4])\nplt.show()\nPath('result.csv').write_text('a,b\\n1,2\\n')")
         check_files(page,['figure-1.png','result.csv'])
