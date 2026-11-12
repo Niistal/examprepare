@@ -36,7 +36,7 @@ El propietario pidió integrar el contenido del temario de Niistal/Big_Data visu
 ## Para retomar
 
 1. Leer estado Git y esta PR. No hacer stash/reset/checkout ni pisar trabajo ajeno.
-2. La base es la rama de PR #7 (`feat/niis-study-lab`, commit `b41d8a4`); este trabajo se publica en `feat/material-reader`, sin modificar la rama remota de #7. Coordinar la integración de ambas PRs, sin duplicar los cambios de CI del otro hilo.
+2. La base es el commit `b41d8a4` de PR #7; consultar su `headRefName` actual, sin asumir el nombre del checkout compartido. Este trabajo se publica en `feat/material-reader`, sin modificar la rama remota de #7. Coordinar la integración de ambas PRs, sin duplicar los cambios de CI del otro hilo.
 3. Revisar el saneado del importador y los casos con credenciales detectadas. Comprobar el lector también con cuentas reales de QA y originales multimedia, y añadir tests de exportación/sincronización necesarios. El original PDF conserva diseño/diagramas; la lectura PDF es texto extraído, no una reproducción de su maquetación.
 4. Conectar los nuevos tests al runner/CI. El workflow de #7 no tiene acceso automático al GitHub privado Big_Data; no crear secretos ni prometer que CI tiene todos los originales. El cuerpo de lectura sí está comiteado.
 5. Ejecutar regresiones, verificar `build.py`, empaquetar con `python distribution/package.py --require-materials --output /tmp/study-materials-release.tar.gz` desde un commit limpio. Los archivos originales se verifican contra el manifiesto antes de incluirse.
