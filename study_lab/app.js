@@ -1,5 +1,5 @@
 'use strict';
-// NIIS Study Lab v1: datos y lógica 100% locales. No ejecuta código introducido por el usuario.
+// NIIS Study Lab: práctica y progreso; Python se ejecuta en un Worker aislado.
 const REPO='https://github.com/Niistal/Big_Data/blob/main/';
 const COURSES=[
   {id:'program',name:'AA Programazioa',short:'Programazioa',day:'LUN 16',n:16,teacher:'Aitor',color:'#a8f0c4',folder:'05_AA_Programazioa',desc:'Python, NumPy, Pandas, visualización, frameworks, Git y MLOps.'},
@@ -1199,6 +1199,9 @@ function renderStudyRoute(){
 const $=id=>document.getElementById(id);
 let storageOkay=true,storageConflict=false,lastStored=null,invalidStored=null;
 const STATE_KEY='niis-study-lab-v1';
+const MAX_PROGRESS_BYTES=10_000_000;
+const MAX_BACKUP_BYTES=MAX_PROGRESS_BYTES+1024;
+function progressFits(value){return new TextEncoder().encode(JSON.stringify(value)).byteLength<=MAX_PROGRESS_BYTES;}
 const emptyState=()=>({ratings:{},answers:{},history:[]});
 function validState(v){
  const record=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
@@ -1364,9 +1367,28 @@ function downloadJSON(contents,name){
  const blob=new Blob([contents],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-function exportState(){persistDraft();downloadJSON(JSON.stringify({schema:1,exportedAt:new Date().toISOString(),data},null,2),'niis-study-lab-progreso.json');}
+function exportState(){persistDraft();downloadJSON(JSON.stringify({schema:1,exportedAt:new Date().toISOString(),data}),'niis-study-lab-progreso.json');}
 function exportRecovery(){if(invalidStored!==null)downloadJSON(invalidStored,'niis-study-lab-recuperacion.json');else exportState();}
-async function importState(file){if(!file)return;if(file.size>10_000_000){toast('Archivo demasiado grande');return;}try{const parsed=JSON.parse(await file.text());const v=parsed.data;if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');if(!confirm('¿Reemplazar tu progreso local con el JSON importado?'))return;stopTimer();session=null;allowExplicitReplace();data=typeof StudyEngine!=='undefined'?StudyEngine.migrate({...v,history:v.history.slice(-5000)}):{...v,history:v.history.slice(-5000)};const saved=save();navigate('progress');renderProgress();renderDashboard();toast(saved?'Progreso importado':'Respaldo cargado en memoria. Exporta JSON: no se pudo guardar.');}catch{toast('No se pudo importar el JSON');}finally{$('importFile').value='';}}
+async function importState(file){
+ if(!file)return;
+ try{
+  if(file.size>MAX_BACKUP_BYTES){
+   toast('El respaldo supera el límite de 10 MB. No se ha cambiado tu progreso.');return;
+  }
+  const parsed=JSON.parse(await file.text()),v=parsed.data;
+  if(parsed.schema!==1||!validState(v))throw Error('formato incorrecto');
+  const candidate={...v,history:v.history.slice(-5000)};
+  const imported=typeof StudyEngine!=='undefined'?StudyEngine.migrate(candidate):candidate;
+  if(!progressFits(imported)){
+   toast('El progreso supera el límite de 10 MB. No se ha cambiado tu progreso.');return;
+  }
+  if(!confirm('¿Reemplazar tu progreso con el JSON importado?'))return;
+  stopTimer();session=null;allowExplicitReplace();data=imported;
+  const saved=save();navigate('progress');renderProgress();renderDashboard();
+  toast(saved?'Progreso importado':'Respaldo cargado en memoria. Exporta JSON: no se pudo guardar.');
+ }catch{toast('No se pudo importar el JSON');}
+ finally{$('importFile').value='';}
+}
 async function copyText(text){try{await navigator.clipboard.writeText(text);toast('Copiado al portapapeles');}catch{const tmp=document.createElement('textarea');tmp.value=text;document.body.appendChild(tmp);tmp.select();const ok=document.execCommand('copy');tmp.remove();toast(ok?'Copiado':'Selecciona y copia el texto manualmente');}}
 function restoreSession(){
  const x=data.activeSession;
@@ -1381,15 +1403,32 @@ function restoreSession(){
  openSession();displayTimer();if(running)startTimer();else $('timerToggle').textContent='Iniciar reloj';
 }
 let pythonWorker=null,runTimeout=null,workerURL=null,runQuestionKey=null;
+let runFileURLs=[];
+function clearRunFiles(){
+ runFileURLs.forEach(url=>URL.revokeObjectURL(url));runFileURLs=[];
+ $('runFiles').replaceChildren();$('runFilesPanel').classList.add('hidden');
+}
+function showRunFile(file){
+ if(!(file.data instanceof Uint8Array)||typeof file.name!=='string')return;
+ const png=/\.png$/i.test(file.name)&&[137,80,78,71,13,10,26,10].every((byte,i)=>file.data[i]===byte);
+ // SVG/HTML are download-only: never inject executable markup into the page.
+ const url=URL.createObjectURL(new Blob([file.data],{type:png?'image/png':'application/octet-stream'}));
+ runFileURLs.push(url);
+ const item=document.createElement('li'),link=document.createElement('a');
+ link.href=url;link.download=file.name.split('/').pop();link.textContent='Descargar '+file.name;
+ link.className='btn btn-outline btn-small';
+ if(png){const img=document.createElement('img');img.src=url;img.alt='Gráfico generado: '+file.name;item.append(img);}
+ item.append(link);$('runFiles').append(item);$('runFilesPanel').classList.remove('hidden');
+}
 function stopPython(message='Ejecución detenida.'){
  pythonWorker?.terminate();pythonWorker=null;clearTimeout(runTimeout);if(workerURL){URL.revokeObjectURL(workerURL);workerURL=null;}
  $('runAnswer').disabled=false;$('stopRun').classList.add('hidden');if(message)$('runStatus').textContent=message;
 }
 function pythonCase(q){if(typeof StudyEngine!=='undefined'&&StudyEngine.cases[q?.id]!=='DEVELOPMENT')return false;return /PYTHON|PANDAS|NUMPY/i.test(q.kind)&&!['P13','P14'].includes(q.id);}
-function resetRunPanel(force=false){const key=session?.id+'::'+currentQuestion()?.id;if(!force&&key===runQuestionKey)return;runQuestionKey=key;stopPython('');$('runOutput').textContent='Todavía no has ejecutado código.';$('runStatus').textContent=pythonCase(currentQuestion())?'Ejecuta tu código para ver lo que imprime. La primera carga descarga Python y las librerías necesarias.':'Este ejercicio se realiza en su terminal o herramienta; el botón ejecuta únicamente Python.';$('runAnswer').disabled=!pythonCase(currentQuestion());}
+function resetRunPanel(force=false){const key=session?.id+'::'+currentQuestion()?.id;if(!force&&key===runQuestionKey)return;runQuestionKey=key;stopPython('');clearRunFiles();$('runOutput').textContent='Todavía no has ejecutado código.';$('runStatus').textContent=pythonCase(currentQuestion())?'Ejecuta tu código para ver lo que imprime. La primera carga descarga Python y las librerías necesarias.':'Este ejercicio se realiza en su terminal o herramienta; el botón ejecuta únicamente Python.';$('runAnswer').disabled=!pythonCase(currentQuestion());}
 function runPython(){
  if(!pythonCase(currentQuestion()))return;persistDraft();const code=$('answerEditor').value;if(!code.trim()){toast('Escribe código Python antes de ejecutar');return;}
- stopPython('Preparando Python… La primera carga puede tardar.');$('runOutput').textContent='';$('runAnswer').disabled=true;$('stopRun').classList.remove('hidden');
+ clearRunFiles();stopPython('Preparando Python… La primera carga puede tardar.');$('runOutput').textContent='';$('runAnswer').disabled=true;$('stopRun').classList.remove('hidden');
  try{
   const hosted=Boolean(document.querySelector('meta[http-equiv="Content-Security-Policy"]'));
   if(!hosted)workerURL=URL.createObjectURL(new Blob([PYTHON_WORKER_SOURCE],{type:'text/javascript'}));
@@ -1399,13 +1438,14 @@ function runPython(){
   worker.onmessage=event=>{
    if(worker!==pythonWorker)return;const m=event.data;
    if(m.type==='output'){$('runOutput').textContent=($('runOutput').textContent+String(m.text)).slice(0,20000);}
+   if(m.type==='file')showRunFile(m);
    if(m.type==='loading')$('runStatus').textContent=String(m.text);
    if(m.type==='running'&&!runningStarted){runningStarted=true;$('runStatus').textContent='Ejecutando…';deadline(10000,'Detenido: se superó el límite de 10 segundos. Revisa los bucles.');}
-   if(m.type==='done'){if(!$('runOutput').textContent)$('runOutput').textContent='El programa terminó sin imprimir nada. Usa print(...) para ver valores.';stopPython('Ejecución terminada. Se muestra la salida, no una nota automática.');}
+   if(m.type==='done'){if(!$('runOutput').textContent)$('runOutput').textContent=runFileURLs.length?'Archivos generados. Puedes verlos y descargarlos debajo.':'El programa terminó sin imprimir nada. Usa print(...) para ver valores.';stopPython('Ejecución terminada. Se muestra la salida, no una nota automática.');}
    if(m.type==='error'){$('runOutput').textContent=($('runOutput').textContent+'\n'+String(m.text)).slice(0,20000);stopPython('Python encontró un error. Revisa el mensaje.');}
   };
   worker.onerror=()=>stopPython('No se pudo iniciar Python. Comprueba la conexión o ejecútalo en tu terminal.');
-  worker.postMessage({code});
+  worker.postMessage({code,wheels:PYTHON_EXTRA_WHEELS});
  }catch{stopPython('Este navegador no pudo iniciar Python. Usa la ejecución en terminal.');}
 }
 function repeatExercise(){

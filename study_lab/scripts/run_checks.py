@@ -9,7 +9,7 @@ if args.orange_python:commands.extend([[str(args.orange_python.resolve()),'test_
 if args.external_docker:commands.append([sys.executable,'test_external_docker.py'])
 report=[]
 for cmd in commands:
-    result=subprocess.run(cmd,cwd=root,capture_output=True,text=True,timeout=600 if 'test_external_docker.py' in cmd else 180)
+    result=subprocess.run(cmd,cwd=root,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=600 if 'test_external_docker.py' in cmd else 180)
     label=' '.join(cmd[1:])
     report.append(('PASS' if result.returncode==0 else 'FAIL')+' '+label+'\n'+result.stdout+result.stderr)
     print(report[-1],flush=True)

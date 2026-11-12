@@ -8,7 +8,8 @@ from urllib.parse import urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
 EMPTY={'ratings':{},'answers':{},'history':[]}
-MAX_BODY=2_000_000
+MAX_PROGRESS_BYTES=10_000_000
+MAX_BODY=MAX_PROGRESS_BYTES+65_536
 
 def validate_origin(origin,development=False):
     parsed=urlsplit(origin)
@@ -88,7 +89,7 @@ class Handler:
         self.send_header('X-Content-Type-Options','nosniff')
         self.send_header('Referrer-Policy','no-referrer')
         hashes=' '.join("'sha256-"+base64.b64encode(hashlib.sha256(code.encode()).digest()).decode()+"'" for code in re.findall(r'<script>([\s\S]*?)</script>',value)) if content_type=='text/html' else "'none'"
-        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src data:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
+        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src data: blob:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
         if cookie:self.send_header('Set-Cookie',cookie)
         self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
     def cookie(self,token,max_age=604800):
@@ -105,7 +106,8 @@ class Handler:
             return db.execute('SELECT sessions.*,users.username FROM sessions JOIN users ON users.id=sessions.user_id WHERE token=? AND expires>?',(hashlib.sha256(token.encode()).hexdigest(),int(time.time()))).fetchone()
     def read_json(self):
         length=int(self.header('Content-Length','0'))
-        if not 0<length<=MAX_BODY:raise ValueError('Tamaño no permitido')
+        if length>MAX_BODY:raise OverflowError('El progreso supera el límite de 10 MB')
+        if length<=0:raise ValueError('Tamaño no permitido')
         if self.header('Content-Type','').split(';')[0]!='application/json':raise ValueError('Se requiere JSON')
         value=json.loads(self.rfile.read(length))
         if not isinstance(value,dict):raise ValueError('Objeto JSON requerido')
@@ -113,13 +115,13 @@ class Handler:
     def do_GET(self):
         path=urlsplit(self.path).path;user=self.identity()
         if path=='/health':return self.reply(200,{'status':'ok'})
-        if path=='/login':return self.reply(200,(ROOT/'distribution/login.html').read_text(),'text/html')
+        if path=='/login':return self.reply(200,(ROOT/'distribution/login.html').read_text(encoding='utf-8'),'text/html')
         if not user:return self.reply(401,'<html lang="es"><meta charset="utf-8"><title>Inicia sesión</title><a href="/login">Inicia sesión o crea una cuenta</a></html>','text/html')
         if path=='/api/progress':
             with self.server.db() as db:row=db.execute('SELECT revision,payload FROM progress WHERE user_id=?',(user['user_id'],)).fetchone()
             return self.reply(200,{'revision':row['revision'] if row else 0,'state':json.loads(row['payload']) if row else EMPTY})
         if path=='/python-worker.mjs':
-            code=(ROOT/'study_lab/python-worker.mjs').read_text()
+            code=(ROOT/'study_lab/python-worker.mjs').read_text(encoding='utf-8')
             # The runner needs its pinned Pyodide runtime; the application cannot fetch arbitrary origins.
             self.send_response(200);self.send_header('Content-Type','text/javascript; charset=utf-8')
             self.send_header('Content-Security-Policy',"default-src 'none'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net/pyodide/v314.0.7/full/; connect-src https://cdn.jsdelivr.net/pyodide/v314.0.7/full/; worker-src 'none'; object-src 'none'")
@@ -127,7 +129,7 @@ class Handler:
         if path in {'/','/index.html'}:
             with self.server.db() as db:row=db.execute('SELECT revision,payload FROM progress WHERE user_id=?',(user['user_id'],)).fetchone()
             bootstrap={'revision':row['revision'] if row else 0,'state':json.loads(row['payload']) if row else EMPTY,'csrf':user['csrf'],'username':user['username']}
-            html=(ROOT/'study_lab/index.html').read_text()
+            html=(ROOT/'study_lab/index.html').read_text(encoding='utf-8')
             if "const STATE_KEY='niis-study-lab-v1';" not in html:return self.reply(503,{'error':'Paquete no compatible'})
             # Memory adapter: never reads or overwrites the owner's browser-local progress.
             # runPython detects hosted execution through a CSP meta tag. OCI also
@@ -135,7 +137,7 @@ class Handler:
             # here so it selects the authenticated same-origin static Worker.
             html=html.replace('<head>', '<head>\n<meta http-equiv="Content-Security-Policy" content="worker-src \'self\'">',1)
             html=html.replace('localStorage','cloudStorage')
-            client=(ROOT/'distribution/sync.js').read_text()
+            client=(ROOT/'distribution/sync.js').read_text(encoding='utf-8')
             html=html.replace('<script>', '<script>const CLOUD_BOOTSTRAP='+safe_json(bootstrap)+';\n'+client+'\n</script><script>',1)
             html=html.replace('<b>100 % local</b>','<b>Cuenta privada</b>')
             html=html.replace('Datos guardados en este navegador','Progreso sincronizado por cuenta').replace('progreso local ·','progreso por cuenta ·')
@@ -170,6 +172,7 @@ class Handler:
             if path=='/api/progress' and self.command=='PUT':
                 if type(body.get('revision')) is not int or not valid_progress(body.get('state')):raise ValueError('Progreso inválido')
                 payload=encode(body['state'])
+                if len(payload.encode('utf-8'))>MAX_PROGRESS_BYTES:raise OverflowError('El progreso supera el límite de 10 MB')
                 with self.server.db() as db:
                     db.execute('BEGIN IMMEDIATE')
                     row=db.execute('SELECT revision FROM progress WHERE user_id=?',(user['user_id'],)).fetchone();revision=row['revision'] if row else 0
@@ -177,6 +180,7 @@ class Handler:
                     db.execute('INSERT INTO progress VALUES(?,?,?) ON CONFLICT(user_id) DO UPDATE SET revision=excluded.revision,payload=excluded.payload',(user['user_id'],revision+1,payload))
                 return self.reply(200,{'revision':revision+1})
             return self.reply(404,{'error':'Ruta no disponible'})
+        except OverflowError:return self.reply(413,{'error':'El progreso supera el límite de 10 MB. Exporta una copia y reduce su tamaño antes de importar.'})
         except (ValueError,UnicodeError,TypeError):return self.reply(400,{'error':'Petición inválida'})
     def rate_limited(self):
         now=int(time.time());key=hashlib.sha256(self.client_address[0].encode()).hexdigest()

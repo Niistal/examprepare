@@ -1,10 +1,10 @@
 STUDY_DOMAIN {
     request_body {
-        max_size 2MB
+        max_size 11MB
     }
     header Strict-Transport-Security "max-age=31536000"
     reverse_proxy 127.0.0.1:8090 {
         header_up X-Real-IP {remote_host}
-        request_buffers 2MB
+        request_buffers 11MB
     }
 }

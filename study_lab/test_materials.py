@@ -71,10 +71,13 @@ class CatalogTests(unittest.TestCase):
         self.write('09_Asignatura_A/a.md','# A\n');self.write('09_Asignatura_B/b.md','# B\n');self.commit()
         resources=sync.make_catalog(self.repo,'main')['resources'];self.assertEqual(len(resources),2);self.assertTrue(all(r['assignment']=='unassigned' and r['course'].startswith('unassigned-') for r in resources))
     def test_script_breakout_is_encoded_in_js(self):
-        self.write('05_AA_Programazioa/x</script>.md','# Archivo\n');self.commit()
+        self.write('05_AA_Programazioa/escape.md','# Archivo\n');self.commit()
+        catalog=sync.make_catalog(self.repo,'main')
+        catalog['resources'][0]['path']='05_AA_Programazioa/x</script>.md'
         output=pathlib.Path(self.temp.name)/'output/materials.json'
         args=SimpleNamespace(repo=self.repo,refresh=False,check=False,state_dir=pathlib.Path(self.temp.name)/'state',output=output)
-        self.assertEqual(sync.run(args)['status'],'changed')
+        with patch.object(sync,'make_catalog',return_value=catalog):
+            self.assertEqual(sync.run(args)['status'],'changed')
         js=output.with_suffix('.js').read_text(encoding='utf-8');self.assertNotIn('</script>',js);self.assertIn('\\u003c',js)
     def test_failed_generation_preserves_previous_files(self):
         self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
@@ -119,7 +122,11 @@ class CatalogTests(unittest.TestCase):
             with self.assertRaises(RuntimeError) as caught:sync.git(self.repo,'fetch')
         self.assertNotIn('not-a-real-credential',str(caught.exception))
     def test_no_symlink_traversal(self):
-        self.write('05_AA_Programazioa/a.md','# A\n');(self.repo/'05_AA_Programazioa/secret.md').symlink_to('/etc/passwd');self.commit()
+        self.write('05_AA_Programazioa/a.md','# A\n');self.commit()
+        target=self.repo/'link-target';target.write_text('/etc/passwd',encoding='utf-8')
+        blob=self.git('hash-object','-w',str(target)).decode().strip()
+        self.git('update-index','--add','--cacheinfo',f'120000,{blob},05_AA_Programazioa/secret.md')
+        self.git('commit','-m','symlink fixture')
         self.assertEqual(len(sync.make_catalog(self.repo,'main')['resources']),1)
 
 if __name__=='__main__':unittest.main()

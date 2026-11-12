@@ -1,6 +1,6 @@
 """Comprueba sincronización standalone y trazabilidad; solo biblioteca estándar."""
 from pathlib import Path
-import hashlib,json,subprocess,sys
+import base64,hashlib,json,subprocess,sys
 root=Path(__file__).resolve().parent
 from build import render
 expected, learning_js = render()

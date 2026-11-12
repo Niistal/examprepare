@@ -10,6 +10,7 @@ const cloudStorage=(()=>{
   try{
    while(value!==saved){
     const snapshot=value;
+    if(new TextEncoder().encode(snapshot).byteLength>10_000_000)throw Error('El progreso supera el límite de 10 MB. Exporta una copia y reduce su tamaño antes de importar.');
     const r=await fetch('/api/progress',{method:'PUT',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:JSON.stringify({revision,state:JSON.parse(snapshot)})});
     if(r.status===409){
      // A lost response may have committed our exact snapshot. Reconcile without overwriting.
@@ -17,7 +18,7 @@ const cloudStorage=(()=>{
      const remote=await current.json();
      if(JSON.stringify(remote.state)!==snapshot){conflict=true;throw Error('Conflicto entre dispositivos. Exporta tus respuestas y recarga para ver la otra versión.');}
      revision=remote.revision;saved=snapshot;
-    }else{if(!r.ok)throw Error(r.status===401?'Sesión caducada. Exporta tus respuestas antes de entrar de nuevo.':'No se pudo guardar. Reintenta o exporta tus respuestas.');revision=(await r.json()).revision;saved=snapshot;}
+    }else{if(r.status===413)throw Error('El servidor ha rechazado el tamaño del progreso. Exporta una copia; comprueba el límite de 10 MB y la configuración del alojamiento.');if(!r.ok)throw Error(r.status===401?'Sesión caducada. Exporta tus respuestas antes de entrar de nuevo.':'No se pudo guardar. Reintenta o exporta tus respuestas.');revision=(await r.json()).revision;saved=snapshot;}
    }
    status('Progreso guardado en tu cuenta');return true;
   }catch(e){status(e.message);return false;}finally{running=false;}
