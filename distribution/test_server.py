@@ -97,6 +97,15 @@ class DistributionTests(unittest.TestCase):
         result=self.request('/api/recovery-code','POST',{'password':'a test password 123'},cookie,csrf)
         self.assertEqual(result['status'],200);self.assertEqual(len(json.loads(result['body'])['recovery_code']),43)
 
+    def test_explicit_legacy_origin_preserves_access_without_wildcards(self):
+        self.app=App(self.db,'https://study.gripuno.com',allowed_origins=['https://legacy.test'])
+        registration=self.request('/api/register','POST',{'username':'legacy-user','password':'a test password 123'},origin='https://legacy.test')
+        self.assertEqual(registration['status'],200)
+        self.assertEqual(self.request('/api/login','POST',{'username':'legacy-user','password':'a test password 123'},origin='https://evil.study.gripuno.com')['status'],403)
+        self.assertEqual(self.request('/api/login','POST',{'username':'legacy-user','password':'a test password 123'},origin='https://study.gripuno.com')['status'],200)
+        for origin in ['https://*.gripuno.com','https://','https://study.gripuno.com/path','https://user:pass@study.gripuno.com']:
+            with self.subTest(origin=origin),self.assertRaises(ValueError):App(self.db,origin)
+
     def test_rate_limit_and_secure_cookie(self):
         for _ in range(30):self.request('/api/login','POST',{'username':'missing','password':'invalid password 123'})
         self.assertEqual(self.request('/api/register','POST',{'username':'new','password':'long password 123'})['status'],429)

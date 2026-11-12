@@ -10,6 +10,13 @@ ROOT=Path(__file__).resolve().parents[1]
 EMPTY={'ratings':{},'answers':{},'history':[]}
 MAX_BODY=2_000_000
 
+def validate_origin(origin,development=False):
+    parsed=urlsplit(origin)
+    if (parsed.scheme!='https' and not (development and parsed.scheme=='http' and parsed.hostname in {'127.0.0.1','localhost'})) or not parsed.hostname or '*' in parsed.netloc or parsed.path not in {'','/'} or parsed.query or parsed.fragment or parsed.username or parsed.password:
+        raise ValueError('Set an exact HTTPS origin (HTTP allowed only for loopback development)')
+    _=parsed.port
+    return origin.rstrip('/')
+
 def encode(value):
     return json.dumps(value,ensure_ascii=False,separators=(',',':'))
 
@@ -29,11 +36,9 @@ def valid_progress(value):
             and 0<=v['rating']<=2 and isinstance(v.get('date'),str) for v in history))
 
 class App:
-    def __init__(self,db_path,origin,development=False,trusted_proxy=False):
-        self.db_path=str(db_path);self.origin=origin.rstrip('/');self.development=development;self.trusted_proxy=trusted_proxy
-        parsed=urlsplit(self.origin)
-        if (parsed.scheme!='https' and not (development and parsed.scheme=='http' and parsed.hostname in {'127.0.0.1','localhost'})) or parsed.path not in {'','/'} or parsed.query or parsed.fragment or parsed.username:
-            raise ValueError('Set an exact HTTPS origin (HTTP allowed only for loopback development)')
+    def __init__(self,db_path,origin,development=False,trusted_proxy=False,allowed_origins=None):
+        self.db_path=str(db_path);self.origin=validate_origin(origin,development);self.development=development;self.trusted_proxy=trusted_proxy
+        self.origins={self.origin}|{validate_origin(value,development) for value in (allowed_origins or [])}
         with self.db() as db:
             db.executescript('''
             CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,username TEXT UNIQUE NOT NULL,salt BLOB NOT NULL,password TEXT NOT NULL);
@@ -137,7 +142,7 @@ class Handler:
     def do_PUT(self):self.mutate()
     def mutate(self):
         # No forwarded-IP trust: limits fail closed when all traffic comes from one proxy.
-        if self.header('Origin')!=self.server.origin:return self.reply(403,{'error':'Origen no permitido'})
+        if self.header('Origin') not in self.server.origins:return self.reply(403,{'error':'Origen no permitido'})
         try:
             body=self.read_json();path=urlsplit(self.path).path
             if path in {'/api/register','/api/login','/api/recover'} and self.command=='POST':return self.authenticate(path,body)
@@ -220,7 +225,7 @@ class Handler:
 def create_app():
     db=Path(os.environ.get('STUDY_DB','/var/lib/study-lab/study.sqlite3'))
     db.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
-    return App(db,os.environ['STUDY_ORIGIN'],trusted_proxy=True)
+    return App(db,os.environ['STUDY_ORIGIN'],trusted_proxy=True,allowed_origins=[value.strip() for value in os.environ.get('STUDY_ALLOWED_ORIGINS','').split(',') if value.strip()])
 
 if __name__=='__main__':
     # Local development only. Production uses Gunicorn behind the TLS proxy.
