@@ -1,0 +1,12 @@
+# Optativos: instala solo para ejercicios concretos.
+-r requirements-study.txt
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+streamlit>=1.37,<2
+faker>=26,<50
+kafka-python>=2.0,<3
+# torch/transformers, DVC, MLflow, LangChain, FAISS y conectores NO se instalan
+# por defecto: pueden ocupar mucho o requerir GPU/keys/servicios adicionales.
+
+# Notebook opcional, no necesario para la web:
+jupyterlab>=4,<5

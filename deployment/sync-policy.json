@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "app_repository": "Niistal/examprepare",
+  "app_branch": "feat/niis-study-lab",
+  "source_repository": "Niistal/Big_Data",
+  "source_branch": "main",
+  "local_source": "/home/admin/Big_Data",
+  "site_project_id": "appgprj_6af50e3969208191aa07f9da6d4fe50e",
+  "interval_minutes": 30,
+  "generated_paths": [
+    "study_lab/materials.json",
+    "study_lab/materials.js",
+    "study_lab/index.html"
+  ],
+  "access": "owner_private",
+  "new_exercises": "never_generate_automatically",
+  "site_origin": "https://niis-study-lab.ikernistal77.chatgpt.site"
+}

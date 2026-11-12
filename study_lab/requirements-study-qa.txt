@@ -1,0 +1,7 @@
+# Solo para repetir QA de soluciones; no necesario para usar la web.
+-r requirements-study.txt
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+streamlit>=1.37,<2
+httpx>=0.27,<1
+faker>=26,<50
