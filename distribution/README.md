@@ -87,3 +87,6 @@ Caddy obtuvo HTTPS válido para https://study.gripuno.com/login utilizando la mi
 Nueve pruebas de seguridad/persistencia y Gunicorn real: PASS. Pruebas HTTPS del dominio nuevo y del anterior: registro, cookies Secure/HttpOnly, login en ambos hosts, mismo progreso, restauración exacta de código con `<`, `</script>` y `&`, rechazo CSRF de otro subdominio, recuperación/rotación de código y revocación de sesiones en ambos hosts. Se eliminó únicamente la cuenta temporal de QA. No se abrió ni modificó el progreso real.
 
 El smoke alojado también se ejecutó en un servicio transitorio de systemd de usuario, con el mismo entorno de segundo plano del actualizador: PASS, sin errores JS. El publicador confirmó runtime exacto y unchanged tras instalar el dominio nuevo. Study Lab, Caddy y Product Radar quedaron activos. El árbol Git quedó limpio y los cambios subidos a la rama de la PR; no hubo merge a principal. Revisión del principal, no independiente.
+
+
+Se resolvió la limitación anterior de dependencias de QA instalándolas en un venv temporal exclusivamente local, sin cambiar OCI: las 42 soluciones Python con comprobaciones de resultado terminaron PASS, incluidas P35–P38. Se verificó de nuevo el servicio automático con Result=success/ExecMainStatus=0. No se instaló ningún agente ni se contrataron servicios adicionales.
