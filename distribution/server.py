@@ -4,6 +4,7 @@ import base64,hashlib,hmac,io,ipaddress,json,os,re,secrets,sqlite3,time
 from contextlib import contextmanager
 from http import HTTPStatus
 from pathlib import Path
+from study_lab.material_assets import MaterialAssets
 from urllib.parse import urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -65,6 +66,9 @@ class App:
         handler.client_address=(remote,0)
         handler.headers={key[5:].replace('_','-').lower():value for key,value in environ.items() if key.startswith('HTTP_')}
         handler.headers.update({'content-type':environ.get('CONTENT_TYPE',''),'content-length':environ.get('CONTENT_LENGTH','0')})
+        if environ.get('PATH_INFO','').startswith('/api/materials/'):
+            if not hasattr(self,'material_assets'):self.material_assets=MaterialAssets(ROOT/'study_lab')
+            return self.material_assets.wsgi(environ,start_response,bool(handler.identity()))
         handler.rfile=environ['wsgi.input'];handler.wfile=io.BytesIO();handler.response_headers=[]
         try:
             if handler.command in {'GET','HEAD'}:handler.do_GET()
@@ -89,7 +93,7 @@ class Handler:
         self.send_header('X-Content-Type-Options','nosniff')
         self.send_header('Referrer-Policy','no-referrer')
         hashes=' '.join("'sha256-"+base64.b64encode(hashlib.sha256(code.encode()).digest()).decode()+"'" for code in re.findall(r'<script>([\s\S]*?)</script>',value)) if content_type=='text/html' else "'none'"
-        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src data: blob:; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
+        self.send_header('Content-Security-Policy',f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; img-src 'self' data: blob:; media-src 'self'; frame-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; object-src 'none'")
         if cookie:self.send_header('Set-Cookie',cookie)
         self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
     def cookie(self,token,max_age=604800):
@@ -138,7 +142,8 @@ class Handler:
             html=html.replace('<head>', '<head>\n<meta http-equiv="Content-Security-Policy" content="worker-src \'self\'">',1)
             html=html.replace('localStorage','cloudStorage')
             client=(ROOT/'distribution/sync.js').read_text(encoding='utf-8')
-            html=html.replace('<script>', '<script>const CLOUD_BOOTSTRAP='+safe_json(bootstrap)+';\n'+client+'\n</script><script>',1)
+            asset_bootstrap='const MATERIAL_ASSET_BASE="/api/materials/";' if (ROOT/'study_lab/material-assets').is_dir() else ''
+            html=html.replace('<script>', '<script>'+asset_bootstrap+'const CLOUD_BOOTSTRAP='+safe_json(bootstrap)+';\n'+client+'\n</script><script>',1)
             html=html.replace('<b>100 % local</b>','<b>Cuenta privada</b>')
             html=html.replace('Datos guardados en este navegador','Progreso sincronizado por cuenta').replace('progreso local ·','progreso por cuenta ·')
             html=html.replace('Guardado local','Borrador en memoria').replace("'Autoguardado'","'Borrador en memoria · consulta el estado de cuenta'")

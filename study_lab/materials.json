@@ -4,8 +4,8 @@
   "source": {
     "repo": "Niistal/Big_Data",
     "branch": "main",
-    "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
-    "committed_at": "2026-11-11T08:14:13+01:00"
+    "commit": "db1561d8b01e8f2f1ff7f085d1264e67c5a732bd",
+    "committed_at": "2026-11-12T12:17:46+01:00"
   },
   "fingerprint": "865f61b3503cedf9f30b949f27607ffa633c5c971598efc50be7fb0206567bdd",
   "root_modules": [
@@ -10916,7 +10916,7 @@
       "02_Erronka_1_CNC_Guard",
       "08_Erronka_2_RetailEUS"
     ],
-    "omitted_count": 93,
+    "omitted_count": 94,
     "policy": "Sin cuerpos ni outputs de los archivos; rutas y encabezados con filtrado de identificadores sensibles detectables. Fuentes por ruta, no por parecido de título."
   }
 }

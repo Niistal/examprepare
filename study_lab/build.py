@@ -15,6 +15,9 @@ def render():
     package_js='const PYTHON_EXTRA_WHEELS='+json.dumps({'seaborn':base64.b64encode(wheel).decode()})+';\n'
     shell = (ROOT / 'shell.html').read_text(encoding='utf-8')
     assert '/*__CSS__*/' in shell and '/*__JS__*/' in shell
+    library=json.loads((ROOT/'material-library.json').read_text(encoding='utf-8'))
+    catalog=json.loads((ROOT/'materials.json').read_text(encoding='utf-8'))
+    assert library['catalogFingerprint']==catalog['fingerprint'], 'Regenera el lector con scripts/build_material_library.py'
     content = json.loads((ROOT / 'learning-content.json').read_text(encoding='utf-8'))
     learning_js = 'const LEARNING_CONTENT=' + json.dumps(content, ensure_ascii=False).replace('<', '\\u003c') + ';\n'
     prelude = '\n'.join('const ' + key + '=' + js_string((ROOT / name).read_text(encoding='utf-8')) + ';' for key, name in [
@@ -25,9 +28,9 @@ def render():
     resources = {key: {**value, 'csvText': (ROOT / 'resources' / value['csv']).read_text(encoding='utf-8'), 'workflowText': (ROOT / 'resources' / value['workflow']).read_text(encoding='utf-8')} for key, value in manifest.items()}
     prelude += '\nconst ORANGE_CASE_RESOURCES=' + json.dumps(resources, ensure_ascii=True).replace('<', '\\u003c') + ';'
     sources = [learning_js if name == 'learning-content.js' else (ROOT / name).read_text(encoding='utf-8').removesuffix('init();\n') if name == 'app.js' else (ROOT / name).read_text(encoding='utf-8') for name in (
-        'sources.js', 'materials.js', 'learning-content.js', 'learning-engine.js', 'app.js', 'learning-ui.js')]
+        'sources.js', 'materials.js', 'material-reader-data.js', 'learning-content.js', 'learning-engine.js', 'app.js', 'learning-ui.js', 'material-reader.js')]
     html = shell.replace('/*__CSS__*/', (ROOT / 'style.css').read_text(encoding='utf-8'))
-    return html.replace('/*__JS__*/', package_js + prelude + '\n' + '\n'.join(sources) + '\ninit();\nbootModalStudy();\n'), learning_js
+    return html.replace('/*__JS__*/', package_js + prelude + '\n' + '\n'.join(sources) + '\ninit();\nbootModalStudy();\nbootMaterialReader();\n'), learning_js
 
 
 if __name__ == '__main__':

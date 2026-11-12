@@ -73,7 +73,9 @@ class DistributionTests(unittest.TestCase):
         self.assertNotIn('localStorage',page['body'])
         self.assertIn('http-equiv="Content-Security-Policy" content="worker-src \'self\'"',page['body'])
         self.assertIn("worker-src 'self';",page['headers']['Content-Security-Policy'])
-        self.assertIn('img-src data: blob:;',page['headers']['Content-Security-Policy'])
+        self.assertIn("img-src 'self' data: blob:;",page['headers']['Content-Security-Policy'])
+        self.assertIn("frame-src 'self';",page['headers']['Content-Security-Policy'])
+        self.assertIn("media-src 'self';",page['headers']['Content-Security-Policy'])
     def test_passwords_sessions_and_expiry(self):
         a,_=self.register();self.register('student2')
         with self.app.db() as db:
