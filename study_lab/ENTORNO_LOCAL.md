@@ -119,3 +119,5 @@ python -m pip install -r requirements-study-qa.txt
 En Windows sustituye `.venv/bin/python` por `.venv\Scripts\python.exe` y omite `--browser`: el script de Chromium actual usa rutas de Linux. Las pruebas Python crean y eliminan carpetas temporales fuera de los apuntes. La prueba API abre únicamente un puerto efímero en 127.0.0.1 y lo cierra al terminar. AppTest usa un CSV ficticio para probar Streamlit sin publicar una app.
 
 El navegador de QA requiere servidor local 8080 y ChromeDriver 9515. Para el paquete alojado usa `NIIS_TEST_URL=http://127.0.0.1:18080 NIIS_TEST_HOSTED=1 python test_browser.py` después de servir `hosted_study_lab/dist/`. No ejecutes los tests sobre un perfil con tu progreso: el driver crea un perfil temporal propio.
+
+La guía práctica ampliada usa Pydantic 2 en P33/P34; está incluido en requirements-study.txt. No hace falta instalar FastAPI para practicar BaseModel y field_validator. La ejecución en navegador carga su versión compatible en el Worker.

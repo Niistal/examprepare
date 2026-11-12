@@ -14,7 +14,7 @@ Proton Pass: no hay integración de bóveda disponible en esta sesión. No se ha
 
 ## Datos
 
-Los 73 casos forman parte del paquete privado. No se han copiado los apuntes completos, los proyectos Erronka, `.venv`, credenciales ni archivos de progreso al alojamiento. Las respuestas y valoraciones permanecen en localStorage del navegador y origen. El progreso de localhost no aparece automáticamente en la web: exporta el JSON local e impórtalo en Mi progreso. La sincronización entre dispositivos no está implementada: https://github.com/Niistal/examprepare/issues/1
+Los 80 casos forman parte del paquete privado. No se han copiado los apuntes completos, los proyectos Erronka, `.venv`, credenciales ni archivos de progreso al alojamiento. Las respuestas y valoraciones permanecen en localStorage del navegador y origen. El progreso de localhost no aparece automáticamente en la web: exporta el JSON local e impórtalo en Mi progreso. La sincronización entre dispositivos no está implementada: https://github.com/Niistal/examprepare/issues/1
 
 ## Fuente y publicación
 
@@ -23,10 +23,10 @@ Los 73 casos forman parte del paquete privado. No se han copiado los apuntes com
 - Ejecutar `python study_lab/scripts/build_hosted.py` desde la raíz: reconstruye el standalone y genera `hosted_study_lab/dist/server/index.js` y su manifest de alojamiento.
 - `hosted_study_lab/` es un checkout separado del repositorio de publicación Sites y está ignorado en el repositorio principal. Sus credenciales temporales se entregan al helper por stdin, nunca se guardan en archivos ni Git.
 - El paquete publicado contiene `.openai/hosting.json` y un Worker que responde con el HTML generado. Solo acepta GET/HEAD de `/`, `/index.html` y el asset estático `/python-worker.mjs`; no sirve el árbol del repositorio ni ejecuta código del estudiante.
-- El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` evita llamadas de red desde la app; abrir una fuente de GitHub mediante un enlace sigue siendo posible.
-- Commit de publicación Sites: `eba60dad77d8bd36cb12aa76f315151226e739db`.
-- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_7f8b6eae818c819181573b8a9959b3c0`.
-- Despliegue: `appgdep_6af530a9084881919e1aaa0226427b93`, estado `succeeded`.
+- El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` bloquea conexiones del documento; el Worker de Python tiene una política separada limitada al CDN del runtime fijado. Los enlaces de GitHub siguen siendo navegaciones explícitas.
+- Commit de publicación Sites: `0440f47dc4a92bfa8b08f7aab9ce455514bcce70`.
+- Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_70eeb62dd3a481919c2faa6c34cdccd0`.
+- Despliegue: `appgdep_6af571a4921c8191863c64d43e40cf90`, estado `succeeded`.
 
 ## Pruebas de esta actualización
 
@@ -42,7 +42,7 @@ Para futuras publicaciones, usar la identidad existente y el workflow de Sites; 
 
 ## Revisión de cierre publicada
 
-73 casos y 16 lecciones por bloques, catálogo separado, filtro de estado, repaso, avance de recorrido, ayudas de funciones e interfaz pulida. Verificación actual: 31 scripts Python, FastAPI con Uvicorn real, Streamlit con fixture y los 73 casos en Chromium a 320/390/768/1440 px. También conflictos de pestaña, cuota llena y recuperación de progreso dañado. El paquete publicado se comparó byte por byte con el probado.
+80 casos y 16 lecciones por bloques, catálogo separado, filtro de estado, repaso, avance de recorrido, ayudas de funciones e interfaz pulida. Verificación actual: 38 scripts Python, FastAPI con Uvicorn real, Streamlit con fixture y los 80 casos en Chromium a 320/390/768/1440 px. También conflictos de pestaña, cuota llena y recuperación de progreso dañado. El paquete publicado se comparó byte por byte con el probado.
 
 Se conserva la política privada de un usuario y cero grupos. No se han generado ni guardado credenciales en Proton Pass. La primera respuesta de acceso anónimo observada fue 403; no se afirma haber probado un login del propietario ni su configuración MFA.
 
@@ -67,3 +67,7 @@ Los identificadores de publicación de este documento corresponden a la revisió
 El botón Ejecutar Python usa Pyodide 314.0.7 en un Worker del navegador, creado de nuevo en cada ejecución. El servidor solo entrega JavaScript estático; nunca ejecuta el código. El documento mantiene scripts por hash y connect-src none; la respuesta del asset del Worker tiene una CSP propia que permite únicamente el runtime fijado de cdn.jsdelivr.net/pyodide/v314.0.7/full/ y la compilación/evaluación necesaria dentro del Worker, sin acceso al DOM/localStorage. Sin archivos del host ni secretos de aplicación.
 
 Límites: preparación 120 s, cálculo 10 s, salida 20.000 caracteres, cancelación manual. Probados print, NumPy/Pandas, errores y bucle infinito con la misma política del paquete alojado. No sirve terminal/SQL ni servidores FastAPI/Streamlit. La instalación/activación de P04 está facilitada como comentarios; no se evalúa memorización.
+
+## Guía práctica ampliada publicada
+
+80 casos, 34 de Programazioa; nueva ruta principal P28–P34 con datasets completos, CSV/notebook descargables y niveles fácil→muy difícil en las cinco materias. Las fuentes nuevas se contrastaron contra Big_Data/main; la estructura 3+7 procede de la guía aportada por el propietario. Se conservan los IDs y borradores anteriores. La publicación anterior indicada se actualizó el 12/11/2026 a las 08:58 Madrid.

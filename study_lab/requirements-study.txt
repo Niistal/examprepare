@@ -6,3 +6,6 @@ seaborn>=0.13,<1
 scikit-learn>=1.4,<2
 # openpyxl permite trabajar con Excel desde Pandas
 openpyxl>=3.1,<4
+
+# Esquemas de entrada del itinerario práctico (P33/P34)
+pydantic>=2.7,<3
