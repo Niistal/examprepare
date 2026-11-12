@@ -69,7 +69,7 @@ with servers() as (local,hosted), sync_playwright() as pw:
         check_files(page,['grafico.png','grafico.svg'])
         # Import rejects oversized data without replacing the current answers.
         page.evaluate("window.confirm=()=>true;data.answers.keep='preserved'")
-        page.evaluate("importState(new File(['x'.repeat(10001025)],'too-large.json'))")
+        page.evaluate("importState(new File([JSON.stringify({schema:1,data:{ratings:{},answers:{large:'x'.repeat(10001025)},history:[]}})],'too-large.json'))")
         assert page.evaluate('data.answers.keep')=='preserved'
         page.goto(hosted+'/login')
         response=page.request.post(hosted+'/api/register',headers={'Origin':hosted},data={'username':'browser-test','password':'test-password-12345'})
