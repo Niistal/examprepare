@@ -7,7 +7,7 @@ if args.frameworks:commands.append([sys.executable,'test_frameworks.py'])
 if args.browser:commands.append([sys.executable,'test_browser.py'])
 report=[]
 for cmd in commands:
-    result=subprocess.run(cmd,cwd=root,capture_output=True,text=True,timeout=180)
+    result=subprocess.run(cmd,cwd=root,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=180)
     label=' '.join(cmd[1:])
     report.append(('PASS' if result.returncode==0 else 'FAIL')+' '+label+'\n'+result.stdout+result.stderr)
     print(report[-1],flush=True)

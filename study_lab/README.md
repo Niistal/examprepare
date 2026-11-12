@@ -4,7 +4,7 @@
 
 ## 1. Qué contiene la aplicación
 
-- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **80 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
+- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **84 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
 - `app.js`, `style.css`, `shell.html`: fuentes editables para que T3 Code continúe sin tener que modificar 100 KB de HTML en cada iteración.
 - `requirements-study.txt`: dependencias Python comunes para los ejercicios de datos.
 - `requirements-study-extra.txt`: dependencias adicionales opcionales (API, Streamlit, Kafka y Faker). Se instalan solo si se van a practicar esas materias.
@@ -15,7 +15,7 @@
 
 ### Exámenes numerados
 
-Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 34 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
+Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 38 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
 
 Modo **Guiado**: pistas y corrección por ejercicio. Modo **Sin ayudas**: enunciados, editor y reloj; se desbloquean las soluciones al finalizar el examen. No hay evaluación automática de la exactitud del código todavía: se utiliza rúbrica y autoevaluación. Ejecutar Python muestra stdout y errores en un Worker aislado con Pyodide. La primera carga descarga el runtime y las librerías desde una versión fijada del CDN oficial. No envía el código a un servidor ejecutor ni accede al disco del equipo. DSL/servicios se practican en su herramienta local.
 
@@ -139,7 +139,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 ## 6. Estado de entrega y límites
 
-- **Listo**: interfaz autónoma, calendario, 80 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
+- **Listo**: interfaz autónoma, calendario, 84 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
 - **No realizado**: autocorrección de respuestas, importación masiva de notebooks/PDF, integración directa con NotebookLM y extracción/validación completa de cada ejercicio del repositorio. El estado actualizado y sus limitaciones están en `ESTADO_T3_CODE.md`.
 - Los cambios de la aplicación se versionan en su repositorio privado. Los apuntes y los proyectos Erronka no se modifican; no se envían cambios a `main`.
 
@@ -147,7 +147,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 
 ## Entrega T3 actualizada
 
-Recorrido finito por competencias y ayudas en dos pasos: orientación, luego ejemplo/API e imports. Sigue la ruta de cada materia y repite lo que no puedas explicar sin mirar; no hay que completar mil niveles. Programazioa contiene 34 casos, Sistemas ML 11, AA Ereduak 11, BD Sistemak 12 y BD Aplikatua 12.
+Recorrido finito por competencias y ayudas en dos pasos: orientación, luego ejemplo/API e imports. Sigue la ruta de cada materia y repite lo que no puedas explicar sin mirar; no hay que completar mil niveles. Programazioa contiene 38 casos, Sistemas ML 11, AA Ereduak 11, BD Sistemak 12 y BD Aplikatua 12.
 
 Consulta [ENTORNO_LOCAL.md](ENTORNO_LOCAL.md) para comandos exactos y [ESTADO_T3_CODE.md](ESTADO_T3_CODE.md) para pruebas y pendientes. El build integra `sources.js`, `materials.js`, `app.js` y `style.css` en el standalone: `python build.py`. `sources.json` conserva ruta, sección, hash y commit de contraste. `verified` confirma ruta y tema, no certifica una respuesta como obra del profesor ni como solución exhaustiva.
 
@@ -183,3 +183,21 @@ El editor autoguarda cada cambio. **Repetir ejercicio** restaura la plantilla y 
 ## Guía del examen y práctica con DataFrames completos
 
 Consulta [GUIA_PROGRAMAZIOA.md](GUIA_PROGRAMAZIOA.md). La ruta principal P28–P34 usa CSV completos de 41 registros, incluidos errores, con descarga de CSV y notebook. Los cinco niveles van de fácil a muy difícil; se conservan los complementos anteriores y todos los borradores. El formato 3+7 se aplica a Programazioa, con teoría conceptual y práctica en Jupyter; no cambia las fechas de noviembre. El simulacro final P34 tiene 25 minutos y otra planta/datos.
+
+## Guardado y archivos Python
+
+El progreso por cuenta admite hasta 10 MB de JSON UTF-8. Se valida el tamaño antes de importar; un rechazo del servidor conserva la copia en memoria y permite exportarla. Los respaldos se exportan compactos para que puedan reimportarse, con un pequeño margen para la fecha y la versión del formato. Una desconexión sigue requiriendo esperar al guardado o exportar antes de cerrar.
+
+El ejecutor muestra los PNG generados y permite descargar PNG, SVG, CSV y otros archivos guardados en su carpeta de trabajo virtual, incluidos subdirectorios. `plt.show()` guarda una figura PNG automáticamente. Los SVG se descargan sin insertar su contenido en la página. Se conservan hasta 30 archivos y 10 MB por ejecución; se retiran al ejecutar otra vez o cambiar de ejercicio. Los archivos escritos antes de un error también se recuperan si Python devuelve el control; detener o agotar el tiempo termina el Worker sin recuperar archivos pendientes.
+
+Seaborn 0.13.2 está incluido en el paquete, con licencia y SHA-256 documentados en `vendor/README.md`. No se consulta PyPI durante los ejercicios. El runtime y las dependencias de Pyodide siguen necesitando conexión la primera vez.
+
+Prueba de navegador reproducible, con cuentas y servidores temporales:
+
+```sh
+python -m pip install playwright
+python -m playwright install chromium
+python study_lab/test_runner_browser.py
+```
+
+Ejecuta estos comandos desde la raíz del repositorio. La suite comprueba gráficos y descargas reales, guardado por cuenta por encima de 2 MB, recarga, rechazo de importaciones demasiado grandes y vista móvil. Las pruebas del publicador con `fcntl` y de Gunicorn son específicas de Linux; la app local, el servidor de desarrollo y las suites generales se pueden comprobar en Windows.

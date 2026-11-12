@@ -12,7 +12,7 @@ html=html.replace('<meta name="color-scheme"', '<meta name="referrer" content="n
 # Bloquea scripts externos/inyección de scripts; el código standalone se autoriza por hash.
 scripts=re.findall(r'<script>([\s\S]*?)</script>',html)
 hashes=' '.join("'sha256-"+base64.b64encode(hashlib.sha256(s.encode()).digest()).decode()+"'" for s in scripts)
-csp=f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; worker-src 'self'"
+csp=f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; img-src data: blob:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; worker-src 'self'"
 html=html.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta http-equiv="Content-Security-Policy" content="'+csp+'">')
 output=repo/'hosted_study_lab';(output/'dist/server').mkdir(parents=True,exist_ok=True);(output/'.openai').mkdir(exist_ok=True);(output/'qa').mkdir(exist_ok=True)
 config=json.loads((repo/'deployment/hosting.json').read_text(encoding='utf-8'))
@@ -21,7 +21,7 @@ headers={'cache-control':'private, no-store','content-security-policy':csp+"; fr
 js_string=lambda value:json.dumps(value,ensure_ascii=False).replace('\u2028','\\u2028').replace('\u2029','\\u2029')
 worker=(repo/'deployment/worker-template.mjs').read_text(encoding='utf-8').replace('/*__DOCUMENT__*/',js_string(html)).replace('/*__PYTHON_WORKER__*/',js_string((app/'python-worker.mjs').read_text(encoding='utf-8'))).replace('/*__HEADERS__*/',json.dumps(headers,separators=(',',':')))
 (output/'dist/server/index.js').write_text(worker, encoding='utf-8')
-(output/'qa/document.html').write_text(html, encoding='utf-8')
+(output/'qa/document.html').write_text(html, encoding='utf-8', newline='\n')
 (output/'qa/headers.json').write_text(json.dumps(headers,indent=2)+'\n',encoding='utf-8')
 (output/'dist/index.html').unlink(missing_ok=True)
 (output/'.openai/hosting.json').write_text(json.dumps(config,indent=2)+'\n', encoding='utf-8')

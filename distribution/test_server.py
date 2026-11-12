@@ -10,7 +10,7 @@ class DistributionTests(unittest.TestCase):
         self.app=App(self.db,'http://127.0.0.1:8090',development=True)
     def tearDown(self):self.tmp.cleanup()
     def request(self,path,method='GET',body=None,cookie='',csrf='',origin='http://127.0.0.1:8090'):
-        env={};setup_testing_defaults(env);payload=json.dumps(body).encode() if body is not None else b''
+        env={};setup_testing_defaults(env);payload=json.dumps(body,ensure_ascii=False).encode() if body is not None else b''
         env.update(PATH_INFO=path,REQUEST_METHOD=method,CONTENT_TYPE='application/json',CONTENT_LENGTH=str(len(payload)),HTTP_COOKIE=cookie,HTTP_X_CSRF_TOKEN=csrf,HTTP_ORIGIN=origin,REMOTE_ADDR='127.0.0.1',**{'wsgi.input':io.BytesIO(payload)})
         result={}
         def start(status,headers):result.update(status=int(status.split()[0]),headers=dict(headers))
@@ -21,6 +21,19 @@ class DistributionTests(unittest.TestCase):
         page=self.request('/',cookie=cookie);self.assertEqual(page['status'],200)
         bootstrap=json.loads(page['body'].split('const CLOUD_BOOTSTRAP=',1)[1].split(';\n',1)[0])
         return cookie,bootstrap['csrf']
+    def test_large_progress_and_utf8_limit(self):
+        cookie,csrf=self.register()
+        state={**EMPTY,'answers':{'single-P10::P10':'x'*2_100_000}}
+        result=self.request('/api/progress','PUT',{'revision':0,'state':state},cookie,csrf)
+        self.assertEqual(result['status'],200)
+        self.assertEqual(json.loads(self.request('/api/progress',cookie=cookie)['body'])['state'],state)
+        # UTF-8 bytes, not characters; a rejected write must retain the old state.
+        too_large={**EMPTY,'answers':{'P10':'é'*5_000_000}}
+        rejected=self.request('/api/progress','PUT',{'revision':1,'state':too_large},cookie,csrf)
+        self.assertEqual(rejected['status'],413)
+        self.assertIn('10 MB',rejected['body'])
+        self.assertEqual(json.loads(self.request('/api/progress',cookie=cookie)['body'])['state'],state)
+
     def test_isolation_and_cross_device_persistence(self):
         a,csrf=self.register();b,other=self.register('student2')
         state={'ratings':{'P35':2},'answers':{'single::P35':'private answer'},'history':[]}
@@ -59,7 +72,8 @@ class DistributionTests(unittest.TestCase):
         self.assertNotIn("script-src 'unsafe-inline'",page['headers']['Content-Security-Policy'])
         self.assertNotIn('localStorage',page['body'])
         self.assertIn('http-equiv="Content-Security-Policy" content="worker-src \'self\'"',page['body'])
-        self.assertNotIn('blob:',page['headers']['Content-Security-Policy'])
+        self.assertIn("worker-src 'self';",page['headers']['Content-Security-Policy'])
+        self.assertIn('img-src data: blob:;',page['headers']['Content-Security-Policy'])
     def test_passwords_sessions_and_expiry(self):
         a,_=self.register();self.register('student2')
         with self.app.db() as db:
