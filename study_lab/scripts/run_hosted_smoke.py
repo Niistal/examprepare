@@ -1,6 +1,6 @@
 """Inicia y cierra servidores de QA propios en puertos efímeros; sin perfil del usuario."""
 from __future__ import annotations
-import os,pathlib,socket,subprocess,sys,time,urllib.request
+import argparse,os,pathlib,socket,subprocess,sys,time,urllib.request
 APP=pathlib.Path(__file__).resolve().parents[1];ROOT=APP.parent
 
 def port():
@@ -16,6 +16,7 @@ def ready(url,process):
     raise RuntimeError('Timeout al preparar servicio de QA')
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--runner',action='store_true');args=parser.parse_args()
     subprocess.run([sys.executable,str(APP/'scripts/build_hosted.py')],check=True,cwd=ROOT)
     subprocess.run(['node',str(APP/'test_worker.mjs')],check=True,cwd=ROOT)
     web_port,driver_port=port(),port();processes=[]
@@ -24,7 +25,7 @@ def main():
         web=subprocess.Popen(['node',str(APP/'scripts/serve_hosted.mjs'),str(ROOT/'hosted_study_lab/dist/server/index.js'),str(web_port)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);processes.append(web)
         driver=subprocess.Popen(['chromedriver',f'--port={driver_port}','--allowed-ips=127.0.0.1'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);processes.append(driver)
         ready(f'http://127.0.0.1:{web_port}',web);ready(f'http://127.0.0.1:{driver_port}/status',driver)
-        result=subprocess.run([sys.executable,str(APP/'test_browser.py')],cwd=ROOT,env={**os.environ,'NIIS_TEST_URL':f'http://127.0.0.1:{web_port}','NIIS_DRIVER_URL':f'http://127.0.0.1:{driver_port}','NIIS_TEST_HOSTED':'1'},capture_output=True,text=True,timeout=90)
+        result=subprocess.run([sys.executable,str(APP/'test_browser.py')],cwd=ROOT,env={**os.environ,'NIIS_TEST_URL':f'http://127.0.0.1:{web_port}','NIIS_DRIVER_URL':f'http://127.0.0.1:{driver_port}','NIIS_TEST_HOSTED':'1','NIIS_TEST_RUNNER':'1' if args.runner else ''},capture_output=True,text=True,timeout=360)
         print(result.stdout,end='')
         if result.returncode:print(result.stderr,file=sys.stderr,end='')
         return result.returncode

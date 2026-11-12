@@ -22,6 +22,8 @@
 
 - Actualización periódica activada tras las 08:10: cada 30 minutos, primera prevista a las 08:40:20 Madrid. La tarea todavía no ha ejecutado su primer run; el punto de entrada se probó manualmente y devolvió sin cambios. Depende de T3/equipo/conexiones disponibles. No confundirlo con una sincronización cloud del progreso.
 
+- Botones Repetir/Ejecutar/Detener incorporados. Run Python real con Pyodide y permisos de red del Worker limitados al runtime CDN fijado; CSP del documento mantiene scripts por hash y connect-src none.
+
 ## PRUEBAS
 
 Suite ejecutada desde el entorno propio del laboratorio:
@@ -31,6 +33,8 @@ Suite ejecutada desde el entorno propio del laboratorio:
 ```
 
 Resultados de esta revisión:
+
+- Ejecutor de navegador: PASS con print, NumPy/Pandas, ZeroDivisionError visible y bucle infinito terminado tras 10 s. Repetir restaura plantilla sin borrar historial; autoguardado conservado. Comandos P04 visibles comentados por sistema, también sin ayudas.
 
 - Supervisión hasta las **08:10 Europe/Madrid**: 343 comprobaciones locales entre 04:21 y 08:09:47, cero fallos, sin cambios de fuente y respuestas anónimas 403 en las comprobaciones periódicas. Última verificación HTTPS posterior al plazo: contenido de aplicación y cabeceras coincidentes; política privada de un usuario y cero grupos. Apuntes y aplicación limpios antes de registrar este cierre.
 - Se detuvo el ChromeDriver temporal propio al finalizar. El servidor de estudio en 127.0.0.1:8080 permanece disponible.
@@ -65,7 +69,7 @@ Para repetir QA: instalar opcionalmente `requirements-study-qa.txt` en el venv; 
 - **Proton Pass**: sin integración de bóveda en esta sesión. No se ha guardado ninguna credencial ni comprobado autocompletado/MFA del propietario. Seguimiento: issue #3.
 - **Progreso entre dispositivos**: almacenamiento cliente conforme al requisito original; se mueve con exportación/importación JSON. Sincronización automática es una mejora opcional, no implementada: issue #1.
 - **Infraestructura académica externa**: no se han ejecutado Windows/PowerShell, Orange ni clústeres Docker/Elastic/Logstash/Kafka/NiFi/Connect. Sus casos son de práctica manual con fuentes contrastadas; no se presentan simulaciones como pruebas de extremo a extremo. Seguimiento: issue #2.
-- El editor no ejecuta ni autocorrige código; permite escribir, copiar y comparar con criterios. La ejecución se hace en terminal/herramienta local, como se explica en la UI y en `ENTORNO_LOCAL.md`.
+- El editor ejecuta Python con Pyodide en un Worker aislado, filesystem virtual nuevo por run, timeout de cálculo 10 s y salida 20.000 caracteres. Requiere descargar runtime/librerías desde CDN en la primera carga. No ejecuta servicios/SQL/terminal ni autocorrige respuestas; esas herramientas siguen siendo locales.
 - Los 73 casos cubren áreas representativas del temario documentadas en `COBERTURA.md`, no cada detalle de cada PDF. `verified` no atribuye enunciados al profesor ni certifica autoría humana de las soluciones del repo. NotebookLM es apoyo derivado.
 - Revisión realizada por el agente principal: SELF_REVIEW / NOT_INDEPENDENT. No se utilizó 5.6 Luna ni Claude: el catálogo no permitió verificar la ruta full-access exigida para esa delegación. No se instaló un sustituto.
 - No se promete nota, aprendizaje completo en dos horas, ausencia absoluta de fallos ni observación indefinida. La aplicación queda con una suite reproducible y sin fallos conocidos abiertos en los flujos comprobados.

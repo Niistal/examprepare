@@ -96,6 +96,8 @@ try:
     js("window.confirm=()=>true")
     cmd('POST','/execute/async',{'script':"const done=arguments[arguments.length-1];importState(new File([sessionStorage.getItem('qa-backup')],'respaldo.json')).then(()=>done(true));",'args':[]})
     check("invalidStored===null && storageOkay && !storageConflict",'respaldo válido recupera el guardado')
+    js("startSingle('P04')")
+    check("document.getElementById('givenReferenceList').textContent.includes('# python -m pip install') && document.getElementById('givenReferenceList').textContent.includes('# WINDOWS') && document.getElementById('givenReferenceList').textContent.includes('# LINUX')",'comandos de entorno facilitados como comentarios por sistema')
     js("startSingle('P20')")
     check("!document.getElementById('givenReference').classList.contains('hidden') && document.getElementById('givenReferenceList').textContent.includes('np.linalg.inv')",'NumPy se aplica con referencia dada')
     js("document.getElementById('examMode').value='exam';document.getElementById('examNumber').value='1';startExam();session.ids=['P20'];questionIndex=0;renderQuestion()")
@@ -123,6 +125,17 @@ try:
     check("document.querySelectorAll('.material-item img,.material-item script').length===0 && !window.__catalogXss",'contenido hostil se muestra como texto, no HTML ejecutable')
     check("[...document.querySelectorAll('.material-item a')].every(a=>new URL(a.href).origin==='https://github.com' && !a.hasAttribute('onclick'))",'enlaces de temario permanecen en el origen permitido')
     check("[...document.querySelectorAll('.material-item')].every(e=>!e.hasAttribute('onmouseover'))",'IDs de recursos no pueden insertar atributos de evento')
+    js("startSingle('P01');document.getElementById('answerEditor').value='respuesta para repetir';persistDraft();window.confirm=()=>true;document.getElementById('resetAnswer').click()")
+    check("document.getElementById('answerEditor').value===currentQuestion().starter && !shown.P01?.solution",'repetir restaura plantilla y oculta ayudas')
+    if os.environ.get('NIIS_TEST_RUNNER'):
+        cmd('POST','/timeouts',{'script':180000})
+        def run_code(code):
+            js("startSingle('P01');document.getElementById('answerEditor').value="+json.dumps(code)+";runPython()")
+            return cmd('POST','/execute/async',{'script':"const done=arguments[arguments.length-1];let n=0;const i=setInterval(()=>{if(!pythonWorker||++n>650){clearInterval(i);done({status:document.getElementById('runStatus').textContent,output:document.getElementById('runOutput').textContent})}},200);",'args':[]})
+        result=run_code("print('hola',2+3)");assert 'hola 5' in result['output'],result;print('PASS Python real en navegador: print')
+        result=run_code("import numpy as np\nimport pandas as pd\nprint(pd.Series(np.array([1,2,3])).sum())");assert '6' in result['output'] and 'terminada' in result['status'],result;print('PASS NumPy y Pandas reales en navegador')
+        result=run_code('print(1/0)');assert 'ZeroDivisionError' in result['output'],result;print('PASS errores Python visibles')
+        result=run_code('while True: pass');assert '10 segundos' in result['status'],result;print('PASS bucle infinito detenido sin bloquear interfaz')
     logs=cmd('POST','/log',{'type':'browser'})
     assert not [x for x in logs if x['level']=='SEVERE'],logs
     print('PASS sin errores JS de navegador')

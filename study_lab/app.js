@@ -481,6 +481,37 @@ BANK.push(...[
 ]);
 // Adaptación autorizada: referencias dadas, aplicación práctica sin demostraciones.
 const PRACTICAL_ADAPTATIONS={
+  "P04": {
+  "title": "Usar un entorno con comandos facilitados",
+  "prompt": "Usa los comandos comentados de referencia para preparar un entorno en tu sistema. No tienes que memorizar pip install ni la activación. Comprueba qué intérprete se utiliza y explica para qué sirven .venv y requirements.txt. Si solo dispones de un sistema, practica ese; el otro queda como consulta.",
+  "starter": "# Referencia: estos comandos se facilitan; no hay que memorizarlos.\n# Ejecútalos en la terminal de tu sistema, no dentro de un archivo Python.\n# Copia cada comando quitando el # inicial.\n#\n# WINDOWS — PowerShell\n# python -m venv .venv\n# .\\.venv\\Scripts\\Activate.ps1\n# python -m pip install numpy pandas matplotlib scikit-learn\n# python -m pip freeze > requirements.txt\n# python -c \"import sys; print(sys.executable)\"\n#\n# LINUX — Bash / Omarchy\n# python3 -m venv .venv\n# source .venv/bin/activate\n# python -m pip install numpy pandas matplotlib scikit-learn\n# python -m pip freeze > requirements.txt\n# python -c \"import sys; print(sys.executable)\"\n#\n# Tu comprobación: ¿qué intérprete aparece y por qué está aislado?\n",
+  "references": [
+    "# Referencia: estos comandos se facilitan; no hay que memorizarlos.",
+    "# Ejecútalos en la terminal de tu sistema, no dentro de un archivo Python.",
+    "# Copia cada comando quitando el # inicial.",
+    "#",
+    "# WINDOWS — PowerShell",
+    "# python -m venv .venv",
+    "# .\\.venv\\Scripts\\Activate.ps1",
+    "# python -m pip install numpy pandas matplotlib scikit-learn",
+    "# python -m pip freeze > requirements.txt",
+    "# python -c \"import sys; print(sys.executable)\"",
+    "#",
+    "# LINUX — Bash / Omarchy",
+    "# python3 -m venv .venv",
+    "# source .venv/bin/activate",
+    "# python -m pip install numpy pandas matplotlib scikit-learn",
+    "# python -m pip freeze > requirements.txt",
+    "# python -c \"import sys; print(sys.executable)\""
+  ],
+  "checks": [
+    "Usa la referencia del sistema disponible; no se evalúa memorizar comandos",
+    "Comprueba que sys.executable apunta a .venv",
+    "Explica aislamiento y reproducibilidad"
+  ],
+  "hint": "Los comandos se dan como consulta. PowerShell y Bash activan el entorno de forma distinta; después usa python -m pip.",
+  "why": "Se practica usar y comprobar el entorno. La sintaxis de instalación y activación se facilita; los imports del programa siguen siendo código Python."
+},
   "P06": {
     "title": "Aplicar z-score con NumPy",
     "prompt": "Con X = [[1, 10], [2, 20], [3, 30]], aplica la fórmula facilitada por columna usando mean(axis=0), std(axis=0) y broadcasting. Si una desviación es 0, sustitúyela por 1 antes de dividir. Imprime el resultado y comprueba su forma. No hay que deducir la fórmula ni calcular a mano.",
@@ -579,7 +610,7 @@ function basicExample(q){
  const examples={"A12": "import pandas as pd\ns=pd.Series([10,20,30])\nprint(s.rolling(2).mean()) # NaN,15,25\n# Ordena por tiempo antes de aplicar la ventana.", "M10": "import pandas as pd\ns=pd.Series([20,None,200])\nprint(s.isna())\nprint(s.between(0,120))\n# Imputar aprende estadísticas: solo con train.", "E09": "Reglas explícitas: SI x > 28, ventilar.\nAprendizaje: ajustar parámetros con ejemplos.\nGeneración: producir contenido condicionado al contexto.", "E10": "Objetivo: saber qué repasar.\nNecesario: errores por tema.\nNo necesario: webcam continua.\nMedida verificable: no crear ni enviar capturas.", "E11": "Una confianza alta puede ser una señal; una señal no prueba pertenencia.\nLa prueba necesita ejemplos con pertenencia conocida y medir falsos positivos.", "S03": "docker compose config\ndocker compose up -d\ndocker compose ps\ndocker compose logs --tail=20\n# Práctica en copia aislada y con puertos en 127.0.0.1.", "S07": "filter {\n  mutate { add_field => { \"origen\" => \"practica\" } }\n}\n# grok extrae; date interpreta; mutate modifica campos.",
   P01:'numero="12345678"\nletras="TRWAGMYFPDXBNJZSQVHLCKE"\nprint(letras[int(numero)%23]) # Z\n# Comprueba antes formato, longitud y dígitos ASCII.',
   P02:'import json\ndato={"ciudad":"Bilbo"}\ntexto=json.dumps(dato,ensure_ascii=False)\nassert json.loads(texto)==dato\n# dump/load trabajan con un fichero abierto.',
-  P04:'python -m venv .venv\n# Linux: source .venv/bin/activate\n# PowerShell: .\\.venv\\Scripts\\Activate.ps1\npython -m pip install numpy\npython -c "import sys; print(sys.executable)"',
+  P04:q.starter,
   P07:'import pandas as pd\ndf=pd.DataFrame({"n":[2,None,2]})\nlimpio=df.drop_duplicates().copy()\nlimpio["n"]=limpio["n"].fillna(0)\n# Devuelve un resultado: reasigna la variable.',
   P09:'import pandas as pd\na=pd.DataFrame({"id":[1,99]})\nb=pd.DataFrame({"id":[1],"nombre":["Ane"]})\nprint(a.merge(b,on="id",how="left"))\n# id=99 queda con nombre NaN.',
   P17:'import pandas as pd\na=pd.DataFrame({"x":[1]});b=pd.DataFrame({"x":[2]})\nprint(pd.concat([a,b],ignore_index=True))\n# concat apila filas; ignore_index crea un índice nuevo.'
@@ -877,11 +908,11 @@ function displayTimer(){const secs=Math.max(0,Math.ceil(timeRemaining));$('timer
 function startTimer(){if(!session)return;if(timeInterval){timeRemaining=Math.max(0,Math.ceil((timeDeadline-Date.now())/1000));stopTimer();$('timerToggle').textContent='Reanudar reloj';save();return;}timeDeadline=Date.now()+timeRemaining*1000;timeInterval=setInterval(()=>{timeRemaining=Math.max(0,Math.ceil((timeDeadline-Date.now())/1000));displayTimer();if(timeRemaining===0){stopTimer();$('timerToggle').textContent='Tiempo agotado';save();toast('Fin del tiempo de práctica');}},500);$('timerToggle').textContent='Pausar reloj';save();}
 function startExam(){persistDraft();const num=Math.max(1,Math.min(1000,Math.trunc(Number($('examNumber').value)||1)));$('examNumber').value=num;session={id:`exam-${courseId}-${num}`,course:courseId,number:num,ids:questionsFor(courseId,num),mode:$('examMode').value,submitted:false};questionIndex=0;shown={};resetTimer();openSession();}
 function startSingle(id){persistDraft();const q=BANK.find(x=>x.id===id);if(!q)return;courseId=q.c;topic='all';$('searchInput').value='';$('levelFilter').value='all';$('statusFilter').value='all';renderNav();session={id:`single-${id}`,course:q.c,number:null,ids:[id],mode:'guided',submitted:true};questionIndex=0;shown={};resetTimer();openSession();}
-function openSession(){save();const c=course(session.course);$('examEyebrow').textContent=session.number?`SIMULACRO ${String(session.number).padStart(4,'0')} / 1000 · ${session.mode==='exam'?'MODO EXAMEN':'MODO GUIADO'}`:'ENTRENAMIENTO POR EJERCICIO';$('examHeading').textContent=c.name;$('examDesc').textContent=session.mode==='exam'&&!session.submitted?'Sin pistas ni soluciones hasta entregar. Las referencias facilitadas forman parte del enunciado.':'Escribe, ejecuta en tu terminal y luego comprueba la solución.';$('finishExam').style.display=session.mode==='exam'&&!session.submitted?'':'none';$('redoExam').style.display=session.number?'':'none';navigate('exam');renderQuestion();$('exerciseTitle').focus({preventScroll:true});}
+function openSession(){save();const c=course(session.course);$('examEyebrow').textContent=session.number?`SIMULACRO ${String(session.number).padStart(4,'0')} / 1000 · ${session.mode==='exam'?'MODO EXAMEN':'MODO GUIADO'}`:'ENTRENAMIENTO POR EJERCICIO';$('examHeading').textContent=c.name;$('examDesc').textContent=session.mode==='exam'&&!session.submitted?'Sin pistas ni soluciones hasta entregar. Las referencias facilitadas forman parte del enunciado.':'Escribe, ejecuta Python aquí o usa tu herramienta local y después comprueba la solución.';$('finishExam').style.display=session.mode==='exam'&&!session.submitted?'':'none';$('redoExam').style.display=session.number?'':'none';navigate('exam');runQuestionKey=null;renderQuestion();$('exerciseTitle').focus({preventScroll:true});}
 function currentQuestion(){return BANK.find(x=>x.id===session?.ids[questionIndex]);}
 function draftKey(q){return `${session.id}::${q.id}`;}
 function persistDraft(){if(!session)return;const q=currentQuestion();if(!q)return;data.answers[draftKey(q)]=$('answerEditor').value;return save();}
-function renderQuestion(){if(!session)return;const q=currentQuestion();if(!q)return;const locked=session.mode==='exam'&&!session.submitted;$('questionTabs').innerHTML=session.ids.map((id,i)=>{const done=data.ratings[id]===2;return `<button class="${i===questionIndex?'active':''} ${done?'completed':''}" aria-current="${i===questionIndex?'step':'false'}" data-index="${i}">Ejercicio ${i+1}${done?' ✓':''}</button>`}).join('');$('questionTabs').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>switchQuestion(Number(x.dataset.index))));$('exerciseTopic').textContent=q.topic;$('exerciseLevel').textContent=['','BASE','INTERMEDIO','RETO'][q.level];$('exerciseType').textContent=q.kind;$('exerciseTitle').textContent=q.title;$('exerciseId').textContent=q.id;$('exercisePrompt').textContent=q.prompt;$('givenReference').classList.toggle('hidden',!q.references?.length);$('givenReferenceList').innerHTML=(q.references||[]).map(line=>`<li>${esc(line)}</li>`).join('');$('exerciseChecks').innerHTML=q.checks.map(x=>`<li>${esc(x)}</li>`).join('');$('answerEditor').value=data.answers[draftKey(q)]??q.starter??'';$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent=storageOkay?'Guardado local':'Sin guardar: exporta JSON';$('hintToggle').disabled=locked;$('hintToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.hint)));$('solutionToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.solution)));$('solutionToggle').disabled=locked;$('hintToggle').textContent=locked?'Pistas bloqueadas':'Ver una pista';$('solutionToggle').textContent=locked?'Finaliza para corregir':'Mostrar solución y corregir';const helpLevel=shown[q.id]?.hint||0;$('hintToggle').textContent=locked?'Pistas bloqueadas':helpLevel===0?'1 · Orientación':helpLevel===1?'2 · Ejemplo y llamadas':'Ocultar ayuda';$('hintContent').textContent=q.hint+(helpLevel===2?'\n\nEJEMPLO BÁSICO (adáptalo al caso):\n'+basicExample(q)+'\n\nSTARTER / IMPORTS DEL EJERCICIO:\n'+(q.starter||'Esboza el flujo y justifica cada paso.'):'');$('hintContent').classList.toggle('hidden',locked||!shown[q.id]?.hint);$('solutionBlock').classList.toggle('hidden',locked||!shown[q.id]?.solution);$('solutionCode').textContent=q.solution;$('solutionExplain').textContent=q.why;$('guidedConcept').textContent=locked?'Resuelve con lo que recuerdas. Las explicaciones se desbloquean al entregar.':q.checks.join(' · ');$('sourceDescription').textContent=`${q.verified?'Tema contrastado':'Pendiente de contraste'} · ${q.source_path} · ${q.source_section}. Microcaso propio de estudio; las soluciones del repositorio pueden estar asistidas por IA.`;$('sourceLink').href=sourceUrl(q.source_path,typeof SOURCE_AUDIT!=='undefined'?SOURCE_AUDIT.commit:'main');const sourceState=materialSourceState(q);$('sourceUpdateNotice').classList.toggle('hidden',!['changed','missing'].includes(sourceState));$('sourceUpdateNotice').textContent=sourceState==='changed'?'El archivo del temario se ha actualizado desde el contraste de este caso. La solución no se regenera automáticamente; compara con la fuente actual.':'La ruta ya no figura en el catálogo actual. Se conserva el caso y su revisión original para no borrar tu progreso.';$('sourceCurrentLink').classList.toggle('hidden',!['changed','missing'].includes(sourceState));$('sourceCurrentLink').href=sourceUrl(sourceState==='missing'?course(q.c).folder+'/':q.source_path); $('sourceLink').textContent='Abrir revisión contrastada' ;const folder=course(q.c).folder;$('notebookGuide').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Guias_de_Estudio/Guia_Estudio_${folder}.md`);$('notebookQuiz').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Quizzes_y_Examenes/Quiz_Examen_${folder}.md`);document.querySelectorAll('.rating').forEach(b=>b.classList.toggle('active',data.ratings[q.id]===Number(b.dataset.rating)));$('prevQuestion').disabled=questionIndex===0;$('nextQuestion').textContent=session.ids.length===1?'Siguiente del recorrido →':questionIndex===session.ids.length-1?'Volver al principio ↺':'Siguiente →';}
+function renderQuestion(){if(!session)return;const q=currentQuestion();if(!q)return;resetRunPanel();const locked=session.mode==='exam'&&!session.submitted;$('questionTabs').innerHTML=session.ids.map((id,i)=>{const done=data.ratings[id]===2;return `<button class="${i===questionIndex?'active':''} ${done?'completed':''}" aria-current="${i===questionIndex?'step':'false'}" data-index="${i}">Ejercicio ${i+1}${done?' ✓':''}</button>`}).join('');$('questionTabs').querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>switchQuestion(Number(x.dataset.index))));$('exerciseTopic').textContent=q.topic;$('exerciseLevel').textContent=['','BASE','INTERMEDIO','RETO'][q.level];$('exerciseType').textContent=q.kind;$('exerciseTitle').textContent=q.title;$('exerciseId').textContent=q.id;$('exercisePrompt').textContent=q.prompt;$('givenReference').classList.toggle('hidden',!q.references?.length);$('givenReferenceList').innerHTML=(q.references||[]).map(line=>`<li>${esc(line)}</li>`).join('');$('exerciseChecks').innerHTML=q.checks.map(x=>`<li>${esc(x)}</li>`).join('');$('answerEditor').value=data.answers[draftKey(q)]??q.starter??'';$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent=storageOkay?'Autoguardado':'Sin guardar: exporta JSON';$('hintToggle').disabled=locked;$('hintToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.hint)));$('solutionToggle').setAttribute('aria-expanded',String(!locked&&Boolean(shown[q.id]?.solution)));$('solutionToggle').disabled=locked;$('hintToggle').textContent=locked?'Pistas bloqueadas':'Ver una pista';$('solutionToggle').textContent=locked?'Finaliza para corregir':'Mostrar solución y corregir';const helpLevel=shown[q.id]?.hint||0;$('hintToggle').textContent=locked?'Pistas bloqueadas':helpLevel===0?'1 · Orientación':helpLevel===1?'2 · Ejemplo y llamadas':'Ocultar ayuda';$('hintContent').textContent=q.hint+(helpLevel===2?'\n\nEJEMPLO BÁSICO (adáptalo al caso):\n'+basicExample(q)+'\n\nSTARTER / IMPORTS DEL EJERCICIO:\n'+(q.starter||'Esboza el flujo y justifica cada paso.'):'');$('hintContent').classList.toggle('hidden',locked||!shown[q.id]?.hint);$('solutionBlock').classList.toggle('hidden',locked||!shown[q.id]?.solution);$('solutionCode').textContent=q.solution;$('solutionExplain').textContent=q.why;$('guidedConcept').textContent=locked?'Resuelve con lo que recuerdas. Las explicaciones se desbloquean al entregar.':q.checks.join(' · ');$('sourceDescription').textContent=`${q.verified?'Tema contrastado':'Pendiente de contraste'} · ${q.source_path} · ${q.source_section}. Microcaso propio de estudio; las soluciones del repositorio pueden estar asistidas por IA.`;$('sourceLink').href=sourceUrl(q.source_path,typeof SOURCE_AUDIT!=='undefined'?SOURCE_AUDIT.commit:'main');const sourceState=materialSourceState(q);$('sourceUpdateNotice').classList.toggle('hidden',!['changed','missing'].includes(sourceState));$('sourceUpdateNotice').textContent=sourceState==='changed'?'El archivo del temario se ha actualizado desde el contraste de este caso. La solución no se regenera automáticamente; compara con la fuente actual.':'La ruta ya no figura en el catálogo actual. Se conserva el caso y su revisión original para no borrar tu progreso.';$('sourceCurrentLink').classList.toggle('hidden',!['changed','missing'].includes(sourceState));$('sourceCurrentLink').href=sourceUrl(sourceState==='missing'?course(q.c).folder+'/':q.source_path); $('sourceLink').textContent='Abrir revisión contrastada' ;const folder=course(q.c).folder;$('notebookGuide').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Guias_de_Estudio/Guia_Estudio_${folder}.md`);$('notebookQuiz').href=sourceUrl(`NotebookLM_Material_Estudio/${folder}/Quizzes_y_Examenes/Quiz_Examen_${folder}.md`);document.querySelectorAll('.rating').forEach(b=>b.classList.toggle('active',data.ratings[q.id]===Number(b.dataset.rating)));$('prevQuestion').disabled=questionIndex===0;$('nextQuestion').textContent=session.ids.length===1?'Siguiente del recorrido →':questionIndex===session.ids.length-1?'Volver al principio ↺':'Siguiente →';}
 function switchQuestion(index){if(!session||index<0||index>=session.ids.length)return;persistDraft();questionIndex=index;save();renderQuestion();$('exerciseTitle').focus({preventScroll:true});}
 function revealHint(){persistDraft();if(session.mode==='exam'&&!session.submitted)return;const id=currentQuestion().id;shown[id]??={};shown[id].hint=((Number(shown[id].hint)||0)+1)%3;renderQuestion();}
 function revealSolution(){persistDraft();if(session.mode==='exam'&&!session.submitted)return;const id=currentQuestion().id;shown[id]??={};shown[id].solution=!shown[id].solution;renderQuestion();}
@@ -929,6 +960,38 @@ function restoreSession(){
  const running=Number.isFinite(x.timeDeadline)&&timeRemaining>0;
  openSession();displayTimer();if(running)startTimer();else $('timerToggle').textContent='Iniciar reloj';
 }
+let pythonWorker=null,runTimeout=null,workerURL=null,runQuestionKey=null;
+function stopPython(message='Ejecución detenida.'){
+ pythonWorker?.terminate();pythonWorker=null;clearTimeout(runTimeout);if(workerURL){URL.revokeObjectURL(workerURL);workerURL=null;}
+ $('runAnswer').disabled=false;$('stopRun').classList.add('hidden');if(message)$('runStatus').textContent=message;
+}
+function pythonCase(q){return /PYTHON|PANDAS|NUMPY/i.test(q.kind)&&!['P13','P14'].includes(q.id);}
+function resetRunPanel(force=false){const key=session?.id+'::'+currentQuestion()?.id;if(!force&&key===runQuestionKey)return;runQuestionKey=key;stopPython('');$('runOutput').textContent='Todavía no has ejecutado código.';$('runStatus').textContent=pythonCase(currentQuestion())?'Ejecuta tu código para ver lo que imprime. La primera carga descarga Python y las librerías necesarias.':'Este ejercicio se realiza en su terminal o herramienta; el botón ejecuta únicamente Python.';$('runAnswer').disabled=!pythonCase(currentQuestion());}
+function runPython(){
+ if(!pythonCase(currentQuestion()))return;persistDraft();const code=$('answerEditor').value;if(!code.trim()){toast('Escribe código Python antes de ejecutar');return;}
+ stopPython('Preparando Python… La primera carga puede tardar.');$('runOutput').textContent='';$('runAnswer').disabled=true;$('stopRun').classList.remove('hidden');
+ try{
+  const hosted=Boolean(document.querySelector('meta[http-equiv="Content-Security-Policy"]'));
+  if(!hosted)workerURL=URL.createObjectURL(new Blob([PYTHON_WORKER_SOURCE],{type:'text/javascript'}));
+  const worker=new Worker(hosted?'./python-worker.mjs':workerURL,{type:'module'});pythonWorker=worker;let runningStarted=false;
+  const deadline=(ms,message)=>{clearTimeout(runTimeout);runTimeout=setTimeout(()=>stopPython(message),ms);};
+  deadline(120000,'No se pudo preparar Python en 2 minutos. Comprueba la conexión y vuelve a ejecutar.');
+  worker.onmessage=event=>{
+   if(worker!==pythonWorker)return;const m=event.data;
+   if(m.type==='output'){$('runOutput').textContent=($('runOutput').textContent+String(m.text)).slice(0,20000);}
+   if(m.type==='loading')$('runStatus').textContent=String(m.text);
+   if(m.type==='running'&&!runningStarted){runningStarted=true;$('runStatus').textContent='Ejecutando…';deadline(10000,'Detenido: se superó el límite de 10 segundos. Revisa los bucles.');}
+   if(m.type==='done'){if(!$('runOutput').textContent)$('runOutput').textContent='El programa terminó sin imprimir nada. Usa print(...) para ver valores.';stopPython('Ejecución terminada. Se muestra la salida, no una nota automática.');}
+   if(m.type==='error'){$('runOutput').textContent=($('runOutput').textContent+'\n'+String(m.text)).slice(0,20000);stopPython('Python encontró un error. Revisa el mensaje.');}
+  };
+  worker.onerror=()=>stopPython('No se pudo iniciar Python. Comprueba la conexión o ejecútalo en tu terminal.');
+  worker.postMessage({code});
+ }catch{stopPython('Este navegador no pudo iniciar Python. Usa la ejecución en terminal.');}
+}
+function repeatExercise(){
+ if(!session||!confirm('¿Repetir este ejercicio desde su plantilla? Se reemplaza solo su respuesta actual; el historial se conserva.'))return;
+ const q=currentQuestion();stopPython('');shown[q.id]={};$('answerEditor').value=q.starter||'';persistDraft();if(session.ids.length===1)resetTimer();save();renderQuestion();resetRunPanel(true);$('answerEditor').focus();
+}
 function init(){
   window.addEventListener('pagehide',persistDraft);
   window.addEventListener('storage',ev=>{if(ev.key===STATE_KEY&&ev.newValue!==lastStored)showStorageConflict();});
@@ -954,10 +1017,12 @@ function init(){
   $('randomExam').addEventListener('click',()=>{$('examNumber').value=1+Math.floor(Math.random()*1000);toast('Número de examen seleccionado');});
   $('beginExam').addEventListener('click',startExam);
   $('backToPractice').addEventListener('click',()=>{persistDraft();stopTimer();save();navigate('practice');});
-  $('answerEditor').addEventListener('input',()=>{$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent='Guardando…';persistDraft();$('autosaveStatus').textContent=storageOkay?'Guardado local':'Sin guardar: exporta JSON';});
+  $('answerEditor').addEventListener('input',()=>{$('charCounter').textContent=$('answerEditor').value.length+' caracteres';$('autosaveStatus').textContent='Guardando…';persistDraft();$('autosaveStatus').textContent=storageOkay?'Autoguardado':'Sin guardar: exporta JSON';});
   $('answerEditor').addEventListener('keydown',ev=>{if(ev.key==='Escape'){ev.preventDefault();$('copyAnswer').focus();return;}if(ev.key==='Tab'&&!ev.shiftKey){ev.preventDefault();const a=ev.target,start=a.selectionStart,end=a.selectionEnd;a.value=a.value.slice(0,start)+'    '+a.value.slice(end);a.selectionStart=a.selectionEnd=start+4;persistDraft();}});
   $('copyAnswer').addEventListener('click',()=>copyText($('answerEditor').value));
-  $('resetAnswer').addEventListener('click',()=>{if(confirm('¿Limpiar la respuesta de este ejercicio?')){$('answerEditor').value='';persistDraft();renderQuestion();}});
+  $('resetAnswer').addEventListener('click',repeatExercise);
+  $('runAnswer').addEventListener('click',runPython);
+  $('stopRun').addEventListener('click',()=>stopPython());
   $('hintToggle').addEventListener('click',revealHint);
   $('solutionToggle').addEventListener('click',revealSolution);
   document.querySelectorAll('.rating').forEach(b=>b.addEventListener('click',()=>rate(Number(b.dataset.rating))));

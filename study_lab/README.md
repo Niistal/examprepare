@@ -17,7 +17,7 @@
 
 Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 27 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
 
-Modo **Guiado**: pistas y corrección por ejercicio. Modo **Sin ayudas**: enunciados, editor y reloj; se desbloquean las soluciones al finalizar el examen. No hay evaluación automática de la exactitud del código todavía: se utiliza rúbrica y autoevaluación. El HTML no ejecuta Python ni DSL; el desarrollo se prueba en terminal/VS Code/Orange/Elastic/Kafka según corresponda.
+Modo **Guiado**: pistas y corrección por ejercicio. Modo **Sin ayudas**: enunciados, editor y reloj; se desbloquean las soluciones al finalizar el examen. No hay evaluación automática de la exactitud del código todavía: se utiliza rúbrica y autoevaluación. Ejecutar Python muestra stdout y errores en un Worker aislado con Pyodide. La primera carga descarga el runtime y las librerías desde una versión fijada del CDN oficial. No envía el código a un servidor ejecutor ni accede al disco del equipo. DSL/servicios se practican en su herramienta local.
 
 ## 2. Calendario por orden de urgencia
 
@@ -140,7 +140,7 @@ Una sesión corta: 5 min leer problema + 15 min implementar + 5 min ejecutar + 5
 ## 6. Estado de entrega y límites
 
 - **Listo**: interfaz autónoma, calendario, 73 ejercicios escritos, enlaces de fuentes, modo guiado/simulacro, puntuación manual, temporizador, 1000 secuencias numeradas por materia, progreso en `localStorage`, exportación/importación JSON.
-- **No realizado**: ejecución real y tests automáticos de Python desde la web, importación masiva de notebooks/PDF, integración directa con NotebookLM y extracción/validación completa de cada ejercicio del repositorio. El estado actualizado y sus limitaciones están en `ESTADO_T3_CODE.md`.
+- **No realizado**: autocorrección de respuestas, importación masiva de notebooks/PDF, integración directa con NotebookLM y extracción/validación completa de cada ejercicio del repositorio. El estado actualizado y sus limitaciones están en `ESTADO_T3_CODE.md`.
 - Los cambios de la aplicación se versionan en su repositorio privado. Los apuntes y los proyectos Erronka no se modifican; no se envían cambios a `main`.
 
 © Uso personal, local y académico.
@@ -175,3 +175,7 @@ python study_lab/build.py
 El refresco utiliza un mirror privado independiente y la conexión GitHub existente. No ejecuta código de los apuntes ni hace pull sobre tu carpeta. La automatización de publicación está descrita en [AUTOMATION.md](../deployment/AUTOMATION.md); depende de que T3 y sus conexiones estén disponibles.
 
 En Programazioa, métricas, fuzzy y fairness, las fórmulas necesarias se facilitan en el enunciado. Se evalúa aplicar e interpretar las herramientas, sin derivaciones universitarias ni memorizar álgebra.
+
+## Ejecutar y repetir
+
+El editor autoguarda cada cambio. **Repetir ejercicio** restaura la plantilla y oculta ayudas sin borrar el historial. **Ejecutar Python** muestra prints y errores; **Detener** cancela la ejecución. Cada run usa un Worker y filesystem virtual nuevos: límite de 10 segundos de cálculo y 20.000 caracteres de salida. Preparar Python/librerías puede tardar hasta 2 minutos la primera vez; se necesita internet. No instala paquetes en el equipo. Terminal, SQL, Orange, Docker, FastAPI y Streamlit se practican localmente. No hay nota automática.

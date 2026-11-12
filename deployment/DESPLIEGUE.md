@@ -22,7 +22,7 @@ Los 73 casos forman parte del paquete privado. No se han copiado los apuntes com
 - Identidad Sites: `deployment/hosting.json`, sin secretos.
 - Ejecutar `python study_lab/scripts/build_hosted.py` desde la raíz: reconstruye el standalone y genera `hosted_study_lab/dist/server/index.js` y su manifest de alojamiento.
 - `hosted_study_lab/` es un checkout separado del repositorio de publicación Sites y está ignorado en el repositorio principal. Sus credenciales temporales se entregan al helper por stdin, nunca se guardan en archivos ni Git.
-- El paquete publicado contiene `.openai/hosting.json` y un Worker que responde con el HTML generado. Solo acepta GET/HEAD de `/` y `/index.html`; no sirve el árbol del repositorio ni ejecuta código del estudiante.
+- El paquete publicado contiene `.openai/hosting.json` y un Worker que responde con el HTML generado. Solo acepta GET/HEAD de `/`, `/index.html` y el asset estático `/python-worker.mjs`; no sirve el árbol del repositorio ni ejecuta código del estudiante.
 - El build alojado añade aviso sobre progreso por navegador, cierre de sesión, noindex, referrer policy y CSP con hash del JavaScript. `connect-src 'none'` evita llamadas de red desde la app; abrir una fuente de GitHub mediante un enlace sigue siendo posible.
 - Commit de publicación Sites: `eba60dad77d8bd36cb12aa76f315151226e739db`.
 - Versión: `appgprj_6af50e3969208191aa07f9da6d4fe50e~appgver_7f8b6eae818c819181573b8a9959b3c0`.
@@ -61,3 +61,9 @@ Navegador temporal contra la URL privada: 11 comprobaciones PASS de banco y tema
 El operador entregó el acceso de servicio existente por stdin oculto. La interceptación CDP estuvo limitada al origen exacto del Site y se comprobó en el protocolo local que el override de cabeceras no se propaga a redirects. No se utilizó una cabecera global para todos los dominios ni se registró la credencial. No equivale a verificar el login, MFA ni Proton Pass.
 
 Los identificadores de publicación de este documento corresponden a la revisión manual indicada. Las sincronizaciones posteriores conservan evidencia en el registro privado `prepared-sync.json` y en su resumen T3; no amplían el conjunto de archivos autorizados para tocar documentación en cada actualización.
+
+## Ejecución solicitada por el propietario
+
+El botón Ejecutar Python usa Pyodide 314.0.7 en un Worker del navegador, creado de nuevo en cada ejecución. El servidor solo entrega JavaScript estático; nunca ejecuta el código. El documento mantiene scripts por hash y connect-src none; la respuesta del asset del Worker tiene una CSP propia que permite únicamente el runtime fijado de cdn.jsdelivr.net/pyodide/v314.0.7/full/ y la compilación/evaluación necesaria dentro del Worker, sin acceso al DOM/localStorage. Sin archivos del host ni secretos de aplicación.
+
+Límites: preparación 120 s, cálculo 10 s, salida 20.000 caracteres, cancelación manual. Probados print, NumPy/Pandas, errores y bucle infinito con la misma política del paquete alojado. No sirve terminal/SQL ni servidores FastAPI/Streamlit. La instalación/activación de P04 está facilitada como comentarios; no se evalúa memorización.

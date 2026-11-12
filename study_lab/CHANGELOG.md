@@ -43,3 +43,6 @@
 - Prueba prolongada repetida tras corregir el favicon: 905 segundos reales, recarga, deadline y borrador íntegros, sin errores de consola.
 - Navegador temporal sobre la web privada real: 11 comprobaciones funcionales PASS, sin excepciones de aplicación; avisos de Cloudflare separados. Credencial de servicio limitada al origen y sin propagarse por redirects.
 - Cierre después de las 08:10: 343 comprobaciones de supervisión sin incidencias; HTTPS y fuentes revalidados. Tarea de temario activada cada 30 minutos, primera prevista 08:40:20 Madrid; primer run aún no realizado. ChromeDriver temporal detenido; servidor local conservado.
+
+- P04: instalación y activación facilitadas como comentarios Windows/PowerShell y Linux/Bash, visibles sin abrir ayudas y también en examen. Se evalúa comprobar/entender el entorno, no memorizar comandos. Borradores existentes conservados.
+- Autoguardado visible, Repetir ejercicio y ejecución Python en Worker Pyodide aislado: salida/errores, cancelación, timeout 10 s y salida limitada. Print, NumPy/Pandas, error y bucle infinito probados en navegador real. Sin endpoint de ejecución en servidor.

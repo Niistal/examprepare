@@ -16,3 +16,8 @@ assert.equal((await worker.fetch(request('/materials.json'))).status,404);
 assert.equal((await worker.fetch(request('/','POST'))).status,405);
 assert.equal(await (await worker.fetch(request('/','HEAD'))).text(),'');
 console.log('PASS Worker: documento exacto, CSP HTTP, framing limitado, no-store y rutas/métodos cerrados');
+const pyResponse=await worker.fetch(request('/python-worker.mjs'));
+assert.equal(pyResponse.status,200);assert((await pyResponse.text()).includes('loadPyodide'));
+assert.match(pyResponse.headers.get('content-security-policy'),/cdn.jsdelivr.net\/pyodide\/v314.0.7\/full\//);
+assert.equal(await (await worker.fetch(request('/python-worker.mjs','HEAD'))).text(),'');
+console.log('PASS asset Python estático y política aislada del documento');
