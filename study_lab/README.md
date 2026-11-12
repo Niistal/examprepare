@@ -1,10 +1,22 @@
 # NIIS STUDY LAB — Big Data Intensivo · Guía de uso
 
-**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con ejercicios de **desarrollo real** en lugar de tests memorísticos. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+**Objetivo:** practicar antes de los exámenes del **16 al 20 de noviembre de 2026**, con modalidades adaptadas: teoría y tests para conceptos, Orange y laboratorios para herramientas, y desarrollo real para Programazioa. La herramienta es local, gratuita y no hace llamadas a IA durante los ejercicios. La edición alojada usa acceso privado gestionado de Sites. El enlace de cada fuente abre GitHub, que requiere autorización al tratarse de un repositorio privado.
+
+## Modalidades y puente local · 12/11/2026
+
+Consulta [la entrega de modalidades](IMPLEMENTACION_MODALIDADES.md) para cambios, fuentes, resultados y límites de verificación. Las fuentes nuevas son `learning-content.json`, `learning-engine.js` y `learning-ui.js`; build.py genera sus recursos y el HTML standalone.
+
+```bash
+python3 study_lab/build.py
+python3 study_lab/local_server.py --port 8080
+# http://127.0.0.1:8080
+```
+
+En Windows sustituye `python3` por `py`. El puente es voluntario, no instala herramientas y solo abre workflows Orange permitidos. La edición alojada permite descargar los recursos y no puede abrir aplicaciones del equipo. Los lanzadores estáticos existentes siguen disponibles, pero no habilitan el puente.
 
 ## 1. Qué contiene la aplicación
 
-- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco inicial de **80 ejercicios**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
+- `index.html`: **archivo único autónomo**. Contiene todos los estilos, la aplicación JavaScript y el banco histórico de **84 casos**, más **106 preguntas autocorregibles o con rúbrica en 20 temas**. Se puede abrir mediante doble clic; para mayor compatibilidad se recomienda `localhost`.
 - `app.js`, `style.css`, `shell.html`: fuentes editables para que T3 Code continúe sin tener que modificar 100 KB de HTML en cada iteración.
 - `requirements-study.txt`: dependencias Python comunes para los ejercicios de datos.
 - `requirements-study-extra.txt`: dependencias adicionales opcionales (API, Streamlit, Kafka y Faker). Se instalan solo si se van a practicar esas materias.
@@ -15,7 +27,7 @@
 
 ### Exámenes numerados
 
-Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 34 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
+Cada asignatura tiene los números **1 a 1000**. Cada número genera una secuencia determinista de cinco ejercicios diferentes dentro de la prueba. El orden de los cinco ejercicios cambia y el algoritmo evita repetir *la misma secuencia ordenada* dentro de los 1000 números de una asignatura. **Esto NO significa que existan 1000 enunciados originales distintos**: la diversidad depende de la amplitud del banco. El recorrido principal es finito: 38 casos de Programazioa y 11–12 por cada otra materia. Los números son una herramienta secundaria de repaso, no niveles que debas completar.
 
 Modo **Guiado**: pistas y corrección por ejercicio. Modo **Sin ayudas**: enunciados, editor y reloj; se desbloquean las soluciones al finalizar el examen. No hay evaluación automática de la exactitud del código todavía: se utiliza rúbrica y autoevaluación. Ejecutar Python muestra stdout y errores en un Worker aislado con Pyodide. La primera carga descarga el runtime y las librerías desde una versión fijada del CDN oficial. No envía el código a un servidor ejecutor ni accede al disco del equipo. DSL/servicios se practican en su herramienta local.
 
