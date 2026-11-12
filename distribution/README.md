@@ -1,5 +1,7 @@
 # Distribución con cuentas — desplegado y verificado en OCI
 
+Enlace para compartir: **https://study.gripuno.com/login**.
+
 Registro abierto mediante alias y contraseña, login, logout y progreso por cuenta entre dispositivos. No cambia la audiencia del Site existente. Se aloja en un origen HTTPS propio de OCI; el contenido solo se entrega tras iniciar sesión. Los enlaces a Big_Data siguen requiriendo autorización independiente en GitHub. No se distribuyen apuntes completos, Erronkas ni credenciales.
 
 Cada cuenta tiene un identificador aleatorio; el servidor obtiene su identidad exclusivamente de una sesión HttpOnly. No acepta un identificador de usuario del cliente para leer/escribir progreso. Contraseñas con scrypt (N=131072, r=8, p=1) y salt aleatorio; tokens de sesión almacenados como hash, expiración de 7 días, cookie Secure/SameSite=Strict y validación Origin/CSRF. SQL parametrizado, cuerpos limitados a 2 MB, límite de 100 cuentas y límites persistentes de intentos. No hay correos, registro de contraseñas ni logs de respuestas.
@@ -64,7 +66,7 @@ El timer local `niis-study-oci-sync.timer` invoca `distribution/sync_catalog.py`
 
 En OCI, el usuario `study-publisher` tiene un único comando SSH forzado y sin PTY/forwarding: el receptor `catalog_receiver.py`. Su regla sudo permite exclusivamente ejecutar ese archivo inmutable como root, sin argumentos añadidos. Solo puede consultar hashes de despliegue o publicar un documento HTML de hasta 8 MB, con hash, SHA de fuente y runtime exactos. No interpreta comandos, ejecuta JavaScript ni acepta rutas de destino. Sustituye atómicamente únicamente `study_lab/index.html`; no accede a la base de cuentas ni reinicia servicios. La entrega repetida devuelve unchanged y no vuelve a escribir el documento. Una nueva versión de servidor/login/sync requiere despliegue explícito y bloquea el timer hasta que coincidan los hashes.
 
-El origen HTTPS de la edición OCI se conserva para no cambiar el enlace compartido ni las sesiones. Un dominio propio estable requiere controlar su registro DNS; no se compra ni se modifica un dominio ajeno automáticamente.
+El origen principal es https://study.gripuno.com. La dirección anterior se conserva expresamente en STUDY_ALLOWED_ORIGINS y sigue funcionando; las cuentas comparten la misma base y el progreso no se migra ni se duplica. Una sesión ya abierta en el host antiguo sigue siendo válida allí. Para entrar en el nuevo dominio se inicia sesión de nuevo, porque la cookie Secure es específica del host. No se aceptan comodines, rutas ni otros subdominios como origen de escritura.
 
 
 ### Verificación de recuperación y timer — 12/11/2026
@@ -73,4 +75,15 @@ Publicada la revisión `3b1d83c04ff78da48fab685bb75b49871de3a95a`, paquete SHA-2
 
 Ocho pruebas locales de seguridad/persistencia, tres del receptor, pruebas de sincronización, recorrido completo de recuperación en Chromium y concurrencia de Gunicorn: PASS. Se probó el receptor real con el documento exacto ya instalado: devolvió unchanged sin reescribirlo. El timer local está habilitado y activo; primera invocación manual del servicio terminó con Result=success, ExecMainStatus=0 y unchanged. Próxima comprobación anunciada al activarlo: 12/11/2026 11:00:03 Europe/Madrid, después cada 30 minutos. Una ejecución real completa el mismo catálogo probado; no se presenta una publicación nueva donde no hubo cambios.
 
-El subdominio propuesto `study.gripuno.com` no se ha creado ni activado. Los nameservers consultados corresponden a IONOS (`ui-dns`), no Cloudflare. Se llegó a su pantalla de contraseña; falta una sesión autenticada para modificar únicamente el registro A del subdominio. El enlace anterior sigue operativo. No se compraron dominios ni recursos cloud.
+El bloqueo de DNS indicado inicialmente quedó resuelto en la verificación posterior descrita abajo. Los nameservers corresponden a IONOS (`ui-dns`), no Cloudflare. No se compraron dominios ni recursos cloud.
+
+
+### Dominio propio y revisión final — 12/11/2026
+
+En IONOS se creó exclusivamente el registro A `study → 51.170.37.119`, TTL 300, desactivando la adición automática de www. La interfaz confirmó «El registro A se ha creado correctamente» y mostró el valor exacto. Se conservaron los registros de Shopify, correo y radar. No se contrataron certificados de pago, DNS Pro, protección de dominio ni otros productos. La credencial de acceso se utilizó mediante el mecanismo seguro, se eliminó su archivo temporal y se cerró la sesión de trabajo de IONOS.
+
+Caddy obtuvo HTTPS válido para https://study.gripuno.com/login utilizando la misma VM, IP, puertos y servicio existentes. Se conservó el hostname anterior en la misma ruta de aplicación; no se cambió la audiencia del Site original. El backend admite solo los dos orígenes HTTPS explícitos. Revisión de servidor instalada: `a0a9a4d765c86d8678f51862bca98cb7db78526d`, paquete SHA-256 `3f68f11891570beeb9998a63ca297faef11692b318498393ef9f675687288899`. Base de cuentas/progreso intacta.
+
+Nueve pruebas de seguridad/persistencia y Gunicorn real: PASS. Pruebas HTTPS del dominio nuevo y del anterior: registro, cookies Secure/HttpOnly, login en ambos hosts, mismo progreso, restauración exacta de código con `<`, `</script>` y `&`, rechazo CSRF de otro subdominio, recuperación/rotación de código y revocación de sesiones en ambos hosts. Se eliminó únicamente la cuenta temporal de QA. No se abrió ni modificó el progreso real.
+
+El smoke alojado también se ejecutó en un servicio transitorio de systemd de usuario, con el mismo entorno de segundo plano del actualizador: PASS, sin errores JS. El publicador confirmó runtime exacto y unchanged tras instalar el dominio nuevo. Study Lab, Caddy y Product Radar quedaron activos. El árbol Git quedó limpio y los cambios subidos a la rama de la PR; no hubo merge a principal. Revisión del principal, no independiente.
