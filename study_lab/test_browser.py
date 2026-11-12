@@ -1,5 +1,5 @@
 """QA real con Chromium/ChromeDriver; solo biblioteca estándar. Servidor en :8080, driver :9515."""
-import json, urllib.request
+import json, os, urllib.request
 BASE='http://127.0.0.1:9515'
 def request(method,path,data=None):
     req=urllib.request.Request(BASE+path,data=json.dumps(data).encode() if data is not None else None,method=method,headers={'Content-Type':'application/json'})
@@ -13,11 +13,11 @@ def check(script,label):
     assert js('return Boolean('+script+')'),label
     print('PASS',label)
 try:
-    cmd('POST','/url',{'url':'http://127.0.0.1:8080'})
+    cmd('POST','/url',{'url':os.environ.get('NIIS_TEST_URL','http://127.0.0.1:8080')})
     check("document.querySelectorAll('.subject-card').length===5",'cinco materias')
     js("localStorage.clear();location.reload()")
     js("selectCourse('program')")
-    check("document.querySelectorAll('[data-route]').length===27",'recorrido finito de Programazioa')
+    check("document.querySelectorAll('.route-step[data-route]').length===27",'recorrido finito de Programazioa')
     js("document.getElementById('searchInput').value='NumPy';renderPractice()")
     check("document.querySelectorAll('#exerciseList article').length>0 && [...document.querySelectorAll('#exerciseList article')].every(x=>x.textContent.toLowerCase().includes('numpy'))",'búsqueda')
     js("document.getElementById('searchInput').value='';document.getElementById('levelFilter').value='1';renderPractice()")
@@ -45,6 +45,9 @@ try:
     js("selectCourse('program')")
     check("document.documentElement.scrollWidth<=window.innerWidth+1",'móvil sin desbordamiento horizontal')
     check("document.getElementById('answerEditor').getAttribute('aria-label')",'editor etiquetado')
+    if os.environ.get('NIIS_TEST_HOSTED'):
+        check("document.querySelector('.session-signout').getAttribute('href')==='/signout-with-chatgpt?return_to=%2F'",'salida de sesión gestionada')
+        check("document.querySelector('meta[http-equiv=\"Content-Security-Policy\"]').content.includes('sha256-')",'política de scripts por hash')
     logs=cmd('POST','/log',{'type':'browser'})
     assert not [x for x in logs if x['level']=='SEVERE' and 'favicon' not in x['message']],logs
     print('PASS sin errores JS de navegador')

@@ -51,3 +51,11 @@ Para repetir QA de navegador, inicia el servidor web y `chromedriver --port=9515
 - La guía de comandos explica la copia de casos de infraestructura y el bind local de puertos. No se modificaron ni arrancaron los compose originales de clase.
 - Persistencia limitada al origen/navegador. Mantener `127.0.0.1:8080`, exportar JSON regularmente. La ampliación del banco de Programazioa cambia sus combinaciones numeradas; no borra respuestas ni valoraciones previas. Una sesión antigua incompatible no se reanuda automáticamente.
 - Mejoras futuras opcionales: variantes adicionales verificadas y rúbricas más profundas para las otras cuatro materias. Sin tareas externas ni issues remotas creadas.
+
+## Actualización posterior: web privada y GitHub
+
+El propietario ha autorizado expresamente publicar la aplicación y subir cambios/issues a GitHub. Esta autorización sustituye la limitación inicial de solo localhost para el alojamiento de la app. Se mantiene la protección de apuntes, secretos y progreso.
+
+Publicado con Sites en https://niis-study-lab.ikernistal77.chatgpt.site, acceso exclusivo al propietario mediante su cuenta ChatGPT. No se creó una contraseña propia. Detalles y comprobaciones en `../deployment/DESPLIEGUE.md`. Proton Pass no se configuró: no hay integración disponible para escribir en su bóveda; queda seguimiento en issue #3.
+
+Mejora de uso: botón para continuar por el siguiente ejercicio no dominado. El progreso permanece por navegador, con aviso explícito e importación/exportación para moverlo. Issues #1–#3 registran sincronización opcional, QA de herramientas e inicio de sesión/autocompletado.

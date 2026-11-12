@@ -17,6 +17,8 @@
 
 .optional-exam{padding:18px 22px;margin-bottom:24px}.optional-exam summary{cursor:pointer;font-weight:600}.optional-exam .exam-config{margin-bottom:0;padding:18px 0 0}
 
+.hosting-notice{padding:16px 20px;margin:0 0 24px;background:#18271f;border:1px solid #385b45;border-radius:12px;color:#d4e8db;line-height:1.6}.session-signout{font-size:12px;color:#a8f0c4;text-decoration:none;white-space:nowrap}@media(max-width:600px){.topbar-right{gap:8px}.session-signout{font-size:11px}.hosting-notice{font-size:13px}}
+
 </style>
 </head>
 <body>
@@ -811,7 +813,8 @@ function basicExample(q){
 }
 function renderStudyRoute(){
  const blocks=STUDY_ROUTES[courseId];
- $('studyRoute').innerHTML='<div class="surface route-intro"><span class="eyebrow">RECORRIDO DE APRENDIZAJE</span><h2>Entender, escribir y explicar</h2><p>${esc(STUDY_METHODS[courseId])}</p><p>Empieza por el primer ejercicio pendiente. Cada bloque combina práctica y teoría aplicada. Las valoraciones indican tu autoevaluación, no una nota automática.</p><p><b>Sesión de 2 horas:</b> 10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para cubrir todos los bloques; dos horas no garantizan dominar una asignatura.</p></div>'+blocks.map(([title,ids])=>`<article class="surface route-block"><h3>${esc(title)}</h3><p>${ids.filter(id=>data.ratings[id]===2).length}/${ids.length} dominados · teoría: explica por qué y qué falla · práctica: escribe y verifica</p><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span>${data.ratings[id]===2?'✓':id}</span><b>${esc(q.title)}</b><small>≈ ${q.minutes} min · ${esc(q.kind)}</small></button>`}).join('')}</div></article>`).join('');
+ const nextId=blocks.flatMap(b=>b[1]).find(id=>data.ratings[id]!==2)||blocks[0][1][0];
+ $('studyRoute').innerHTML='<div class="surface route-intro"><span class="eyebrow">RECORRIDO DE APRENDIZAJE</span><h2>Entender, escribir y explicar</h2><button class="btn btn-primary" data-route="${nextId}">Continuar recorrido →</button><p>${esc(STUDY_METHODS[courseId])}</p><p>Empieza por el primer ejercicio pendiente. Cada bloque combina práctica y teoría aplicada. Las valoraciones indican tu autoevaluación, no una nota automática.</p><p><b>Sesión de 2 horas:</b> 10 min de diagnóstico · 4 ciclos de 20 min (ejemplo, desarrollo, explicación sin mirar) · 20 min para repetir errores · 10 min de repaso. Repite sesiones para cubrir todos los bloques; dos horas no garantizan dominar una asignatura.</p></div>'+blocks.map(([title,ids])=>`<article class="surface route-block"><h3>${esc(title)}</h3><p>${ids.filter(id=>data.ratings[id]===2).length}/${ids.length} dominados · teoría: explica por qué y qué falla · práctica: escribe y verifica</p><div class="route-steps">${ids.map(id=>{const q=BANK.find(q=>q.id===id);return `<button data-route="${id}" class="route-step ${data.ratings[id]===2?'mastered':''}"><span>${data.ratings[id]===2?'✓':id}</span><b>${esc(q.title)}</b><small>≈ ${q.minutes} min · ${esc(q.kind)}</small></button>`}).join('')}</div></article>`).join('');
  $('studyRoute').querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>startSingle(b.dataset.route)));
 }
 const $=id=>document.getElementById(id);
