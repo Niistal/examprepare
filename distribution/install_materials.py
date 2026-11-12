@@ -42,6 +42,9 @@ def install(archive,expected_sha,root):
         if (app/'material-library.json').read_bytes()!=manifest_bytes:raise ValueError('Runtime manifest changed during installation; retry after runtime settles')
         if target.exists():
             backup=app/('material-assets.previous-'+time.strftime('%Y%m%dT%H%M%S')+'-'+stage.name.rsplit('-',1)[-1]);os.replace(target,backup)
+        # The installer may run as root while Gunicorn runs as study-lab.
+        # Publish only after verification, then allow the service to traverse the directory.
+        os.chmod(stage,0o755)
         try:os.replace(stage,target)
         except Exception:
             if backup:os.replace(backup,target)

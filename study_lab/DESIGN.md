@@ -9,4 +9,7 @@ Superficie de trabajo y lectura; conservar la identidad oscura existente. El alu
 - Progreso: autoevaluación explícita, repaso de errores y recuperación tras dos días para comprobar recuerdo. No mostrar una nota automática ni prometer dominio por abrir una solución.
 - Estado: todo control tiene foco; botones deshabilitados legibles; vacíos con acción de recuperación; conflictos de pestaña y almacenamiento fallido visibles. No sobrescribir datos dañados.
 - Adaptación: teléfono, tablet y escritorio; navegación con nombres visibles en teléfono; texto técnico con ajuste de línea. Respetar reduced-motion y áreas seguras.
-- Alojamiento: mismos contenidos, con aviso de progreso por navegador y cierre de sesión gestionado. La autenticación se resuelve en Sites, no en el JavaScript de la app.
+- Alojamiento: autenticación y progreso privado por cuenta en el servidor. Estado de guardado discreto junto al menú de cuenta; conflictos y fallos visibles fuera del menú. Exportación, recuperación y cierre de sesión conservados.
+- Panel: jerarquía compacta, próximo examen y cinco asignaturas a la vista; métricas en una franja y sin duplicar llamadas a la acción.
+- Teoría: índice de temas con acceso directo, una lección a la vez y pestañas contextuales. Temario completo disponible dentro de cada asignatura, sin sesión de GitHub.
+- Cuenta: menú nativo details/summary con foco visible y cierre con Escape; ninguna barra fija adicional. En móvil se conserva el avatar y estado de guardado.

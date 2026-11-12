@@ -2,11 +2,16 @@
 const cloudStorage=(()=>{
  let value=JSON.stringify(CLOUD_BOOTSTRAP.state),revision=CLOUD_BOOTSTRAP.revision;
  let saved=value,running=false,conflict=false,timer=null,inflight=null;
- function status(message){const el=document.getElementById('cloudStatus');if(el)el.textContent=message;}
+ function status(message,level='saved'){
+  const el=document.getElementById('cloudStatus');if(el)el.textContent=message;
+  const compact=document.getElementById('cloudSaveState');if(compact){compact.textContent=level==='error'?'Revisar guardado':level==='pending'?'Guardando…':'Guardado';compact.setAttribute?.('data-state',level);compact.setAttribute?.('title',message);}
+  const notice=document.getElementById('cloudAccountNotice');notice?.classList?.toggle('hidden',level!=='error');
+  const detail=document.getElementById('cloudAccountNoticeText');if(detail)detail.textContent=message;
+ }
  async function perform(){
   if(running||conflict)return false;
   if(value===saved)return true;
-  running=true;status('Guardando en tu cuenta…');
+  running=true;status('Guardando en tu cuenta…','pending');
   try{
    while(value!==saved){
     const snapshot=value;
@@ -21,17 +26,29 @@ const cloudStorage=(()=>{
     }else{if(r.status===413)throw Error('El servidor ha rechazado el tamaño del progreso. Exporta una copia; comprueba el límite de 10 MB y la configuración del alojamiento.');if(!r.ok)throw Error(r.status===401?'Sesión caducada. Exporta tus respuestas antes de entrar de nuevo.':'No se pudo guardar. Reintenta o exporta tus respuestas.');revision=(await r.json()).revision;saved=snapshot;}
    }
    status('Progreso guardado en tu cuenta');return true;
-  }catch(e){status(e.message);return false;}finally{running=false;}
+  }catch(e){status(e.message,'error');return false;}finally{running=false;}
  }
  function flush(){if(inflight)return inflight;inflight=perform().finally(()=>{inflight=null;});return inflight;}
  window.addEventListener('beforeunload',e=>{if(value!==saved){e.preventDefault();e.returnValue='';}});
  window.addEventListener('online',()=>flush());
  window.addEventListener('DOMContentLoaded',()=>{
-  const bar=document.createElement('section');bar.style.cssText='padding:12px;background:#163628;color:white;position:sticky;top:0;z-index:100';bar.setAttribute('aria-label','Tu cuenta');
-  const name=document.createElement('b');name.textContent=CLOUD_BOOTSTRAP.username+' · ';
-  const label=document.createElement('span');label.id='cloudStatus';label.role='status';label.textContent='Progreso guardado en tu cuenta';
-  const retry=document.createElement('button');retry.textContent='Reintentar guardado';retry.onclick=()=>flush();
-  const logout=document.createElement('button');logout.textContent='Cerrar sesión';logout.onclick=async()=>{if(!await flush())return;const r=await fetch('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:'{}'});if(r.ok)location.assign('/login');else status('No se pudo cerrar sesión; reintenta.');};
+  const tools=document.querySelector('.topbar-right');if(!tools)return;
+  const menu=document.createElement('details');menu.id='cloudAccountMenu';menu.className='account-menu';
+  const summary=document.createElement('summary');summary.setAttribute('aria-label','Cuenta de '+CLOUD_BOOTSTRAP.username);
+  const avatar=document.createElement('span');avatar.className='account-avatar';avatar.textContent=CLOUD_BOOTSTRAP.username.slice(0,2).toUpperCase();avatar.setAttribute('aria-hidden','true');
+  const name=document.createElement('span');name.className='account-name';name.textContent=CLOUD_BOOTSTRAP.username;
+  const chevron=document.createElement('span');chevron.className='account-chevron';chevron.textContent='⌄';chevron.setAttribute('aria-hidden','true');summary.append(avatar,name,chevron);
+  const panel=document.createElement('div');panel.className='account-menu-panel';
+  const heading=document.createElement('strong');heading.textContent=CLOUD_BOOTSTRAP.username;
+  const description=document.createElement('p');description.textContent='Cuenta privada · progreso sincronizado';panel.append(heading,description);
+  const saved=document.createElement('button');saved.type='button';saved.className='save-status';saved.id='cloudSaveState';saved.textContent='Guardado';saved.setAttribute('data-state','saved');saved.title='Progreso guardado en tu cuenta';saved.onclick=()=>{menu.open=true;summary.focus();};
+  const notice=document.createElement('section');notice.id='cloudAccountNotice';notice.className='account-notice hidden';notice.setAttribute('aria-label','Problema de guardado');
+  const detail=document.createElement('p');detail.id='cloudAccountNoticeText';notice.append(detail);
+  const label=document.createElement('span');label.id='cloudStatus';label.className='sr-only';label.role='status';label.textContent='Progreso guardado en tu cuenta';
+  const retry=document.createElement('button');retry.className='btn btn-outline btn-small';retry.textContent='Reintentar guardado';retry.onclick=()=>flush();
+  const backup=document.createElement('button');backup.className='btn btn-outline btn-small';backup.textContent='Exportar mis respuestas';backup.onclick=()=>{if(typeof exportState==='function')exportState();};
+  notice.append(retry,backup);
+  const logout=document.createElement('button');logout.textContent='Cerrar sesión';logout.onclick=async()=>{if(!await flush())return;const r=await fetch('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:'{}'});if(r.ok)location.assign('/login');else status('No se pudo cerrar sesión; reintenta.','error');};
   const recovery=document.createElement('button');recovery.textContent='Código de recuperación';
   recovery.onclick=()=>{
    const dialog=document.createElement('dialog'),form=document.createElement('form'),heading=document.createElement('h2'),input=document.createElement('input'),generate=document.createElement('button'),close=document.createElement('button'),output=document.createElement('p');
@@ -39,7 +56,11 @@ const cloudStorage=(()=>{
    form.onsubmit=async e=>{e.preventDefault();generate.disabled=true;try{const r=await fetch('/api/recovery-code',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CLOUD_BOOTSTRAP.csrf},body:JSON.stringify({password:input.value})});input.value='';const result=await r.json();output.textContent=r.ok?'Guárdalo en un lugar privado. Sustituye al anterior: '+result.recovery_code:result.error;}catch{output.textContent='No se pudo conectar; reintenta.';}finally{generate.disabled=false;}};
    form.append(heading,input,generate,close,output);dialog.append(form);dialog.addEventListener('close',()=>dialog.remove());document.body.append(dialog);dialog.showModal();input.focus();
   };
-  bar.append(name,label,' ',retry,' ',recovery,' ',logout);document.body.prepend(bar);
+  const exportButton=document.createElement('button');exportButton.textContent='Exportar progreso';exportButton.onclick=()=>{menu.open=false;if(typeof exportState==='function')exportState();};
+  logout.className='account-logout';panel.append(exportButton,recovery,logout);menu.append(summary,panel);tools.append(label,saved,menu);
+  document.querySelector('.topbar').after(notice);
+  document.addEventListener('click',e=>{if(!menu.contains(e.target)&&e.target!==saved)menu.open=false;});
+  menu.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.open=false;summary.focus();}});
  });
- return {getItem:()=>value,setItem:(_,next)=>{value=next;status('Pendiente de sincronizar…');clearTimeout(timer);timer=setTimeout(flush,400);},flush};
+ return {getItem:()=>value,setItem:(_,next)=>{value=next;if(!conflict)status('Pendiente de sincronizar…','pending');clearTimeout(timer);timer=setTimeout(flush,400);},flush};
 })();
