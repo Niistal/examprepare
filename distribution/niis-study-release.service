@@ -1,0 +1,8 @@
+[Unit]
+Description=Deploy current Study Lab master only after successful GitHub CI
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/lib/niis-study-release/sync_release.py
+Environment=GIT_TERMINAL_PROMPT=0
+TimeoutStartSec=600
+UMask=0077

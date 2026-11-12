@@ -1,0 +1,10 @@
+[Unit]
+Description=Check validated Study Lab master releases every five minutes
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+RandomizedDelaySec=15
+Persistent=true
+Unit=niis-study-release.service
+[Install]
+WantedBy=timers.target

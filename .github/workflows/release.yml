@@ -35,7 +35,7 @@ jobs:
           node study_lab/test_learning.cjs
           node study_lab/test_modalities.cjs
           python study_lab/test_materials.py
-          python -m unittest distribution.test_server distribution.test_catalog -v
+          python -m unittest distribution.test_server distribution.test_catalog distribution.test_release -v
           node distribution/test_sync.cjs
           STUDY_GUNICORN=$(command -v gunicorn) python -m distribution.test_gunicorn
           python -m distribution.test_browser
