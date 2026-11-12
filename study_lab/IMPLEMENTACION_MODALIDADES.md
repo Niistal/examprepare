@@ -61,7 +61,11 @@ orange-canvas study_lab/resources/orange-M09.ows
 
 El Python del sistema no tiene Orange; no se debe afirmar que `python -m Orange.canvas` funcione con cualquier intérprete. En otro equipo hay que localizar su instalación. Windows se cubre con detección de `orange-canvas.exe` y fallback al módulo solo si está instalado en el intérprete activo.
 
-## Pruebas y límites
+## Actualización de QA externa antes del merge
+
+El propietario autorizó las pruebas Docker y la fusión. Se completaron verificaciones reales de Elasticsearch/Kibana, NiFi, Kafka/Connect y Logstash, además de la GUI Orange offscreen y su apertura real desde el puente. Los resultados y los límites actualizados están en [QA_INTEGRACION_DOCKER.md](QA_INTEGRACION_DOCKER.md). El apartado siguiente conserva la evidencia de la primera entrega, anterior a esas pruebas.
+
+## Pruebas y límites de la primera entrega
 
 Evidencia local reproducible de esta entrega:
 

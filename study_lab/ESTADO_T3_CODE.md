@@ -4,7 +4,7 @@
 
 Implementados el motor por modalidad, 106 preguntas/20 temas, teoría sin Python, corrección/repaso/persistencia y ocho prácticas Orange con recursos completos. Véase [IMPLEMENTACION_MODALIDADES.md](IMPLEMENTACION_MODALIDADES.md) para archivos, evidencia y comandos. Las suites nuevas y existentes pasan; 42 soluciones de código siguen ejecutándose. Se conserva el parche OCI worker-src self y su prueba. No se despliega ni se fusiona esta ampliación automáticamente.
 
-Orange 3.40.0: esquema y motor evaluados realmente con Qt offscreen. GUI interactiva/Windows y NiFi/Kafka/Elastic/Docker no verificados; issue #2 sigue abierta. Delegación T3 bloqueada por falta de runtimeModes anunciados para full-access; revisión principal SELF_REVIEW / NOT_INDEPENDENT.
+Actualización autorizada de QA: servicios Docker verificados en contenedores desechables (Elastic/Kibana, NiFi, Kafka/Connect FileStream y Logstash); widgets GUI reales de Orange y apertura desde el puente comprobados con Qt offscreen. Véase [QA_INTEGRACION_DOCKER.md](QA_INTEGRACION_DOCKER.md). Windows nativo y conectores JDBC/MongoDB no certificados; issue #2 sigue abierta para esos límites. Delegación T3 bloqueada por falta de runtimeModes anunciados para full-access; revisión principal SELF_REVIEW / NOT_INDEPENDENT.
 
 ## Registro anterior · HECHAS
 
