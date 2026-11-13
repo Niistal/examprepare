@@ -52,3 +52,6 @@ assert.equal(translate('Sin intentos · 0 dominadas · 5 pendientes'),'Saiakerar
 assert.equal(translate('Cuenta de Correcto'),'Correcto erabiltzailearen kontua');
 for(const value of ['Sin intentos · 0 dominadas · 5 pendientes','Fuente contrastada · path/README.md','0% dominado'])assert.equal(translate(translate(value)),translate(value));
 console.log('PASS dynamic labels, titles with punctuation, account identity and translation idempotence');
+
+for(const [spanish,basque] of Object.entries({'LUN 16':'AL. 16','MAR 17':'AR. 17','MIÉ 18':'AZ. 18','JUE 19':'OG. 19','LUN 23':'AL. 23'})){assert.equal(translate(spanish),basque);assert.equal(translate(spanish+' NOV'),basque+' AZA.');}
+console.log('PASS weekday abbreviations in Euskara dashboard');
