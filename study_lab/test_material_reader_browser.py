@@ -15,6 +15,8 @@ def asyncjs(text):return cmd('POST','/execute/async',{'script':text,'args':[]})
 def check(expr,label):assert js('return Boolean('+expr+')'),label;print('PASS',label)
 try:
     cmd('POST','/url',{'url':os.environ.get('NIIS_TEST_URL','http://127.0.0.1:8097')})
+    # Legacy assertions exercise the preserved Spanish edition; Euskara has its own suite.
+    js("document.cookie='study_language=es-ES; Path=/';location.reload()")
     js("selectCourse('models');setStudyView('materials')")
     check("document.querySelector('[data-read-material]')&&!document.querySelector('#materialList a[href*=github]')",'temario tiene lectura interna, sin enviar a GitHub')
     asyncjs("const done=arguments[arguments.length-1];loadMaterialReader().then(()=>done(true)).catch(e=>done(e.message));")

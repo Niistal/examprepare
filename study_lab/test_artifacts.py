@@ -2,8 +2,9 @@
 from pathlib import Path
 import base64,hashlib,json,subprocess,sys
 root=Path(__file__).resolve().parent
-from build import render
+from build import render, render_login
 expected, learning_js = render()
+assert (root.parent/'distribution/login.html').read_text(encoding='utf-8')==render_login(),'Ejecuta python build.py para sincronizar login bilingüe'
 assert (root/'learning-content.js').read_text(encoding='utf-8') == learning_js
 assert (root/'index.html').read_text(encoding='utf-8')==expected,'Ejecuta python build.py'
 bank=json.loads(subprocess.check_output(['node',str(root/'scripts/export_bank.cjs')]))

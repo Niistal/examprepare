@@ -120,7 +120,10 @@ class Handler:
         path=urlsplit(self.path).path;user=self.identity()
         if path=='/health':return self.reply(200,{'status':'ok'})
         if path=='/login':return self.reply(200,(ROOT/'distribution/login.html').read_text(encoding='utf-8'),'text/html')
-        if not user:return self.reply(401,'<html lang="es"><meta charset="utf-8"><title>Inicia sesión</title><a href="/login">Inicia sesión o crea una cuenta</a></html>','text/html')
+        if not user:
+            spanish=bool(re.search(r'(?:^|;\s*)study_language=es-ES(?:;|$)',self.header('Cookie','')))
+            language,title,link=('es-ES','Inicia sesión','Inicia sesión o crea una cuenta') if spanish else ('eu','Hasi saioa','Hasi saioa edo sortu kontu bat')
+            return self.reply(401,f'<html lang="{language}"><meta charset="utf-8"><title>{title}</title><a href="/login">{link}</a></html>','text/html')
         if path=='/api/progress':
             with self.server.db() as db:row=db.execute('SELECT revision,payload FROM progress WHERE user_id=?',(user['user_id'],)).fetchone()
             return self.reply(200,{'revision':row['revision'] if row else 0,'state':json.loads(row['payload']) if row else EMPTY})

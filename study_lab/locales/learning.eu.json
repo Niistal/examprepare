@@ -1,0 +1,3266 @@
+{
+  "schema": 1,
+  "version": "2026-11-12.1",
+  "academicCommit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+  "lessons": [
+    {
+      "id": "paradigmas",
+      "course": "models",
+      "title": "Sinbolikoa, konexionista eta sortzailea",
+      "concept": "AA sinbolikoak arau esplizituak aplikatzen ditu; konexionistak sareen pisuak ikasten ditu. Sortzailea izateak edukia sortzeko gaitasuna adierazten du: sareak erabil ditzake, eta ez da kategoria baztertzailea.",
+      "example": "Tenperatura > 30 BADA, ORDUAN alarma aktibatzea arau sinbolikoa da.",
+      "real": "Sare batek irudietako akatsak hautematen ditu; eredu sortzaile batek egiaztatu beharreko txosten bat idazten du.",
+      "comparison": "Azter daitezkeen arauak eta ikasitako patroiak bereizi; edukia sortzeak ez du egia bermatzen.",
+      "criteria": [
+        "Arauak edo ikaskuntza identifikatu",
+        "Zer eduki sortzen den azaldu",
+        "Baieztapenak egiaztatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "recall": "Sistema aditu batek espezialistek idatzitako IF–THEN arauak aplikatzen ditu. Zer ikuspegi adierazten du?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "capacidades",
+      "course": "models",
+      "title": "ANI, AGI, ASI eta ML vs DL",
+      "concept": "ANIk zeregin mugatuak ebazten ditu. AGIk gaitasun orokorra adierazten du, eta ASIk gizakiarena baino handiagoa; kategoria kontzeptualak dira, ez produktu batek frogatzen dituen etiketak. Deep Learning Machine Learning-en azpimultzo bat da, sare sakonak erabiltzen dituena.",
+      "example": "Spam-iragazki espezializatu bat ANI da.",
+      "real": "Sare sakon batekin piezak aztertzea zeregin mugatua da oraindik.",
+      "comparison": "AAk ML barne hartzen du; MLk DL barne hartzen du. Gaitasunaren zabaltasuna beste ardatz bat da.",
+      "criteria": [
+        "Teknika eta gaitasunaren zabaltasuna bereizi",
+        "Zeregin mugatu baten adibidea eman",
+        "Frogarik gabe gaitasun orokorrik ez egotzi"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "recall": "Zein da sare sakonetan oinarritutako Machine Learning-en azpimultzoa?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "fuzzy",
+      "course": "models",
+      "title": "Logika lausoa eta pertenentzia",
+      "concept": "Pertenentzia-funtzio batek 0 eta 1 arteko maila esleitzen dio kontzeptu gradual bati. Berez ez da gertaera baten probabilitatea. Lausotzeak neurketak maila bihurtzen ditu; inferentziak arauak aplikatzen ditu, eta deslausotzeak irteera zehatza ematen du.",
+      "example": "28 °C bero kontzeptuari 0,6ko mailaz egoki dakioke.",
+      "real": "Haizagailu batek abiadura leunki egokitzen du tenperaturaren arauak erabiliz.",
+      "comparison": "Pertenentzia graduala eta bitarra bereizi; egia-maila eta probabilitatea bereizi.",
+      "criteria": [
+        "Maila eta probabilitatea bereizi",
+        "Sarrera eta irteera deskribatu",
+        "Arauak justifikatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "recall": "Zein etapak bihurtzen du irteera lauso bat abiadura zehatz?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "sesgos",
+      "course": "models",
+      "title": "Hautapen-alborapena, alborapen historikoa eta berrespen-alborapena",
+      "concept": "Hautapen-alborapena laginak populazioa gaizki ordezkatzen duenean agertzen da. Alborapen historikoak aurreko erabakien desberdintasunak erreproduzitzen ditu. Berrespen-ziklo batek bere iragarpenak indartzen ditu, behatzea erabaki zituen emaitzak soilik biltzen dituenean.",
+      "example": "Goizeko txandako irudiekin soilik entrenatzeak gaueko txanda ordezkatu gabe uzten du.",
+      "real": "Kreditua lehendik onartutako profilei soilik emateak baztertutakoekin zer gertatuko litzatekeen behatzea eragozten du.",
+      "comparison": "Laginaren ordezkagarritasuna, oinordetzan jasotako desberdintasuna eta atzeraelikadura-begizta arazo desberdinak dira.",
+      "criteria": [
+        "Ordezkagarritasuna eta errorea taldeka neurtu",
+        "Proxy aldagaiak berrikusi",
+        "Arintze-neurriak eta gainbegiratzea proposatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "recall": "Gaueko txandako irudi ia guztiak falta dira. Zer alborapen ikusten da zuzenean?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "fairness",
+      "course": "models",
+      "title": "Demographic Parity, Equal Opportunity eta DI",
+      "concept": "Demographic Parity-k hautapen-tasak alderatzen ditu taldeen artean. Equal Opportunity-k TPR/recall alderatzen du benetako positiboen artean. Disparate Impact hautapen-tasen arteko zatidura da: zenbakitzailean zer talde dagoen adierazi behar da. 0,8ko araua materialeko baheketa-seinalea da, ez legezkotasunaren froga unibertsala.",
+      "example": "A taldearen % 20 eta B taldearen % 40 hautatzen bada, DI(A/B)=0,5.",
+      "real": "Ospitale batek aztertzen du talde bakoitzean gaixoen proportzio bera hautematen duen.",
+      "comparison": "Hautapen bera izateak ez du esan nahi benetako positiboen hautemate bera dagoenik.",
+      "criteria": [
+        "Izendatzaileak eta erreferentzia-taldea adierazi",
+        "Metrika kaltearen arabera aukeratu",
+        "Adierazlearen mugak aitortu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "recall": "Gaixoen taldeen arteko recall berdintzea zeri dagokio?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "errores",
+      "course": "models",
+      "title": "FPR eta FNR",
+      "concept": "FPR=FP/(FP+TN): benetako negatiboen arteko alarma faltsuak. FNR=FN/(FN+TP): hauteman gabe geratzen diren benetako positiboak. Taldeka alderatzeak accuracy-k ezkuta ditzakeen kalteak agerian uzten ditu.",
+      "example": "Benetako 100 negatiboren artean 10 positibo faltsu izateak FPR=0,10 ematen du.",
+      "real": "Enplegu-iragazki bateko positibo faltsuak bidegabeki bazter dezake norbait; gaixotasunak hautematean negatibo faltsuak arreta atzeratu dezake.",
+      "comparison": "FPR benetako negatiboetan baldintzatzen da; FNR, benetako positiboetan.",
+      "criteria": [
+        "Positiboa eta negatiboa zehaztu",
+        "Izendatzaile egokia erabili",
+        "Errorearen kostua azaldu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "recall": "Zer tasak neurtzen ditu osasuntsu gisa sailkatutako benetako gaixoak?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "auditoria",
+      "course": "models",
+      "title": "Etika, azalgarritasuna eta auditoria",
+      "concept": "Auditatzeak datuei, erroreei, eragindako taldeei, pribatutasunari, gainbegiratzeari eta trazabilitateari buruzko ebidentziak biltzea eskatzen du. Azalgarritasunak erabaki bat ulertzen laguntzen du, baina ez du frogatzen bidezkoa edo zuzena denik. ALTAIk berrikuspen etikoa egituratzen du.",
+      "example": "CV bat zergatik baztertu den azaltzeak erabilitako aldagaiak berrikusteko aukera ematen du.",
+      "real": "Aurpegi-ezagutzaren auditoria batek erroreak taldeka alderatzen ditu eta erabilera-baldintzak dokumentatzen ditu.",
+      "comparison": "Iragarpen bat azaltzea eta sistema osoaren kalitatea eta segurtasuna frogatzea bereizi.",
+      "criteria": [
+        "Eragindako pertsonak eta kaltea identifikatu",
+        "Ebidentziak taldeka eskatu",
+        "Jarraipena eta arduraduna zehaztu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "recall": "Zer jarduerak biltzen ditu datuei, erroreei eta gainbegiratzeari buruzko ebidentziak?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "privacidad",
+      "course": "models",
+      "title": "Pribatutasuna eta DBEO",
+      "concept": "Minimizatzeak helburu zehatz baterako beharrezkoak diren datu pertsonalak soilik biltzea esan nahi du. Pseudonimizatzeak identifikatzaileak ordezten ditu, baina ez du anonimotasuna bermatzen. Eraginaren ebaluazioak pertsonentzako arriskuak eta babes-neurriak aztertzen ditu.",
+      "example": "Test bateko aurrerapena erregistratzeko, normalean ez da beharrezkoa NANa eskatzea.",
+      "real": "Plataforma batek hezkuntza-historiaren sarbideak, gordetzeko epea eta helburua mugatzen ditu.",
+      "comparison": "Datuen pribatutasuna eta iragarpen-kalitatea bereizi; pseudonimizazioa eta anonimizazioa bereizi.",
+      "criteria": [
+        "Helburua eta datuak justifikatu",
+        "Identifikatzaileak murriztu",
+        "Sarbidea, gordetzea eta berrikuspena zehaztu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "recall": "Zer printzipiok eskatzen du helburu baterako beharrezko datuak soilik biltzea?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "riesgos",
+      "course": "models",
+      "title": "AI Act eta eraginaren ebaluazioa",
+      "concept": "Materialak erabilera debekatuak, arrisku handikoak, gardentasun-betebeharrekoak eta arrisku txikikoak bereizten ditu. Helburua eta testuingurua garrantzitsuak dira: sailkatzea ez da algoritmoari soilik begiratzea. Atal hau sintesi akademikoa da; indarreko salbuespenak eta betebeharrak arau-testuan egiaztatu behar dira.",
+      "example": "Enplegurako CV-iragazki bat arrisku handiko erabilera gisa aztertu behar da ikastaroko eskeman.",
+      "real": "Sistema bat ezarri aurretik, kalteak nork jasan ditzakeen eta zer gainbegiratze izango duen dokumentatzen da.",
+      "comparison": "Erabileraren arriskua eta ereduaren konplexutasuna bereizi; gardentasuna eta arriskurik eza bereizi.",
+      "criteria": [
+        "Helburua eta eragindako pertsonak identifikatu",
+        "Salbuespenak eta arau-iturria kontsultatu",
+        "Neurriak eta mugak dokumentatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "recall": "Ikastaroko sailkapen akademikoan, CVak hautatzeko sistema bat nagusiki nola aztertzen da?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "aprendizaje",
+      "course": "ml",
+      "title": "Aldagaiak, helburuak eta ikaskuntza",
+      "concept": "Ikaskuntza gainbegiratuan, entrenamenduan helburu ezaguna dago: erregresioak kantitate bat iragartzen du, eta sailkapenak kategoria bat. Gainbegiratu gabeak egitura bilatzen du etiketa horiek gabe; errefortzu bidezkoak sarien bidez jarduten ikasten du.",
+      "example": "Etxebizitza baten prezioa: erregresioa. Gaixoa/osasuntsua: sailkapena.",
+      "real": "Bezeroak etiketarik gabe taldekatzea clustering da, ez sailkapen gainbegiratua.",
+      "comparison": "X aldagai iragarlea eta y helburua bereizi; etiketa kategorikoa eta kantitate jarraitua bereizi.",
+      "criteria": [
+        "Helburua identifikatu",
+        "Atributuak eta helburua bereizi",
+        "Ikaskuntza mota aukeratu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "recall": "Mezu elektroniko bat spam den ala ez iragartzea zer motatako arazoa da?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "modelos",
+      "course": "ml",
+      "title": "Lineala, logistikoa, KNN, Tree, Forest eta SVM",
+      "concept": "Erregresio linealak kantitateak iragartzen ditu. Logistikoak klaseen probabilitateak modelatzen ditu. KNN distantzien eta eskalaren araberakoa da; Tree-k arauen bidez zatitzen du. Random Forest-ek zuhaitzak konbinatzen ditu; SVMk marjina batez bereizten du, eta kernelak erabil ditzake.",
+      "example": "KNN k=1,3,5 balioekin alderatzeko, erabili ebaluazio-partizio berak.",
+      "real": "Alderatu hainbat learner Test & Score-n, gordetako testaren emaitzaren arabera aukeratu gabe.",
+      "comparison": "Logistikoak sailkatu egiten du, izena gorabehera; KNNk ez du formula lineal globalik ikasten.",
+      "criteria": [
+        "Eredua eta zeregina erlazionatu",
+        "Eskala eta hiperparametroak kontrolatu",
+        "Partizio berdinekin alderatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "recall": "Zer ereduk sailkatzen du hurbileko auzokideen etiketak erabiliz?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "validacion",
+      "course": "ml",
+      "title": "K-Fold eta datu-ihesa",
+      "concept": "Bereizi entrenamendua, hiperparametroen hautaketa eta azken ebaluazioa. K-Fold-ek balidazio-blokea txandakatzen du. Estatistikak ikasten dituen aurreprozesamendua fold bakoitzaren barruan doitu behar da, ez datu-multzo osoan ebaluatu aurretik.",
+      "example": "Inputazio-batezbestekoa CSV osoan kalkulatzeak balidazio-informazioa filtratzen du.",
+      "real": "Orangen, konektatu Preprocess Test & Score-ren Preprocessor gisa, fold-en barruan doitzeko.",
+      "comparison": "Aukeratzeko balidazioa eta orokortzea estimatzeko gordetako testa bereizi.",
+      "criteria": [
+        "Testa isolatu",
+        "Aurreprozesamendua fold bakoitzean ikasi",
+        "Behar izanez gero, taldearen edo denboraren araberako partizioa aukeratu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "recall": "Datu guztiak zatitu aurretik eskalatzea doitzeak zer arrisku sortzen du?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "metricas",
+      "course": "ml",
+      "title": "Nahasmen-matrizea, Precision, Recall, F1 eta Accuracy",
+      "concept": "Precision=TP/(TP+FP); Recall=TP/(TP+FN); Accuracy=(TP+TN)/guztira. F1 precision eta recall-en batezbesteko harmonikoa da. Klase positiboa zehaztu eta matrizea aztertu behar da, bereziki klase desorekatuetan.",
+      "example": "TP=8, FP=2 eta FN=2 izanik, precision eta recall 0,8 dira.",
+      "real": "Beti iruzurrik ez dagoela esaten duen detektagailuak accuracy handia eta recall zero izan ditzake.",
+      "comparison": "Precision-ek alarmetatik zenbat diren zuzenak galdetzen du; recall-ek benetako positiboetatik zenbat hautematen diren.",
+      "criteria": [
+        "Klase positiboa zehaztu",
+        "TP FP FN TN irakurri",
+        "Metrikak kaltearen arabera interpretatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "recall": "Zer metrikak adierazten du benetako positiboen zer zati hauteman den?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "arquitectura",
+      "course": "systems",
+      "title": "Big Data: V-ak, zikloa eta arkitektura",
+      "concept": "V-ek erronkak deskribatzen dituzte: bolumena, abiadura eta aniztasuna dira oinarrizko hirurak; egiazkotasunak eta balioak kalitatea eta erabilgarritasuna gehitzen dituzte. Materialak zazpira zabaltzen ditu, aldakortasunarekin eta bistaratzearekin. Ez dago zazpi V-en zerrenda unibertsal bakarra.",
+      "example": "Sentsore askok gertaera azkarrak, heterogeneoak eta akatsak izan ditzaketenak bidaltzen dituzte.",
+      "real": "Ikastaroko zikloak sorrera, ingestioa, biltegiratzea, eraldaketa eta kontsumoa lotzen ditu.",
+      "comparison": "Bolumen handiagoak ez du balio handiagoa esan nahi; arkitekturak latentziari, kostuari eta kalitateari erantzun behar die.",
+      "criteria": [
+        "V-ak eskakizunekin erlazionatu",
+        "Datuaren zikloari jarraitu",
+        "Arkitektura latentziaren eta kalitatearen arabera justifikatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "recall": "Zer V-k adierazten du datuen fidagarritasuna?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "etl",
+      "course": "systems",
+      "title": "ETL, ELT eta batch/streaming",
+      "concept": "ETLk helmugan kargatu aurretik eraldatzen du; ELTk eraldatu aurretik kargatzen du. Batch-ek sortak prozesatzen ditu, eta streaming-ek gertaerak etengabe prozesatzen ditu. Ardatz desberdinak dira: streaming-ek ez du automatikoki ELT esan nahi.",
+      "example": "CSV bat biltegi batean kargatu aurretik garbitzea ETL da.",
+      "real": "Sentsoreen aginte-panel batek fluxu jarraitua behar du; eguneko itxierak sortak erabil ditzake.",
+      "comparison": "Eraldaketa/karga ordena eta prozesamenduaren maiztasuna eta latentzia bereizi.",
+      "criteria": [
+        "E T L ordena adierazi",
+        "Latentzia justifikatu",
+        "Erroreetatik berreskuratzea azaldu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "recall": "Erauzteari, helmugan kargatzeari eta ondoren eraldatzeari nola deitzen zaio?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "almacenes",
+      "course": "systems",
+      "title": "Lake, Warehouse, Lakehouse eta formatuak",
+      "concept": "Warehouse-k analitikarako datuak antolatzen ditu, eskemarekin eta gobernantzarekin. Lake-k era askotako datuak gordetzen ditu, sarritan gordinak. Lakehouse-k taulen eta kudeaketaren gaitasunak gehitzen ditu lake biltegiratzearen gainean. CSV testuzko taula-formatua da, JSONek egitura habiaratuak onartzen ditu, eta Parquet zutabekakoa da.",
+      "example": "Milioika erregistrotako zutabe gutxi kontsultatzeko, Parquet-ek normalean irakurketa murrizten du.",
+      "real": "Lake batek jatorrizko gertaerak eta analisirako taula araztuak gordetzen ditu.",
+      "comparison": "Fitxategi-formatua eta biltegiratze-arkitektura ez dira sinonimoak.",
+      "criteria": [
+        "Arkitektura eta formatua bereizi",
+        "Irakurketa-patroiaren arabera aukeratu",
+        "Gobernantza eta kalitatea deskribatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "recall": "Zer formatuk gordetzen du zutabeka eta balio du analitikarako?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "elastic",
+      "course": "systems",
+      "title": "Elasticsearch, mapping-ak, DSL eta Kibana",
+      "concept": "Mapping-ak motak zehazten ditu: text testu-bilaketarako analizatzen da; keyword-ek balio zehatzak gordetzen ditu. Query DSLk JSON bilaketak adierazten ditu. Aggregations-ek datuak laburbiltzen ditu. Kibanak esploratzea ahalbidetzen du, eta KQLk iragazten du; Logstash-ek gertaerak ingestatu eta eraldatzen ditu.",
+      "example": "Kategoriaren arabera taldekatzeko, erabili keyword eremu bat eta terms agregazio bat.",
+      "real": "Discover-ek logak iragazten ditu; Logstash pipeline batek mezuen data eta eremuak ateratzen ditu.",
+      "comparison": "text eremuko match eta keyword balio zehatzeko term bereizi.",
+      "criteria": [
+        "Mapping-eko motak berrikusi",
+        "Bilaketa eta agregazioa bereizi",
+        "Dokumentuak eta emaitzak egiaztatu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "recall": "Zer mota erabiltzen da normalean balio zehatzetarako eta kategoriaren araberako taldekatzeetarako?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "nifi",
+      "course": "applied",
+      "title": "NiFi: FlowFile-ak, processor-ak eta relationship-ak",
+      "concept": "FlowFile batek edukia eta atributuak adierazten ditu. Processor-ek eragiketak egiten dituzte; relationship-ek success edo failure bezalako irteerak izendatzen dituzte. Konexioek ilarak dituzte, eta backpressure-k haien hazkundea mugatzen du. Provenance-k gertatutakoa jarraitzea ahalbidetzen du.",
+      "example": "GetFile → PutFile-k fitxategiak mugitzen ditu; konfiguratu gatazkak eta success/failure helmugak.",
+      "real": "Helmuga moteltzen bada, begiratu ilarei eta presioari konkurrentzia handitu aurretik.",
+      "comparison": "Atributuek edukia deskribatzen dute; ez dira edukia bera.",
+      "criteria": [
+        "Edukia eta atributuak bereizi",
+        "Erlazioak eta erroreak berrikusi",
+        "Ilarak eta provenance neurtu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "recall": "NiFiko zer objektuk konbinatzen ditu edukiaren erreferentzia eta atributuak?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "kafka",
+      "course": "applied",
+      "title": "Kafka: topic-ak, partizioak, offset-ak eta taldeak",
+      "concept": "Producer-ek erregistroak argitaratzen dituzte partiziotan banatutako topic-etan. Offset-ak partizio baten barruko posizioa identifikatzen du. Talde bereko consumer-ek partizioak banatzen dituzte; talde desberdinek datu berak modu independentean irakur ditzakete. Ordena partizio baten barruan bermatzen da.",
+      "example": "Bi partiziok lana talde bereko bi consumer-en artean banatzea ahalbidetzen dute.",
+      "real": "Berrabiaraztean baieztatutako offset-ak erabiltzen dira: helmugako efektuak berrirakurketak onartu behar ditu.",
+      "comparison": "Partizioko offset-a eta identifikatzaile globala bereizi; taldea eta consumer indibiduala bereizi.",
+      "criteria": [
+        "Partizioa eta taldea identifikatu",
+        "Irakurtzea eta baieztatzea bereizi",
+        "Efektu bikoiztuak prebenitu"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "recall": "Nola deitzen zaio erregistro batek partizio baten barruan duen posizioari?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "connect",
+      "course": "applied",
+      "title": "Connect, streaming eta Medallion",
+      "concept": "Kafka Connect-ek sistemak integratzen ditu source (Kafkara sartzen da) eta sink (Kafkatik ateratzen da) bidez. Medallion arkitekturak Bronze gordina, Silver garbia eta kontsumorako Gold bereizten ditu. Geruzen izenek ez dute kalitatea bermatzen: kontratuak eta kontrolak behar dira.",
+      "example": "MySQL → source → topic → sink → MongoDB.",
+      "real": "Datu meteorologikoak jatorrizko gertaeretatik serie garbietara eta udalerrikako agregatuetara igarotzen dira.",
+      "comparison": "source eta sink konektoreak bereizi; kalitate-geruzak eta zerbitzu zehatzak bereizi.",
+      "criteria": [
+        "Jatorria, topic-a eta helmuga adierazi",
+        "Geruzen arteko kontrolak zehaztu",
+        "Erroreak eta offset-ak berrikusi"
+      ],
+      "modality": "THEORY",
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "recall": "Zer konektorek esportatzen ditu Kafkako erregistroak helmugako sistema batera?",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    }
+  ],
+  "questions": [
+    {
+      "course": "models",
+      "topic": "paradigmas",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-paradigmas-01",
+      "type": "choice",
+      "prompt": "Sistema aditu batek espezialistek idatzitako IF–THEN arauak aplikatzen ditu. Zer ikuspegi adierazten du?",
+      "answer": 0,
+      "explanation": "AA sinbolikoak arau esplizituak aplikatzen ditu; konexionistak sareen pisuak ikasten ditu. Sortzailea izateak edukia sortzeko gaitasuna adierazten du: sareak erabil ditzake, eta ez da kategoria baztertzailea.",
+      "options": [
+        "Sinbolikoa",
+        "Clustering",
+        "Erregresio logistikoa",
+        "Errefortzu bidezko ikaskuntza"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "paradigmas",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-paradigmas-02",
+      "type": "boolean",
+      "prompt": "Testua sortzeak bere baieztapenak egiazkoak direla bermatzen du.",
+      "answer": false,
+      "explanation": "Azter daitezkeen arauak eta ikasitako patroiak bereizi; edukia sortzeak ez du egia bermatzen. Sare bat konexionista eta sortzailea izan daiteke aldi berean.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "paradigmas",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-paradigmas-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: sistema aditu batek espezialistek idatzitako IF–THEN arauak aplikatzen ditu. Zer ikuspegi adierazten du?",
+      "answer": [
+        "simbólica",
+        "Simbólica",
+        "Sinbolikoa"
+      ],
+      "explanation": "AA sinbolikoak arau esplizituak aplikatzen ditu; konexionistak sareen pisuak ikasten ditu. Sortzailea izateak edukia sortzeko gaitasuna adierazten du: sareak erabil ditzake, eta ez da kategoria baztertzailea.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "paradigmas",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-paradigmas-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "AA sinbolikoak arau esplizituak aplikatzen ditu; konexionistak sareen pisuak ikasten ditu. Sortzailea izateak edukia sortzeko gaitasuna adierazten du: sareak erabil ditzake, eta ez da kategoria baztertzailea.",
+      "options": [
+        "Sare bat konexionista eta sortzailea izan daiteke aldi berean.",
+        "Testua sortzeak bere baieztapenak egiazkoak direla bermatzen du.",
+        "Azter daitezkeen arauak eta ikasitako patroiak bereizi; edukia sortzeak ez du egia bermatzen.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "paradigmas",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Simbólica, conexionista y generativa",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-paradigmas-05",
+      "type": "open",
+      "prompt": "Kasua: sare batek irudietako akatsak hautematen ditu; eredu sortzaile batek egiaztatu beharreko txosten bat idazten du. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "AA sinbolikoak arau esplizituak aplikatzen ditu; konexionistak sareen pisuak ikasten ditu. Sortzailea izateak edukia sortzeko gaitasuna adierazten du: sareak erabil ditzake, eta ez da kategoria baztertzailea.",
+      "criteria": [
+        "Arauak edo ikaskuntza identifikatu",
+        "Zer eduki sortzen den azaldu",
+        "Baieztapenak egiaztatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-capacidades-01",
+      "type": "choice",
+      "prompt": "Zein da sare sakonetan oinarritutako Machine Learning-en azpimultzoa?",
+      "answer": 3,
+      "explanation": "ANIk zeregin mugatuak ebazten ditu. AGIk gaitasun orokorra adierazten du, eta ASIk gizakiarena baino handiagoa; kategoria kontzeptualak dira, ez produktu batek frogatzen dituen etiketak. Deep Learning Machine Learning-en azpimultzo bat da, sare sakonak erabiltzen dituena.",
+      "options": [
+        "ETL",
+        "KQL",
+        "Kafka Connect",
+        "Deep Learning"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-capacidades-02",
+      "type": "boolean",
+      "prompt": "Machine Learning guztiak sare neuronal sakonak behar ditu.",
+      "answer": false,
+      "explanation": "AAk ML barne hartzen du; MLk DL barne hartzen du. Gaitasunaren zabaltasuna beste ardatz bat da. Sare sakon espezializatu bat ANI izan daiteke oraindik.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-capacidades-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zein da sare sakonetan oinarritutako Machine Learning-en azpimultzoa?",
+      "answer": [
+        "Deep Learning"
+      ],
+      "explanation": "ANIk zeregin mugatuak ebazten ditu. AGIk gaitasun orokorra adierazten du, eta ASIk gizakiarena baino handiagoa; kategoria kontzeptualak dira, ez produktu batek frogatzen dituen etiketak. Deep Learning Machine Learning-en azpimultzo bat da, sare sakonak erabiltzen dituena.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-capacidades-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "ANIk zeregin mugatuak ebazten ditu. AGIk gaitasun orokorra adierazten du, eta ASIk gizakiarena baino handiagoa; kategoria kontzeptualak dira, ez produktu batek frogatzen dituen etiketak. Deep Learning Machine Learning-en azpimultzo bat da, sare sakonak erabiltzen dituena.",
+      "options": [
+        "Sare sakon espezializatu bat ANI izan daiteke oraindik.",
+        "Machine Learning guztiak sare neuronal sakonak behar ditu.",
+        "AAk ML barne hartzen du; MLk DL barne hartzen du. Gaitasunaren zabaltasuna beste ardatz bat da.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-capacidades-05",
+      "type": "open",
+      "prompt": "Kasua: sare sakon batekin piezak aztertzea zeregin mugatua da oraindik. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "ANIk zeregin mugatuak ebazten ditu. AGIk gaitasun orokorra adierazten du, eta ASIk gizakiarena baino handiagoa; kategoria kontzeptualak dira, ez produktu batek frogatzen dituen etiketak. Deep Learning Machine Learning-en azpimultzo bat da, sare sakonak erabiltzen dituena.",
+      "criteria": [
+        "Teknika eta gaitasunaren zabaltasuna bereizi",
+        "Zeregin mugatu baten adibidea eman",
+        "Frogarik gabe gaitasun orokorrik ez egotzi"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fuzzy-01",
+      "type": "choice",
+      "prompt": "Zein etapak bihurtzen du irteera lauso bat abiadura zehatz?",
+      "answer": 2,
+      "explanation": "Pertenentzia-funtzio batek 0 eta 1 arteko maila esleitzen dio kontzeptu gradual bati. Berez ez da gertaera baten probabilitatea. Lausotzeak neurketak maila bihurtzen ditu; inferentziak arauak aplikatzen ditu, eta deslausotzeak irteera zehatza ematen du.",
+      "options": [
+        "K-Fold partizionatzea",
+        "Tokenizazioa",
+        "Deslausotzea",
+        "Lausotzea"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fuzzy-02",
+      "type": "boolean",
+      "prompt": "0,6ko pertenentziak nahitaez % 60ko probabilitatea esan nahi du.",
+      "answer": false,
+      "explanation": "Pertenentzia graduala eta bitarra bereizi; egia-maila eta probabilitatea bereizi. Pertenentzia-funtzioak gainjar daitezke.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fuzzy-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zein etapak bihurtzen du irteera lauso bat abiadura zehatz?",
+      "answer": [
+        "defuzzificación",
+        "Defuzzificación",
+        "Deslausotzea"
+      ],
+      "explanation": "Pertenentzia-funtzio batek 0 eta 1 arteko maila esleitzen dio kontzeptu gradual bati. Berez ez da gertaera baten probabilitatea. Lausotzeak neurketak maila bihurtzen ditu; inferentziak arauak aplikatzen ditu, eta deslausotzeak irteera zehatza ematen du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fuzzy-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Pertenentzia-funtzio batek 0 eta 1 arteko maila esleitzen dio kontzeptu gradual bati. Berez ez da gertaera baten probabilitatea. Lausotzeak neurketak maila bihurtzen ditu; inferentziak arauak aplikatzen ditu, eta deslausotzeak irteera zehatza ematen du.",
+      "options": [
+        "Pertenentzia-funtzioak gainjar daitezke.",
+        "0,6ko pertenentziak nahitaez % 60ko probabilitatea esan nahi du.",
+        "Pertenentzia graduala eta bitarra bereizi; egia-maila eta probabilitatea bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fuzzy-05",
+      "type": "open",
+      "prompt": "Kasua: haizagailu batek abiadura leunki egokitzen du tenperaturaren arauak erabiliz. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Pertenentzia-funtzio batek 0 eta 1 arteko maila esleitzen dio kontzeptu gradual bati. Berez ez da gertaera baten probabilitatea. Lausotzeak neurketak maila bihurtzen ditu; inferentziak arauak aplikatzen ditu, eta deslausotzeak irteera zehatza ematen du.",
+      "criteria": [
+        "Maila eta probabilitatea bereizi",
+        "Sarrera eta irteera deskribatu",
+        "Arauak justifikatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "sesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-sesgos-01",
+      "type": "choice",
+      "prompt": "Gaueko txandako irudi ia guztiak falta dira. Zer alborapen ikusten da zuzenean?",
+      "answer": 1,
+      "explanation": "Hautapen-alborapena laginak populazioa gaizki ordezkatzen duenean agertzen da. Alborapen historikoak aurreko erabakien desberdintasunak erreproduzitzen ditu. Berrespen-ziklo batek bere iragarpenak indartzen ditu, behatzea erabaki zituen emaitzak soilik biltzen dituenean.",
+      "options": [
+        "Normalizazioa",
+        "Hautapena",
+        "Doitasun perfektua",
+        "Deslausotzea"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "sesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-sesgos-02",
+      "type": "boolean",
+      "prompt": "Sexuaren zutabea ezabatzeak alborapen guztiak ezabatzen ditu nahitaez.",
+      "answer": false,
+      "explanation": "Laginaren ordezkagarritasuna, oinordetzan jasotako desberdintasuna eta atzeraelikadura-begizta arazo desberdinak dira. Emaitza global on batek talde bakoitzeko erroreak ezkuta ditzake.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "sesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-sesgos-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: gaueko txandako irudi ia guztiak falta dira. Zer alborapen ikusten da zuzenean?",
+      "answer": [
+        "selección",
+        "Selección",
+        "Hautapena"
+      ],
+      "explanation": "Hautapen-alborapena laginak populazioa gaizki ordezkatzen duenean agertzen da. Alborapen historikoak aurreko erabakien desberdintasunak erreproduzitzen ditu. Berrespen-ziklo batek bere iragarpenak indartzen ditu, behatzea erabaki zituen emaitzak soilik biltzen dituenean.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "sesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-sesgos-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Hautapen-alborapena laginak populazioa gaizki ordezkatzen duenean agertzen da. Alborapen historikoak aurreko erabakien desberdintasunak erreproduzitzen ditu. Berrespen-ziklo batek bere iragarpenak indartzen ditu, behatzea erabaki zituen emaitzak soilik biltzen dituenean.",
+      "options": [
+        "Emaitza global on batek talde bakoitzeko erroreak ezkuta ditzake.",
+        "Sexuaren zutabea ezabatzeak alborapen guztiak ezabatzen ditu nahitaez.",
+        "Laginaren ordezkagarritasuna, oinordetzan jasotako desberdintasuna eta atzeraelikadura-begizta arazo desberdinak dira.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "sesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Sesgo de selección, histórico y confirmación",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-sesgos-05",
+      "type": "open",
+      "prompt": "Kasua: kreditua lehendik onartutako profilei soilik emateak baztertutakoekin zer gertatuko litzatekeen behatzea eragozten du. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Hautapen-alborapena laginak populazioa gaizki ordezkatzen duenean agertzen da. Alborapen historikoak aurreko erabakien desberdintasunak erreproduzitzen ditu. Berrespen-ziklo batek bere iragarpenak indartzen ditu, behatzea erabaki zituen emaitzak soilik biltzen dituenean.",
+      "criteria": [
+        "Ordezkagarritasuna eta errorea taldeka neurtu",
+        "Proxy aldagaiak berrikusi",
+        "Arintze-neurriak eta gainbegiratzea proposatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fairness-01",
+      "type": "choice",
+      "prompt": "Gaixoen taldeen arteko recall berdintzea zeri dagokio?",
+      "answer": 0,
+      "explanation": "Demographic Parity-k hautapen-tasak alderatzen ditu taldeen artean. Equal Opportunity-k TPR/recall alderatzen du benetako positiboen artean. Disparate Impact hautapen-tasen arteko zatidura da: zenbakitzailean zer talde dagoen adierazi behar da. 0,8ko araua materialeko baheketa-seinalea da, ez legezkotasunaren froga unibertsala.",
+      "options": [
+        "Equal Opportunity",
+        "Demographic Parity",
+        "Accuracy globala",
+        "Laginaren tamaina"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fairness-02",
+      "type": "boolean",
+      "prompt": "0,8tik gorako DI batek berez ziurtatzen du sistema bat bidezkoa eta legezkoa dela.",
+      "answer": false,
+      "explanation": "Hautapen bera izateak ez du esan nahi benetako positiboen hautemate bera dagoenik. Demographic Parity-k hautapen-tasak erabiltzen ditu, benetako emaitzaren arabera baldintzatu gabe.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fairness-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: gaixoen taldeen arteko recall berdintzea zeri dagokio?",
+      "answer": [
+        "Equal Opportunity"
+      ],
+      "explanation": "Demographic Parity-k hautapen-tasak alderatzen ditu taldeen artean. Equal Opportunity-k TPR/recall alderatzen du benetako positiboen artean. Disparate Impact hautapen-tasen arteko zatidura da: zenbakitzailean zer talde dagoen adierazi behar da. 0,8ko araua materialeko baheketa-seinalea da, ez legezkotasunaren froga unibertsala.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fairness-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Demographic Parity-k hautapen-tasak alderatzen ditu taldeen artean. Equal Opportunity-k TPR/recall alderatzen du benetako positiboen artean. Disparate Impact hautapen-tasen arteko zatidura da: zenbakitzailean zer talde dagoen adierazi behar da. 0,8ko araua materialeko baheketa-seinalea da, ez legezkotasunaren froga unibertsala.",
+      "options": [
+        "Demographic Parity-k hautapen-tasak erabiltzen ditu, benetako emaitzaren arabera baldintzatu gabe.",
+        "0,8tik gorako DI batek berez ziurtatzen du sistema bat bidezkoa eta legezkoa dela.",
+        "Hautapen bera izateak ez du esan nahi benetako positiboen hautemate bera dagoenik.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-fairness-05",
+      "type": "open",
+      "prompt": "Kasua: ospitale batek aztertzen du talde bakoitzean gaixoen proportzio bera hautematen duen. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Demographic Parity-k hautapen-tasak alderatzen ditu taldeen artean. Equal Opportunity-k TPR/recall alderatzen du benetako positiboen artean. Disparate Impact hautapen-tasen arteko zatidura da: zenbakitzailean zer talde dagoen adierazi behar da. 0,8ko araua materialeko baheketa-seinalea da, ez legezkotasunaren froga unibertsala.",
+      "criteria": [
+        "Izendatzaileak eta erreferentzia-taldea adierazi",
+        "Metrika kaltearen arabera aukeratu",
+        "Adierazlearen mugak aitortu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "errores",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-errores-01",
+      "type": "choice",
+      "prompt": "Zer tasak neurtzen ditu osasuntsu gisa sailkatutako benetako gaixoak?",
+      "answer": 3,
+      "explanation": "FPR=FP/(FP+TN): benetako negatiboen arteko alarma faltsuak. FNR=FN/(FN+TP): hauteman gabe geratzen diren benetako positiboak. Taldeka alderatzeak accuracy-k ezkuta ditzakeen kalteak agerian uzten ditu.",
+      "options": [
+        "FPR",
+        "Precision",
+        "DI",
+        "FNR"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "errores",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-errores-02",
+      "type": "boolean",
+      "prompt": "FPR kalkulatzeko, FP iragarpen positibo guztien artean zatitzen da.",
+      "answer": false,
+      "explanation": "FPR benetako negatiboetan baldintzatzen da; FNR, benetako positiboetan. FPR alderatzeko talde bakoitzeko benetako negatiboen kopurua behar da.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "errores",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-errores-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer tasak neurtzen ditu osasuntsu gisa sailkatutako benetako gaixoak?",
+      "answer": [
+        "FNR"
+      ],
+      "explanation": "FPR=FP/(FP+TN): benetako negatiboen arteko alarma faltsuak. FNR=FN/(FN+TP): hauteman gabe geratzen diren benetako positiboak. Taldeka alderatzeak accuracy-k ezkuta ditzakeen kalteak agerian uzten ditu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "errores",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-errores-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "FPR=FP/(FP+TN): benetako negatiboen arteko alarma faltsuak. FNR=FN/(FN+TP): hauteman gabe geratzen diren benetako positiboak. Taldeka alderatzeak accuracy-k ezkuta ditzakeen kalteak agerian uzten ditu.",
+      "options": [
+        "FPR alderatzeko talde bakoitzeko benetako negatiboen kopurua behar da.",
+        "FPR kalkulatzeko, FP iragarpen positibo guztien artean zatitzen da.",
+        "FPR benetako negatiboetan baldintzatzen da; FNR, benetako positiboetan.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "errores",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/1_Alborapenak_Bias/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "FPR y FNR",
+        "sha256": "cbb3c68fe0caccc7791b48dd2aa16db3104e9aa57965dd9c8bbc495126c36916"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-errores-05",
+      "type": "open",
+      "prompt": "Kasua: enplegu-iragazki bateko positibo faltsuak bidegabeki bazter dezake norbait; gaixotasunak hautematean negatibo faltsuak arreta atzeratu dezake. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "FPR=FP/(FP+TN): benetako negatiboen arteko alarma faltsuak. FNR=FN/(FN+TP): hauteman gabe geratzen diren benetako positiboak. Taldeka alderatzeak accuracy-k ezkuta ditzakeen kalteak agerian uzten ditu.",
+      "criteria": [
+        "Positiboa eta negatiboa zehaztu",
+        "Izendatzaile egokia erabili",
+        "Errorearen kostua azaldu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "auditoria",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-auditoria-01",
+      "type": "choice",
+      "prompt": "Zer jarduerak biltzen ditu datuei, erroreei eta gainbegiratzeari buruzko ebidentziak?",
+      "answer": 2,
+      "explanation": "Auditatzeak datuei, erroreei, eragindako taldeei, pribatutasunari, gainbegiratzeari eta trazabilitateari buruzko ebidentziak biltzea eskatzen du. Azalgarritasunak erabaki bat ulertzen laguntzen du, baina ez du frogatzen bidezkoa edo zuzena denik. ALTAIk berrikuspen etikoa egituratzen du.",
+      "options": [
+        "Streaming",
+        "Deslausotzea",
+        "Auditoria",
+        "Inputazioa"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "auditoria",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-auditoria-02",
+      "type": "boolean",
+      "prompt": "Azalpen sinesgarri batek eredua bidezkoa dela frogatzen du.",
+      "answer": false,
+      "explanation": "Iragarpen bat azaltzea eta sistema osoaren kalitatea eta segurtasuna frogatzea bereizi. Auditoria batek mugak eta ekintza zuzentzaileak dokumentatu behar ditu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "auditoria",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-auditoria-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer jarduerak biltzen ditu datuei, erroreei eta gainbegiratzeari buruzko ebidentziak?",
+      "answer": [
+        "auditoría",
+        "Auditoría",
+        "Auditoria"
+      ],
+      "explanation": "Auditatzeak datuei, erroreei, eragindako taldeei, pribatutasunari, gainbegiratzeari eta trazabilitateari buruzko ebidentziak biltzea eskatzen du. Azalgarritasunak erabaki bat ulertzen laguntzen du, baina ez du frogatzen bidezkoa edo zuzena denik. ALTAIk berrikuspen etikoa egituratzen du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "auditoria",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-auditoria-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Auditatzeak datuei, erroreei, eragindako taldeei, pribatutasunari, gainbegiratzeari eta trazabilitateari buruzko ebidentziak biltzea eskatzen du. Azalgarritasunak erabaki bat ulertzen laguntzen du, baina ez du frogatzen bidezkoa edo zuzena denik. ALTAIk berrikuspen etikoa egituratzen du.",
+      "options": [
+        "Auditoria batek mugak eta ekintza zuzentzaileak dokumentatu behar ditu.",
+        "Azalpen sinesgarri batek eredua bidezkoa dela frogatzen du.",
+        "Iragarpen bat azaltzea eta sistema osoaren kalitatea eta segurtasuna frogatzea bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "auditoria",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/3_Auditoria_eta_Etika/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Ética, explicabilidad y auditoría",
+        "sha256": "c6e4c106befef6e0053d8bf00f38e3ba7bdd4715fe0fc4a801ef5750d4f0db3a"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-auditoria-05",
+      "type": "open",
+      "prompt": "Kasua: aurpegi-ezagutzaren auditoria batek erroreak taldeka alderatzen ditu eta erabilera-baldintzak dokumentatzen ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Auditatzeak datuei, erroreei, eragindako taldeei, pribatutasunari, gainbegiratzeari eta trazabilitateari buruzko ebidentziak biltzea eskatzen du. Azalgarritasunak erabaki bat ulertzen laguntzen du, baina ez du frogatzen bidezkoa edo zuzena denik. ALTAIk berrikuspen etikoa egituratzen du.",
+      "criteria": [
+        "Eragindako pertsonak eta kaltea identifikatu",
+        "Ebidentziak taldeka eskatu",
+        "Jarraipena eta arduraduna zehaztu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "privacidad",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-privacidad-01",
+      "type": "choice",
+      "prompt": "Zer printzipiok eskatzen du helburu baterako beharrezko datuak soilik biltzea?",
+      "answer": 1,
+      "explanation": "Minimizatzeak helburu zehatz baterako beharrezkoak diren datu pertsonalak soilik biltzea esan nahi du. Pseudonimizatzeak identifikatzaileak ordezten ditu, baina ez du anonimotasuna bermatzen. Eraginaren ebaluazioak pertsonentzako arriskuak eta babes-neurriak aztertzen ditu.",
+      "options": [
+        "Gehiegizko doikuntza",
+        "Minimizazioa",
+        "Erreplikazioa",
+        "Backpressure"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "privacidad",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-privacidad-02",
+      "type": "boolean",
+      "prompt": "Pseudonimizatzeak datu pertsonalei buruzko betebehar guztiak automatikoki ezabatzen ditu.",
+      "answer": false,
+      "explanation": "Datuen pribatutasuna eta iragarpen-kalitatea bereizi; pseudonimizazioa eta anonimizazioa bereizi. Izena kentzeak ez du bermatzen inork erregistroak berridentifikatu ezin dituenik.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "privacidad",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-privacidad-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer printzipiok eskatzen du helburu baterako beharrezko datuak soilik biltzea?",
+      "answer": [
+        "minimización",
+        "Minimización",
+        "Minimizazioa"
+      ],
+      "explanation": "Minimizatzeak helburu zehatz baterako beharrezkoak diren datu pertsonalak soilik biltzea esan nahi du. Pseudonimizatzeak identifikatzaileak ordezten ditu, baina ez du anonimotasuna bermatzen. Eraginaren ebaluazioak pertsonentzako arriskuak eta babes-neurriak aztertzen ditu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "privacidad",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-privacidad-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Minimizatzeak helburu zehatz baterako beharrezkoak diren datu pertsonalak soilik biltzea esan nahi du. Pseudonimizatzeak identifikatzaileak ordezten ditu, baina ez du anonimotasuna bermatzen. Eraginaren ebaluazioak pertsonentzako arriskuak eta babes-neurriak aztertzen ditu.",
+      "options": [
+        "Izena kentzeak ez du bermatzen inork erregistroak berridentifikatu ezin dituenik.",
+        "Pseudonimizatzeak datu pertsonalei buruzko betebehar guztiak automatikoki ezabatzen ditu.",
+        "Datuen pribatutasuna eta iragarpen-kalitatea bereizi; pseudonimizazioa eta anonimizazioa bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "privacidad",
+      "difficulty": 1,
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Privacidad y RGPD",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-privacidad-05",
+      "type": "open",
+      "prompt": "Kasua: plataforma batek hezkuntza-historiaren sarbideak, gordetzeko epea eta helburua mugatzen ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Minimizatzeak helburu zehatz baterako beharrezkoak diren datu pertsonalak soilik biltzea esan nahi du. Pseudonimizatzeak identifikatzaileak ordezten ditu, baina ez du anonimotasuna bermatzen. Eraginaren ebaluazioak pertsonentzako arriskuak eta babes-neurriak aztertzen ditu.",
+      "criteria": [
+        "Helburua eta datuak justifikatu",
+        "Identifikatzaileak murriztu",
+        "Sarbidea, gordetzea eta berrikuspena zehaztu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "riesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-riesgos-01",
+      "type": "choice",
+      "prompt": "Ikastaroko sailkapen akademikoan, CVak hautatzeko sistema bat nagusiki nola aztertzen da?",
+      "answer": 0,
+      "explanation": "Materialak erabilera debekatuak, arrisku handikoak, gardentasun-betebeharrekoak eta arrisku txikikoak bereizten ditu. Helburua eta testuingurua garrantzitsuak dira: sailkatzea ez da algoritmoari soilik begiratzea. Atal hau sintesi akademikoa da; indarreko salbuespenak eta betebeharrak arau-testuan egiaztatu behar dira.",
+      "options": [
+        "Arrisku handia",
+        "Arrisku txikia softwarea izateagatik",
+        "Beti debekatua, salbuespenik gabe",
+        "Ebaluaziorik behar gabe"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "riesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-riesgos-02",
+      "type": "boolean",
+      "prompt": "Algoritmo berak beti arrisku bera du edozein testuingurutan.",
+      "answer": false,
+      "explanation": "Erabileraren arriskua eta ereduaren konplexutasuna bereizi; gardentasuna eta arriskurik eza bereizi. Erabilera-helburuak arriskuaren sailkapenean eragiten du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "riesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-riesgos-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: ikastaroko sailkapen akademikoan, CVak hautatzeko sistema bat nagusiki nola aztertzen da?",
+      "answer": [
+        "alto riesgo",
+        "Alto riesgo",
+        "Arrisku handia"
+      ],
+      "explanation": "Materialak erabilera debekatuak, arrisku handikoak, gardentasun-betebeharrekoak eta arrisku txikikoak bereizten ditu. Helburua eta testuingurua garrantzitsuak dira: sailkatzea ez da algoritmoari soilik begiratzea. Atal hau sintesi akademikoa da; indarreko salbuespenak eta betebeharrak arau-testuan egiaztatu behar dira.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "riesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-riesgos-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Materialak erabilera debekatuak, arrisku handikoak, gardentasun-betebeharrekoak eta arrisku txikikoak bereizten ditu. Helburua eta testuingurua garrantzitsuak dira: sailkatzea ez da algoritmoari soilik begiratzea. Atal hau sintesi akademikoa da; indarreko salbuespenak eta betebeharrak arau-testuan egiaztatu behar dira.",
+      "options": [
+        "Erabilera-helburuak arriskuaren sailkapenean eragiten du.",
+        "Algoritmo berak beti arrisku bera du edozein testuingurutan.",
+        "Erabileraren arriskua eta ereduaren konplexutasuna bereizi; gardentasuna eta arriskurik eza bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "models",
+      "topic": "riesgos",
+      "difficulty": 1,
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/4_AI_Act_Sailkapena/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "AI Act y evaluación de impacto",
+        "sha256": "668533baf8edab5fa8f174414e20dbd9d29379dd7a5f6230e178226dae7c53f8"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-models-riesgos-05",
+      "type": "open",
+      "prompt": "Kasua: sistema bat ezarri aurretik, kalteak nork jasan ditzakeen eta zer gainbegiratze izango duen dokumentatzen da. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Materialak erabilera debekatuak, arrisku handikoak, gardentasun-betebeharrekoak eta arrisku txikikoak bereizten ditu. Helburua eta testuingurua garrantzitsuak dira: sailkatzea ez da algoritmoari soilik begiratzea. Atal hau sintesi akademikoa da; indarreko salbuespenak eta betebeharrak arau-testuan egiaztatu behar dira.",
+      "criteria": [
+        "Helburua eta eragindako pertsonak identifikatu",
+        "Salbuespenak eta arau-iturria kontsultatu",
+        "Neurriak eta mugak dokumentatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "aprendizaje",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-aprendizaje-01",
+      "type": "choice",
+      "prompt": "Mezu elektroniko bat spam den ala ez iragartzea zer motatako arazoa da?",
+      "answer": 3,
+      "explanation": "Ikaskuntza gainbegiratuan, entrenamenduan helburu ezaguna dago: erregresioak kantitate bat iragartzen du, eta sailkapenak kategoria bat. Gainbegiratu gabeak egitura bilatzen du etiketa horiek gabe; errefortzu bidezkoak sarien bidez jarduten ikasten du.",
+      "options": [
+        "Kantitate jarraituaren erregresioa",
+        "ELT",
+        "Kafkaren partizionatzea",
+        "Sailkapena"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "aprendizaje",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-aprendizaje-02",
+      "type": "boolean",
+      "prompt": "Ikaskuntza automatiko guztiak klase-etiketak behar ditu.",
+      "answer": false,
+      "explanation": "X aldagai iragarlea eta y helburua bereizi; etiketa kategorikoa eta kantitate jarraitua bereizi. Helburua ezin da aldagai iragarle gisa sartu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "aprendizaje",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-aprendizaje-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: mezu elektroniko bat spam den ala ez iragartzea zer motatako arazoa da?",
+      "answer": [
+        "clasificación",
+        "Clasificación",
+        "Sailkapena"
+      ],
+      "explanation": "Ikaskuntza gainbegiratuan, entrenamenduan helburu ezaguna dago: erregresioak kantitate bat iragartzen du, eta sailkapenak kategoria bat. Gainbegiratu gabeak egitura bilatzen du etiketa horiek gabe; errefortzu bidezkoak sarien bidez jarduten ikasten du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "aprendizaje",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-aprendizaje-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Ikaskuntza gainbegiratuan, entrenamenduan helburu ezaguna dago: erregresioak kantitate bat iragartzen du, eta sailkapenak kategoria bat. Gainbegiratu gabeak egitura bilatzen du etiketa horiek gabe; errefortzu bidezkoak sarien bidez jarduten ikasten du.",
+      "options": [
+        "Helburua ezin da aldagai iragarle gisa sartu.",
+        "Ikaskuntza automatiko guztiak klase-etiketak behar ditu.",
+        "X aldagai iragarlea eta y helburua bereizi; etiketa kategorikoa eta kantitate jarraitua bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "aprendizaje",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Variables, objetivos y aprendizaje",
+        "sha256": "a30b428f74ddd29ec291a64d60a3e49b28a007545cd35559acdb14a768540470"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-aprendizaje-05",
+      "type": "open",
+      "prompt": "Kasua: bezeroak etiketarik gabe taldekatzea clustering da, ez sailkapen gainbegiratua. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Ikaskuntza gainbegiratuan, entrenamenduan helburu ezaguna dago: erregresioak kantitate bat iragartzen du, eta sailkapenak kategoria bat. Gainbegiratu gabeak egitura bilatzen du etiketa horiek gabe; errefortzu bidezkoak sarien bidez jarduten ikasten du.",
+      "criteria": [
+        "Helburua identifikatu",
+        "Atributuak eta helburua bereizi",
+        "Ikaskuntza mota aukeratu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "modelos",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-modelos-01",
+      "type": "choice",
+      "prompt": "Zer ereduk sailkatzen du hurbileko auzokideen etiketak erabiliz?",
+      "answer": 2,
+      "explanation": "Erregresio linealak kantitateak iragartzen ditu. Logistikoak klaseen probabilitateak modelatzen ditu. KNN distantzien eta eskalaren araberakoa da; Tree-k arauen bidez zatitzen du. Random Forest-ek zuhaitzak konbinatzen ditu; SVMk marjina batez bereizten du, eta kernelak erabil ditzake.",
+      "options": [
+        "ETL",
+        "KQL",
+        "KNN",
+        "Erregresio lineala"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "modelos",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-modelos-02",
+      "type": "boolean",
+      "prompt": "Random Forest-ek eta zuhaitz bakar batek beti emaitza berdinak sortzen dituzte.",
+      "answer": false,
+      "explanation": "Logistikoak sailkatu egiten du, izena gorabehera; KNNk ez du formula lineal globalik ikasten. Eskalatzeak KNNk erabiltzen dituen distantziak alda ditzake.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "modelos",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-modelos-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer ereduk sailkatzen du hurbileko auzokideen etiketak erabiliz?",
+      "answer": [
+        "KNN"
+      ],
+      "explanation": "Erregresio linealak kantitateak iragartzen ditu. Logistikoak klaseen probabilitateak modelatzen ditu. KNN distantzien eta eskalaren araberakoa da; Tree-k arauen bidez zatitzen du. Random Forest-ek zuhaitzak konbinatzen ditu; SVMk marjina batez bereizten du, eta kernelak erabil ditzake.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "modelos",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-modelos-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Erregresio linealak kantitateak iragartzen ditu. Logistikoak klaseen probabilitateak modelatzen ditu. KNN distantzien eta eskalaren araberakoa da; Tree-k arauen bidez zatitzen du. Random Forest-ek zuhaitzak konbinatzen ditu; SVMk marjina batez bereizten du, eta kernelak erabil ditzake.",
+      "options": [
+        "Eskalatzeak KNNk erabiltzen dituen distantziak alda ditzake.",
+        "Random Forest-ek eta zuhaitz bakar batek beti emaitza berdinak sortzen dituzte.",
+        "Logistikoak sailkatu egiten du, izena gorabehera; KNNk ez du formula lineal globalik ikasten.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "modelos",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/2_Ikasketa_Gainbegiratua/Ariketa_KNN.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lineal, logística, KNN, Tree, Forest y SVM",
+        "sha256": "4afe25ef4dcbfbe9530650fb07a6658bb6fe90964ae07b5b4b03a3e15d0eef60"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-modelos-05",
+      "type": "open",
+      "prompt": "Kasua: alderatu hainbat learner Test & Score-n, gordetako testaren emaitzaren arabera aukeratu gabe. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Erregresio linealak kantitateak iragartzen ditu. Logistikoak klaseen probabilitateak modelatzen ditu. KNN distantzien eta eskalaren araberakoa da; Tree-k arauen bidez zatitzen du. Random Forest-ek zuhaitzak konbinatzen ditu; SVMk marjina batez bereizten du, eta kernelak erabil ditzake.",
+      "criteria": [
+        "Eredua eta zeregina erlazionatu",
+        "Eskala eta hiperparametroak kontrolatu",
+        "Partizio berdinekin alderatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "validacion",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-validacion-01",
+      "type": "choice",
+      "prompt": "Datu guztiak zatitu aurretik eskalatzea doitzeak zer arrisku sortzen du?",
+      "answer": 1,
+      "explanation": "Bereizi entrenamendua, hiperparametroen hautaketa eta azken ebaluazioa. K-Fold-ek balidazio-blokea txandakatzen du. Estatistikak ikasten dituen aurreprozesamendua fold bakoitzaren barruan doitu behar da, ez datu-multzo osoan ebaluatu aurretik.",
+      "options": [
+        "Offset reset",
+        "Datu-ihesa",
+        "Backpressure",
+        "Demographic Parity bermatua"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "validacion",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-validacion-02",
+      "type": "boolean",
+      "prompt": "K-Fold-ek aurreprozesamendua datu-multzo osoan doitzea ahalbidetzen du ebaluatu aurretik.",
+      "answer": false,
+      "explanation": "Aukeratzeko balidazioa eta orokortzea estimatzeko gordetako testa bereizi. Paziente beraren datuek taldeka egindako partizioak behar ditzakete.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "validacion",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-validacion-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: datu guztiak zatitu aurretik eskalatzea doitzeak zer arrisku sortzen du?",
+      "answer": [
+        "leakage",
+        "Leakage",
+        "Datu-ihesa"
+      ],
+      "explanation": "Bereizi entrenamendua, hiperparametroen hautaketa eta azken ebaluazioa. K-Fold-ek balidazio-blokea txandakatzen du. Estatistikak ikasten dituen aurreprozesamendua fold bakoitzaren barruan doitu behar da, ez datu-multzo osoan ebaluatu aurretik.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "validacion",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-validacion-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Bereizi entrenamendua, hiperparametroen hautaketa eta azken ebaluazioa. K-Fold-ek balidazio-blokea txandakatzen du. Estatistikak ikasten dituen aurreprozesamendua fold bakoitzaren barruan doitu behar da, ez datu-multzo osoan ebaluatu aurretik.",
+      "options": [
+        "Paziente beraren datuek taldeka egindako partizioak behar ditzakete.",
+        "K-Fold-ek aurreprozesamendua datu-multzo osoan doitzea ahalbidetzen du ebaluatu aurretik.",
+        "Aukeratzeko balidazioa eta orokortzea estimatzeko gordetako testa bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "validacion",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "K-Fold y leakage",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-validacion-05",
+      "type": "open",
+      "prompt": "Kasua: Orangen, konektatu Preprocess Test & Score-ren Preprocessor gisa, fold-en barruan doitzeko. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Bereizi entrenamendua, hiperparametroen hautaketa eta azken ebaluazioa. K-Fold-ek balidazio-blokea txandakatzen du. Estatistikak ikasten dituen aurreprozesamendua fold bakoitzaren barruan doitu behar da, ez datu-multzo osoan ebaluatu aurretik.",
+      "criteria": [
+        "Testa isolatu",
+        "Aurreprozesamendua fold bakoitzean ikasi",
+        "Behar izanez gero, taldearen edo denboraren araberako partizioa aukeratu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "metricas",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-metricas-01",
+      "type": "choice",
+      "prompt": "Zer metrikak adierazten du benetako positiboen zer zati hauteman den?",
+      "answer": 0,
+      "explanation": "Precision=TP/(TP+FP); Recall=TP/(TP+FN); Accuracy=(TP+TN)/guztira. F1 precision eta recall-en batezbesteko harmonikoa da. Klase positiboa zehaztu eta matrizea aztertu behar da, bereziki klase desorekatuetan.",
+      "options": [
+        "Recall",
+        "Precision",
+        "Hautapen-tasa",
+        "Partizioaren tamaina"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "metricas",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-metricas-02",
+      "type": "boolean",
+      "prompt": "F1 beti precision eta recall-en batezbesteko aritmetikoa da.",
+      "answer": false,
+      "explanation": "Precision-ek alarmetatik zenbat diren zuzenak galdetzen du; recall-ek benetako positiboetatik zenbat hautematen diren. Accuracy handi batek klase minoritarioko instantziarik ez dela hautematen ezkuta dezake.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "metricas",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-metricas-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer metrikak adierazten du benetako positiboen zer zati hauteman den?",
+      "answer": [
+        "recall",
+        "Recall"
+      ],
+      "explanation": "Precision=TP/(TP+FP); Recall=TP/(TP+FN); Accuracy=(TP+TN)/guztira. F1 precision eta recall-en batezbesteko harmonikoa da. Klase positiboa zehaztu eta matrizea aztertu behar da, bereziki klase desorekatuetan.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "metricas",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-metricas-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Precision=TP/(TP+FP); Recall=TP/(TP+FN); Accuracy=(TP+TN)/guztira. F1 precision eta recall-en batezbesteko harmonikoa da. Klase positiboa zehaztu eta matrizea aztertu behar da, bereziki klase desorekatuetan.",
+      "options": [
+        "Accuracy handi batek klase minoritarioko instantziarik ez dela hautematen ezkuta dezake.",
+        "F1 beti precision eta recall-en batezbesteko aritmetikoa da.",
+        "Precision-ek alarmetatik zenbat diren zuzenak galdetzen du; recall-ek benetako positiboetatik zenbat hautematen diren.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "ml",
+      "topic": "metricas",
+      "difficulty": 1,
+      "source": {
+        "path": "04_Ikaskuntza_Automatikorako_Sistemak/3_Balidazio_Metodologia/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Confusión, Precision, Recall, F1 y Accuracy",
+        "sha256": "604945b00a23a58192bd4303e58a6b16ad37e1839cfdb38abe89b0ec0ad3a9a9"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-ml-metricas-05",
+      "type": "open",
+      "prompt": "Kasua: beti iruzurrik ez dagoela esaten duen detektagailuak accuracy handia eta recall zero izan ditzake. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Precision=TP/(TP+FP); Recall=TP/(TP+FN); Accuracy=(TP+TN)/guztira. F1 precision eta recall-en batezbesteko harmonikoa da. Klase positiboa zehaztu eta matrizea aztertu behar da, bereziki klase desorekatuetan.",
+      "criteria": [
+        "Klase positiboa zehaztu",
+        "TP FP FN TN irakurri",
+        "Metrikak kaltearen arabera interpretatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "arquitectura",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-arquitectura-01",
+      "type": "choice",
+      "prompt": "Zer V-k adierazten du datuen fidagarritasuna?",
+      "answer": 3,
+      "explanation": "V-ek erronkak deskribatzen dituzte: bolumena, abiadura eta aniztasuna dira oinarrizko hirurak; egiazkotasunak eta balioak kalitatea eta erabilgarritasuna gehitzen dituzte. Materialak zazpira zabaltzen ditu, aldakortasunarekin eta bistaratzearekin. Ez dago zazpi V-en zerrenda unibertsal bakarra.",
+      "options": [
+        "Bolumena",
+        "Abiadura",
+        "Aniztasuna",
+        "Egiazkotasuna"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "arquitectura",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-arquitectura-02",
+      "type": "boolean",
+      "prompt": "Big Data gigabyte asko biltegiratzea besterik ez da.",
+      "answer": false,
+      "explanation": "Bolumen handiagoak ez du balio handiagoa esan nahi; arkitekturak latentziari, kostuari eta kalitateari erantzun behar die. Datuen kalitatea garrantzitsua da bolumena txikia izan arren.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "arquitectura",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-arquitectura-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer V-k adierazten du datuen fidagarritasuna?",
+      "answer": [
+        "veracidad",
+        "Veracidad",
+        "Egiazkotasuna"
+      ],
+      "explanation": "V-ek erronkak deskribatzen dituzte: bolumena, abiadura eta aniztasuna dira oinarrizko hirurak; egiazkotasunak eta balioak kalitatea eta erabilgarritasuna gehitzen dituzte. Materialak zazpira zabaltzen ditu, aldakortasunarekin eta bistaratzearekin. Ez dago zazpi V-en zerrenda unibertsal bakarra.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "arquitectura",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-arquitectura-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "V-ek erronkak deskribatzen dituzte: bolumena, abiadura eta aniztasuna dira oinarrizko hirurak; egiazkotasunak eta balioak kalitatea eta erabilgarritasuna gehitzen dituzte. Materialak zazpira zabaltzen ditu, aldakortasunarekin eta bistaratzearekin. Ez dago zazpi V-en zerrenda unibertsal bakarra.",
+      "options": [
+        "Datuen kalitatea garrantzitsua da bolumena txikia izan arren.",
+        "Big Data gigabyte asko biltegiratzea besterik ez da.",
+        "Bolumen handiagoak ez du balio handiagoa esan nahi; arkitekturak latentziari, kostuari eta kalitateari erantzun behar die.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "arquitectura",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/1_Big_Data_Sarrera/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Big Data: V, ciclo y arquitectura",
+        "sha256": "3b074df87876f6c7734be84ef533ed10e4613ed52fec80e8cb3ea719c5decada"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-arquitectura-05",
+      "type": "open",
+      "prompt": "Kasua: ikastaroko zikloak sorrera, ingestioa, biltegiratzea, eraldaketa eta kontsumoa lotzen ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "V-ek erronkak deskribatzen dituzte: bolumena, abiadura eta aniztasuna dira oinarrizko hirurak; egiazkotasunak eta balioak kalitatea eta erabilgarritasuna gehitzen dituzte. Materialak zazpira zabaltzen ditu, aldakortasunarekin eta bistaratzearekin. Ez dago zazpi V-en zerrenda unibertsal bakarra.",
+      "criteria": [
+        "V-ak eskakizunekin erlazionatu",
+        "Datuaren zikloari jarraitu",
+        "Arkitektura latentziaren eta kalitatearen arabera justifikatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-etl-01",
+      "type": "choice",
+      "prompt": "Erauzteari, helmugan kargatzeari eta ondoren eraldatzeari nola deitzen zaio?",
+      "answer": 2,
+      "explanation": "ETLk helmugan kargatu aurretik eraldatzen du; ELTk eraldatu aurretik kargatzen du. Batch-ek sortak prozesatzen ditu, eta streaming-ek gertaerak etengabe prozesatzen ditu. Ardatz desberdinak dira: streaming-ek ez du automatikoki ELT esan nahi.",
+      "options": [
+        "KNN",
+        "KQL",
+        "ELT",
+        "ETL"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-etl-02",
+      "type": "boolean",
+      "prompt": "Streaming sistema oro automatikoki ELT da.",
+      "answer": false,
+      "explanation": "Eraldaketa/karga ordena eta prozesamenduaren maiztasuna eta latentzia bereizi. Batch egokia izan daiteke eguneko txostenetarako.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-etl-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: erauzteari, helmugan kargatzeari eta ondoren eraldatzeari nola deitzen zaio?",
+      "answer": [
+        "ELT"
+      ],
+      "explanation": "ETLk helmugan kargatu aurretik eraldatzen du; ELTk eraldatu aurretik kargatzen du. Batch-ek sortak prozesatzen ditu, eta streaming-ek gertaerak etengabe prozesatzen ditu. Ardatz desberdinak dira: streaming-ek ez du automatikoki ELT esan nahi.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-etl-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "ETLk helmugan kargatu aurretik eraldatzen du; ELTk eraldatu aurretik kargatzen du. Batch-ek sortak prozesatzen ditu, eta streaming-ek gertaerak etengabe prozesatzen ditu. Ardatz desberdinak dira: streaming-ek ez du automatikoki ELT esan nahi.",
+      "options": [
+        "Batch egokia izan daiteke eguneko txostenetarako.",
+        "Streaming sistema oro automatikoki ELT da.",
+        "Eraldaketa/karga ordena eta prozesamenduaren maiztasuna eta latentzia bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-etl-05",
+      "type": "open",
+      "prompt": "Kasua: sentsoreen aginte-panel batek fluxu jarraitua behar du; eguneko itxierak sortak erabil ditzake. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "ETLk helmugan kargatu aurretik eraldatzen du; ELTk eraldatu aurretik kargatzen du. Batch-ek sortak prozesatzen ditu, eta streaming-ek gertaerak etengabe prozesatzen ditu. Ardatz desberdinak dira: streaming-ek ez du automatikoki ELT esan nahi.",
+      "criteria": [
+        "E T L ordena adierazi",
+        "Latentzia justifikatu",
+        "Erroreetatik berreskuratzea azaldu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "almacenes",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-almacenes-01",
+      "type": "choice",
+      "prompt": "Zer formatuk gordetzen du zutabeka eta balio du analitikarako?",
+      "answer": 1,
+      "explanation": "Warehouse-k analitikarako datuak antolatzen ditu, eskemarekin eta gobernantzarekin. Lake-k era askotako datuak gordetzen ditu, sarritan gordinak. Lakehouse-k taulen eta kudeaketaren gaitasunak gehitzen ditu lake biltegiratzearen gainean. CSV testuzko taula-formatua da, JSONek egitura habiaratuak onartzen ditu, eta Parquet zutabekakoa da.",
+      "options": [
+        "Log-fitxategi laua",
+        "Parquet",
+        "CSV",
+        "Testuzko JSON"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "almacenes",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-almacenes-02",
+      "type": "boolean",
+      "prompt": "CSV bat gordetzeak berez edozein karpeta lakehouse bihurtzen du.",
+      "answer": false,
+      "explanation": "Fitxategi-formatua eta biltegiratze-arkitektura ez dira sinonimoak. JSONek objektu habiaratuak adieraz ditzake.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "almacenes",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-almacenes-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer formatuk gordetzen du zutabeka eta balio du analitikarako?",
+      "answer": [
+        "Parquet"
+      ],
+      "explanation": "Warehouse-k analitikarako datuak antolatzen ditu, eskemarekin eta gobernantzarekin. Lake-k era askotako datuak gordetzen ditu, sarritan gordinak. Lakehouse-k taulen eta kudeaketaren gaitasunak gehitzen ditu lake biltegiratzearen gainean. CSV testuzko taula-formatua da, JSONek egitura habiaratuak onartzen ditu, eta Parquet zutabekakoa da.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "almacenes",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-almacenes-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Warehouse-k analitikarako datuak antolatzen ditu, eskemarekin eta gobernantzarekin. Lake-k era askotako datuak gordetzen ditu, sarritan gordinak. Lakehouse-k taulen eta kudeaketaren gaitasunak gehitzen ditu lake biltegiratzearen gainean. CSV testuzko taula-formatua da, JSONek egitura habiaratuak onartzen ditu, eta Parquet zutabekakoa da.",
+      "options": [
+        "JSONek objektu habiaratuak adieraz ditzake.",
+        "CSV bat gordetzeak berez edozein karpeta lakehouse bihurtzen du.",
+        "Fitxategi-formatua eta biltegiratze-arkitektura ez dira sinonimoak.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "almacenes",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Lake, Warehouse, Lakehouse y formatos",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-almacenes-05",
+      "type": "open",
+      "prompt": "Kasua: lake batek jatorrizko gertaerak eta analisirako taula araztuak gordetzen ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Warehouse-k analitikarako datuak antolatzen ditu, eskemarekin eta gobernantzarekin. Lake-k era askotako datuak gordetzen ditu, sarritan gordinak. Lakehouse-k taulen eta kudeaketaren gaitasunak gehitzen ditu lake biltegiratzearen gainean. CSV testuzko taula-formatua da, JSONek egitura habiaratuak onartzen ditu, eta Parquet zutabekakoa da.",
+      "criteria": [
+        "Arkitektura eta formatua bereizi",
+        "Irakurketa-patroiaren arabera aukeratu",
+        "Gobernantza eta kalitatea deskribatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "elastic",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-elastic-01",
+      "type": "choice",
+      "prompt": "Zer mota erabiltzen da normalean balio zehatzetarako eta kategoriaren araberako taldekatzeetarako?",
+      "answer": 0,
+      "explanation": "Mapping-ak motak zehazten ditu: text testu-bilaketarako analizatzen da; keyword-ek balio zehatzak gordetzen ditu. Query DSLk JSON bilaketak adierazten ditu. Aggregations-ek datuak laburbiltzen ditu. Kibanak esploratzea ahalbidetzen du, eta KQLk iragazten du; Logstash-ek gertaerak ingestatu eta eraldatzen ditu.",
+      "options": [
+        "keyword",
+        "Aztertutako text azpieremurik gabe",
+        "FlowFile",
+        "Consumer group"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "elastic",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-elastic-02",
+      "type": "boolean",
+      "prompt": "KQLk Query DSLren agregazio guztiak ordezten ditu eta lengoaia bera da.",
+      "answer": false,
+      "explanation": "text eremuko match eta keyword balio zehatzeko term bereizi. Mapping-ak eremu bat nola interpretatzen eta kontsultatzen den baldintzatzen du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "elastic",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-elastic-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer mota erabiltzen da normalean balio zehatzetarako eta kategoriaren araberako taldekatzeetarako?",
+      "answer": [
+        "keyword"
+      ],
+      "explanation": "Mapping-ak motak zehazten ditu: text testu-bilaketarako analizatzen da; keyword-ek balio zehatzak gordetzen ditu. Query DSLk JSON bilaketak adierazten ditu. Aggregations-ek datuak laburbiltzen ditu. Kibanak esploratzea ahalbidetzen du, eta KQLk iragazten du; Logstash-ek gertaerak ingestatu eta eraldatzen ditu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "elastic",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-elastic-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Mapping-ak motak zehazten ditu: text testu-bilaketarako analizatzen da; keyword-ek balio zehatzak gordetzen ditu. Query DSLk JSON bilaketak adierazten ditu. Aggregations-ek datuak laburbiltzen ditu. Kibanak esploratzea ahalbidetzen du, eta KQLk iragazten du; Logstash-ek gertaerak ingestatu eta eraldatzen ditu.",
+      "options": [
+        "Mapping-ak eremu bat nola interpretatzen eta kontsultatzen den baldintzatzen du.",
+        "KQLk Query DSLren agregazio guztiak ordezten ditu eta lengoaia bera da.",
+        "text eremuko match eta keyword balio zehatzeko term bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "systems",
+      "topic": "elastic",
+      "difficulty": 1,
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/5_Elasticsearch_eta_Kibana/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Elasticsearch, mappings, DSL y Kibana",
+        "sha256": "6410734f56b5c5c7c2547ab535a745b8524cffbd708961bb9ba307e854cbaca2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-systems-elastic-05",
+      "type": "open",
+      "prompt": "Kasua: Discover-ek logak iragazten ditu; Logstash pipeline batek mezuen data eta eremuak ateratzen ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Mapping-ak motak zehazten ditu: text testu-bilaketarako analizatzen da; keyword-ek balio zehatzak gordetzen ditu. Query DSLk JSON bilaketak adierazten ditu. Aggregations-ek datuak laburbiltzen ditu. Kibanak esploratzea ahalbidetzen du, eta KQLk iragazten du; Logstash-ek gertaerak ingestatu eta eraldatzen ditu.",
+      "criteria": [
+        "Mapping-eko motak berrikusi",
+        "Bilaketa eta agregazioa bereizi",
+        "Dokumentuak eta emaitzak egiaztatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "nifi",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-nifi-01",
+      "type": "choice",
+      "prompt": "NiFiko zer objektuk konbinatzen ditu edukiaren erreferentzia eta atributuak?",
+      "answer": 3,
+      "explanation": "FlowFile batek edukia eta atributuak adierazten ditu. Processor-ek eragiketak egiten dituzte; relationship-ek success edo failure bezalako irteerak izendatzen dituzte. Konexioek ilarak dituzte, eta backpressure-k haien hazkundea mugatzen du. Provenance-k gertatutakoa jarraitzea ahalbidetzen du.",
+      "options": [
+        "Topic",
+        "Mapping",
+        "Learner",
+        "FlowFile"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "nifi",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-nifi-02",
+      "type": "boolean",
+      "prompt": "Backpressure-k bermatzen du ez dela inoiz galerarik izango eta ez dela gainbegiratzerik beharko.",
+      "answer": false,
+      "explanation": "Atributuek edukia deskribatzen dute; ez dira edukia bera. failure bideak nahita konektatu edo amaitu behar dira.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "nifi",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-nifi-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: NiFiko zer objektuk konbinatzen ditu edukiaren erreferentzia eta atributuak?",
+      "answer": [
+        "FlowFile"
+      ],
+      "explanation": "FlowFile batek edukia eta atributuak adierazten ditu. Processor-ek eragiketak egiten dituzte; relationship-ek success edo failure bezalako irteerak izendatzen dituzte. Konexioek ilarak dituzte, eta backpressure-k haien hazkundea mugatzen du. Provenance-k gertatutakoa jarraitzea ahalbidetzen du.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "nifi",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-nifi-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "FlowFile batek edukia eta atributuak adierazten ditu. Processor-ek eragiketak egiten dituzte; relationship-ek success edo failure bezalako irteerak izendatzen dituzte. Konexioek ilarak dituzte, eta backpressure-k haien hazkundea mugatzen du. Provenance-k gertatutakoa jarraitzea ahalbidetzen du.",
+      "options": [
+        "failure bideak nahita konektatu edo amaitu behar dira.",
+        "Backpressure-k bermatzen du ez dela inoiz galerarik izango eta ez dela gainbegiratzerik beharko.",
+        "Atributuek edukia deskribatzen dute; ez dira edukia bera.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "nifi",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/ariketak/1_NiFi_Oinarrizkoa_Kasuak_1_4/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "NiFi: FlowFiles, processors y relationships",
+        "sha256": "a21e338f100dbbd9b353a8cc22e2a1f8d5dc77504f34cac216b539689f91fb63"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-nifi-05",
+      "type": "open",
+      "prompt": "Kasua: helmuga moteltzen bada, begiratu ilarei eta presioari konkurrentzia handitu aurretik. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "FlowFile batek edukia eta atributuak adierazten ditu. Processor-ek eragiketak egiten dituzte; relationship-ek success edo failure bezalako irteerak izendatzen dituzte. Konexioek ilarak dituzte, eta backpressure-k haien hazkundea mugatzen du. Provenance-k gertatutakoa jarraitzea ahalbidetzen du.",
+      "criteria": [
+        "Edukia eta atributuak bereizi",
+        "Erlazioak eta erroreak berrikusi",
+        "Ilarak eta provenance neurtu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "kafka",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-kafka-01",
+      "type": "choice",
+      "prompt": "Nola deitzen zaio erregistro batek partizio baten barruan duen posizioari?",
+      "answer": 2,
+      "explanation": "Producer-ek erregistroak argitaratzen dituzte partiziotan banatutako topic-etan. Offset-ak partizio baten barruko posizioa identifikatzen du. Talde bereko consumer-ek partizioak banatzen dituzte; talde desberdinek datu berak modu independentean irakur ditzakete. Ordena partizio baten barruan bermatzen da.",
+      "options": [
+        "Relationship",
+        "Recall",
+        "Offset",
+        "Mapping"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "kafka",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-kafka-02",
+      "type": "boolean",
+      "prompt": "Kafkak topic bateko partizio guztien arteko ordena globala bermatzen du.",
+      "answer": false,
+      "explanation": "Partizioko offset-a eta identifikatzaile globala bereizi; taldea eta consumer indibiduala bereizi. Bi talde desberdinek topic bera modu independentean kontsumi dezakete.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "kafka",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-kafka-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: nola deitzen zaio erregistro batek partizio baten barruan duen posizioari?",
+      "answer": [
+        "offset",
+        "Offset"
+      ],
+      "explanation": "Producer-ek erregistroak argitaratzen dituzte partiziotan banatutako topic-etan. Offset-ak partizio baten barruko posizioa identifikatzen du. Talde bereko consumer-ek partizioak banatzen dituzte; talde desberdinek datu berak modu independentean irakur ditzakete. Ordena partizio baten barruan bermatzen da.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "kafka",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-kafka-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Producer-ek erregistroak argitaratzen dituzte partiziotan banatutako topic-etan. Offset-ak partizio baten barruko posizioa identifikatzen du. Talde bereko consumer-ek partizioak banatzen dituzte; talde desberdinek datu berak modu independentean irakur ditzakete. Ordena partizio baten barruan bermatzen da.",
+      "options": [
+        "Bi talde desberdinek topic bera modu independentean kontsumi dezakete.",
+        "Kafkak topic bateko partizio guztien arteko ordena globala bermatzen du.",
+        "Partizioko offset-a eta identifikatzaile globala bereizi; taldea eta consumer indibiduala bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "kafka",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/0-kasua-kafka-kaixo/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Kafka: topics, partitions, offsets y grupos",
+        "sha256": "c9bf02e75f257d94a527977a2ecf6e881ea492044670c47e6993f51d829fdfca"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-kafka-05",
+      "type": "open",
+      "prompt": "Kasua: berrabiaraztean baieztatutako offset-ak erabiltzen dira: helmugako efektuak berrirakurketak onartu behar ditu. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Producer-ek erregistroak argitaratzen dituzte partiziotan banatutako topic-etan. Offset-ak partizio baten barruko posizioa identifikatzen du. Talde bereko consumer-ek partizioak banatzen dituzte; talde desberdinek datu berak modu independentean irakur ditzakete. Ordena partizio baten barruan bermatzen da.",
+      "criteria": [
+        "Partizioa eta taldea identifikatu",
+        "Irakurtzea eta baieztatzea bereizi",
+        "Efektu bikoiztuak prebenitu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-connect-01",
+      "type": "choice",
+      "prompt": "Zer konektorek esportatzen ditu Kafkako erregistroak helmugako sistema batera?",
+      "answer": 1,
+      "explanation": "Kafka Connect-ek sistemak integratzen ditu source (Kafkara sartzen da) eta sink (Kafkatik ateratzen da) bidez. Medallion arkitekturak Bronze gordina, Silver garbia eta kontsumorako Gold bereizten ditu. Geruzen izenek ez dute kalitatea bermatzen: kontratuak eta kontrolak behar dira.",
+      "options": [
+        "Lausotzailea",
+        "Sink",
+        "Source",
+        "K-Fold"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-connect-02",
+      "type": "boolean",
+      "prompt": "Taula bati Gold deitzeak kalitatea balioztatzeko beharra ezabatzen du.",
+      "answer": false,
+      "explanation": "source eta sink konektoreak bereizi; kalitate-geruzak eta zerbitzu zehatzak bereizi. Bronze geruzak jatorrizko formatik hurbil dauden datuak gordetzen ditu.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-connect-03",
+      "type": "term",
+      "prompt": "Osatu kontzeptua: zer konektorek esportatzen ditu Kafkako erregistroak helmugako sistema batera?",
+      "answer": [
+        "sink",
+        "Sink"
+      ],
+      "explanation": "Kafka Connect-ek sistemak integratzen ditu source (Kafkara sartzen da) eta sink (Kafkatik ateratzen da) bidez. Medallion arkitekturak Bronze gordina, Silver garbia eta kontsumorako Gold bereizten ditu. Geruzen izenek ez dute kalitatea bermatzen: kontratuak eta kontrolak behar dira.",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-connect-04",
+      "type": "multiple",
+      "prompt": "Hautatu baieztapen zuzen guztiak.",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Kafka Connect-ek sistemak integratzen ditu source (Kafkara sartzen da) eta sink (Kafkatik ateratzen da) bidez. Medallion arkitekturak Bronze gordina, Silver garbia eta kontsumorako Gold bereizten ditu. Geruzen izenek ez dute kalitatea bermatzen: kontratuak eta kontrolak behar dira.",
+      "options": [
+        "Bronze geruzak jatorrizko formatik hurbil dauden datuak gordetzen ditu.",
+        "Taula bati Gold deitzeak kalitatea balioztatzeko beharra ezabatzen du.",
+        "source eta sink konektoreak bereizi; kalitate-geruzak eta zerbitzu zehatzak bereizi.",
+        "Diseinu-erabakiek ez dute inoiz ebidentziarik behar."
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 1,
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "id": "Q-applied-connect-05",
+      "type": "open",
+      "prompt": "Kasua: datu meteorologikoak jatorrizko gertaeretatik serie garbietara eta udalerrikako agregatuetara igarotzen dira. Azaldu zer berrikusiko zenukeen eta justifikatu zure erabakia.",
+      "answer": null,
+      "explanation": "Kafka Connect-ek sistemak integratzen ditu source (Kafkara sartzen da) eta sink (Kafkatik ateratzen da) bidez. Medallion arkitekturak Bronze gordina, Silver garbia eta kontsumorako Gold bereizten ditu. Geruzen izenek ez dute kalitatea bermatzen: kontratuak eta kontrolak behar dira.",
+      "criteria": [
+        "Jatorria, topic-a eta helmuga adierazi",
+        "Geruzen arteko kontrolak zehaztu",
+        "Erroreak eta offset-ak berrikusi"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-models-fuzzy-06",
+      "course": "models",
+      "topic": "fuzzy",
+      "difficulty": 2,
+      "type": "order",
+      "prompt": "Ordenatu sistema lauso baten etapak.",
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "explanation": "Lehenik pertenentziak kalkulatzen dira, ondoren arauak aplikatzen dira, eta azkenik irteera zehatza lortzen da.",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "Fuzzy Logic y pertenencia",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "options": [
+        "Deslausotzea",
+        "Lausotzea",
+        "Inferentzia"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-models-fairness-06",
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 2,
+      "type": "match",
+      "prompt": "Lotu metrika bakoitza bere izendatzailearekin edo irizpidearekin.",
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Metrika bakoitzak galdera desberdin bati erantzuten dio.",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "left": [
+        "Demographic Parity",
+        "Equal Opportunity",
+        "Disparate Impact"
+      ],
+      "options": [
+        "Benetako positiboen arteko TPR",
+        "Hautapen-tasen zatidura",
+        "Hautapen-tasak taldeka"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-models-fairness-07",
+      "course": "models",
+      "topic": "fairness",
+      "difficulty": 2,
+      "type": "term",
+      "prompt": "A taldeak 100etik 20 hautatzen ditu; B taldeak 100etik 40. Kalkulatu DI(A/B).",
+      "answer": [
+        "0.5",
+        "0,5",
+        "50%"
+      ],
+      "explanation": "(20/100)/(40/100)=0,5. Adierazlea da, ez legezko epaia.",
+      "source": {
+        "path": "03_AA_Ereduak/ariketak/2_Fairness_eta_Metrikak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Demographic Parity, Equal Opportunity y DI",
+        "sha256": "6ab7fbddf21cc5e0ade314a10c438b0fbb214dc2a18bdc3c6657c07d7c685b84"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-models-capacidades-06",
+      "course": "models",
+      "topic": "capacidades",
+      "difficulty": 2,
+      "type": "open",
+      "prompt": "Alderatu ML eta Deep Learning: erlazioa, teknika eta adibidea.",
+      "answer": null,
+      "explanation": "Deep Learning Machine Learning-en azpimultzoa da.",
+      "source": {
+        "path": "NotebookLM_Material_Estudio/03_AA_Ereduak/Guias_de_Estudio/Guia_Estudio_03_AA_Ereduak.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "derived",
+        "section": "ANI, AGI, ASI y ML vs DL",
+        "sha256": "fa3ccd030b4ab6a0001977e2a3634b26f41a2de407b189ff9ded98500192a5b2"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "criteria": [
+        "Barne-hartze erlazioa adierazi",
+        "Sare sakonak aipatu",
+        "Adibide koherente bat eman"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-systems-etl-06",
+      "course": "systems",
+      "topic": "etl",
+      "difficulty": 2,
+      "type": "order",
+      "prompt": "Ordenatu ETL prozesu bat.",
+      "answer": [
+        1,
+        0,
+        2
+      ],
+      "explanation": "ETLn eraldaketa kargaren aurretik egiten da.",
+      "source": {
+        "path": "06_BD_Sistemak/ariketak/3_ETL_eta_Formatuak/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "ETL, ELT y batch/streaming",
+        "sha256": "58613f29bb9040ad30c694a2f9698aead54830db162242c7bee0f0a798271e0b"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "options": [
+        "Eraldatu",
+        "Erauztu",
+        "Kargatu"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    },
+    {
+      "id": "Q-applied-connect-06",
+      "course": "applied",
+      "topic": "connect",
+      "difficulty": 2,
+      "type": "order",
+      "prompt": "Ordenatu Medallion, datu gordinetatik kontsumora.",
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Bronze-k gordina gordetzen du, Silver-ek arazten du eta Gold-ek kontsumorako prestatzen du.",
+      "source": {
+        "path": "07_BD_Aplikatua/3_Apache_Kafka/3-kasua-kafka-connect/README.md",
+        "commit": "5e716edf42e0d1097b5ad2fb911755d97ba3865d",
+        "status": "confirmed",
+        "section": "Connect, streaming y Medallion",
+        "sha256": "7c2e34a7788edd2144f74c0238528de25e89d35a7a0b99e5049a10e1e398af02"
+      },
+      "version": 1,
+      "modality": "QUIZ",
+      "options": [
+        "Silver",
+        "Gold",
+        "Bronze"
+      ],
+      "authorship": "original study material",
+      "difficultyEvidence": "inferred pedagogical level"
+    }
+  ]
+}

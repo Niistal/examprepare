@@ -16,6 +16,8 @@ def check(script,label):
     print('PASS',label)
 try:
     cmd('POST','/url',{'url':os.environ.get('NIIS_TEST_URL','http://127.0.0.1:8086')})
+    # Legacy assertions exercise the preserved Spanish edition; Euskara has its own suite.
+    js("document.cookie='study_language=es-ES; Path=/';location.reload()")
     js("localStorage.clear();location.reload()")
     js("selectCourse('models')")
     check("document.querySelectorAll('.topic-overview-row').length===9",'nueve temas reales de Xabat con acceso directo')

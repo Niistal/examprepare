@@ -56,6 +56,7 @@ with servers() as (local,hosted), sync_playwright() as pw:
     browser=pw.chromium.launch(headless=True)
     try:
         page=browser.new_page(accept_downloads=True)
+        page.context.add_cookies([{'name':'study_language','value':'es-ES','url':local},{'name':'study_language','value':'es-ES','url':hosted}])
         errors=[];page.on('pageerror',lambda error:errors.append(str(error)))
         page.goto(local);page.evaluate("startSingle('P10')")
         solution=page.evaluate("BANK.find(q=>q.id==='P10').solution")

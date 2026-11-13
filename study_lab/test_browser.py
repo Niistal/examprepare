@@ -14,6 +14,8 @@ def check(script,label):
     print('PASS',label)
 try:
     cmd('POST','/url',{'url':os.environ.get('NIIS_TEST_URL','http://127.0.0.1:8080')})
+    # Legacy assertions exercise the preserved Spanish edition; Euskara has its own suite.
+    js("document.cookie='study_language=es-ES; Path=/';location.reload()")
     check("document.querySelectorAll('.subject-card').length===5",'cinco materias')
     js("localStorage.clear();location.reload()")
     js("selectCourse('program')")
