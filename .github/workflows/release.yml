@@ -34,6 +34,8 @@ jobs:
           node study_lab/test_generador.cjs
           node study_lab/test_learning.cjs
           node study_lab/test_modalities.cjs
+          node study_lab/test_i18n.cjs
+          python study_lab/test_i18n_browser.py
           python study_lab/test_materials.py
           python study_lab/test_material_reader.py
           python -m unittest distribution.test_material_delivery distribution.test_material_install -v

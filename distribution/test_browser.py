@@ -33,6 +33,7 @@ def main():
             raise AssertionError(label)
         def enter(sid,name,action):
             request('POST',f'/session/{sid}/url',{'url':origin+'/login'})
+            js(sid,"document.cookie='study_language=es-ES; Path=/';location.reload()")
             js(sid,"document.getElementById('username').value="+json.dumps(name)+";document.getElementById('password').value='browser test password 123';document.querySelector('button[value="+action+"]').click()")
             if action=='register':
                 wait(sid,"!document.getElementById('codePanel').classList.contains('hidden')",'código personal mostrado al registrarse')
