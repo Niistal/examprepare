@@ -821,5 +821,10 @@
   "MAR 17": "AR. 17",
   "MIÉ 18": "AZ. 18",
   "JUE 19": "OG. 19",
-  "LUN 23": "AL. 23"
+  "LUN 23": "AL. 23",
+  "Progreso total": "Aurrerapen osoa",
+  "Casos, preguntas y tarjetas": "Kasuak, galderak eta txartelak",
+  "Acertada y guardada": "Asmatuta eta gordeta",
+  "Completadas": "Osatuak",
+  "Aquí se guardan los casos completados, las preguntas acertadas y las tarjetas aprendidas de cada asignatura. Prioriza lo que necesitas reforzar y vuelve a comprobar lo aprendido sin mirar la solución.": "Hemen irakasgai bakoitzeko osatutako kasuak, asmatutako galderak eta ikasitako txartelak gordetzen dira. Lehenetsi indartu behar duzuna eta egiaztatu berriro ikasitakoa, soluzioa begiratu gabe."
 }
