@@ -728,3 +728,14 @@ fieldset:disabled .quiz-option{cursor:default;opacity:.85}
  .topbar-left{flex:1 1 100%}
  .topbar-right{flex:1 1 100%;min-width:0;max-width:100%;justify-content:flex-start}
 }
+
+.completion-controls,.editor-size-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0}
+.completion-controls [aria-pressed="true"],.exercise-completed,.question-tabs button.completed,.route-step.mastered{border-color:#438363;background:#eaf6ee;color:#205638}
+.editor-size-controls [aria-pressed="true"]{border-color:var(--text-2);background:var(--code-bg)}
+.code-workspace.editor-large #answerEditor{height:70vh;min-height:480px}
+body.editor-is-expanded{overflow:hidden}
+.code-workspace.editor-expanded{position:fixed;inset:12px;z-index:1000;background:var(--bg,#fff);padding:16px;border:1px solid var(--border,#ccc);border-radius:12px;display:flex;flex-direction:column;box-shadow:0 0 0 30px #0008}
+.editor-expanded .editor-size-controls,.editor-expanded .editor-top,.editor-expanded .editor-toolbar{flex-shrink:0;margin:4px 0}
+.editor-expanded #answerEditor{flex:1;min-height:0;height:0;resize:none}
+#answerEditor.wrap-code{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:600px){.code-workspace.editor-expanded{inset:4px;padding:8px}.editor-expanded .editor-keyboard{display:none}}

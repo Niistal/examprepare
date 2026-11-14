@@ -2,13 +2,17 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const original={ratings:{},answers:{},history:[]};
 function setup(fetch){
  const handlers={},label={textContent:''};
- const context=vm.createContext({TextEncoder,CLOUD_BOOTSTRAP:{state:original,revision:0,csrf:'test',username:'student'},fetch,document:{getElementById:()=>label},window:{addEventListener:(name,fn)=>handlers[name]=fn},setTimeout:()=>1,clearTimeout(){}});
+ const context=vm.createContext({TextEncoder,CLOUD_BOOTSTRAP:{state:original,revision:0,csrf:'test',username:'student'},fetch,document:{getElementById:()=>label},window:{addEventListener:(name,fn)=>handlers[name]=fn},location:{reload:()=>handlers.reloaded=true},setTimeout:()=>1,clearTimeout(){}});
  vm.runInContext(fs.readFileSync(__dirname+'/sync.js','utf8'),context);
  return {store:vm.runInContext('cloudStorage',context),handlers,label};
 }
 const state=JSON.stringify({...original,answers:{P35:'my unsaved answer'}});
 const response=(status,body)=>({status,ok:status>=200&&status<300,json:async()=>body});
 (async()=>{
+ const restored=setup(async()=>response(200,{revision:1}));
+ restored.handlers.pageshow({persisted:false});assert.equal(restored.handlers.reloaded,undefined);
+ restored.handlers.pageshow({persisted:true});assert.equal(restored.handlers.reloaded,true);
+ console.log('PASS restored pages revalidate the authenticated account');
  let calls=0;
  const success=setup(async()=>{calls++;return response(200,{revision:calls});});
  success.store.setItem('key',state);assert(await success.store.flush());assert.equal(calls,1);
