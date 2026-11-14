@@ -31,6 +31,9 @@ const cloudStorage=(()=>{
  function flush(){if(inflight)return inflight;inflight=perform().finally(()=>{inflight=null;});return inflight;}
  window.addEventListener('beforeunload',e=>{if(value!==saved){e.preventDefault();e.returnValue='';}});
  window.addEventListener('online',()=>flush());
+ // Revalidate the server session before displaying a page restored by browser Back.
+ window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
+ document.addEventListener?.('visibilitychange',()=>{if(document.visibilityState==='hidden')flush();});
  window.addEventListener('DOMContentLoaded',()=>{
   const tools=document.querySelector('.topbar-right');if(!tools)return;
   const menu=document.createElement('details');menu.id='cloudAccountMenu';menu.className='account-menu';

@@ -30,6 +30,7 @@ try:
     js("startSingle('P01');document.getElementById('answerEditor').value='borrador QA';document.getElementById('answerEditor').dispatchEvent(new Event('input'));revealHint();revealSolution()")
     check("document.getElementById('answerEditor').value==='borrador QA'",'ayudas conservan borrador')
     js("rate(2);location.reload()")
+    check("document.querySelector('.page.active').id==='dashboardPage'",'recarga abre Inicio conservando el progreso')
     check("document.getElementById('answerEditor').value==='borrador QA' && data.ratings.P01===2",'recarga recupera sesión, texto y valoración')
     js("document.getElementById('examMode').value='exam';document.getElementById('examNumber').value='17';startExam()")
     check("document.getElementById('solutionToggle').disabled && document.getElementById('hintToggle').disabled",'examen bloquea ayudas')
