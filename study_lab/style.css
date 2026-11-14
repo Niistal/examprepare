@@ -739,3 +739,7 @@ body.editor-is-expanded{overflow:hidden}
 .editor-expanded #answerEditor{flex:1;min-height:0;height:0;resize:none}
 #answerEditor.wrap-code{white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:600px){.code-workspace.editor-expanded{inset:4px;padding:8px}.editor-expanded .editor-keyboard{display:none}}
+
+.learning-completed{background:var(--success-soft);border-color:var(--success)}
+.saved-correct{color:var(--success);font-weight:600}
+.quiz-question.learning-completed{padding-inline:var(--s4);border-radius:8px}
